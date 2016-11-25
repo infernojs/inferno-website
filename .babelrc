@@ -1,9 +1,12 @@
 {
-	"presets": [
-		["es2015", { "loose": true }],
-		"stage-0"
-	],
-	"plugins": [
-		["inferno"]
-	]
+  "plugins": [
+    "add-module-exports",
+    "transform-decorators-legacy",
+    "transform-class-properties",
+    "transform-es2015-modules-commonjs",
+    "transform-es2015-destructuring",
+    "transform-object-rest-spread",
+    "babel-plugin-inferno",
+    ["fast-async"]
+  ]
 }
