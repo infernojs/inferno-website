@@ -13,32 +13,27 @@ export default class Particle  {
         Particle.add(p.position, p.velocity)
     }
 
-    static submitToFields(p, fields) {
+    static submitToFields(p, field) {
         // our starting acceleration this frame
         let accelerationX = 0
         let accelerationY = 0
 
-        // for each passed field
-        for (let i = 0; i < fields.length; i++) {
-            const field = fields[i]
+        // find the distance between the particle and the field
+        const vectorX = field.position[0] - p.position[0]
+        const vectorY = field.position[1] - p.position[1]
 
-            // find the distance between the particle and the field
-            const vectorX = field.position[0] - p.position[0]
-            const vectorY = field.position[1] - p.position[1]
+        // calculate the force via MAGIC and HIGH SCHOOL SCIENCE!
+        const force = field.mass / Math.pow(vectorX * vectorX + vectorY * vectorY, 1.5)
 
-            // calculate the force via MAGIC and HIGH SCHOOL SCIENCE!
-            const force = field.mass / Math.pow(vectorX * vectorX + vectorY * vectorY, 1.5)
+        // Randomly move left or right
+        const noise = (Math.random() * 2 - 1) / 10
 
-            // Randomly move left or right
-            const noise = (Math.random() * 2 - 1) / 10
+        // add to the total acceleration the force adjusted by distance
+        accelerationX += vectorX * force
+        accelerationY += vectorY * force
 
-            // add to the total acceleration the force adjusted by distance
-            accelerationX += vectorX * force
-            accelerationY += vectorY * force
-
-            //Simplex noise
-            accelerationX += noise
-        }
+        // Simple noise
+        accelerationX += noise
 
         // update our particle's acceleration
         p.gravity = [accelerationX, accelerationY]

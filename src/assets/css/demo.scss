@@ -4,15 +4,20 @@
     padding: 2rem;
 
     .demo-setting {
+        padding: 0;
+        display: flex;
+        flex-flow: column;
+
+        div {
+            flex: 1;
+        }
+    }
+    .demo-counter {
+        padding: 0.5rem 0;
+    }
+    .demo-slider {
         width: 20rem;
         display: flex;
-
-        div:first-child {
-            flex: 1;
-        }
-        div:last-child {
-            flex: 1;
-        }
     }
 
     button {
@@ -36,22 +41,6 @@
     .particle, .field {
         position: absolute;
         pointer-events: none;
-    }
-    .field {
-        border: 2px dashed;
-        border-radius: 50%;
-        font-size: 3rem;
-        line-height: 2.8rem;
-        text-align: center;
-
-        &.plus {
-            color: #32A02F;
-            border-color: #32A02F;
-        }
-        &.minus {
-            color: #FF6400;
-            border-color: #FF6400;
-        }
     }
     .particle {
         width: 20px;

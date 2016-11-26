@@ -1,6 +1,6 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
-import { Controller } from './Elements'
+import { Controller } from './inferno/Elements'
 import Canvas from './inferno/Canvas'
 
 if (process.env.BROWSER) {

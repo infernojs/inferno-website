@@ -3,17 +3,12 @@ import Component from 'inferno-component'
 import perfMonitor from '../system/perfMonitor'
 import Emitter from '../system/Emitter'
 import Particle from '../system/Particle'
-import { Field, Vector, remove } from '../system/utils'
+import { Field, remove } from '../system/utils'
 import { ParticleComponent, FieldComponent } from './Elements'
 
 const pool = []
 const particles = []
-const fields = [
-    new Field([0, 0], -30)
-    //new Field([center - 80, 200], -30),
-    //new Field([center, 60), 20],
-    //new Field([center + 80, 200], -30),
-]
+const field = new Field([0, 0], -30)
 
 export default class Canvas extends Component {
     constructor() {
@@ -39,8 +34,8 @@ export default class Canvas extends Component {
     }
 
     onMouseMove = (e) => {
-        fields[0].position[0] = e.offsetX
-        fields[0].position[1] = e.offsetY
+        field.position[0] = e.offsetX
+        field.position[1] = e.offsetY
 
         this.setState({
             mouse: [e.offsetX, e.offsetY]
@@ -60,7 +55,7 @@ export default class Canvas extends Component {
         // Update velocities
         for (let i in particles) {
             let p = particles[i]
-            Particle.submitToFields(p, fields);
+            Particle.submitToFields(p, field);
             Particle.update(p)
         }
 
@@ -90,11 +85,25 @@ export default class Canvas extends Component {
 
     render() {
         return <div>
-            <div>Particles ({particles.length})</div>
+            <ParticleCounter count={particles.length}/>
             <div id="demo-canvas" style={window.demo}>
                 {particles.map(data => <ParticleComponent {...data}/>)}
-                {fields.map(data => <FieldComponent {...data}/>)}
+                <FieldComponent {...field}/>
             </div>
+        </div>
+    }
+}
+
+class ParticleCounter extends Component {
+    shouldComponentUpdate(nextProps) {
+        if (this.props.count !== nextProps.count) {
+            return true
+        }
+        return false
+    }
+    render() {
+        return <div className="demo-counter">
+            Particles ({this.props.count})
         </div>
     }
 }

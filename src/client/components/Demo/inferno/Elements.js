@@ -6,16 +6,12 @@ export class FieldComponent extends Component {
     shouldComponentUpdate(nextProps) {
         return false
     }
-    render({ position, mass, className }) {
-        const sign = mass > 0 ? '+' : '-'
-        const size = Math.abs(mass)
+    render({ position, className }) {
         const style = {
-            height: size * 3,
-            width: size * 3,
-            left: position[0] - size,
-            top: position[1] - size
+            left: position[0],
+            top: position[1]
         }
-        return <div className={'field ' + className} style={style}/>
+        return <div style={style}/>
     }
 }
 
@@ -50,9 +46,51 @@ export class ParticleComponent extends Component {
         }
         return Inferno.createVNode(2, 'div',  {
             id: simplexVal,
-            className: 'particle' + (this.context.round ? 'round' : ''),
+            className: 'particle' + (this.context.round ? ' round' : ''),
             style
         })
     }
 }
 
+export class Controller extends Component {
+    static contextTypes() {
+        return { state(){} }
+    }
+
+    render() {
+        const { setRounded, setEmission, setLifetime } = this.props
+        const { emissionRate, lifetime, round } = this.context
+
+        return (
+        <div className="demo-setting">
+            <Slider step={1} min={1} max={8} text="Emission Rate"
+                    label={emissionRate} defaultValue={emissionRate}
+                    onChange={setEmission}/>
+
+            <Slider step={10} min={10} max={150} text="Lifetime"
+                    label={lifetime} defaultValue={lifetime}
+                    onChange={setLifetime}/>
+            <div className="demo-slider">
+                <label>
+                    Rounded Corners
+                    <input type="checkbox" checked={round} onChange={setRounded}/>
+                </label>
+            </div>
+        </div>
+        )
+    }
+}
+
+export function Slider({ step, min, max, text, label, defaultValue, onChange }) {
+    return (
+    <div className="demo-slider">
+        <div>{text} ({label})</div>
+        <div>
+            <input type="range"
+                   min={min} max={max} step={step}
+                   defaultValue={defaultValue}
+                   onChange={onChange}/>
+        </div>
+    </div>
+    )
+}
