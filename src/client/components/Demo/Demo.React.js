@@ -1,7 +1,7 @@
-import Vector from './shared/Vector'
+import Vector from './system/Vector'
 import { Canvas } from './inferno/Elements'
-import { emitters, fields, height, width } from './shared/setup'
-import perfMonitor from './shared/perf-monitor'
+import { emitters, fields, height, width } from './system/setup'
+import perfMonitor from './system/perfMonitor'
 
 if (process.env.BROWSER) {
     window.pool = []
@@ -19,7 +19,7 @@ class InfernoFlame extends React.Component {
             round: false,
             mouse: new Vector(0, 0),
             maxParticles: 400,
-            minLifetime: defaultLifetime,
+            minLifetime: lifetime,
             emissionRate: 2
         }
     }
@@ -83,7 +83,7 @@ class InfernoFlame extends React.Component {
             particle.lifetime += 1
 
             // If we're out of bounds, drop this particle and move on to the next
-            if (particle.lifetime > particle.maxlifetime) {
+            if (particle.lifetime > particle.lifetimeMax) {
                 this.remove(particles, particle)
                 continue
             }
@@ -92,7 +92,7 @@ class InfernoFlame extends React.Component {
 
             // Update velocities
             //particle.submitToFields(fields);
-            particle.move();
+            particle.update();
         }
 
         //particles = aliveParticles
@@ -143,7 +143,7 @@ class InfernoFlame extends React.Component {
                     max={200}
                     text={'Lifetime'}
                     label={minLifetime}
-                    defaultValue={defaultLifetime}
+                    defaultValue={lifetime}
                     onChange={this.setLifetime}/>
             <div>
                 <span>Rounded Corners</span>
@@ -153,7 +153,6 @@ class InfernoFlame extends React.Component {
             </div>
             <hr/>
             <div id="demo-canvas" style={canvasStyle} onClick={this.addEmitter()}>
-                {/*<VectorField mouse={mouse}/>*/}
                 <Canvas p={particles} f={fields}/>
             </div>
         </section>

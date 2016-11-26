@@ -3,7 +3,7 @@ import { Route } from 'inferno-router'
 import Layout from './components/Layout'
 import NotFound from './containers/NotFound'
 import Home from './components/Home'
-import Demo from './components/Demo/Demo.Inferno'
+import Demo from './components/Demo/Demo'
 import About from './components/About'
 
 /**

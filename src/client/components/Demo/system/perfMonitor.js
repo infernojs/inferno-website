@@ -1,4 +1,4 @@
-var babelHelpers = {};
+let babelHelpers = {};
 
 babelHelpers.classCallCheck = function (instance, Constructor) {
     if (!(instance instanceof Constructor)) {
@@ -8,8 +8,8 @@ babelHelpers.classCallCheck = function (instance, Constructor) {
 
 babelHelpers.createClass = function () {
     function defineProperties(target, props) {
-        for (var i = 0; i < props.length; i++) {
-            var descriptor = props[i];
+        for (let i = 0; i < props.length; i++) {
+            let descriptor = props[i];
             descriptor.enumerable = descriptor.enumerable || false;
             descriptor.configurable = true;
             if ("value" in descriptor) descriptor.writable = true;
@@ -26,12 +26,12 @@ babelHelpers.createClass = function () {
 
 babelHelpers;
 
-var MONITOR_GRAPH_HEIGHT = 30;
-var MONITOR_GRAPH_WIDTH = 100;
-var container = null;
-var initialized = false;
-var frameTasks = [];
-var rafId = -1;
+let MONITOR_GRAPH_HEIGHT = 30;
+let MONITOR_GRAPH_WIDTH = 100;
+let container = null;
+let initialized = false;
+let frameTasks = [];
+let rafId = -1;
 /**
  * Initialize Performance Monitor
  */
@@ -62,16 +62,16 @@ function scheduleTask(task) {
     if (rafId === -1) {
         requestAnimationFrame(function (t) {
             rafId = -1;
-            var tasks = frameTasks;
+            let tasks = frameTasks;
             frameTasks = [];
-            for (var i = 0; i < tasks.length; i++) {
+            for (let i = 0; i < tasks.length; i++) {
                 tasks[i]();
             }
         });
     }
 }
 
-var Result = function Result(min, max, mean, now) {
+let Result = function Result(min, max, mean, now) {
     babelHelpers.classCallCheck(this, Result);
 
     this.min = min;
@@ -84,7 +84,7 @@ var Result = function Result(min, max, mean, now) {
  */
 
 
-var Data = function () {
+let Data = function () {
     function Data() {
         babelHelpers.classCallCheck(this, Data);
 
@@ -103,11 +103,11 @@ var Data = function () {
     }, {
         key: "calc",
         value: function calc() {
-            var min = this.samples[0];
-            var max = this.samples[0];
-            var sum = 0;
-            for (var i = 0; i < this.samples.length; i++) {
-                var k = this.samples[i];
+            let min = this.samples[0];
+            let max = this.samples[0];
+            let sum = 0;
+            for (let i = 0; i < this.samples.length; i++) {
+                let k = this.samples[i];
                 if (k < min) {
                     min = k;
                 }
@@ -116,34 +116,34 @@ var Data = function () {
                 }
                 sum += k;
             }
-            var now = this.samples[this.samples.length - 1];
-            var mean = sum / this.samples.length;
+            let now = this.samples[this.samples.length - 1];
+            let mean = sum / this.samples.length;
             return new Result(min, max, mean, now);
         }
     }]);
     return Data;
 }();
 
-var MonitorWidget = function () {
+let MonitorWidget = function () {
     function MonitorWidget(name, unitName) {
-        var _this = this;
+        let _this = this;
 
-        var flags = arguments.length <= 2 || arguments[2] === undefined ? 0 : arguments[2];
+        let flags = arguments.length <= 2 || arguments[2] === undefined ? 0 : arguments[2];
         babelHelpers.classCallCheck(this, MonitorWidget);
 
         this._syncView = function () {
-            var result = _this.results[_this.results.length - 1];
-            var scale = MONITOR_GRAPH_HEIGHT / (result.max * 1.2);
-            var min = (_this.flags & 32 /* RoundValues */) === 0 ? result.min.toFixed(2) : "" + Math.round(result.min);
-            var max = (_this.flags & 32 /* RoundValues */) === 0 ? result.max.toFixed(2) : "" + Math.round(result.max);
-            var mean = (_this.flags & 32 /* RoundValues */) === 0 ? result.mean.toFixed(2) : "" + Math.round(result.mean);
-            var now = (_this.flags & 32 /* RoundValues */) === 0 ? result.now.toFixed(2) : "" + Math.round(result.now);
+            let result = _this.results[_this.results.length - 1];
+            let scale = MONITOR_GRAPH_HEIGHT / (result.max * 1.2);
+            let min = (_this.flags & 32 /* RoundValues */) === 0 ? result.min.toFixed(2) : "" + Math.round(result.min);
+            let max = (_this.flags & 32 /* RoundValues */) === 0 ? result.max.toFixed(2) : "" + Math.round(result.max);
+            let mean = (_this.flags & 32 /* RoundValues */) === 0 ? result.mean.toFixed(2) : "" + Math.round(result.mean);
+            let now = (_this.flags & 32 /* RoundValues */) === 0 ? result.now.toFixed(2) : "" + Math.round(result.now);
             _this.text.innerHTML = "" + ((_this.flags & 1 /* HideMin */) === 0 ? "<div>min: &nbsp;" + min + _this.unitName + "</div>" : "") + ((_this.flags & 2 /* HideMax */) === 0 ? "<div>max: &nbsp;" + max + _this.unitName + "</div>" : "") + ((_this.flags & 4 /* HideMean */) === 0 ? "<div>mean: " + mean + _this.unitName + "</div>" : "") + ((_this.flags & 8 /* HideNow */) === 0 ? "<div>now: &nbsp;" + now + _this.unitName + "</div>" : "");
             if ((_this.flags & 16 /* HideGraph */) === 0) {
                 _this.ctx.fillStyle = "#010";
                 _this.ctx.fillRect(0, 0, MONITOR_GRAPH_WIDTH, MONITOR_GRAPH_HEIGHT);
                 _this.ctx.fillStyle = "#0f0";
-                for (var i = 0; i < _this.results.length; i++) {
+                for (let i = 0; i < _this.results.length; i++) {
                     _this.ctx.fillRect(i, MONITOR_GRAPH_HEIGHT, 1, -(_this.results[i].now * scale));
                 }
             }
@@ -202,24 +202,24 @@ var MonitorWidget = function () {
 
 function startFPSMonitor() {
     checkInit();
-    var data = new Data();
-    var w = new MonitorWidget("FPS", "", 2 /* HideMax */ | 1 /* HideMin */ | 4 /* HideMean */ | 32 /* RoundValues */);
+    let data = new Data();
+    let w = new MonitorWidget("FPS", "", 2 /* HideMax */ | 1 /* HideMin */ | 4 /* HideMean */ | 32 /* RoundValues */);
     container.appendChild(w.element);
-    var samples = [];
-    var last = 0;
+    let samples = [];
+    let last = 0;
     function update(now) {
-        var elapsed = (now - (last === 0 ? now : last)) / 1000;
-        var fps = 1 / elapsed;
+        let elapsed = (now - (last === 0 ? now : last)) / 1000;
+        let fps = 1 / elapsed;
         if (fps !== Infinity) {
             if (samples.length === 64) {
                 samples.shift();
             }
             samples.push(fps);
-            var sum = 0;
-            for (var i = 0; i < samples.length; i++) {
+            let sum = 0;
+            for (let i = 0; i < samples.length; i++) {
                 sum += samples[i];
             }
-            var mean = sum / samples.length;
+            let mean = sum / samples.length;
             data.addSample(mean);
             w.addResult(data.calc());
         }
@@ -235,23 +235,23 @@ function startMemMonitor() {
     checkInit();
     if (performance.memory !== void 0) {
         (function () {
-            var update = function update() {
+            let update = function update() {
                 data.addSample(Math.round(mem.usedJSHeapSize / (1024 * 1024)));
                 w.addResult(data.calc());
                 setTimeout(update, 30);
             };
 
-            var data = new Data();
-            var w = new MonitorWidget("Memory", "MB", 1 /* HideMin */ | 4 /* HideMean */);
+            let data = new Data();
+            let w = new MonitorWidget("Memory", "MB", 1 /* HideMin */ | 4 /* HideMean */);
             container.appendChild(w.element);
-            var mem = performance.memory;
+            let mem = performance.memory;
 
             update();
         })();
     }
 }
 
-var Profiler = function Profiler(name, unitName) {
+let Profiler = function Profiler(name, unitName) {
     babelHelpers.classCallCheck(this, Profiler);
 
     this.data = new Data();
@@ -259,16 +259,16 @@ var Profiler = function Profiler(name, unitName) {
     this.startTime = 0;
 };
 
-var profilerInstances = {};
+let profilerInstances = {};
 function startProfile(name) {
-    var profiler = profilerInstances[name];
+    let profiler = profilerInstances[name];
     if (profiler !== void 0) {
         profiler.startTime = performance.now();
     }
 }
 function endProfile(name) {
-    var now = performance.now();
-    var profiler = profilerInstances[name];
+    let now = performance.now();
+    let profiler = profilerInstances[name];
     if (profiler !== void 0) {
         profiler.data.addSample(now - profiler.startTime);
         profiler.widget.addResult(profiler.data.calc());
@@ -279,7 +279,7 @@ function endProfile(name) {
  */
 function initProfiler(name) {
     checkInit();
-    var profiler = profilerInstances[name];
+    let profiler = profilerInstances[name];
     if (profiler === void 0) {
         profilerInstances[name] = profiler = new Profiler(name, "ms");
         container.appendChild(profiler.widget.element);

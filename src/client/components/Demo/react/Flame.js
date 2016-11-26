@@ -82,7 +82,7 @@ export default class Flame extends React.omponent {
             }
             // Update velocities
             particle.submitToFields(fields);
-            particle.move();
+            particle.update();
 
             // Add this particle to the list of current particles
             currentParticles.push(particle)

@@ -1,17 +1,14 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
+import { easeOutCubic } from '../system/utils'
 
 export class Canvas extends Component {
     render() {
-        const { p, f } = this.props
+        const p = window.particles
+        const f = window.fields
         return Inferno.createVNode(2, 'div', {},
             p.map(d => Inferno.createVNode(4, ParticleComponent, d)),
-            f.map(d => Inferno.createVNode(4, FieldComponent,
-            {
-                position: d.position,
-                mass: d.mass,
-                className: d.className
-            }))
+            f.map(d => Inferno.createVNode(4, FieldComponent, d))
         )
     }
 }
@@ -26,15 +23,11 @@ export class FieldComponent extends Component {
         const style = {
             height: size * 3,
             width: size * 3,
-            top: position.y - size,
-            left: position.x - size
+            left: position[0] - size,
+            top: position[1] - size
         }
         return <div className={'field ' + className} style={style}/>
     }
-}
-
-function easeOutCubic(t) {
-    return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1
 }
 
 export class ParticleComponent extends Component {
@@ -43,17 +36,16 @@ export class ParticleComponent extends Component {
             round(){}
         }
     }
-    /*shouldComponentUpdate(nextProps) {
-        if (this.props.position.x|0 !== nextProps.position.x|0
-        || this.props.position.y|0 !== nextProps.position.y|0) {
+    shouldComponentUpdate(nextProps) {
+        if (this.props.position[0]|0 !== nextProps.position[0]|0
+        || this.props.position[1]|0 !== nextProps.position[1]|0) {
             return true
         }
         return false
-    }*/
+    }
 
-    render({ position, lifetime, maxlifetime, simplexVal }) {
-
-        const t = (lifetime / maxlifetime)
+    render({ position, lifetime, lifetimeMax, simplexVal }) {
+        const t = (lifetime / lifetimeMax)
         const red = easeOutCubic(1 - t) * 255 //(220 + lifetime - Math.pow(lifetime/5, 1.5))|0
         const green = easeOutCubic(1 - Math.min(1, t * 2)) * 255
         const blaw = easeOutCubic(1 - Math.min(1, t * 5)) * 255
@@ -64,19 +56,14 @@ export class ParticleComponent extends Component {
             backgroundColor: fill,
             height: (red / 20)|0,
             width: (red / 20)|0,
-            top: position.y,
-            left: position.x
+            top: position[1]|0,
+            left: position[0]|0
         }
         return Inferno.createVNode(2, 'div',  {
             id: simplexVal,
-            className: 'particle', // + (this.context.round ? 'round' : ''),
+            className: 'particle' + (this.context.round ? 'round' : ''),
             style
         })
-        /*return <svg className="particle"
-                    style={style}
-                    viewBox={`0 0 ${radius*2} ${radius*2}`}>
-            <circle cx={radius} cy={radius} r={radius}/>
-        </svg>*/
     }
 }
 

@@ -1,17 +1,11 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
-import Vector from './shared/Vector'
+import { Controller } from './Elements'
 import { Canvas } from './inferno/Elements'
-import { emitters, fields, height, width } from './shared/setup'
-import perfMonitor from './shared/perf-monitor'
-
-if (process.env.BROWSER) {
-    window.pool = []
-}
-
-let particles = []
-const defaultParticles = 400
-const defaultLifetime = 100
+import { remove } from './system/utils'
+import perfMonitor from './system/perfMonitor'
+import Particle from './system/Particle'
+import Emitter from './system/Emitter'
 
 export default class InfernoFlame extends Component {
     constructor() {
@@ -19,9 +13,9 @@ export default class InfernoFlame extends Component {
         this.state = {
             paused: false,
             round: false,
-            mouse: new Vector(0, 0),
+            mouse: [0, 0],
             maxParticles: 400,
-            minLifetime: defaultLifetime,
+            minLifetime: window.lifetime,
             emissionRate: 2
         }
     }
@@ -43,58 +37,40 @@ export default class InfernoFlame extends Component {
         return { round: this.state.round };
     }
 
-    remove(arr, value) {
-        if (arr.indexOf(value)!==-1) {
-            arr.splice(arr.indexOf(value), 1);
-        }
-    }
-
     onMouseMove = (e) => {
-        fields[0].position.x = e.offsetX
-        fields[0].position.y = e.offsetY
+        window.fields[0].position[0] = e.offsetX
+        window.fields[0].position[1] = e.offsetY
         this.setState({
-            mouse: new Vector(e.offsetX, e.offsetY)
+            mouse: [e.offsetX, e.offsetY]
         })
     }
 
-    changeMaxParticles = (e) => this.setState({ maxParticles: parseInt(e.target.value) })
-    changeMinLifetime = (e) => this.setState({ minLifetime: parseInt(e.target.value) })
-
-    addEmitter = (e) => {
-        //emitters.push(new Emitter(new Vector(e.offsetX, e.offsetY), Vector.fromAngle(-1.5, 2), 0.1))
-    }
-
     update = () => {
-        const { maxParticles, minLifetime, emissionRate } = this.state
-
-        //const aliveParticles = []
-        /*if (Math.round() > 0.3) {
-            return null
-        }*/
+        const { minLifetime, emissionRate } = this.state
 
         // Emit particles
-        for (let i in emitters) {
-            for (let j = 0; j < emissionRate; j++) {
-                const newParticle = emitters[i].emitParticles(minLifetime)
-                particles.push(newParticle)
-            }
+        for (let j = 0; j < emissionRate; j++) {
+            const newParticle = Emitter.emitParticles(minLifetime)
+            window.particles.push(newParticle)
         }
 
-        for (let i in particles) {
-            let particle = particles[i];
-            particle.lifetime += 1
+        // Update velocities
+        for (let i in window.particles) {
+            let p = window.particles[i]
+            //particle.submitToFields(fields);
+            Particle.update(p);
+        }
+
+        // recycle
+        for (let i in window.particles) {
+            let p = window.particles[i]
+            p.lifetime += 1
 
             // If we're out of bounds, drop this particle and move on to the next
-            if (particle.lifetime > particle.maxlifetime) {
-                this.remove(particles, particle)
+            if (p.lifetime > p.lifetimeMax) {
+                remove(window.particles, p)
                 continue
             }
-            // Keep these
-            //aliveParticles.push(particle)
-
-            // Update velocities
-            //particle.submitToFields(fields);
-            particle.move();
         }
 
         //particles = aliveParticles
@@ -123,57 +99,17 @@ export default class InfernoFlame extends Component {
     setRounded = (e) => this.setState({ round: !this.state.round })
 
     render() {
-        const { paused, mouse, maxParticles, minLifetime, emissionRate } = this.state
-        const canvasStyle = { width, height }
-
         return <section id="demo-wrapper">
-            <button onClick={this.pause}>{paused ? 'Resume' : 'Pause'}</button>
-            <div>
-                <span>Particles ({particles.length})</span>
-                <span></span>
-            </div>
-            <Slider step={1}
-                    min={1}
-                    max={10}
-                    text={'Emission Rate'}
-                    label={emissionRate}
-                    defaultValue={emissionRate}
-                    onChange={this.setEmissionRate}/>
-
-            <Slider step={10}
-                    min={10}
-                    max={200}
-                    text={'Lifetime'}
-                    label={minLifetime}
-                    defaultValue={defaultLifetime}
-                    onChange={this.setLifetime}/>
-            <div>
-                <span>Rounded Corners</span>
-                <span>
-                    <input type="checkbox" checked={this.state.round} onChange={this.setRounded}/>
-                </span>
-            </div>
-            <hr/>
-            <div id="demo-canvas" style={canvasStyle} onClick={this.addEmitter()}>
-                {/*<VectorField mouse={mouse}/>*/}
-                <Canvas p={particles} f={fields}/>
+            <Controller
+                state={this.state}
+                pause={this.pause}
+                setRounded={this.setRounded}
+                setLifetime={this.setLifetime}
+                setEmissionRate={this.setEmissionRate}
+            />
+            <div id="demo-canvas" style={window.demo}>
+                <Canvas fields={window.fields}/>
             </div>
         </section>
     }
-}
-
-function Slider({ step, min, max, text, label, defaultValue, onChange }) {
-    return (
-        <div className="demo-setting">
-            <div>{text} ({label})</div>
-            <div><input
-                type="range"
-                min={min}
-                max={max}
-                step={step}
-                defaultValue={defaultValue}
-                onChange={onChange}
-            /></div>
-        </div>
-    )
 }
