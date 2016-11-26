@@ -14,6 +14,7 @@ Object.assign(config, {
         bundle: [
             'webpack-dev-server/client?http://localhost:8082',
             'webpack/hot/only-dev-server',
+            path.join(__dirname, '../../core/polyfills.js'),
             path.join(__dirname, '../../src/client/client.js')
         ]
     },
@@ -50,6 +51,7 @@ new WebpackDevServer(compiler, {
         'Access-Control-Expose-Headers': 'SourceMap,X-SourceMap'
     },
     hot: true,
+    compress: true,
     watchOptions: {
         aggregateTimeout: 300,
         poll: false

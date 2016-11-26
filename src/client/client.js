@@ -8,31 +8,21 @@ import onEnter from '../../core/helpers/onEnter'
 import Inferno from 'inferno'
 import { Router, match } from 'inferno-router'
 import createBrowserHistory from 'history/createBrowserHistory';
-import autorun from './autorun'
-import stores from './stores'
 import routes from './routes'
-import App from './containers/App'
 
 // We render our react app into this element
-const container = document.getElementById('container')
+const root = document.getElementById('root')
 const history = createBrowserHistory()
-
-// React to changes
-autorun(stores)
 
 /**
  * Render our component according to our routes
  */
-Inferno.render(<App stores={stores}>
-    <Router history={history}>
-        {routes}
-    </Router>
-</App>, container)
+Inferno.render(<Router history={history}>
+    {routes}
+</Router>, root)
 
 // Fetch data on route change
-history.listen(location => {
-    onEnter(match(routes, location), stores)
-})
+history.listen(location => onEnter(match(routes, location)))
 
 if (module.hot) {
     module.hot.accept()

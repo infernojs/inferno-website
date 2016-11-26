@@ -1,7 +1,18 @@
-// Typography
-main {
-    width: 960px;
+$primary: #f23f3f;
+
+// Centers the element and limits the width
+.container {
+    max-width: 960px;
     margin: 0 auto;
+    padding: 0;
+    display: flex;
+}
+
+.row {
+    display: flex;
+    & > * {
+        flex: 1;
+    }
 }
 
 h1 {
@@ -23,12 +34,13 @@ h1 {
         }
         button {
             padding: 1rem 2rem;
-            margin-right: 4rem;
+            margin: 0 1rem;
             font-size: 1rem;
+            cursor: pointer;
 
             &:first-child {
                 color: #fff;
-                background: #f23f3f;
+                background: $primary;
                 border: 0;
             }
             &:last-child {
@@ -41,5 +53,33 @@ h1 {
     section {
         background: #f8f8f8;
         padding: 2rem;
+
+        article {
+            flex: 1;
+            h2 {
+                color: $primary;
+                border-left: 3px solid $primary;
+                padding-left: 0.6rem;
+            }
+            p {
+                padding-left: 0.8rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .home {
+        .hero-banner {
+            padding: 2rem;
+            button {
+                margin: 0;
+            }
+        }
+        section {
+            .container {
+                display: block;
+            }
+        }
     }
 }

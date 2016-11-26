@@ -9,7 +9,10 @@ Object.assign(config, {
     cache: false,
     devtool: 'source-map',
     entry: {
-        bundle: path.join(__dirname, '../../src/client/client.js')
+        bundle: [
+            path.join(__dirname, '../../core/polyfills.js'),
+            path.join(__dirname, '../../src/client/client.js')
+        ]
     },
     output: {
         publicPath: '/build/'
@@ -86,7 +89,7 @@ compiler.run(function(err, stats) {
     }))
 
     // Write a stats.json for the webpack bundle visualizer
-    //writeWebpackStats(stats)
+    writeWebpackStats(stats)
 
     if (stats.hasErrors()) {
         logger('webpack:error')(stats.compilation.errors.toString())

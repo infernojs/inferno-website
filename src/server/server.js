@@ -1,10 +1,10 @@
 import logger from 'debug'
 import Koa from 'koa'
 import bodyParser from 'koa-better-body'
+import compress from 'koa-compress'
 import favicon from 'koa-favicon'
 import serve from 'koa-static2'
 import config from './config'
-import context from './middleware/context'
 import catcher from './middleware/catcher'
 import render from './middleware/render'
 
@@ -12,12 +12,12 @@ const app = new Koa()
 
 // Middleware
 app.use(favicon(config.http.favicon))
+app.use(compress())
 app.use(bodyParser({
     formLimit: '200kb',
     jsonLimit: '200kb',
     bufferLimit: '4mb'
 }))
-app.use(context)
 app.use(catcher)
 app.use(render)
 

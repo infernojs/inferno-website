@@ -3,7 +3,6 @@
  */
 require('isomorphic-fetch')
 require('./logger')
-require('./polyfills')
 
 // Compile files on PROD or launch DEV server
 if (process.env.NODE_ENV === 'production') {

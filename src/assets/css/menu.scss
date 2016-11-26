@@ -1,25 +1,28 @@
 menu {
-    margin: 0;
     padding: 1rem;
     width: 100%;
     display: flex;
 
     .align-left {
         flex: 1;
+        margin-top: 1rem;
+        margin-left: 1rem;
     }
     .align-right {
-        flex: 1;
-        display: flex;
-        align-items: flex-end;
+        margin-top: 1rem;
+        span {
+            font-size: 0.8rem;
+        }
     }
 
     a {
         color: #333;
         font-size: 1rem;
         line-height: 2rem;
-        margin-right: 1rem;
+        margin-right: 2rem;
         display: inline-block;
         cursor: pointer;
+        text-align: right;
         text-decoration: none;
         transition: color 0.2s ease-in-out;
         flex: 1;

@@ -8,10 +8,10 @@ import Html from '../../client/containers/Html'
 // Server-side render
 export default async(ctx, next) => {
     const renderProps = match(routes, ctx.url)
-    const content = <Html stores={ctx.stores} hostname={ctx.hostname}/>
+    const content = <Html hostname={ctx.hostname}/>
 
     // Run onEnter methods of matched component
-    await onEnter(renderProps, ctx.stores)
+    await onEnter(renderProps)
 
     ctx.body = '<!DOCTYPE html>\n' + renderToStaticMarkup(content)
     await next()

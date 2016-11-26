@@ -5,8 +5,6 @@
  */
 export default (hostname, token) => {
     return function(url, body, postForm = false) {
-        const requestURL = createURL(hostname, url)
-        const requestToken = process.env.BROWSER ? getCookie('token') : token
         const requestOptions = {
             credentials: 'include',
             headers: {}
@@ -27,10 +25,7 @@ export default (hostname, token) => {
             }
         }
 
-        // Append token to the headers
-        requestOptions.headers.token = requestToken
-
-        return fetch(requestURL, requestOptions).then(handleResponse)
+        return fetch(createURL(hostname, url), requestOptions).then(handleResponse)
     }
 }
 
@@ -68,14 +63,6 @@ function handleResponse(resp) {
     const response = resp[isJSON ? 'json' : 'text']()
 
     return resp.ok ? response : response.then(err => {
-        if (process.env.DEV) {
-            //console.error('requestError:', err)
-        }
         throw err
     });
-}
-
-function getCookie(key) {
-    const cookieValue = document.cookie.match('(^|;)\\s*' + key + '\\s*=\\s*([^;]+)')
-    return cookieValue ? cookieValue.pop() : ''
 }
