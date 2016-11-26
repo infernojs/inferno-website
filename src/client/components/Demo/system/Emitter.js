@@ -1,9 +1,5 @@
 import { Vector, } from './utils'
 
-if (process.env.BROWSER) {
-    window.pool = []
-}
-
 function randomPosition(x, y) {
     return [x + Math.random() * 5, y]
 }
@@ -16,17 +12,17 @@ function createParticle(position, velocity, lifetimeMax) {
         origin: position,
         position,
         velocity: velocity || [0, 0],
-        gravity: [0, -0.01]
+        gravity: [0, 0]
     }
 }
 
 export default class Emitter {
-    static emitParticles(lifetimeMax) {
+    static emit(lifetime) {
 
         const position = randomPosition(200, 300);
-        const spread = 0.4
+        const spread = Math.random()
 
-        let velocity = Vector.fromAngle(-1.2, 2.4)
+        let velocity = Vector.fromAngle(-1.5, 2.8)
 
         // Use an angle randomized over the spread so we have more of a "spray"
         const angle = Vector.getAngle(velocity) + spread - (Math.random() * spread * 2);
@@ -44,6 +40,6 @@ export default class Emitter {
         }*/
 
         // return our new Particle!
-        return createParticle(position, velocity, lifetimeMax);
+        return createParticle(position, velocity, lifetime)
     }
 }

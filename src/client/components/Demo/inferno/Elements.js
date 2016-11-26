@@ -2,17 +2,6 @@ import Inferno from 'inferno'
 import Component from 'inferno-component'
 import { easeOutCubic } from '../system/utils'
 
-export class Canvas extends Component {
-    render() {
-        const p = window.particles
-        const f = window.fields
-        return Inferno.createVNode(2, 'div', {},
-            p.map(d => Inferno.createVNode(4, ParticleComponent, d)),
-            f.map(d => Inferno.createVNode(4, FieldComponent, d))
-        )
-    }
-}
-
 export class FieldComponent extends Component {
     shouldComponentUpdate(nextProps) {
         return false

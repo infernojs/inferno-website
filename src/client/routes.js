@@ -3,7 +3,7 @@ import { Route } from 'inferno-router'
 import Layout from './components/Layout'
 import NotFound from './containers/NotFound'
 import Home from './components/Home'
-import Demo from './components/Demo/Demo'
+import DemoInferno from './components/Demo/Demo.Inferno'
 import About from './components/About'
 
 /**
@@ -12,7 +12,7 @@ import About from './components/About'
 export default (
     <Route component={ Layout }>
         <Route path="/" component={ Home }/>
-        <Route path="/demo" component={ Demo }/>
+        <Route path="/demo" component={ DemoInferno }/>
         <Route path="/about" component={ About }/>
         <Route path="*" component={ NotFound }/>
     </Route>

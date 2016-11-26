@@ -73,7 +73,7 @@ class InfernoFlame extends React.Component {
         // Emit particles
         for (let i in emitters) {
             for (let j = 0; j < emissionRate; j++) {
-                const newParticle = emitters[i].emitParticles(minLifetime)
+                const newParticle = emitters[i].emit(minLifetime)
                 particles.push(newParticle)
             }
         }

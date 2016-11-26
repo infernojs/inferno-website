@@ -1,11 +1,19 @@
 export default class Particle  {
-    static update(p) {
-        // Add our current velocity to our position
-        p.position[0] = (p.position[0] + p.velocity[0])|0;
-        p.position[1] = (p.position[1] + p.velocity[1])|0;
+
+    static add(vector1, vector2) {
+        vector1[0] += vector2[0]
+        vector1[1] += vector2[1]
     }
 
-    submitToFields(fields) {
+    static update(p) {
+        // Add our current acceleration to our current velocity
+        Particle.add(p.velocity, p.gravity)
+
+        // Add our current velocity to our position
+        Particle.add(p.position, p.velocity)
+    }
+
+    static submitToFields(p, fields) {
         // our starting acceleration this frame
         let accelerationX = 0
         let accelerationY = 0
@@ -15,8 +23,8 @@ export default class Particle  {
             const field = fields[i]
 
             // find the distance between the particle and the field
-            const vectorX = field.position[0] - this.position[0]
-            const vectorY = field.position[1] - this.position[1]
+            const vectorX = field.position[0] - p.position[0]
+            const vectorY = field.position[1] - p.position[1]
 
             // calculate the force via MAGIC and HIGH SCHOOL SCIENCE!
             const force = field.mass / Math.pow(vectorX * vectorX + vectorY * vectorY, 1.5)
@@ -33,6 +41,6 @@ export default class Particle  {
         }
 
         // update our particle's acceleration
-        this.gravity = [accelerationX, accelerationY]
+        p.gravity = [accelerationX, accelerationY]
     }
 }
