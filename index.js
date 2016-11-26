@@ -1,4 +1,10 @@
 /**
+ * Bootstrap core and webpack
+ */
+require('./core/compile')
+
+/**
  * Bootstrap our server
  */
-require('./core/bootstrap')
+require('babel-register')
+require('./src/server/server')

@@ -1,21 +1,45 @@
 // Typography
 main {
-    width: 680px;
+    width: 960px;
     margin: 0 auto;
 }
 
 h1 {
-    font-size: 3rem;
+    font-size: 2.6rem;
     font-weight: 100;
     text-align: center;
     margin: 0;
 }
 
-.error-message {
-    color: #f66;
-    margin: 2px 0 4px 0;
-}
-.success-message {
-    color: #fff;
-    margin: 2px 0 4px 0;
+.home {
+    .hero-banner {
+        max-width: 40rem;
+        margin: 3rem auto;
+        text-align: center;
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+        }
+        button {
+            padding: 1rem 2rem;
+            margin-right: 4rem;
+            font-size: 1rem;
+
+            &:first-child {
+                color: #fff;
+                background: #f23f3f;
+                border: 0;
+            }
+            &:last-child {
+                color: #555;
+                background: #fff;
+                border: 2px solid #777;
+            }
+        }
+    }
+    section {
+        background: #f8f8f8;
+        padding: 2rem;
+    }
 }

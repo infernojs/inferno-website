@@ -1,5 +1,5 @@
 /**
- * Bootstrap our server
+ * Generate client-side bundle
  */
 require('isomorphic-fetch')
 require('./logger')
@@ -13,5 +13,3 @@ if (process.env.NODE_ENV === 'production') {
     require('./webpack/webpack.dev.js')
 }
 
-require('babel-register')
-require('../src/server/server')

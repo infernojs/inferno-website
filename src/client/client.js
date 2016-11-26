@@ -31,7 +31,7 @@ Inferno.render(<App stores={stores}>
 
 // Fetch data on route change
 history.listen(location => {
-    //onEnter(match(routes, location), stores)
+    onEnter(match(routes, location), stores)
 })
 
 if (module.hot) {

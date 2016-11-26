@@ -1,10 +1,14 @@
 import { observable } from 'mobx'
 
 // All our actions are listed here
-export default {
-    common: observable({
-        title: 'Inferno',
-        hostname: 'infernojs.org',
-        description: 'Just a test'
-    })
+function createStores(state, hostname) {
+    return {
+        common: observable({
+            title: 'Inferno',
+            hostname: hostname || 'infernojs.org',
+            description: 'Just a test'
+        })
+    }
 }
+
+export default process.env.BROWSER ? createStores(window.__STATE) : createStores

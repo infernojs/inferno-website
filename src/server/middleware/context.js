@@ -1,4 +1,4 @@
-import { stores } from '../../client/stores'
+import createStores from '../../client/stores'
 
 /**
  * Middleware for creating the context
@@ -10,6 +10,7 @@ export default async(ctx, next) => {
     const state = {}
 
     // Finally initialize state. This should come last
-    ctx.stores = stores(state, ctx.headers.host)
+    ctx.stores = createStores(state, ctx.headers.host)
+
     await next()
 }

@@ -15,6 +15,7 @@
   "watch": [
     "src/client/components/App",
     "src/server",
-    "src/shared"
+    "src/shared",
+    "core"
   ]
 }

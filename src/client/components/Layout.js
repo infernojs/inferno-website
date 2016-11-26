@@ -6,8 +6,15 @@ export default class Layout extends Component {
     render({ children }) {
         return <div>
             <menu>
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
+                <div className="align-left">
+                    <Link to="/">Home</Link>
+                </div>
+                <div className="align-right">
+                    <Link to="/about">About</Link>
+                    <Link to="/about">Docs</Link>
+                    <Link to="/about">Contribute</Link>
+                    <Link to="/about">Help</Link>
+                </div>
             </menu>
             <main>
                 {children}

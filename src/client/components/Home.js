@@ -11,12 +11,20 @@ class Home extends Component {
     }
 
     render({ common }) {
-        return <main>
-            <h1>Inferno</h1>
-            <div className="home">
-                {common.description}
+        return <div className="home">
+            <div className="hero-banner">
+                <h1>
+                    An extremely fast React-like javascript library for building modern user interfaces
+                </h1>
+                <div className="row">
+                    <button>Get Started</button>
+                    <button>Github</button>
+                </div>
             </div>
-        </main>
+            <section>
+                {common.description}
+            </section>
+        </div>
     }
 }
 

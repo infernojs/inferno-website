@@ -11,7 +11,7 @@ import About from './components/About'
 export default (
     <Route component={ Layout }>
         <Route path="/" component={ Home }/>
-        <Route path="/page/about" component={ About }/>
+        <Route path="/about" component={ About }/>
         <Route path="*" component={ NotFound }/>
     </Route>
 )

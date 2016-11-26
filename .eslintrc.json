@@ -9,8 +9,7 @@
     "ecmaFeatures": {
       "jsx": [1, { "pragma": "Inferno" }],
       "globalReturn ": true,
-      "impliedStrict": true,
-      "experimentalObjectRestSpread": true
+      "impliedStrict": true
     }
   },
   "env": {
@@ -20,17 +19,11 @@
     "es6": true
   },
   "globals": {
-    "size": true,
-    "isArray": true,
-    "isEmpty": true,
     "window": true,
     "decode": true,
     "Inferno": true,
     "React": true,
-    "ReactDOM": true,
-    "Mousetrap": true,
-    "SERVER_URL": true,
-    "STREAM_URL": true
+    "ReactDOM": true
   },
   "rules": {
     "semi": 0,
