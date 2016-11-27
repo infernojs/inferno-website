@@ -2,29 +2,26 @@ import Inferno from 'inferno'
 import Component from 'inferno-component'
 import perfMonitor from '../system/perfMonitor'
 import Emitter from '../system/Emitter'
-import Particle from '../system/Particle'
-import { Field, remove } from '../system/utils'
-import { ParticleComponent, FieldComponent } from './Elements'
+import { Field, Vector, remove } from '../system/utils'
+import { ParticleComponent } from './Elements'
 
 const pool = []
-const particles = []
 const field = new Field([0, 0], -30)
 
 export default class Canvas extends Component {
     constructor() {
         super()
         this.state = {
-            mouse: [0, 0]
+            mouse: [0, 0],
+            particles: []
         }
     }
     componentDidMount() {
-        this.loop()
         const canvas = document.getElementById('demo-canvas')
         canvas.addEventListener('mousemove', this.onMouseMove)
         perfMonitor.startFPSMonitor()
         perfMonitor.startMemMonitor()
-        perfMonitor.initProfiler('flame update')
-        console.log(this.props)
+        perfMonitor.initProfiler('update')
     }
 
     componentWillReceiveProps(nextProps) {
@@ -44,6 +41,7 @@ export default class Canvas extends Component {
 
     update = () => {
         const { lifetime, emissionRate } = this.props
+        const { particles } = this.state
 
         // Emit particles
         for (let j = 0; j < emissionRate; j++) {
@@ -55,13 +53,6 @@ export default class Canvas extends Component {
         // Update velocities
         for (let i in particles) {
             let p = particles[i]
-            Particle.submitToFields(p, field);
-            Particle.update(p)
-        }
-
-        // recycle
-        for (let i in particles) {
-            let p = particles[i]
             p.lifetime += 1
 
             // If we're out of bounds, drop this particle and move on to the next
@@ -69,37 +60,64 @@ export default class Canvas extends Component {
                 remove(particles, p)
                 continue
             }
+
+            Vector.submitToFields(p, field);
+            Vector.update(p)
         }
+
+        this.setState({
+            particles
+        })
 
         window.requestAnimationFrame(this.loop)
     }
 
     loop = () => {
         if (!this.props.paused) {
-            perfMonitor.startProfile('flame update');
-            this.update();
-            this.forceUpdate()
-            perfMonitor.endProfile('flame update');
+            perfMonitor.startProfile('update')
+            this.update()
+            perfMonitor.endProfile('update')
         }
     }
 
     render() {
+        const { particles } = this.state
         return <div>
             <ParticleCounter count={particles.length}/>
-            <div id="demo-canvas" style={window.demo}>
-                {particles.map(data => <ParticleComponent {...data}/>)}
-                <FieldComponent {...field}/>
-            </div>
+            <ParticleWrapper items={particles} round={this.props.round}/>
+        </div>
+    }
+}
+
+class ParticleWrapper extends Component {
+    getChildContext() {
+        return this.props;
+    }
+    shouldComponentUpdate(nextProps) {
+        /*if (this.props.items.length !== nextProps.items.length) {
+            return true
+        }
+        return false*/
+    }
+    render() {
+        const { items, round } = this.props
+        return <div id="demo-canvas" style={window.demo}>
+            {items.map(data => (
+                <ParticleComponent
+                    x={data.position[0]|0}
+                    y={data.position[1]|0}
+                    lifetime={data.lifetime}
+                    lifetimeMax={data.lifetimeMax}
+                    round={round}
+                />
+            ))}
         </div>
     }
 }
 
 class ParticleCounter extends Component {
     shouldComponentUpdate(nextProps) {
-        if (this.props.count !== nextProps.count) {
-            return true
-        }
-        return false
+        return this.props.count !== nextProps.count
     }
     render() {
         return <div className="demo-counter">

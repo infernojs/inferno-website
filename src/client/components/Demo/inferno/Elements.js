@@ -1,65 +1,38 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
-import { easeOutCubic } from '../system/utils'
-
-export class FieldComponent extends Component {
-    shouldComponentUpdate(nextProps) {
-        return false
-    }
-    render({ position, className }) {
-        const style = {
-            left: position[0],
-            top: position[1]
-        }
-        return <div style={style}/>
-    }
-}
+import { getColors } from '../system/utils'
 
 export class ParticleComponent extends Component {
-    static contextTypes() {
-        return {
-            round(){}
-        }
-    }
     shouldComponentUpdate(nextProps) {
-        if (this.props.position[0]|0 !== nextProps.position[0]|0
-        || this.props.position[1]|0 !== nextProps.position[1]|0) {
-            return true
-        }
-        return false
+        return this.props.x !== nextProps.x || this.props.y !== nextProps.y
     }
-
-    render({ position, lifetime, lifetimeMax, simplexVal }) {
-        const t = (lifetime / lifetimeMax)
-        const red = easeOutCubic(1 - t) * 255 //(220 + lifetime - Math.pow(lifetime/5, 1.5))|0
-        const green = easeOutCubic(1 - Math.min(1, t * 2)) * 255
-        const blaw = easeOutCubic(1 - Math.min(1, t * 5)) * 255
-        const radius = (red*10)|0
-        const fill = `rgb(${red|0}, ${green|0}, ${blaw|0})`
-
+    render({ x, y, lifetime, lifetimeMax, round }) {
+        const colors = getColors(lifetime / lifetimeMax)
         const style = {
-            backgroundColor: fill,
-            height: (red / 20)|0,
-            width: (red / 20)|0,
-            top: position[1]|0,
-            left: position[0]|0
+            backgroundColor: `rgb(${colors.join(',')})`,
+            height: (colors[0] * 0.05)|0,
+            width: (colors[0] * 0.05)|0,
+            top: y,
+            left: x
         }
         return Inferno.createVNode(2, 'div',  {
-            id: simplexVal,
-            className: 'particle' + (this.context.round ? ' round' : ''),
+            id: lifetime,
+            className: 'particle' + (round ? ' round' : ''),
             style
         })
     }
 }
 
 export class Controller extends Component {
-    static contextTypes() {
-        return { state(){} }
-    }
-
     render() {
-        const { setRounded, setEmission, setLifetime } = this.props
-        const { emissionRate, lifetime, round } = this.context
+        const {
+            setRounded,
+            setEmission,
+            setLifetime,
+            emissionRate,
+            lifetime,
+            round
+        } = this.props
 
         return (
         <div className="demo-setting">

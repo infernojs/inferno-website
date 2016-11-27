@@ -1,4 +1,4 @@
-@import "main.scss";
+@import "common";
 
 #demo-wrapper {
     padding: 2rem;
@@ -32,11 +32,9 @@
 }
 
 #demo-canvas {
-    overflow: hidden;
-    color: #ddd;
     background: #000;
-    border: 1px solid #777;
-    position: relative;
+    position: absolute;
+    overflow: hidden;
 
     .particle, .field {
         position: absolute;
@@ -56,10 +54,6 @@
         animation-direction: alternate;*/
     }
     .round {
-        border-radius: 10px;
-    }
-    .particle2 {
-        width: 20px;
-        height: 20px;
+        border-radius: 5px;
     }
 }

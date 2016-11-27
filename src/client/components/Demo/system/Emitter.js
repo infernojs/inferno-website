@@ -9,7 +9,6 @@ function createParticle(position, velocity, lifetimeMax) {
         active : true,
         lifetime: 0,
         lifetimeMax: lifetimeMax + Math.random() * 10|0,
-        origin: position,
         position,
         velocity: velocity || [0, 0],
         gravity: [0, 0]

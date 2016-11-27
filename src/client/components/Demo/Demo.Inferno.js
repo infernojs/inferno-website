@@ -4,7 +4,6 @@ import { Controller } from './inferno/Elements'
 import Canvas from './inferno/Canvas'
 
 if (process.env.BROWSER) {
-    window.lifetime = 100
     window.demo = {
         width: 400,
         height: 400
@@ -17,17 +16,13 @@ export default class InfernoFlame extends Component {
         this.state = {
             paused: true,
             round: false,
-            lifetime: window.lifetime,
-            emissionRate: 2
+            lifetime: 100,
+            emissionRate: 4
         }
     }
 
     componentDidMount() {
         this.setState({ paused: false })
-    }
-
-    getChildContext() {
-        return this.state;
     }
 
     pause = () => {
@@ -39,7 +34,7 @@ export default class InfernoFlame extends Component {
     setRounded = (e) => this.setState({ round: !this.state.round })
 
     render() {
-        const { paused, lifetime, emissionRate } = this.state
+        const { paused, lifetime, emissionRate, round } = this.state
 
         return <section id="demo-wrapper">
             <button onClick={this.pause}>
@@ -51,9 +46,13 @@ export default class InfernoFlame extends Component {
             setRounded={this.setRounded}
             setLifetime={this.setLifetime}
             setEmission={this.setEmission}
+            emissionRate={emissionRate}
+            lifetime={lifetime}
+            round={round}
             />
 
             <Canvas
+            round={round}
             paused={paused}
             lifetime={lifetime}
             emissionRate={emissionRate}
