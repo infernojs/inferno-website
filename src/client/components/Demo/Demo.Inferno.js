@@ -10,7 +10,7 @@ if (process.env.BROWSER) {
     }
 }
 
-export default class InfernoFlame extends Component {
+export default class Demo extends Component {
     constructor() {
         super()
         this.state = {
@@ -25,10 +25,11 @@ export default class InfernoFlame extends Component {
         this.setState({ paused: false })
     }
 
-    pause = () => {
-        this.setState({ paused: !this.state.paused })
+    componentWillUnmount() {
+        this.setState({ paused: true })
     }
 
+    setPause = () => this.setState({ paused: !this.state.paused })
     setEmission = (e) => this.setState({ emissionRate: e.target.value|0 })
     setLifetime = (e) => this.setState({ lifetime: e.target.value|0 })
     setRounded = (e) => this.setState({ round: !this.state.round })
@@ -37,12 +38,11 @@ export default class InfernoFlame extends Component {
         const { paused, lifetime, emissionRate, round } = this.state
 
         return <section id="demo-wrapper">
-            <button onClick={this.pause}>
+            <button onClick={this.setPause}>
                 {paused ? 'Resume' : 'Pause'}
             </button>
 
             <Controller
-            pause={this.pause}
             setRounded={this.setRounded}
             setLifetime={this.setLifetime}
             setEmission={this.setEmission}

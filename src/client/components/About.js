@@ -1,7 +1,12 @@
 import Inferno from 'inferno'
 
+function componentDidMount() {
+    console.warn('ddddd')
+    document.title = 'Home'
+}
+
 export default function() {
-    return <div>
+    return <div onComponentDidMount={componentDidMount}>
         <h1>Inferno-website</h1>
         <section className="container">
             <p>Based on</p>

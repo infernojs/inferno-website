@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
 import perfMonitor from '../system/perfMonitor'
 import Emitter from '../system/Emitter'
 import { Field, Vector, remove } from '../system/utils'
@@ -8,7 +6,7 @@ import { ParticleComponent } from './Elements'
 const pool = []
 const field = new Field([0, 0], -30)
 
-export default class Canvas extends Component {
+export default class Canvas extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -89,14 +87,14 @@ export default class Canvas extends Component {
 
     render() {
         const { particles } = this.state
-        return <div>
-            <ParticleCounter count={particles.length}/>
-            <ParticleWrapper items={particles} round={this.props.round}/>
-        </div>
+        return React.createElement('div',  {}, [
+            React.createElement(ParticleCounter,  { count: particles.length }),
+            React.createElement(ParticleWrapper,  { items: particles, round: this.props.round  }),
+        ])
     }
 }
 
-class ParticleWrapper extends Component {
+class ParticleWrapper extends React.Component {
     getChildContext() {
         return this.props;
     }
@@ -108,27 +106,25 @@ class ParticleWrapper extends Component {
     }
     render() {
         const { items, round } = this.props
-        return <div id="demo-canvas" style={window.demo}>
-            {items.map(data => (
-                <ParticleComponent
-                    x={data.position[0]|0}
-                    y={data.position[1]|0}
-                    lifetime={data.lifetime}
-                    lifetimeMax={data.lifetimeMax}
-                    round={round}
-                />
-            ))}
-        </div>
+        return React.createElement('div', { id: 'demo-canvas', style: window.demo },
+            items.map(data => React.createElement(ParticleComponent,  {
+                x: data.position[0]|0,
+                y: data.position[1]|0,
+                lifetime: data.lifetime,
+                lifetimeMax: data.lifetimeMax,
+                round
+            }))
+        )
     }
 }
 
-class ParticleCounter extends Component {
+class ParticleCounter extends React.Component {
     shouldComponentUpdate(nextProps) {
         return this.props.count !== nextProps.count
     }
     render() {
-        return <div className="demo-counter">
-            Particles ({this.props.count})
-        </div>
+        return React.createElement('div', {
+            className: 'demo-counter'
+        }, `Particles (${this.props.count})`)
     }
 }

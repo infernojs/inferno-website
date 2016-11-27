@@ -1,56 +1,76 @@
-
-
-export class Canvas extends React.Component {
-    render() {
-        const { p, f } = this.props
-
-        const _particles = p.map(props => React.createElement(ParticleComponent, props))
-        const _fields = f.map(props => React.createElement(FieldComponent, props))
-
-        return React.createElement('div', {}, _particles.concat(_fields))
-    }
-}
-
-export class FieldComponent extends React.Component {
-    shouldComponentUpdate(nextProps) {
-        return false
-    }
-    render() {
-        const { position, mass, className } = this.props
-        /*const sign = mass > 0 ? '+' : '-'
-        const size = Math.abs(mass)
-        const style = {
-            height: size * 3,
-            width: size * 3,
-            top: position.y - size,
-            left: position.x - size
-        }*/
-        //return <div className={`field ${className}`} style={style}>{sign}</div>
-        return React.createElement('div', {})
-    }
-}
+import { getColors } from '../system/utils'
 
 export class ParticleComponent extends React.Component {
     shouldComponentUpdate(nextProps) {
-        if (this.props.position.x|0 !== nextProps.position.x|0
-        || this.props.position.y|0 !== nextProps.position.y|0) {
-            return true
-        }
-        return false
+        return this.props.x !== nextProps.x || this.props.y !== nextProps.y
     }
-
-    render() {
-        const { position, lifetime, lifetimeLeft } = this.props
+    render({ x, y, lifetime, lifetimeMax, round }) {
+        const colors = getColors(lifetime / lifetimeMax)
         const style = {
-            //backgroundColor: `rgba(${220 + lifetime|0}, ${lifetime*3}, 0, ${lifetimeLeft})`,
-            backgroundColor: `rgb(${220 + lifetime|0}, ${lifetime*3}, 0)`,
-            top: position.y,
-            left: position.x
+            backgroundColor: `rgb(${colors.join(',')})`,
+            height: (colors[0] * 0.05)|0,
+            width: (colors[0] * 0.05)|0,
+            top: y,
+            left: x
         }
         return React.createElement('div',  {
-            className: 'particle',
+            className: 'particle' + (round ? ' round' : ''),
             style
         })
     }
 }
 
+export class Controller extends React.Component {
+    render() {
+        const {
+        setRounded,
+        setEmission,
+        setLifetime,
+        emissionRate,
+        lifetime,
+        round
+        } = this.props
+
+        return React.createElement('div', { className: 'demo-setting' }, [
+            React.createElement(Slider, {
+                step: 1,
+                min: 1,
+                max: 8,
+                text: 'Emission Rate',
+                label: emissionRate,
+                defaultValue: emissionRate,
+                onChange: setEmission
+            }),
+            React.createElement(Slider, {
+                step: 10,
+                min: 10,
+                max: 100,
+                text: 'Lifetime',
+                label: lifetime,
+                defaultValue: lifetime,
+                onChange: setLifetime
+            }),
+            React.createElement('div', { className: 'demo-slider' }, [
+                React.createElement('label', null, 'Rounded Corners'),
+                React.createElement('input', {
+                    type: 'checkbox',
+                    checked: round,
+                    onChange: setRounded,
+                }, 'Rounded Corners')
+            ])
+        ])
+    }
+}
+
+export function Slider({ step, min, max, text, label, defaultValue, onChange }) {
+    return React.createElement('div',  {
+        className: 'demo-slider'
+    }, [
+        React.createElement('div', null, `${text} (${label})`),
+        React.createElement('div', null, [
+            React.createElement('input', {
+                type: 'range', min, max, step, defaultValue, onChange
+            })
+        ])
+    ])
+}

@@ -1,10 +1,6 @@
 import Inferno from 'inferno'
 import InfernoLogo from './Common/Logo'
 
-function componentDidMount() {
-    document.title = 'Home'
-}
-
 export default function() {
     return <div className="home">
         <div className="hero-banner">
