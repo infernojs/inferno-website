@@ -49,20 +49,6 @@ class Demo extends React.Component {
     }
 }
 
-function Slider({ step, min, max, minLifetime, value, onChange }) {
-    return React.createElement('table', {},
-        React.createElement('tbody', {},
-        [
-            React.createElement('tr', { key: 10 },
-            React.createElement('td', { key: 11, width: 100 }, 'minLifetime'),
-            React.createElement('td', { key: 12, width: 100 }, value),
-            React.createElement('td', { key: 13 },
-                React.createElement('input', { type: 'range', step, min, max, onChange })
-            ))
-        ])
-    )
-}
-
 ReactDOM.render(
     React.createElement(Demo),
     document.getElementById('react-root')
