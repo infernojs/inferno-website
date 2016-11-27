@@ -1,4 +1,4 @@
-import { Vector, } from './utils'
+import { Vector } from './utils'
 
 function randomPosition(x, y) {
     return [x + Math.random() * 5, y]

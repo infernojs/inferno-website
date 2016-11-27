@@ -15,11 +15,7 @@ export class ParticleComponent extends Component {
             top: y,
             left: x
         }
-        return Inferno.createVNode(2, 'div',  {
-            id: lifetime,
-            className: 'particle' + (round ? ' round' : ''),
-            style
-        })
+        return <div className={'particle' + (round ? ' round' : '')} style={style}/>
     }
 }
 
@@ -40,7 +36,7 @@ export class Controller extends Component {
                     label={emissionRate} defaultValue={emissionRate}
                     onChange={setEmission}/>
 
-            <Slider step={10} min={10} max={150} text="Lifetime"
+            <Slider step={10} min={10} max={100} text="Lifetime"
                     label={lifetime} defaultValue={lifetime}
                     onChange={setLifetime}/>
             <div className="demo-slider">

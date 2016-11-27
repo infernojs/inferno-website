@@ -50,13 +50,13 @@ export default class Canvas extends Component {
             )
         }
 
-        // Update velocities
+        // Update
         for (let i in particles) {
             let p = particles[i]
             p.lifetime += 1
 
             // If we're out of bounds, drop this particle and move on to the next
-            if (p.lifetime > p.lifetimeMax) {
+            if ((p.lifetime / p.lifetimeMax) > 0.7) {
                 remove(particles, p)
                 continue
             }

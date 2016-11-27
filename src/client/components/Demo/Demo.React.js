@@ -1,4 +1,4 @@
-import Vector from './system/Vector'
+import Vector from './system/asm'
 import { Canvas } from './inferno/Elements'
 import { emitters, fields, height, width } from './system/setup'
 import perfMonitor from './system/perfMonitor'

@@ -16,8 +16,8 @@ export default class InfernoFlame extends Component {
         this.state = {
             paused: true,
             round: false,
-            lifetime: 100,
-            emissionRate: 4
+            lifetime: 60,
+            emissionRate: 3
         }
     }
 
