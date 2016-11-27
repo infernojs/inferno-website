@@ -1,0 +1,41 @@
+$primary: #f40026;
+
+// Centers the element and limits the width
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.row {
+    display: flex;
+    flex-flow: row;
+    & > * {
+        flex: 1;
+    }
+}
+
+.column {
+    display: flex;
+    flex-flow: column;
+    & > * {
+        flex: 1;
+    }
+}
+
+.hidden { display: none; }
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.margin-top-xs { margin-top: 1rem; }
+.margin-top-md { margin-top: 2rem; }
+
+.align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.align-middle { max-width: 50%; }
+.align-top { align-self: flex-start; }
+.align-bottom { align-self: flex-end; }

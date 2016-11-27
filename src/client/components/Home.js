@@ -1,4 +1,5 @@
 import Inferno from 'inferno'
+import InfernoLogo from './Common/Logo'
 
 function componentDidMount() {
     document.title = 'Home'
@@ -7,12 +8,20 @@ function componentDidMount() {
 export default function() {
     return <div className="home">
         <div className="hero-banner">
-            <h1>
-                An extremely fast React-like javascript library for building modern user interfaces
-            </h1>
             <div className="row">
-                <a className="button">Get Started</a>
-                <a className="button" href="https://github.com/trueadm/inferno">Github</a>
+                <div>
+                    <InfernoLogo height="130" width="130" showName={false}/>
+                </div>
+                <div>
+                    <h1>Inferno</h1>
+                    <h2>
+                        An extremely fast React-like javascript library for building modern user interfaces
+                    </h2>
+                    <div>
+                        <a className="button">Get Started</a>
+                        <a className="button" href="https://github.com/trueadm/inferno">Github</a>
+                    </div>
+                </div>
             </div>
         </div>
         <section>
