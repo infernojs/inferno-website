@@ -32,10 +32,11 @@ h1 {
             font-size: 2rem;
             margin-bottom: 3rem;
         }
-        button {
+        button, a.button {
             padding: 1rem 2rem;
             margin: 0 1rem;
             font-size: 1rem;
+            text-decoration: none;
             cursor: pointer;
 
             &:first-child {

@@ -11,8 +11,8 @@ export default function() {
                 An extremely fast React-like javascript library for building modern user interfaces
             </h1>
             <div className="row">
-                <button>Get Started</button>
-                <button>Github</button>
+                <a className="button">Get Started</a>
+                <a className="button" href="https://github.com/trueadm/inferno">Github</a>
             </div>
         </div>
         <section>

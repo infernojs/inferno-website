@@ -9,9 +9,9 @@ export default function({ children }) {
             </div>
             <div className="align-right">
                 <Link to="/about">About <DownArrow/></Link>
-                <Link to="/about">Docs <DownArrow/></Link>
-                <Link to="/about">Contribute</Link>
-                <Link to="/about">Help</Link>
+                <Link to="/docs">Docs <DownArrow/></Link>
+                <Link to="/contribute">Contribute</Link>
+                <Link to="/help">Help</Link>
             </div>
         </menu>
         <main>
