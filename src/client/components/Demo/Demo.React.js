@@ -35,27 +35,17 @@ class Demo extends React.Component {
     render() {
         const { paused, lifetime, emissionRate, round } = this.state
 
-        return <section id="demo-wrapper">
-            <button onClick={this.setPause}>
-                {paused ? 'Resume' : 'Pause'}
-            </button>
-
-            <Controller
-            setRounded={this.setRounded}
-            setLifetime={this.setLifetime}
-            setEmission={this.setEmission}
-            emissionRate={emissionRate}
-            lifetime={lifetime}
-            round={round}
-            />
-
-            <Canvas
-            round={round}
-            paused={paused}
-            lifetime={lifetime}
-            emissionRate={emissionRate}
-            />
-        </section>
+        return React.createElement('section', { id: 'demo-wrapper' }, [
+            React.createElement('button', { key: 1, onClick: this.setPause }, paused ? 'Resume' : 'Pause'),
+            React.createElement(Controller, {
+                key: 2,
+                setRounded:  this.setRounded,
+                setLifetime:  this.setLifetime,
+                setEmission:  this.setEmission,
+                emissionRate, lifetime, round
+            }),
+            React.createElement(Canvas, { key: 3, round, paused, lifetime, emissionRate })
+        ])
     }
 }
 
@@ -75,5 +65,5 @@ function Slider({ step, min, max, minLifetime, value, onChange }) {
 
 ReactDOM.render(
     React.createElement(Demo),
-    document.getElementById('root')
+    document.getElementById('react-root')
 )

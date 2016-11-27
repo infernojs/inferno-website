@@ -88,26 +88,19 @@ export default class Canvas extends React.Component {
     render() {
         const { particles } = this.state
         return React.createElement('div',  {}, [
-            React.createElement(ParticleCounter,  { count: particles.length }),
-            React.createElement(ParticleWrapper,  { items: particles, round: this.props.round  }),
+            React.createElement(ParticleCounter,  { key: 'key-counter', count: particles.length }),
+            React.createElement(ParticleWrapper,  { key: 'key-wrapper', items: particles, round: this.props.round  }),
         ])
     }
 }
 
 class ParticleWrapper extends React.Component {
-    getChildContext() {
-        return this.props;
-    }
-    shouldComponentUpdate(nextProps) {
-        /*if (this.props.items.length !== nextProps.items.length) {
-            return true
-        }
-        return false*/
-    }
     render() {
         const { items, round } = this.props
+
         return React.createElement('div', { id: 'demo-canvas', style: window.demo },
-            items.map(data => React.createElement(ParticleComponent,  {
+            items.map((data, i) => React.createElement(ParticleComponent, {
+                key: i,
                 x: data.position[0]|0,
                 y: data.position[1]|0,
                 lifetime: data.lifetime,

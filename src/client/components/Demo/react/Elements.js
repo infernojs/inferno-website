@@ -4,7 +4,8 @@ export class ParticleComponent extends React.Component {
     shouldComponentUpdate(nextProps) {
         return this.props.x !== nextProps.x || this.props.y !== nextProps.y
     }
-    render({ x, y, lifetime, lifetimeMax, round }) {
+    render() {
+        const { x, y, lifetime, lifetimeMax, round } = this.props
         const colors = getColors(lifetime / lifetimeMax)
         const style = {
             backgroundColor: `rgb(${colors.join(',')})`,
@@ -33,6 +34,7 @@ export class Controller extends React.Component {
 
         return React.createElement('div', { className: 'demo-setting' }, [
             React.createElement(Slider, {
+                key: 'key-emission',
                 step: 1,
                 min: 1,
                 max: 8,
@@ -42,6 +44,7 @@ export class Controller extends React.Component {
                 onChange: setEmission
             }),
             React.createElement(Slider, {
+                key: 'key-lifetime',
                 step: 10,
                 min: 10,
                 max: 100,
@@ -50,13 +53,19 @@ export class Controller extends React.Component {
                 defaultValue: lifetime,
                 onChange: setLifetime
             }),
-            React.createElement('div', { className: 'demo-slider' }, [
-                React.createElement('label', null, 'Rounded Corners'),
+            React.createElement('div', {
+                key: 'key-rounded',
+                className: 'demo-slider'
+            }, [
+                React.createElement('label', {
+                    key: 'key-rounded-1'
+                }, 'Rounded Corners'),
                 React.createElement('input', {
+                    key: 'key-rounded-2',
                     type: 'checkbox',
                     checked: round,
                     onChange: setRounded,
-                }, 'Rounded Corners')
+                })
             ])
         ])
     }
@@ -66,9 +75,10 @@ export function Slider({ step, min, max, text, label, defaultValue, onChange }) 
     return React.createElement('div',  {
         className: 'demo-slider'
     }, [
-        React.createElement('div', null, `${text} (${label})`),
-        React.createElement('div', null, [
+        React.createElement('div', { key: 'slider-label' }, `${text} (${label})`),
+        React.createElement('div', { key: 'slider-wrap' }, [
             React.createElement('input', {
+                key: 'slider-input',
                 type: 'range', min, max, step, defaultValue, onChange
             })
         ])

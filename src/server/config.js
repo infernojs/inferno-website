@@ -8,6 +8,10 @@ module.exports = {
             {
                 url: '/build',
                 path: path.join(__dirname, '../../build')
+            },
+            {
+                url: '/static',
+                path: path.join(__dirname, '../assets/static')
             }
         ]
     }

@@ -16,6 +16,11 @@ Object.assign(config, {
             'webpack/hot/only-dev-server',
             path.join(__dirname, '../../core/polyfills.js'),
             path.join(__dirname, '../../src/client/client.js')
+        ],
+        react: [
+            'webpack-dev-server/client?http://localhost:8082',
+            path.join(__dirname, '../../core/polyfills.js'),
+            path.join(__dirname, '../../src/client/components/Demo/Demo.React.js')
         ]
     },
     output: {

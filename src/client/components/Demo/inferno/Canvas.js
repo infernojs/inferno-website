@@ -97,15 +97,6 @@ export default class Canvas extends Component {
 }
 
 class ParticleWrapper extends Component {
-    getChildContext() {
-        return this.props;
-    }
-    shouldComponentUpdate(nextProps) {
-        /*if (this.props.items.length !== nextProps.items.length) {
-            return true
-        }
-        return false*/
-    }
     render() {
         const { items, round } = this.props
         return <div id="demo-canvas" style={window.demo}>
