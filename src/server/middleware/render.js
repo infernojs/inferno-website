@@ -3,7 +3,7 @@ import { renderToStaticMarkup } from 'inferno-server'
 import { match } from 'inferno-router'
 import config from '../config'
 import onEnter from '../../../core/helpers/onEnter';
-import Html from '../../components/layout/html'
+import Html from '../../components/layout/Html'
 import routes from '../../routes'
 
 // Server-side render
