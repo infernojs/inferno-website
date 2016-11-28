@@ -1,11 +1,11 @@
 import Inferno from 'inferno'
 import { Route } from 'inferno-router'
-import Layout from './components/Layout'
-import NotFound from './containers/NotFound'
-import Home from './components/Home'
-import DemoInferno from './components/Demo/Demo.Inferno'
+import Layout from './components/layout/layout'
+import NotFound from './components/layout/404'
+import Home from './pages/Home'
+import DemoInferno from './components/demo/Demo.Inferno'
 //import DemoReact from './components/Demo/Demo.React'
-import About from './components/About'
+import About from './pages/About'
 
 function ReactDemo() {
     return <div>

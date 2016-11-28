@@ -1,7 +1,10 @@
 import Inferno from 'inferno'
 
-export default function({ hostname, children }) {
-    const devServerURL = process.env.DEV ? `http://${hostname}:8082` : ''
+/**
+ * This component is rendered on the server side
+ */
+export default function({ hostname, config }) {
+    const serverURL = process.env.DEV ? `http://${hostname}:${config.http.port + 2}` : ''
 
     return <html>
         <head>
@@ -10,16 +13,14 @@ export default function({ hostname, children }) {
             <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
             <link rel="icon" href="/favicon.ico?v=ngg42qbKBN"/>
-            <link href={devServerURL + '/build/bundle.css'} rel="stylesheet"/>
+            <link href={`${serverURL}/build/bundle.css`} rel="stylesheet"/>
         </head>
         <body>
             {/* Our content rendered here */}
-            <div id="root">
-                {children}
-            </div>
+            <div id="root"/>
 
             {/* Bundled JS */}
-            <script src={devServerURL + '/build/bundle.js'}/>
+            <script src={`${serverURL}/build/bundle.js`}/>
         </body>
     </html>
 }

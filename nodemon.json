@@ -16,6 +16,7 @@
     "src/client/components/App",
     "src/server",
     "src/shared",
+    "index.js",
     "core"
   ]
 }

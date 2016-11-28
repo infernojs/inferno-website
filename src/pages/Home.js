@@ -1,5 +1,5 @@
 import Inferno from 'inferno'
-import InfernoLogo from './Common/Logo'
+import InfernoLogo from '../components/common/Logo'
 
 export default function() {
     return <div className="home">
