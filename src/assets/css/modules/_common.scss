@@ -1,0 +1,65 @@
+// Centers the element and limits the width
+@import "../../../../node_modules/bootstrap/scss/variables";
+
+/* Modify vars */
+$grid-columns: 3 !global;
+$enable-flex: true !global;
+$grid-breakpoints: (
+  sm: 480px,
+  md: 700px,
+  lg: 992px
+) !global;
+
+$container-max-widths: (
+  sm: 960px
+) !global;
+
+@import "../../../../node_modules/bootstrap/scss/mixins";
+/* Reset and dependencies */
+@import "../../../../node_modules/bootstrap/scss/normalize";
+
+/* Core CSS */
+@import "../../../../node_modules/bootstrap/scss/reboot";
+@import '../../../../node_modules/bootstrap/scss/grid';
+
+/* Media-queries */
+$on-small: 480px;
+$on-palm: 700px;
+$on-laptop: 992px;
+@mixin media-query($device) {
+    @media (max-width: $device) {
+        @content;
+    }
+};
+
+
+body {
+    height: 100%;
+    background: #fff;
+    font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    color: #3d464d;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow-x: hidden;
+    letter-spacing: 0.2px;
+}
+
+.hidden { display: none; }
+
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
+.margin-top-xs { margin-top: 1rem; }
+.margin-top-md { margin-top: 2rem; }
+
+.align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.align-middle { max-width: 50%; }
+.align-top { align-self: flex-start; }
+.align-bottom { align-self: flex-end; }

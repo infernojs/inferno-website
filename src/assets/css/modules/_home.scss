@@ -1,0 +1,38 @@
+.home {
+    .hero-banner {
+        max-width: 41rem;
+        margin: 3rem auto;
+        @include media-query($on-laptop) {
+            padding: 0 2rem;
+            margin: 0;
+        }
+
+        .row {
+            div:first-child {
+                flex: none;
+            }
+        }
+        h1 {
+            font-weight: bold;
+            text-align: left;
+            margin: 0;
+        }
+        h2 {
+            font-size: 1.6rem;
+            font-weight: normal;
+            margin: 0 0 1rem;
+        }
+    }
+    section {
+        background: $bg;
+        padding: 2rem;
+        h2 {
+            color: $primary;
+            border-left: 3px solid $primary;
+            padding-left: 0.6rem;
+        }
+        p {
+            padding-left: 0.8rem;
+        }
+    }
+}
