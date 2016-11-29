@@ -12,19 +12,15 @@ Object.assign(config, {
     devtool: 'source-map', // eval eval-cheap-module-source-map source-map
     entry: {
         bundle: [
-            'webpack-dev-server/client?http://localhost:8082',
+            `webpack-dev-server/client?http://localhost:${http.port + 2}`,
             'webpack/hot/only-dev-server',
             path.join(__dirname, '../../core/polyfills.js'),
-            path.join(__dirname, '../../src/client/client.js')
+            path.join(__dirname, '../../src/client.js')
         ],
-        react: [
-            'webpack-dev-server/client?http://localhost:8082',
-            path.join(__dirname, '../../core/polyfills.js'),
-            path.join(__dirname, '../../src/client/components/Demo/Demo.React.js')
-        ]
+        react: path.join(__dirname, '../../src/components/demo/Demo.React.js')
     },
     output: {
-        publicPath: 'http://localhost:2002/build/',
+        publicPath: `http://localhost:${http.port + 2}/build/`,
         libraryTarget: 'var',
         pathinfo: true
     }

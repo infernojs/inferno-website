@@ -6,7 +6,7 @@ function componentDidMount() {
 }
 
 export default function() {
-    return <div onComponentDidMount={componentDidMount}>
+    return <div className="padding" onComponentDidMount={componentDidMount}>
         <h1>Inferno-website</h1>
         <section className="container">
             <p>Based on</p>

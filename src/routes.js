@@ -1,11 +1,12 @@
 import Inferno from 'inferno'
 import { Route } from 'inferno-router'
-import Layout from './components/Layout'
-import NotFound from './containers/NotFound'
-import Home from './components/Home'
-import DemoInferno from './components/Demo/Demo.Inferno'
+import Layout from './components/layout/Layout'
+import NotFound from './components/layout/404'
+import Home from './pages/Home'
+import DemoInferno from './components/demo/Demo.Inferno'
 //import DemoReact from './components/Demo/Demo.React'
-import About from './components/About'
+import About from './pages/About'
+import Docs from './pages/Docs'
 
 function ReactDemo() {
     return <div>
@@ -22,6 +23,7 @@ export default (
         <Route path="/" component={ Home }/>
         <Route path="/demo" component={ DemoInferno }/>
         <Route path="/demo/react" component={ ReactDemo }/>
+        <Route path="/docs" component={ Docs }/>
         <Route path="/about" component={ About }/>
         <Route path="*" component={ NotFound }/>
     </Route>
