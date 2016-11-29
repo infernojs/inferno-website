@@ -1,51 +1,27 @@
-menu {
-    padding: 1rem;
-    width: 100%;
-    display: flex;
-
-    .align-left {
-        flex: 1;
-        margin-top: 1rem;
-        margin-left: 1rem;
-        text-align: right;
-    }
-    .align-right {
-        margin-top: 1rem;
-        span {
-            font-size: 0.8rem;
-        }
-    }
+    nav {
+        float: right;
+padding: 1rem 0;
+}
 
     a {
         color: $g1;
         font-size: 1rem;
-        line-height: 2rem;
-        margin-right: 2rem;
+        margin-left: 2rem;
         display: inline-block;
         cursor: pointer;
         text-align: right;
-        text-decoration: none;
         transition: color 0.2s ease-in-out;
-        flex: 1;
-
+        @include media-query($on-small) {
+            margin-left: 1.5rem;
+        }
         &:hover {
-            color: $black;
+            color: $primary;
+            text-decoration: none;
         }
         &.selected {
             color: $black;
-            outline: none;
-            border-bottom: 1px solid $black;
+        }
+        .down-arrow {
+            color: $primary;
         }
     }
-
-    .down-arrow {
-        color: $primary;
-    }
-}
-
-@media (max-width: 700px) {
-    menu {
-        padding: 0 2rem;
-        margin: 0;
-    }
-}
