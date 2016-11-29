@@ -1,10 +1,12 @@
 import Inferno from 'inferno'
-import { Link } from 'inferno-router'
+import { IndexLink, Link } from 'inferno-router'
 
 export default function({ children }) {
     return <div>
         <menu className="container">
-            <div className="align-left">&nbsp;</div>
+            <div className="align-left">
+                <IndexLink>Home</IndexLink>
+            </div>
             <div className="align-right">
                 <Link to="/about">About <DownArrow/></Link>
                 <Link to="/docs">Docs <DownArrow/></Link>

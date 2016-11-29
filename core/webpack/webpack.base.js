@@ -15,6 +15,7 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [sources(''), sources('../core')],
+                exclude: [sources('docs')],
                 query: {
                     cacheDirectory: false,
                     presets: [],
@@ -44,6 +45,16 @@ module.exports = {
                 test: /\.(css|scss)(\?.+)?$/,
                 loader: ExtractCSS.extract(['css-loader?sourceMap', 'sass-loader?sourceMap']),
                 include: [sources('assets'), sources('client/components')]
+            },
+            {
+                test: /\.md$/,
+                loader: 'html-loader!markdown-loader',
+                include: [sources('docs'), sources('client/components')]
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader',
+                exclude: [sources('src')]
             }
         ]
     },

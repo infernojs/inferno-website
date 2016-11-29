@@ -1,20 +1,20 @@
 import Inferno from 'inferno'
-
-function componentDidMount() {
-    console.warn('ddddd')
-    document.title = 'Home'
-}
+import CommonMark from 'commonmark'
+import InfernoRenderer from '../components/markdown/InfernoRenderer'
 
 export default function() {
-    return <div className="padding" onComponentDidMount={componentDidMount}>
-        <h1>Inferno-website</h1>
-        <section className="container">
-            <p>Based on</p>
-            <p>
-                <a href="https://github.com/nightwolfz/inferno-starter" target="_blank">
-                    https://github.com/nightwolfz/inferno-starter
-                </a>
-            </p>
-        </section>
+    let MarkdownResult = ''
+    if (process.env.BROWSER) {
+        const page = require('../docs/guides/installation.md')
+        const parser = new CommonMark.Parser();
+        const renderer = new InfernoRenderer();
+
+        const input = '# This is a header\n\nAnd this is a paragraph';
+        const ast = parser.parse(page);
+        MarkdownResult = renderer.render(ast);
+    }
+
+    return <div className="container padding markdown">
+        {MarkdownResult}
     </div>
 }
