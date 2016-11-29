@@ -22,18 +22,21 @@ export default function() {
         </div>
         <section>
             <div className="container">
-                <article>
+                <div className="row">
+                <div className="col-xs-3 col-md-1">
                     <h2>Tiny Size</h2>
                     <p>Lightweight filesize of only 6kb.</p>
-                </article>
-                <article>
+                </div>
+                <div className="col-xs-3 col-md-1">
                     <h2>React Compatible</h2>
                     <p>React-like API, concepts and component lifecycle events.</p>
-                </article>
-                <article>
+                </div>
+                <div className="col-xs-3 col-md-1">
                     <h2>Modular</h2>
                     <p>Highly modular with very little opinionation of how things should be done.</p>
-                </article>
+                </div>
+                    </div>
+
             </div>
         </section>
     </div>

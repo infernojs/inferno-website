@@ -1,24 +1,41 @@
 // Centers the element and limits the width
-.container {
-    max-width: 960px;
-    margin: 0 auto;
+@import "../../../../node_modules/bootstrap/scss/variables";
+
+/* Modify vars */
+$grid-columns: 3 !global;
+$enable-flex: true !global;
+$grid-breakpoints: (
+  sm: 480px,
+  md: 700px,
+  lg: 992px
+) !global;
+
+$container-max-widths: (
+  sm: 960px
+) !global;
+
+@import "../../../../node_modules/bootstrap/scss/mixins";
+/* Reset and dependencies */
+@import "../../../../node_modules/bootstrap/scss/normalize";
+
+/* Core CSS */
+@import "../../../../node_modules/bootstrap/scss/reboot";
+@import '../../../../node_modules/bootstrap/scss/grid';
+
+
+
+body {
+    height: 100%;
+    background: #fff;
+    font-family: "Open Sans","lucida grande","Segoe UI",arial,verdana,"lucida sans unicode",tahoma,sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    color: #3d464d;
     padding: 0;
-}
-
-.row {
-    display: flex;
-    flex-flow: row;
-    & > * {
-        flex: 1;
-    }
-}
-
-.column {
-    display: flex;
-    flex-flow: column;
-    & > * {
-        flex: 1;
-    }
+    margin: 0;
+    border: 0;
+    overflow-x: hidden;
+    letter-spacing: 0.2px;
 }
 
 .hidden { display: none; }
