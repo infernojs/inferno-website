@@ -22,6 +22,15 @@ $container-max-widths: (
 @import "../../../../node_modules/bootstrap/scss/reboot";
 @import '../../../../node_modules/bootstrap/scss/grid';
 
+/* Media-queries */
+$on-small: 480px;
+$on-palm: 700px;
+$on-laptop: 992px;
+@mixin media-query($device) {
+    @media (max-width: $device) {
+        @content;
+    }
+};
 
 
 body {

@@ -2,6 +2,11 @@
     .hero-banner {
         max-width: 41rem;
         margin: 3rem auto;
+        @include media-query($on-laptop) {
+            padding: 0 2rem;
+            margin: 0;
+        }
+
         .row {
             div:first-child {
                 flex: none;
@@ -28,15 +33,6 @@
         }
         p {
             padding-left: 0.8rem;
-        }
-    }
-}
-
-@media (max-width: 700px) {
-    .home {
-        .hero-banner {
-            padding: 0 2rem;
-            margin: 0;
         }
     }
 }
