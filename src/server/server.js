@@ -3,7 +3,8 @@ import Koa from 'koa'
 import bodyParser from 'koa-better-body'
 import compress from 'koa-compress'
 import favicon from 'koa-favicon'
-import serve from 'koa-static2'
+import mount from 'koa-mount'
+import serve from 'koa-static'
 import config from './config'
 import catcher from './middleware/catcher'
 import render from './middleware/render'
@@ -24,7 +25,7 @@ app.use(render)
 // Serve static files
 config.http.static.forEach(staticRoute => {
     logger('inferno:static')(staticRoute.path)
-    app.use(serve(staticRoute.url, staticRoute.path))
+    app.use(mount(staticRoute.url, serve(staticRoute.path)))
 })
 
 app.listen(config.http.port, function() {
