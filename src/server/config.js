@@ -10,12 +10,12 @@ module.exports = {
                 path: path.join(__dirname, '../../build')
             },
             {
-                url: '/assets',
-                path: path.join(__dirname, '../assets')
+                url: '/static',
+                path: path.join(__dirname, '../assets/static')
             },
             {
                 url: '/static',
-                path: path.join(__dirname, '../docs')
+                path: path.join(__dirname, '../assets/static')
             }
         ]
     }
