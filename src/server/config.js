@@ -12,6 +12,10 @@ module.exports = {
             {
                 url: '/static',
                 path: path.join(__dirname, '../assets/static')
+            },
+            {
+                url: '/static',
+                path: path.join(__dirname, '../assets/static')
             }
         ]
     }

@@ -23,6 +23,7 @@ export default (
         <Route path="/" component={ Home }/>
         <Route path="/demo" component={ DemoInferno }/>
         <Route path="/demo/react" component={ ReactDemo }/>
+        <Route path="/docs/:path*" component={ Docs }/>
         <Route path="/docs" component={ Docs }/>
         <Route path="/about" component={ About }/>
         <Route path="*" component={ NotFound }/>

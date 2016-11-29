@@ -1,0 +1,435 @@
+import createElement from 'inferno-create-element'
+//let xssFilters = require('xss-filters');
+
+let typeAliases = {
+    blockquote: 'block_quote',
+    thematicbreak: 'thematic_break',
+    htmlblock: 'html_block',
+    htmlinline: 'html_inline',
+    codeblock: 'code_block',
+    hardbreak: 'linebreak'
+};
+
+let defaultRenderers = {
+    block_quote: 'blockquote', // eslint-disable-line camelcase
+    emph: 'em',
+    linebreak: 'br',
+    image: 'img',
+    item: 'li',
+    link: 'a',
+    paragraph: 'p',
+    strong: 'strong',
+    thematic_break: 'hr', // eslint-disable-line camelcase
+
+    html_block: HtmlRenderer, // eslint-disable-line camelcase
+    html_inline: HtmlRenderer, // eslint-disable-line camelcase
+
+    list: function List(props) {
+        let tag = props.type.toLowerCase() === 'bullet' ? 'ul' : 'ol';
+        let attrs = getCoreProps(props);
+
+        if (props.start !== null && props.start !== 1) {
+            attrs.start = props.start.toString();
+        }
+
+        return createElement(tag, attrs, props.children);
+    },
+    code_block: function CodeBlock(props) { // eslint-disable-line camelcase
+        let className = props.language && 'language-' + props.language;
+        let code = createElement('code', { className: className }, props.literal);
+        return createElement('pre', getCoreProps(props), code);
+    },
+    code: function Code(props) {
+        return createElement('code', getCoreProps(props), props.children);
+    },
+    heading: function Heading(props) {
+        return createElement('h' + props.level, getCoreProps(props), props.children);
+    },
+
+    text: null,
+    softbreak: null
+};
+
+let coreTypes = Object.keys(defaultRenderers);
+
+function getCoreProps(props) {
+    return {
+        'key': props.nodeKey,
+        'data-sourcepos': props['data-sourcepos']
+    };
+}
+
+function normalizeTypeName(typeName) {
+    let norm = typeName.toLowerCase();
+    let type = typeAliases[norm] || norm;
+    return typeof defaultRenderers[type] !== 'undefined' ? type : typeName;
+}
+
+function normalizeRenderers(renderers) {
+    return Object.keys(renderers || {}).reduce(function(normalized, type) {
+        let norm = normalizeTypeName(type);
+        normalized[norm] = renderers[type];
+        return normalized;
+    }, {});
+}
+
+function HtmlRenderer(props) {
+    let nodeProps = props.escapeHtml ? {} : { dangerouslySetInnerHTML: { __html: props.literal } };
+    let children = props.escapeHtml ? [props.literal] : null;
+
+    if (props.escapeHtml || !props.skipHtml) {
+        return createElement(props.isBlock ? 'div' : 'span', nodeProps, children);
+    }
+}
+
+function isGrandChildOfList(node) {
+    let grandparent = node.parent.parent;
+    return (
+    grandparent &&
+    grandparent.type.toLowerCase() === 'list' &&
+    grandparent.listTight
+    );
+}
+
+function addChild(node, child) {
+    let parent = node;
+    do {
+        parent = parent.parent;
+    } while (!parent.react);
+
+    parent.react.children.push(child);
+}
+
+function reduceChildren(children, child) {
+    let lastIndex = children.length - 1;
+    if (typeof child === 'string' && typeof children[lastIndex] === 'string') {
+        children[lastIndex] += child;
+    } else {
+        children.push(child);
+    }
+
+    return children;
+}
+
+function flattenPosition(pos) {
+    return [
+        pos[0][0], ':', pos[0][1], '-',
+        pos[1][0], ':', pos[1][1]
+    ].map(String).join('');
+}
+
+// For some nodes, we want to include more props than for others
+function getNodeProps(node, key, opts, renderer) {
+    let props = { key: key }, undef;
+
+    // `sourcePos` is true if the user wants source information (line/column info from markdown source)
+    if (opts.sourcePos && node.sourcepos) {
+        props['data-sourcepos'] = flattenPosition(node.sourcepos);
+    }
+
+    let type = normalizeTypeName(node.type);
+
+    switch (type) {
+        case 'html_inline':
+        case 'html_block':
+            props.isBlock = type === 'html_block';
+            props.escapeHtml = opts.escapeHtml;
+            props.skipHtml = opts.skipHtml;
+            break;
+        case 'code_block':
+            let codeInfo = node.info ? node.info.split(/ +/) : [];
+            if (codeInfo.length > 0 && codeInfo[0].length > 0) {
+                props.language = codeInfo[0];
+            }
+            break;
+        case 'code':
+            props.children = node.literal;
+            props.inline = true;
+            break;
+        case 'heading':
+            props.level = node.level;
+            break;
+        case 'softbreak':
+            props.softBreak = opts.softBreak;
+            break;
+        case 'link':
+            props.href = opts.transformLinkUri ? opts.transformLinkUri(node.destination) : node.destination;
+            props.title = node.title || undef;
+            if (opts.linkTarget) {
+                props.target = opts.linkTarget;
+            }
+            break;
+        case 'image':
+            props.src = opts.transformImageUri ? opts.transformImageUri(node.destination) : node.destination;
+            props.title = node.title || undef;
+
+            // Commonmark treats image description as children. We just want the text
+            props.alt = node.react.children.join('');
+            node.react.children = undef;
+            break;
+        case 'list':
+            props.start = node.listStart;
+            props.type = node.listType;
+            props.tight = node.listTight;
+            break;
+        default:
+    }
+
+    if (typeof renderer !== 'string') {
+        props.literal = node.literal;
+    }
+
+    let children = props.children || (node.react && node.react.children);
+    if (Array.isArray(children)) {
+        props.children = children.reduce(reduceChildren, []) || null;
+    }
+
+    return props;
+}
+
+function getPosition(node) {
+    if (!node) {
+        return null;
+    }
+
+    if (node.sourcepos) {
+        return flattenPosition(node.sourcepos);
+    }
+
+    return getPosition(node.parent);
+}
+
+function renderNodes(block) {
+    let walker = block.walker();
+
+    // Softbreaks are usually treated as newlines, but in HTML we might want explicit linebreaks
+    let softBreak = (this.softBreak === 'br' ? createElement('br') : this.softBreak);
+
+    let propOptions = {
+        sourcePos: this.sourcePos,
+        escapeHtml: this.escapeHtml,
+        skipHtml: this.skipHtml,
+        transformLinkUri: this.transformLinkUri,
+        transformImageUri: this.transformImageUri,
+        softBreak: softBreak,
+        linkTarget: this.linkTarget
+    };
+
+    let e, node, entering, leaving, type, doc, key, nodeProps, prevPos, prevIndex = 0;
+    while ((e = walker.next())) {
+        let pos = getPosition(e.node.sourcepos ? e.node : e.node.parent);
+        if (prevPos === pos) {
+            key = pos + prevIndex;
+            prevIndex++;
+        } else {
+            key = pos;
+            prevIndex = 0;
+        }
+
+        prevPos = pos;
+        entering = e.entering;
+        leaving = !entering;
+        node = e.node;
+        type = normalizeTypeName(node.type);
+        nodeProps = null;
+
+        // If we have not assigned a document yet, assume the current node is just that
+        if (!doc) {
+            doc = node;
+            node.react = { children: [] };
+            continue;
+        } else if (node === doc) {
+            // When we're leaving...
+            continue;
+        }
+
+        // In HTML, we don't want paragraphs inside of list items
+        if (type === 'paragraph' && isGrandChildOfList(node)) {
+            continue;
+        }
+
+        // If we're skipping HTML nodes, don't keep processing
+        if (this.skipHtml && (type === 'html_block' || type === 'html_inline')) {
+            continue;
+        }
+
+        let isDocument = node === doc;
+        let disallowedByConfig = this.allowedTypes.indexOf(type) === -1;
+        let disallowedByUser = false;
+
+        // Do we have a user-defined function?
+        let isCompleteParent = node.isContainer && leaving;
+        let renderer = this.renderers[type];
+        if (this.allowNode && (isCompleteParent || !node.isContainer)) {
+            let nodeChildren = isCompleteParent ? node.react.children : [];
+
+            nodeProps = getNodeProps(node, key, propOptions, renderer);
+            disallowedByUser = !this.allowNode({
+                type: pascalCase(type),
+                renderer: this.renderers[type],
+                props: nodeProps,
+                children: nodeChildren
+            });
+        }
+
+        if (!isDocument && (disallowedByUser || disallowedByConfig)) {
+            if (!this.unwrapDisallowed && entering && node.isContainer) {
+                walker.resumeAt(node, false);
+            }
+
+            continue;
+        }
+
+        let isSimpleNode = type === 'text' || type === 'softbreak';
+        if (typeof renderer !== 'function' && !isSimpleNode && typeof renderer !== 'string') {
+            throw new Error(
+            'Renderer for type `' + pascalCase(node.type) + '` not defined or is not renderable'
+            );
+        }
+
+        if (node.isContainer && entering) {
+            node.react = {
+                component: renderer,
+                props: {},
+                children: []
+            };
+        } else {
+            let childProps = nodeProps || getNodeProps(node, key, propOptions, renderer);
+            if (renderer) {
+                childProps = typeof renderer === 'string'
+                ? childProps
+                : Object.assign(childProps, {nodeKey: childProps.key});
+
+                addChild(node, createElement(renderer, childProps));
+            } else if (type === 'text') {
+                addChild(node, node.literal);
+            } else if (type === 'softbreak') {
+                addChild(node, softBreak);
+            }
+        }
+    }
+
+    return doc.react.children;
+}
+
+function defaultLinkUriFilter(uri) {
+    let url = uri.replace(/file:\/\//g, 'x-file://');
+
+    // React does a pretty swell job of escaping attributes,
+    // so to prevent double-escaping, we need to decode
+    return decodeURI(url);
+    //return decodeURI(xssFilters.uriInDoubleQuotedAttr(url));
+}
+
+function InfernoRenderer(options) {
+    let opts = options || {};
+
+    if (opts.allowedTypes && opts.disallowedTypes) {
+        throw new Error('Only one of `allowedTypes` and `disallowedTypes` should be defined');
+    }
+
+    if (opts.allowedTypes && !Array.isArray(opts.allowedTypes)) {
+        throw new Error('`allowedTypes` must be an array');
+    }
+
+    if (opts.disallowedTypes && !Array.isArray(opts.disallowedTypes)) {
+        throw new Error('`disallowedTypes` must be an array');
+    }
+
+    if (opts.allowNode && typeof opts.allowNode !== 'function') {
+        throw new Error('`allowNode` must be a function');
+    }
+
+    let linkFilter = opts.transformLinkUri;
+    if (typeof linkFilter === 'undefined') {
+        linkFilter = defaultLinkUriFilter;
+    } else if (linkFilter && typeof linkFilter !== 'function') {
+        throw new Error('`transformLinkUri` must either be a function, or `null` to disable');
+    }
+
+    let imageFilter = opts.transformImageUri;
+    if (typeof imageFilter !== 'undefined' && typeof imageFilter !== 'function') {
+        throw new Error('`transformImageUri` must be a function');
+    }
+
+    if (opts.renderers && !isPlainObject(opts.renderers)) {
+        throw new Error('`renderers` must be a plain object of `Type`: `Renderer` pairs');
+    }
+
+    let allowedTypes = (opts.allowedTypes && opts.allowedTypes.map(normalizeTypeName)) || coreTypes;
+    if (opts.disallowedTypes) {
+        let disallowed = opts.disallowedTypes.map(normalizeTypeName);
+        allowedTypes = allowedTypes.filter(function filterDisallowed(type) {
+            return disallowed.indexOf(type) === -1;
+        });
+    }
+
+    return {
+        sourcePos: Boolean(opts.sourcePos),
+        softBreak: opts.softBreak || '\n',
+        renderers: Object.assign({}, defaultRenderers, normalizeRenderers(opts.renderers)),
+        escapeHtml: Boolean(opts.escapeHtml),
+        skipHtml: Boolean(opts.skipHtml),
+        transformLinkUri: linkFilter,
+        transformImageUri: imageFilter,
+        allowNode: opts.allowNode,
+        allowedTypes: allowedTypes,
+        unwrapDisallowed: Boolean(opts.unwrapDisallowed),
+        render: renderNodes,
+        linkTarget: opts.linkTarget || false
+    };
+}
+
+InfernoRenderer.uriTransformer = defaultLinkUriFilter;
+InfernoRenderer.types = coreTypes.map(pascalCase);
+InfernoRenderer.renderers = coreTypes.reduce(function(renderers, type) {
+    renderers[pascalCase(type)] = defaultRenderers[type];
+    return renderers;
+}, {});
+
+function isObject(val) {
+    return val != null && typeof val === 'object' && Array.isArray(val) === false;
+}
+
+function isObjectObject(o) {
+    return isObject(o) === true && Object.prototype.toString.call(o) === '[object Object]';
+}
+
+function isPlainObject(o) {
+    let ctor, prot;
+
+    if (isObjectObject(o) === false) return false;
+
+    // If has modified constructor
+    ctor = o.constructor;
+    if (typeof ctor !== 'function') return false;
+
+    // If has modified prototype
+    prot = ctor.prototype;
+    if (isObjectObject(prot) === false) return false;
+
+    // If constructor does not have an Object-specific method
+    if (prot.hasOwnProperty('isPrototypeOf') === false) {
+        return false;
+    }
+
+    // Most likely a plain Object
+    return true;
+}
+
+function pascalCase(str) {
+    if (typeof str !== 'string') {
+        throw new TypeError('expected a string.');
+    }
+    str = str.replace(/([A-Z])/g, ' $1');
+    if (str.length === 1) {
+        return str.toUpperCase();
+    }
+    str = str.replace(/^[\W_]+|[\W_]+$/g, '').toLowerCase();
+    str = str.charAt(0).toUpperCase() + str.slice(1);
+    return str.replace(/[\W_]+(\w|$)/g, function(_, ch) {
+        return ch.toUpperCase();
+    });
+}
+
+export default InfernoRenderer

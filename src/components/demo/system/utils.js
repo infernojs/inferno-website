@@ -42,9 +42,6 @@ export class Vector {
     }
 
     static update(p) {
-        // Add our current acceleration to our current velocity
-        Vector.add(p.velocity, p.gravity)
-
         // Add our current velocity to our position
         Vector.add(p.position, p.velocity)
     }
@@ -61,11 +58,11 @@ export class Vector {
         const noise = (Math.random() * 2 - 1) / 10
 
         // add to the total acceleration the force adjusted by distance
-        let accelerationX = vectorX * force + noise
-        let accelerationY = vectorY * force
+        let gravityX = vectorX * force + noise
+        let gravityY = vectorY * force
 
-        // update our particle's acceleration
-        p.gravity = [accelerationX, accelerationY]
+        // update our particle's velocity
+        Vector.add(p.velocity, [gravityX, gravityY])
     }
 }
 
