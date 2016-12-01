@@ -1,27 +1,27 @@
-    nav {
+    .container nav {
         float: right;
-padding: 1rem 0;
-}
-
-    a {
-        color: $g1;
-        font-size: 1rem;
-        margin-left: 2rem;
-        display: inline-block;
-        cursor: pointer;
-        text-align: right;
-        transition: color 0.2s ease-in-out;
-        @include media-query($on-small) {
-            margin-left: 1.5rem;
-        }
-        &:hover {
-            color: $primary;
+        padding: 1rem 0;
+        a {
+            color: $g1;
+            font-size: 1rem;
+            margin-left: 2rem;
+            display: inline-block;
+            cursor: pointer;
+            text-align: right;
             text-decoration: none;
-        }
-        &.selected {
-            color: $black;
-        }
-        .down-arrow {
-            color: $primary;
+            transition: color 0.2s ease-in-out;
+            @include media-query($on-laptop) {
+                margin-left: 1rem;
+            }
+            &:active, &:hover {
+                color: $primary;
+                text-decoration: none;
+            }
+            &.selected {
+                color: $primary;
+            }
+            .down-arrow {
+                color: $primary;
+            }
         }
     }

@@ -1,28 +1,66 @@
-// Centers the element and limits the width
-@import "../../../../node_modules/bootstrap/scss/variables";
-
-/* Modify vars */
-
-$grid-columns: 3 !global;
-$enable-flex: true !global;
-$grid-breakpoints: ( sm: 480px, md: 700px, lg: 992px) !global;
-$container-max-widths: ( sm: 990px) !global;
-@import "../../../../node_modules/bootstrap/scss/mixins";
-
-/* Reset and dependencies */
-
 @import "../../../../node_modules/bootstrap/scss/normalize";
-
-/* Core CSS */
-
+@import "../../../../node_modules/bootstrap/scss/mixins";
+@import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../../node_modules/bootstrap/scss/reboot";
-@import '../../../../node_modules/bootstrap/scss/grid';
+
+$columns: 3;
+$grid: ( xs: 0px, sm: 700px, lg: 990px );
+$gutter: 15px;
+.container {
+    margin: 0 auto;
+    padding-left: $gutter;
+    padding-right: $gutter;
+    width: 990px;
+    max-width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -#{$gutter};
+    margin-left: -#{$gutter};
+}
+
+%column {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    padding: 0 $gutter;
+}
+
+@each $breakpoint in map-keys($grid) {
+    @for $i from 1 through $columns {
+        .#{$breakpoint}#{$i} {
+            @extend %column;
+        }
+    }
+}
+
+@each $breakpoint in map-keys($grid) {
+    @for $i from 1 through $columns {
+        .#{$breakpoint}#{$i} {
+            @extend %column;
+        }
+    }
+    $width: map-get($grid, $breakpoint);
+    @media (min-width:$width) {
+        .#{$breakpoint} {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        @for $i from 1 through $columns {
+            .#{$breakpoint}#{$i} {
+                flex: 0 0 percentage($i/$columns);
+                max-width: percentage($i/$columns);
+            }
+        }
+    }
+}
 
 /* Media-queries */
 
-$on-small: 480px;
-$on-palm: 700px;
-$on-laptop: 992px;
+$on-small: 360px;
+$on-laptop: 700px;
 @mixin media-query($device) {
     @media (max-width: $device) {
         @content;
