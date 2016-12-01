@@ -3,12 +3,11 @@ import InfernoLogo from '../components/common/Logo'
 
 export default function() {
     return <div className="home">
-        <div className="hero-banner">
-            <div className="row">
-                <div>
-                    <InfernoLogo height="130" width="130" showName={false}/>
+            <div className="hero-banner row">
+                <div className="logo xs3 sm1">
+                    <InfernoLogo showName={false}/>
                 </div>
-                <div>
+                <div className="logo-text xs3 sm2">
                     <h1>Inferno</h1>
                     <h2>
                         An extremely fast React-like javascript library for building modern user interfaces
@@ -18,22 +17,56 @@ export default function() {
                         <a className="button" href="https://github.com/trueadm/inferno">Github</a>
                     </div>
                 </div>
-            </div>
         </div>
         <section>
             <div className="container">
-                <article>
+                <div className="row">
+                <div className="xs3 sm lg1">
+                    <svg width="60" height="60" viewBox={`0 0 60 60`}><g>
+                <path d="M 18.726993,0.20237 0,13.535703 8.9417178,19.869037 27.5,6.5357031 18.726993,0.20237 Z m 17.546013,0 L 55,13.535703 46.058283,19.869037 27.5,6.5357031 36.273006,0.20237 Z m 0,39.333333 L 55,26.20237 46.058283,19.869037 27.5,33.20237 l 8.773006,6.333333 z m -17.546013,0 L 0,26.20237 8.9417178,19.869037 27.5,33.20237 18.726993,39.535703 Z M 38.297546,42.202372 36.273006,43.70237 34.417178,42.202372 27.5,37.369037 20.582822,42.202372 18.726993,43.70237 16.702454,42.202372 8.9417178,36.70237 l 0,5.166667 L 27.5,55.20237 46.058283,41.869037 l 0,-5.166667 -7.760737,5.500002 z"></path>
+            </g></svg>
                     <h2>Tiny Size</h2>
-                    <p>Lightweight filesize of only 6kb.</p>
-                </article>
-                <article>
+                    <p>Inferno is much smaller in size, 7kb vs 45kb gzip. This means inferno is faster to transfer over the network and much faster to parse.</p>
+                </div>
+                <div className="xs3 sm lg1">
+                    <svg width="55" height="55" viewBox={`0 0 55 55`}><g>
+                <path d="m 35.5,9.3205148 22,0 0,5.5145292 -22,0 0,-5.5145292 z m 0,15.1649562 22,0 0,5.514529 -22,0 0,-5.514529 z m 0,15.164956 22,0 0,5.514529 -22,0 0,-5.514529 z M 2.499999,27.242735 c 0,9.884795 8.01625,17.922221 17.875,17.922221 l 1.375,0 0,5.514529 8.25,-8.271793 -8.25,-8.271795 0,5.51453 -1.375,0 c -6.82,0 -12.3749999,-5.569675 -12.3749999,-12.407692 0,-6.838016 5.5549999,-12.407691 12.3749999,-12.407691 l 9.625001,0 0,-5.5145292 -9.625001,0 c -9.85875,0 -17.875,8.0374262 -17.875,17.9222202 z"></path>
+            </g></svg>
                     <h2>React Compatible</h2>
-                    <p>React-like API, concepts and component lifecycle events.</p>
-                </article>
-                <article>
+                    <p>React-like API, concepts and component lifecycle events. Switch over easily with inferno-compact.</p>
+                </div>
+                <div className="xs3 sm lg1">
+                    <svg width="55" height="55" viewBox={`0 0 55 55`}><g>
+                <path d="M 18.726993,0.20237 0,13.535703 8.9417178,19.869037 27.5,6.5357031 18.726993,0.20237 Z m 17.546013,0 L 55,13.535703 46.058283,19.869037 27.5,6.5357031 36.273006,0.20237 Z m 0,39.333333 L 55,26.20237 46.058283,19.869037 27.5,33.20237 l 8.773006,6.333333 z m -17.546013,0 L 0,26.20237 8.9417178,19.869037 27.5,33.20237 18.726993,39.535703 Z M 38.297546,42.202372 36.273006,43.70237 34.417178,42.202372 27.5,37.369037 20.582822,42.202372 18.726993,43.70237 16.702454,42.202372 8.9417178,36.70237 l 0,5.166667 L 27.5,55.20237 46.058283,41.869037 l 0,-5.166667 -7.760737,5.500002 z"></path>
+            </g></svg>
+                    <h2>Fastest</h2>
+                    <p>One the fastest front-end frameworks for rendering UI in the DOM.</p>
+                </div>
+
+                    <div className="xs3 sm lg1">
+                        <svg width="55" height="55" viewBox={`0 0 55 55`}><g>
+                <path d="M 18.726993,0.20237 0,13.535703 8.9417178,19.869037 27.5,6.5357031 18.726993,0.20237 Z m 17.546013,0 L 55,13.535703 46.058283,19.869037 27.5,6.5357031 36.273006,0.20237 Z m 0,39.333333 L 55,26.20237 46.058283,19.869037 27.5,33.20237 l 8.773006,6.333333 z m -17.546013,0 L 0,26.20237 8.9417178,19.869037 27.5,33.20237 18.726993,39.535703 Z M 38.297546,42.202372 36.273006,43.70237 34.417178,42.202372 27.5,37.369037 20.582822,42.202372 18.726993,43.70237 16.702454,42.202372 8.9417178,36.70237 l 0,5.166667 L 27.5,55.20237 46.058283,41.869037 l 0,-5.166667 -7.760737,5.500002 z"></path>
+            </g></svg>
+                    <h2>One-way Architecture</h2>
+                    <p>Component driven + One-way data flow architecture. Coupling with Redux, MobX or Ceberal supported.</p>
+                </div>
+                <div className="xs3 sm lg1">
+                    <svg width="55" height="55" viewBox={`0 0 55 55`}><g>
+                <path d="M 18.726993,0.20237 0,13.535703 8.9417178,19.869037 27.5,6.5357031 18.726993,0.20237 Z m 17.546013,0 L 55,13.535703 46.058283,19.869037 27.5,6.5357031 36.273006,0.20237 Z m 0,39.333333 L 55,26.20237 46.058283,19.869037 27.5,33.20237 l 8.773006,6.333333 z m -17.546013,0 L 0,26.20237 8.9417178,19.869037 27.5,33.20237 18.726993,39.535703 Z M 38.297546,42.202372 36.273006,43.70237 34.417178,42.202372 27.5,37.369037 20.582822,42.202372 18.726993,43.70237 16.702454,42.202372 8.9417178,36.70237 l 0,5.166667 L 27.5,55.20237 46.058283,41.869037 l 0,-5.166667 -7.760737,5.500002 z"></path>
+            </g></svg>
+                    <h2>Isomorphic</h2>
+                    <p>Isomorphic rendering on both client and server with the inferno-server package.</p>
+                </div>
+                <div className="xs3 sm lg1">
+                    <svg width="55" height="55" viewBox={`0 0 55 55`}><g>
+                <path d="M 18.726993,0.20237 0,13.535703 8.9417178,19.869037 27.5,6.5357031 18.726993,0.20237 Z m 17.546013,0 L 55,13.535703 46.058283,19.869037 27.5,6.5357031 36.273006,0.20237 Z m 0,39.333333 L 55,26.20237 46.058283,19.869037 27.5,33.20237 l 8.773006,6.333333 z m -17.546013,0 L 0,26.20237 8.9417178,19.869037 27.5,33.20237 18.726993,39.535703 Z M 38.297546,42.202372 36.273006,43.70237 34.417178,42.202372 27.5,37.369037 20.582822,42.202372 18.726993,43.70237 16.702454,42.202372 8.9417178,36.70237 l 0,5.166667 L 27.5,55.20237 46.058283,41.869037 l 0,-5.166667 -7.760737,5.500002 z"></path>
+            </g></svg>
                     <h2>Modular</h2>
-                    <p>Highly modular with very little opinionation of how things should be done.</p>
-                </article>
+                    <p>Highly modular with very little opinion of how things should be done.</p>
+                </div>
+
+                    </div>
+
             </div>
         </section>
     </div>

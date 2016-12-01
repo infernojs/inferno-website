@@ -1,7 +1,7 @@
-@import "loading";
-@import "demo";
-@import "menu";
-@import "home";
-@import "markdown";
-@import "common";
-@import "base";
+@import "modules/variables";
+@import "modules/common";
+@import "modules/loading";
+@import "modules/demo";
+@import "modules/menu";
+@import "modules/home";
+@import "modules/btns";
