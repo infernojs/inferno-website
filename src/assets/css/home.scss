@@ -3,7 +3,7 @@
 .home {
     .hero-banner {
         max-width: 41rem;
-        margin: 3rem auto;
+        margin: 10rem auto;
 
         .row {
             div:first-child {
@@ -12,7 +12,7 @@
         }
 
         button, a.button {
-            padding: 1rem 2rem;
+            padding: 0.9rem 1.5rem;
             margin: 0 1rem 0 0;
             font-size: 1rem;
             border-radius: 2rem;
@@ -41,26 +41,30 @@
         h2 {
             font-size: 1.6rem;
             font-weight: normal;
-            margin: 0 0 1rem;
+            margin: 0 0 3rem;
         }
     }
 
     section {
+        display: flex;
         background: #f8f8f8;
-
         .container {
-            padding: 2rem;
-            display: flex;
+
+            > div {
+                flex: 1;
+                display: flex;
+            }
 
             article {
+                border: 1px solid white;
+                padding: 2rem;
                 flex: 1;
                 h2 {
-                    color: $primary;
-                    border-left: 3px solid $primary;
-                    padding-left: 0.6rem;
+                    color: #3d464d;
+                    padding-left: 4.8rem;
                 }
                 p {
-                    padding-left: 0.8rem;
+                    padding-left: 4.8rem;
                 }
             }
         }

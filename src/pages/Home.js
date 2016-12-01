@@ -22,18 +22,34 @@ export default function() {
         </div>
         <section>
             <div className="container">
-                <article>
-                    <h2>Tiny Size</h2>
-                    <p>Lightweight filesize of only 6kb.</p>
-                </article>
-                <article>
-                    <h2>React Compatible</h2>
-                    <p>React-like API, concepts and component lifecycle events.</p>
-                </article>
-                <article>
-                    <h2>Modular</h2>
-                    <p>Highly modular with very little opinionation of how things should be done.</p>
-                </article>
+                <div>
+                    <article>
+                        <h2>Tiny Size</h2>
+                        <p>Lightweight filesize of only 6kb.</p>
+                    </article>
+                    <article>
+                        <h2>React Compatible</h2>
+                        <p>React-like API, concepts and component lifecycle events.</p>
+                    </article>
+                    <article>
+                        <h2>Modular</h2>
+                        <p>Highly modular with very little opinionation of how things should be done.</p>
+                    </article>
+                </div>
+                <div>
+                    <article>
+                        <h2>Component-Based</h2>
+                        <p>Lightweight filesize of only 6kb.</p>
+                    </article>
+                    <article>
+                        <h2>React Compatible</h2>
+                        <p>React-like API, concepts and component lifecycle events.</p>
+                    </article>
+                    <article>
+                        <h2>Modular</h2>
+                        <p>Highly modular with very little opinionation of how things should be done.</p>
+                    </article>
+                </div>
             </div>
         </section>
     </div>
