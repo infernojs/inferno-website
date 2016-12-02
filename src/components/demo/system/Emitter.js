@@ -17,7 +17,7 @@ function createParticle(position, velocity, lifetimeMax) {
 export default class Emitter {
     static emit(lifetime) {
 
-        const position = randomPosition(200, 300);
+        const position = randomPosition(150, 250);
         const spread = Math.random()
 
         let velocity = Vector.fromAngle(-1.5, 2.8)

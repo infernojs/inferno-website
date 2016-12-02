@@ -8,6 +8,7 @@ import serve from 'koa-static'
 import config from './config'
 import catcher from './middleware/catcher'
 import render from './middleware/render'
+import markdown from './routes/markdown'
 
 const app = new Koa()
 
@@ -19,6 +20,7 @@ app.use(bodyParser({
     jsonLimit: '200kb',
     bufferLimit: '4mb'
 }))
+
 // Serve static files
 config.http.static.forEach(staticRoute => {
     logger('inferno:static')(staticRoute.path)
@@ -26,6 +28,7 @@ config.http.static.forEach(staticRoute => {
 })
 
 app.use(catcher)
+app.use(markdown.routes())
 app.use(render)
 
 app.listen(config.http.port, function() {

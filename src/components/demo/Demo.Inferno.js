@@ -5,8 +5,8 @@ import Canvas from './inferno/Canvas'
 
 if (process.env.BROWSER) {
     window.demo = {
-        width: 400,
-        height: 400
+        width: 300,
+        height: 300
     }
 }
 

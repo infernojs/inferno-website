@@ -1,31 +1,44 @@
 import Inferno from 'inferno'
+import Component from 'inferno-component'
+import createElement from 'inferno-create-element'
 import { Link } from 'inferno-router'
-import CommonMark from 'commonmark'
-import InfernoRenderer from '../components/markdown/InfernoRenderer'
 
-export default function({ params }) {
-    console.log(params)
-
-    let MarkdownResult = ''
-    if (process.env.BROWSER) {
-        const file = params.file || 'overview.md'
-        console.warn(`../docs/${file}`)
-        const page = require('../docs/guides/overview.md')
-        const parser = new CommonMark.Parser();
-        const renderer = new InfernoRenderer();
-
-        const input = '# This is a header\n\nAnd this is a paragraph';
-        const ast = parser.parse(page);
-        MarkdownResult = renderer.render(ast);
+export default class Docs extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            markdown: null
+        }
     }
 
-    return <div className="container padding markdown">
-        <aside>
-            <Link to="/docs/guides/overview.md">Overview</Link>
-            <Link to="/docs/guides/installation.md">Installation</Link>
+    componentDidMount() {
+        fetch('/api/markdown?file=guides/installation.md')
+        .then(response => response.json())
+        .then(response => {
+            this.setState({ markdown: response })
+            this.forceUpdate()
+        })
+    }
+
+    render() {
+        return <aside id="markdown-root">
+            {toArray(this.state.markdown).map(m => m)}
         </aside>
-        <aside>
-            {MarkdownResult}
-        </aside>
-    </div>
+    }
 }
+
+function toArray(arr) {
+    return Array.isArray(arr) ? arr : [arr]
+}
+
+/*
+    render() {
+        return <div className="container padding markdown">
+            <aside>
+                <Link to="/docs/guides/overview.md">Overview</Link>
+                <Link to="/docs/guides/installation.md">Installation</Link>
+            </aside>
+            <aside id="markdown-root"/>
+        </div>
+    }
+* */

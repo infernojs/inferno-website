@@ -1,6 +1,43 @@
+import Inferno from 'inferno'
+import fs from 'fs'
+import path from 'path'
+import router from 'koa-router'
+import CommonMark from 'commonmark'
 import createElement from 'inferno-create-element'
-//let xssFilters = require('xss-filters');
+import xssFilters from 'xss-filters'
 
+export default router()
+.get('/api/markdown', async(ctx, next) => {
+    const { file = 'guides/overview.md'} = ctx.query
+
+    if (file.includes('..')) {
+        return ctx.body = '<!DOCTYPE html>Cannot access this path'
+    }
+
+    const location = path.join(__dirname, `../../docs/${file}`)
+
+    ctx.body = await parseMarkDown(location)
+})
+
+async function parseMarkDown(location) {
+    return new Promise((resolve) => {
+        fs.readFile(location, 'utf-8', async(err, data) => {
+            if (err) return console.error(err)
+
+            const parser = new CommonMark.Parser();
+            const renderer = new InfernoRenderer();
+            const input = '# This is a header\n\nAnd this is a paragraph';
+            const ast = parser.parse(data);
+            const MarkdownResult = renderer.render(ast);
+
+            resolve(renderer.render(ast))
+        })
+    })
+}
+
+/**
+ * Everything below is a port of react markdown renderer to inferno
+ */
 let typeAliases = {
     blockquote: 'block_quote',
     thematicbreak: 'thematic_break',
@@ -40,10 +77,12 @@ let defaultRenderers = {
         return createElement('pre', getCoreProps(props), code);
     },
     code: function Code(props) {
-        return createElement('code', getCoreProps(props), props.children);
+        //return createElement('code', getCoreProps(props), props.children);
+        return createElement('code', getCoreProps(props));
     },
     heading: function Heading(props) {
-        return createElement('h' + props.level, getCoreProps(props), props.children);
+        //return createElement('h' + props.level, getCoreProps(props), props.children);
+        return createElement('h' + props.level, getCoreProps(props));
     },
 
     text: null,
@@ -54,7 +93,6 @@ let coreTypes = Object.keys(defaultRenderers);
 
 function getCoreProps(props) {
     return {
-        'key': props.nodeKey,
         'data-sourcepos': props['data-sourcepos']
     };
 }
@@ -85,9 +123,7 @@ function HtmlRenderer(props) {
 function isGrandChildOfList(node) {
     let grandparent = node.parent.parent;
     return (
-    grandparent &&
-    grandparent.type.toLowerCase() === 'list' &&
-    grandparent.listTight
+    grandparent && grandparent.type.toLowerCase() === 'list' && grandparent.listTight
     );
 }
 
@@ -112,15 +148,12 @@ function reduceChildren(children, child) {
 }
 
 function flattenPosition(pos) {
-    return [
-        pos[0][0], ':', pos[0][1], '-',
-        pos[1][0], ':', pos[1][1]
-    ].map(String).join('');
+    return [pos[0][0], ':', pos[0][1], '-', pos[1][0], ':', pos[1][1]].map(String).join('');
 }
 
 // For some nodes, we want to include more props than for others
 function getNodeProps(node, key, opts, renderer) {
-    let props = { key: key }, undef;
+    let props = {}, undef;
 
     // `sourcePos` is true if the user wants source information (line/column info from markdown source)
     if (opts.sourcePos && node.sourcepos) {
@@ -128,8 +161,9 @@ function getNodeProps(node, key, opts, renderer) {
     }
 
     let type = normalizeTypeName(node.type);
+    props._type = type
 
-    switch (type) {
+    switch(type) {
         case 'html_inline':
         case 'html_block':
             props.isBlock = type === 'html_block';
@@ -177,6 +211,7 @@ function getNodeProps(node, key, opts, renderer) {
 
     if (typeof renderer !== 'string') {
         props.literal = node.literal;
+        //props.children = Inferno.createVNode(1, 'span', null, node.literal)
     }
 
     let children = props.children || (node.react && node.react.children);
@@ -282,9 +317,7 @@ function renderNodes(block) {
 
         let isSimpleNode = type === 'text' || type === 'softbreak';
         if (typeof renderer !== 'function' && !isSimpleNode && typeof renderer !== 'string') {
-            throw new Error(
-            'Renderer for type `' + pascalCase(node.type) + '` not defined or is not renderable'
-            );
+            throw new Error('Renderer for type `' + pascalCase(node.type) + '` not defined or is not renderable');
         }
 
         if (node.isContainer && entering) {
@@ -296,10 +329,7 @@ function renderNodes(block) {
         } else {
             let childProps = nodeProps || getNodeProps(node, key, propOptions, renderer);
             if (renderer) {
-                childProps = typeof renderer === 'string'
-                ? childProps
-                : Object.assign(childProps, {nodeKey: childProps.key});
-
+                childProps = typeof renderer === 'string' ? childProps : Object.assign(childProps, { nodeKey: childProps.key });
                 addChild(node, createElement(renderer, childProps));
             } else if (type === 'text') {
                 addChild(node, node.literal);
@@ -315,10 +345,8 @@ function renderNodes(block) {
 function defaultLinkUriFilter(uri) {
     let url = uri.replace(/file:\/\//g, 'x-file://');
 
-    // React does a pretty swell job of escaping attributes,
-    // so to prevent double-escaping, we need to decode
-    return decodeURI(url);
-    //return decodeURI(xssFilters.uriInDoubleQuotedAttr(url));
+    // To prevent double-escaping of attributes, we need to decode
+    return decodeURI(xssFilters.uriInDoubleQuotedAttr(url));
 }
 
 function InfernoRenderer(options) {
@@ -431,5 +459,3 @@ function pascalCase(str) {
         return ch.toUpperCase();
     });
 }
-
-export default InfernoRenderer

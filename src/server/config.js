@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
     http: {
-        port: 8080,
+        port: process.env.DEV ? 8080 : 8050,
         favicon: path.join(__dirname, '../assets/favicon.ico'),
         static: [
             {
@@ -10,12 +10,12 @@ module.exports = {
                 path: path.join(__dirname, '../../build')
             },
             {
-                url: '/static',
-                path: path.join(__dirname, '../assets/static')
+                url: '/assets',
+                path: path.join(__dirname, '../assets')
             },
             {
                 url: '/static',
-                path: path.join(__dirname, '../assets/static')
+                path: path.join(__dirname, '../docs')
             }
         ]
     }
