@@ -21,8 +21,6 @@ export default class Docs extends Component {
     }
 
     render() {
-        console.log(<aside id="markdown-root"><p>test</p></aside>)
-        console.log(this.state.markdown)
         return <aside id="markdown-root">
             {toArray(this.state.markdown).map(m => m)}
         </aside>
