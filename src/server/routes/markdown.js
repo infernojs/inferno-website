@@ -30,7 +30,7 @@ async function parseMarkDown(location) {
             const ast = parser.parse(data);
             const MarkdownResult = renderer.render(ast);
 
-            resolve(renderer.render(ast))
+            resolve(MarkdownResult)
         })
     })
 }
@@ -61,7 +61,7 @@ let defaultRenderers = {
     html_block: HtmlRenderer, // eslint-disable-line camelcase
     html_inline: HtmlRenderer, // eslint-disable-line camelcase
 
-    list: function List(props) {
+    list(props) {
         let tag = props.type.toLowerCase() === 'bullet' ? 'ul' : 'ol';
         let attrs = getCoreProps(props);
 
@@ -71,18 +71,16 @@ let defaultRenderers = {
 
         return createElement(tag, attrs, props.children);
     },
-    code_block: function CodeBlock(props) { // eslint-disable-line camelcase
+    code_block(props) { // eslint-disable-line camelcase
         let className = props.language && 'language-' + props.language;
         let code = createElement('code', { className: className }, props.literal);
         return createElement('pre', getCoreProps(props), code);
     },
-    code: function Code(props) {
-        //return createElement('code', getCoreProps(props), props.children);
-        return createElement('code', getCoreProps(props));
+    code(props) {
+        return createElement('code', getCoreProps(props), props.children);
     },
-    heading: function Heading(props) {
-        //return createElement('h' + props.level, getCoreProps(props), props.children);
-        return createElement('h' + props.level, getCoreProps(props));
+    heading(props) {
+        return createElement('h' + props.level, getCoreProps(props), props.children);
     },
 
     text: null,
@@ -133,7 +131,12 @@ function addChild(node, child) {
         parent = parent.parent;
     } while (!parent.react);
 
-    parent.react.children.push(child);
+    if (typeof child.type === 'function') {
+        //child.type = child.type(child.props)
+        parent.react.children.push(child.type(child.props));
+    } else {
+        parent.react.children.push(child);
+    }
 }
 
 function reduceChildren(children, child) {
@@ -338,7 +341,6 @@ function renderNodes(block) {
             }
         }
     }
-
     return doc.react.children;
 }
 

@@ -22,7 +22,7 @@ export default class Docs extends Component {
 
     render() {
         return <aside id="markdown-root">
-            {toArray(this.state.markdown).map(m => m)}
+            {this.state.markdown}
         </aside>
     }
 }
