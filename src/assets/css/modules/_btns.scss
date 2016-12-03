@@ -1,29 +1,24 @@
         .home a.button {
-            padding: 1rem 2rem;
-            margin: 0 1rem 1rem 0;
+            padding: 1rem 0rem;
             font-size: 1rem;
             border-radius: 2rem;
-            min-width: 10rem;
             text-decoration: none;
+            width: 100%;
             text-align: center;
             cursor: pointer;
-            border: 2px solid $primary;
+            display: block;
             &:hover {
-                background: $white;
-                color: $primary;
+                color: $white;
             }
             @include media-query($on-small) {
-                display: block;
-                margin: 0px;
                 margin-bottom: 1rem;
             }
-            &:first-child {
-                color: $white;
-                background: $primary;
-                border: 0;
-            }
-            &:last-child {
+            color: $white;
+            background: $primary;
+            border: 0;
+            &.second {
                 color: $primary;
                 background: $white;
+                border: 2px solid $primary;
             }
         }
