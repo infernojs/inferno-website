@@ -68,15 +68,8 @@ $on-laptop: 700px;
     @media (max-width: $device) {
         @content;
     }
-}
+};
 
-;
-@include media-query($on-small) {
-    .container > .row > * {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
 
 .container::after {
     content: "";

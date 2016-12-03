@@ -1,0 +1,32 @@
+footer {
+    background-color: $footer;
+    height: 156px;
+    .row {
+        padding: 0px 10px;
+        justify-content: space-between;
+        align-items: center;
+        height: 156px;
+        color: $white;
+        .mit {
+            text-align: center;
+        }
+        @include media-query($on-laptop) {
+            padding: 0px $gutter;
+        }
+        @include media-query($on-laptop) {
+            .mit,
+            .contributors {
+                display: none;
+            }
+            .social-network {
+                margin: 0 auto;
+            }
+        }
+        svg {
+            float: left;
+            fill: $white;
+            stroke: $white;
+            margin: 0px 5px;
+        }
+    }
+}
