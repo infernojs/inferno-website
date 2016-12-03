@@ -1,0 +1,63 @@
+    .home {
+        .hero-banner {
+            padding: 140px $gutter;
+            @include media-query($on-laptop) {
+                padding: 40px $gutter;
+            }
+            max-width: 840px;
+            margin: 0 auto;
+
+            @include media-query($on-laptop) {
+                max-width: 600px;
+                .inferno-logo {
+                    display: block;
+                    margin: 0 auto;
+                    max-width: 240px;
+                }
+            }
+            h1 {
+                font-weight: bold;
+                text-align: left;
+                margin: 0;
+            }
+            h2 {
+                font-size: 1.6rem;
+                font-weight: normal;
+                margin: 0 0 1rem;
+            }
+        }
+        section {
+            background: $bg;
+            svg {
+                width: auto;
+                fill: $primary;
+                float: left;
+                @include media-query($on-small) {
+                    margin: 0 auto;
+                    margin-bottom: $gutter;
+                    display: block;
+                    float: none;
+                }
+            }
+            h2,
+            p {
+                padding-left: 1.5rem;
+                overflow: auto;
+                text-align: justify;
+            }
+            @include media-query($on-small) {
+                h2 {text-align: center;}
+                p, h2 {
+                 padding-left: 0rem;
+                }
+            }
+
+            .row > * {
+                padding: 2rem $gutter;
+                outline: .5px solid $white;
+                            @include media-query($on-small) {
+                padding: 2rem $gutter*2;
+            }
+            }
+        }
+    }

@@ -1,5 +1,3 @@
-@import "common";
-
 #demo-wrapper {
     padding: 2rem;
 
@@ -21,7 +19,7 @@
     }
 
     button {
-        color: #fff;
+        color: $white;
         background: $primary;
         border: 0;
         padding: 0.4rem 0.8rem;
@@ -32,7 +30,7 @@
 }
 
 #demo-canvas {
-    background: #000;
+    background: $black;
     position: absolute;
     overflow: hidden;
 
