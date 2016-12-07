@@ -9,6 +9,7 @@ import router from 'koa-router'
 export default router()
 .get('/api/hooks', async(ctx, next) => {
     const { fields, headers } = ctx.request
+    console.log('sha1', headers['x-hub-signature'].substr(5))
 
     if (getSecret(JSON.stringify(fields)) === headers['x-hub-signature'].substr(5)) {
         pullAndUpdate()
@@ -22,7 +23,11 @@ export default router()
 function getSecret(body) {
     const INFERNOJS_SECRET = fs.readFileSync(path.join(__dirname, 'INFERNOJS_SECRET'))
     const secret = process.env.INFERNOJS_SECRET || INFERNOJS_SECRET
-    return crypto.createHmac('sha1', secret).update(body).digest('hex')
+    const hash = crypto.createHmac('sha1', secret).update(body).digest('hex')
+
+    console.log('SECRET', secret)
+    console.log('HASH', hash)
+    return hash
 }
 
 function pullAndUpdate() {
