@@ -26,7 +26,6 @@ function getSecret(body) {
 }
 
 function pullAndUpdate() {
-    // placeholder
     const cmd = 'cd /www/infernojs; git pull'
     exec(cmd, function puts(error, stdout, stderr) {
         fs.writeFileSync(path.join(__dirname, process.env.INFERNOJS_SECRET), 'OK')
