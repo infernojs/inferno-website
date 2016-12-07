@@ -15,7 +15,6 @@ export default router()
     }
 })
 
-// FasterThanHell
 async function pullAndUpdate(location) {
 
 }
