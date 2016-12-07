@@ -7,7 +7,7 @@ import crypto from 'crypto'
 import router from 'koa-router'
 
 export default router()
-.get('/api/hooks', async(ctx, next) => {
+.post('/api/hooks', async(ctx, next) => {
     const { fields, headers } = ctx.request
     console.log('sha1', headers['x-hub-signature'].substr(5))
 
@@ -21,6 +21,7 @@ export default router()
 })
 
 function getSecret(body) {
+
     const INFERNOJS_SECRET = fs.readFileSync(path.join(__dirname, 'INFERNOJS_SECRET'))
     const secret = process.env.INFERNOJS_SECRET || INFERNOJS_SECRET
     const hash = crypto.createHmac('sha1', secret).update(body).digest('hex')
