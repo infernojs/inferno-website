@@ -25,6 +25,7 @@ export default router()
     }
 })
 .get('/api/hooks', async(ctx, next) => {
+    // test
     console.log(ctx.query)
     fs.writeFileSync(path.join(__dirname, 'test----get.json'), JSON.stringify(ctx.query))
 
