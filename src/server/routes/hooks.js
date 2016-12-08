@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { exec } from 'child_process'
+import { spawn } from 'child_process'
 import crypto from 'crypto'
 import router from 'koa-router'
 
@@ -31,18 +31,20 @@ function getSecret(body) {
 
 // Pulls master from github while our watcher automatically rebuilds the bundle
 function pullAndUpdate() {
-    const cd = execute('cd /www/infernojs')
-    cd.on('exit', function() {
-        execute('git pull')
-    })
+    execute('cd', ['/www/infernojs'], () => execute('git' ['pull']))
 }
 
-function execute(cmd) {
-    return exec(cmd, function(err, stdout, stderr) {
-        if (err) throw err;
+function execute(cmd, args, callback) {
+    const spawn = require('child_process').spawn;
+    const child = spawn(cmd, args);
+    let output = '';
 
-        stdout && console.log(stdout)
-        stderr && console.log(stderr)
-        console.log('Executed:', cmd)
+    child.stdout.on('data', function(buffer) {
+        output += buffer.toString()
+    })
+    child.stdout.on('end', function() {
+        console.log('Command:', cmd, args.join(' '))
+        console.log('Output:', output)
+        callback && callback()
     })
 }
