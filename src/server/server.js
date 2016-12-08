@@ -9,6 +9,7 @@ import config from './config'
 import catcher from './middleware/catcher'
 import render from './middleware/render'
 import markdown from './routes/markdown'
+import hooks from './routes/hooks'
 
 const app = new Koa()
 
@@ -29,6 +30,7 @@ config.http.static.forEach(staticRoute => {
 
 app.use(catcher)
 app.use(markdown.routes())
+app.use(hooks.routes())
 app.use(render)
 
 app.listen(config.http.port, function() {
