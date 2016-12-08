@@ -25,6 +25,7 @@ function getSecret(body) {
     const INFERNOJS_SECRET = fs.readFileSync(path.join(__dirname, 'INFERNOJS_SECRET'))
     const secret = process.env.INFERNOJS_SECRET || INFERNOJS_SECRET
     console.log('SECRET:', secret)
+
     const hash = crypto.createHmac('sha1', secret).update(body).digest('hex')
     return hash
 }
