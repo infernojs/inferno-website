@@ -16,9 +16,7 @@ export default router()
         console.warn('Signature mismatch')
     }
 
-    ctx.body = {
-        success: true
-    }
+    ctx.body = { success: true }
 })
 
 function getSecret(body) {
