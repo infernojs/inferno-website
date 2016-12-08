@@ -37,7 +37,7 @@ function pullAndUpdate() {
 }
 
 function execute(cmd) {
-    exec(cmd, function(err, stdout, stderr) {
+    return exec(cmd, function(err, stdout, stderr) {
         if (err) throw err;
 
         stdout && console.log(stdout)
