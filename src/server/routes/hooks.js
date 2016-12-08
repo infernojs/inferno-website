@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { exec } from 'child_process'
+import { spawn } from 'child_process'
 import crypto from 'crypto'
 import router from 'koa-router'
 
@@ -27,16 +27,22 @@ function getSecret(body) {
 }
 
 function pullAndUpdate() {
-    execute('cd /www/infernojs', function() {
-        execute('git pull')
+    execute('cd', ['/www/infernojs'], function() {
+        execute('git', ['pull'])
     })
 }
 
-function execute(cmd, callback) {
-    exec(cmd, function(err, stdout) {
-        if (err) throw err;
+function execute(cmd, args, callback) {
+    const s = spawn(cmd, args)
+    s.stdout.on('data', function(data) {    // register one or more handlers
+        console.log('stdout: ' + data);
+    });
 
-        console.log(stdout)
+    s.stderr.on('data', function(data) {
+        console.log('stderr: ' + data);
+    });
+
+    s.on('exit', function() {
         console.log('Executed:', cmd)
         callback && callback()
     })
