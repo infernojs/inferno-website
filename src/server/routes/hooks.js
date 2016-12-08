@@ -35,6 +35,8 @@ function pullAndUpdate() {
             return console.error(error)
         }
         if (stderr) console.error(stderr)
+
         console.log(stdout)
+        console.log('Successfully pulled from github')
     })
 }
