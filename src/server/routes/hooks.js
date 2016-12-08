@@ -29,14 +29,17 @@ function getSecret(body) {
 }
 
 function pullAndUpdate() {
-    const cmd = 'cd /www/infernojs && git pull'
-    exec(cmd, function(error, stdout, stderr) {
-        if (error) {
-            return console.error(error)
-        }
-        if (stderr) console.error(stderr)
+    execute('cd /www/infernojs', function() {
+        execute('git pull')
+    })
+}
+
+function execute(cmd, callback) {
+    exec(cmd, function(err, stdout) {
+        if (err) throw err;
 
         console.log(stdout)
-        console.log('Successfully pulled from github')
+        console.log('Executed:', cmd)
+        callback && callback()
     })
 }
