@@ -21,6 +21,7 @@ export default router()
     }
 })
 
+// Checks if we're authorized to restart the server
 function getSecret(body) {
     const INFERNOJS_SECRET = fs.readFileSync(path.join(__dirname, 'INFERNOJS_SECRET'))
     const secret = process.env.INFERNOJS_SECRET || INFERNOJS_SECRET
