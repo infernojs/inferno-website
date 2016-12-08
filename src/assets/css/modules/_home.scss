@@ -2,7 +2,7 @@
         .hero-banner {
             padding: 140px $gutter;
             @include media-query($on-laptop) {
-                padding: 40px $gutter;
+                padding: 70px $gutter;
             }
             max-width: 840px;
             margin: 0 auto;
