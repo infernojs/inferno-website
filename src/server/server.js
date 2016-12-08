@@ -5,6 +5,8 @@ import compress from 'koa-compress'
 import favicon from 'koa-favicon'
 import mount from 'koa-mount'
 import serve from 'koa-static'
+import convert from 'koa-convert'
+
 import config from './config'
 import catcher from './middleware/catcher'
 import render from './middleware/render'
@@ -16,11 +18,11 @@ const app = new Koa()
 // Middleware
 app.use(favicon(config.http.favicon))
 app.use(compress())
-app.use(bodyParser({
+app.use(convert(bodyParser({
     formLimit: '200kb',
     jsonLimit: '200kb',
     bufferLimit: '4mb'
-}))
+})))
 
 // Serve static files
 config.http.static.forEach(staticRoute => {
