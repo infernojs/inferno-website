@@ -25,6 +25,6 @@
     stroke-width: 0.2rem;
     transform-origin: center;
     animation:
-            dash $duration ease-in-out infinite,
-            colors ($duration*4) ease-in-out infinite;
+        dash $duration ease-in-out infinite,
+        colors ($duration*4) ease-in-out infinite;
 }
