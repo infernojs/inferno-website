@@ -29,6 +29,7 @@ function getSecret(body) {
     return hash
 }
 
+// Pulls master from github while our watcher automatically rebuilds the bundle
 function pullAndUpdate() {
     const cd = execute('cd /www/infernojs')
     cd.on('exit', function() {
