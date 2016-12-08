@@ -25,9 +25,6 @@ $gutter: 15px;
     min-height: 1px;
     width: 100%;
     padding: 0 $gutter;
-    & > * {
-        //outline: 1px dashed red;
-    }
 }
 
 @each $breakpoint in map-keys($grid) {
@@ -78,15 +75,9 @@ $on-laptop: 700px;
 }
 
 body {
-    height: 100%;
-    background: #fff;
     font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
     font-size: 13px;
     font-weight: normal;
     color: #3d464d;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    overflow-x: hidden;
     letter-spacing: 0.2px;
 }

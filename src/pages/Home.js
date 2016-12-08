@@ -11,10 +11,10 @@ export default function() {
             <h2>An extremely fast React-like javascript library for building modern user interfaces</h2>
             <div className="row buttons">
                 <div className="sm4">
-                    <div className="test"><a className="button">Get Started</a></div>
+                    <a className="button">Get Started</a>
                 </div>
                 <div className="sm4">
-                    <div className="test"><a className="button second" href="https://github.com/trueadm/inferno">Examples</a></div>
+                    <a className="button second" href="https://github.com/trueadm/inferno">Examples</a>
                 </div>
             </div>
         </div>
