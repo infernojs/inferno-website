@@ -2,15 +2,15 @@
 @import "../../../../node_modules/bootstrap/scss/mixins";
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../../node_modules/bootstrap/scss/reboot";
-$columns: 3;
+$columns: 12;
 $grid: ( xs: 0px, sm: 700px, lg: 990px);
 $gutter: 15px;
 .container {
     margin: 0 auto;
     padding-left: $gutter;
     padding-right: $gutter;
-    width: 990px;
-    max-width: 100%;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .row {

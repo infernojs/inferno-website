@@ -51,6 +51,7 @@ header.container {
             }
             .down-arrow {
                 color: $primary;
+                font-size: 0.65rem;
             }
         }
         @include media-query($on-laptop) {

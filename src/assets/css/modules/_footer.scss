@@ -1,17 +1,16 @@
 footer {
     background-color: $footer;
-    height: 156px;
     .row {
         padding: 0px 10px;
         justify-content: space-between;
         align-items: center;
-        height: 156px;
+        padding: 2rem 0rem 2rem 0rem;
         color: $white;
         .mit {
             text-align: center;
         }
         @include media-query($on-laptop) {
-            padding: 0px $gutter;
+            padding: 15px $gutter;
         }
         @include media-query($on-laptop) {
             .mit,
