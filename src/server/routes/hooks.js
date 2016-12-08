@@ -7,9 +7,13 @@ import router from 'koa-router'
 export default router()
 .post('/api/hooks', async(ctx, next) => {
     const { fields, headers } = ctx.request
+    const signature = getSecret(JSON.stringify(fields))
 
-    if (getSecret(JSON.stringify(fields)) === headers['x-hub-signature'].substr(5)) {
+    if (signature === headers['x-hub-signature'].substr(5)) {
+        console.info('Signature matched, restarting server...')
         pullAndUpdate()
+    } else {
+        console.warn('Signature mismatch:')
     }
 
     ctx.body = {
@@ -20,6 +24,7 @@ export default router()
 function getSecret(body) {
     const INFERNOJS_SECRET = fs.readFileSync(path.join(__dirname, 'INFERNOJS_SECRET'))
     const secret = process.env.INFERNOJS_SECRET || INFERNOJS_SECRET
+    console.log('SECRET:', secret)
     const hash = crypto.createHmac('sha1', secret).update(body).digest('hex')
     return hash
 }
