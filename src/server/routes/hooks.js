@@ -34,6 +34,7 @@ function pullAndUpdate() {
     execute('cd', ['/www/infernojs'], () => execute('git' ['pull']))
 }
 
+// Run commands
 function execute(cmd, args, callback) {
     const spawn = require('child_process').spawn;
     const child = spawn(cmd, args);
