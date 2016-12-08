@@ -112,13 +112,13 @@ export default function() {
             <li>Parse + Load Time</li>
         </ul>
         <div className="row charts">
-            <div className="lg4 copy">
+            <div className="sm4 copy">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac risus orci.
                 enean faucibus mi erat, vitae fringilla metus egestas eget.
                 Morbi at congue ligula, nec interdum est.
             </div>
-            <div className="lg8 visual">
-                <svg width="391px" height="270px" viewBox="0 0 391 270" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <div className="sm8 visual">
+                <svg className="graph" viewBox="0 0 391 270" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="Option-E" transform="translate(-546.000000, -1346.000000)">
                             <g id="Group-6" transform="translate(546.000000, 1346.000000)">

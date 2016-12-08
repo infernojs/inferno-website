@@ -109,6 +109,17 @@
                 display: block;
                 margin: 0px auto 5px auto;
             }
+
+             svg.graph {
+                width: 391px;
+                height: 270px;
+                display: block;
+                margin: 0px auto 5px auto;
+                @include media-query($on-laptop) {
+                width: 100%;
+            }
+            }
+
             ul {
                 max-width: 1100px;
                 list-style: none;
