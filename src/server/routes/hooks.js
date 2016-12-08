@@ -1,6 +1,6 @@
 import fs from 'fs'
 import path from 'path'
-import { spawn } from 'child_process'
+import { exec } from 'child_process'
 import crypto from 'crypto'
 import router from 'koa-router'
 
@@ -16,7 +16,9 @@ export default router()
         console.warn('Signature mismatch')
     }
 
-    ctx.body = { success: true }
+    ctx.body = {
+        success: true
+    }
 })
 
 function getSecret(body) {
@@ -27,23 +29,15 @@ function getSecret(body) {
 }
 
 function pullAndUpdate() {
-    execute('cd', ['/www/infernojs'], function() {
-        execute('git', ['pull'])
-    })
+    execute('cd /www/infernojs && git pull')
 }
 
-function execute(cmd, args, callback) {
-    const s = spawn(cmd, args)
-    s.stdout.on('data', function(data) {
-        console.log('stdout: ' + data);
-    });
+function execute(cmd) {
+    exec(cmd, function(err, stdout, stderr) {
+        if (err) throw err;
 
-    s.stderr.on('data', function(data) {
-        console.log('stderr: ' + data);
-    });
-
-    s.on('exit', function() {
+        stdout && console.log(stdout)
+        stderr && console.log(stderr)
         console.log('Executed:', cmd)
-        callback && callback()
     })
 }
