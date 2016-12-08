@@ -159,12 +159,12 @@ export default function() {
     <section className="compare-react container">
         <h3>React-like but, different.</h3>
         <div className="row">
-            <ul className="options lg3">
+            <ul className="options sm3 lg3">
                 <li class="active">Compatability</li>
                 <li>Custom Namespaces</li>
                 <li>Stateful Components</li>
             </ul>
-            <div className="copy lg8">
+            <div className="copy sm8 lg8">
                 Inferno strives to be compatible with much of React’s basic API. However, in some places, alternative implementations have been used. Non-performant features have been removed or replaced where an alternative solution is easy to adopt without too many changes. Inferno doesn’t have React’s synthetic events, which means DOM elements have their events triggered in the same manner as you’d expect from the browser you’re running.
             </div>
         </div>
