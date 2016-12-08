@@ -34,7 +34,7 @@ function pullAndUpdate() {
 
 function execute(cmd, args, callback) {
     const s = spawn(cmd, args)
-    s.stdout.on('data', function(data) {    // register one or more handlers
+    s.stdout.on('data', function(data) {
         console.log('stdout: ' + data);
     });
 
