@@ -29,7 +29,10 @@ function getSecret(body) {
 }
 
 function pullAndUpdate() {
-    execute('cd /www/infernojs && git pull')
+    const cd = execute('cd /www/infernojs')
+    cd.on('exit', function() {
+        execute('git pull')
+    })
 }
 
 function execute(cmd) {
