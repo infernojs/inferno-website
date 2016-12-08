@@ -13,7 +13,7 @@ export default router()
         console.info('Signature matched, restarting server...')
         pullAndUpdate()
     } else {
-        console.warn('Signature mismatch:')
+        console.warn('Signature mismatch')
     }
 
     ctx.body = {
