@@ -11,10 +11,10 @@ export default function() {
             <h2>An extremely fast React-like javascript library for building modern user interfaces</h2>
             <div className="row buttons">
                 <div className="sm4">
-                    <div className="test"><a className="button">Get Started</a></div>
+                    <a className="button">Get Started</a>
                 </div>
                 <div className="sm4">
-                    <div className="test"><a className="button second" href="https://github.com/trueadm/inferno">Examples</a></div>
+                    <a className="button second" href="https://github.com/trueadm/inferno">Examples</a>
                 </div>
             </div>
         </div>
@@ -112,13 +112,13 @@ export default function() {
             <li>Parse + Load Time</li>
         </ul>
         <div className="row charts">
-            <div className="lg4 copy">
+            <div className="sm4 copy">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac risus orci.
                 enean faucibus mi erat, vitae fringilla metus egestas eget.
                 Morbi at congue ligula, nec interdum est.
             </div>
-            <div className="lg8 visual">
-                <svg width="391px" height="270px" viewBox="0 0 391 270" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+            <div className="sm8 visual">
+                <svg className="graph" viewBox="0 0 391 270" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="Option-E" transform="translate(-546.000000, -1346.000000)">
                             <g id="Group-6" transform="translate(546.000000, 1346.000000)">
@@ -159,12 +159,12 @@ export default function() {
     <section className="compare-react container">
         <h3>React-like but, different.</h3>
         <div className="row">
-            <ul className="options lg3">
+            <ul className="options sm3 lg3">
                 <li class="active">Compatability</li>
                 <li>Custom Namespaces</li>
                 <li>Stateful Components</li>
             </ul>
-            <div className="copy lg8">
+            <div className="copy sm8 lg8">
                 Inferno strives to be compatible with much of React’s basic API. However, in some places, alternative implementations have been used. Non-performant features have been removed or replaced where an alternative solution is easy to adopt without too many changes. Inferno doesn’t have React’s synthetic events, which means DOM elements have their events triggered in the same manner as you’d expect from the browser you’re running.
             </div>
         </div>

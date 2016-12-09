@@ -14,7 +14,7 @@
                 color: $white;
                 background-color: $secondary;
             }
-            @include media-query($on-small) {
+            @include media-query($on-laptop) {
                 margin-bottom: 1rem;
             }
             color: $white;

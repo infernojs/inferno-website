@@ -35,6 +35,9 @@
                 }
                 div:first-child {
                     padding-right: 0px;
+                    @include media-query($on-laptop) {
+                    padding-right: $gutter;
+                    }
                 }
             }
             @include media-query($on-small) {
@@ -106,6 +109,17 @@
                 display: block;
                 margin: 0px auto 5px auto;
             }
+
+             svg.graph {
+                width: 391px;
+                height: 270px;
+                display: block;
+                margin: 0px auto 5px auto;
+                @include media-query($on-laptop) {
+                width: 100%;
+            }
+            }
+
             ul {
                 max-width: 1100px;
                 list-style: none;
@@ -114,13 +128,16 @@
                 flex-flow: row;
                 justify-content: space-between;
                 margin: 40px auto 40px auto;
+                overflow: auto;
                 li {
                     -webkit-transition: all .2s ease-in-out;
                     -o-transition: all .2s ease-in-out;
                     transition: all .2s ease-in-out;
                     flex: 1;
+                    display: inline-block;
                     padding: 15px;
                     cursor: pointer;
+                    min-width: 220px;
                     text-align: center;
                     border-top: 3px solid $grey;
                     &:hover {
@@ -135,6 +152,12 @@
             .charts {
                 max-width: 80%;
                 margin: 0px auto;
+
+                @include media-query($on-laptop) {
+                margin: none;
+                  max-width: none;
+                    .visual {padding: 15px 0px;}
+            }
                 .copy {
                     display: flex;
                     align-items: center;
@@ -178,6 +201,39 @@
                     }
                 }
             }
+
+            @include media-query($on-laptop) {
+            ul {
+                list-style: none;
+                padding: 0px;
+                display: flex;
+                flex-flow: row;
+                justify-content: space-between;
+                margin: 40px auto 40px auto;
+                li {
+                    -webkit-transition: all .2s ease-in-out;
+                    -o-transition: all .2s ease-in-out;
+                    transition: all .2s ease-in-out;
+                    flex: 1;
+                    display: inline-block;
+                    padding: 15px;
+                    cursor: pointer;
+                    width: 33.33%;
+                    text-align: center;
+                    border-right: none;
+                    border-top: 3px solid $grey;
+                    &:hover {
+                        color: $primary;
+                    }
+                    &.active {
+                        border-top: 3px solid $primary;
+                        color: $primary;
+                        border-right: none;
+                    }
+                }
+            }
+            }
+
             .copy {
                 padding: 0px 25px 0px 25px;
                 display: flex;
