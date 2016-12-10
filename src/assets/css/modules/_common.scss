@@ -64,6 +64,8 @@ $gutter: 15px;
 
 $on-small: 480px;
 $on-laptop: 700px;
+$on-desktop: 1000px;
+
 @mixin media-query($device) {
     @media (max-width: $device) {
         @content;
