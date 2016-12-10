@@ -231,11 +231,40 @@
                         border-top: 3px solid $primary;
                         color: $primary;
                         border-right: none;
+
+                        &::before {
+                            opacity: 1;
+                            top: 0px;
+                        }
                     }
                 }
             }
         }
-
+        .charts {
+            max-width: 80%;
+            margin: 0px auto;
+            .copy {
+                display: flex;
+                align-items: center;
+            }
+            .visual {
+                table {
+                    margin: 0px auto;
+                    width: 75%;
+                    @include media-query($on-laptop) {
+                        margin-top: 50px;
+                        width: 100%;
+                    }
+                    @include media-query($on-desktop) {
+                        margin-top: 50px;
+                    }
+                }
+            }
+        }
+        .button {
+            margin: 25px auto;
+            display: block;
+        }
         .copy {
             padding: 0px 25px 0px 25px;
             display: flex;
