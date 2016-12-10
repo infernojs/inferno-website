@@ -1,4 +1,4 @@
-import Inferno from 'inferno'
+import Inferno, { linkEvent } from 'inferno'
 import InfernoLogo from '../components/common/Logo'
 import Benchmarks from '../components/common/Benchmarks'
 import IconArchitecture from '../components/icons/IconArchitecture'
@@ -10,7 +10,7 @@ import IconSize from '../components/icons/IconSize'
 import IconSpeed from '../components/icons/IconSpeed'
 
 export default function() {
-    return <div className="home">
+  return <div className="home">
     <div className="hero-banner row">
         <div className="logo xs12 sm3">
             <InfernoLogo showName={false}/> </div>
@@ -63,69 +63,6 @@ export default function() {
             Our Benchmarks
         </h3>
         <Benchmarks/>
-        <ul className="options">
-            <li className="active">JS Frameworks</li>
-            <li>Virtual DOM</li>
-            <li>UI Bench</li>
-            <li>DBMonster</li>
-            <li>Parse + Load Time</li>
-        </ul>
-        <div className="row charts">
-            <div className="sm4 copy">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac risus orci.
-                enean faucibus mi erat, vitae fringilla metus egestas eget.
-                Morbi at congue ligula, nec interdum est.
-            </div>
-            <div className="sm8 visual">
-                <svg className="graph" viewBox="0 0 391 270" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                        <g id="Option-E" transform="translate(-546.000000, -1346.000000)">
-                            <g id="Group-6" transform="translate(546.000000, 1346.000000)">
-                                <text id="VueJS" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#444444">
-                                    <tspan x="26" y="215">VueJS</tspan>
-                                </text>
-                                <rect id="Rectangle-4-Copy-13" fill="#7C7C7C"
-                                      transform="translate(236.593750, 208.827084) scale(-1, 1) rotate(-90.000000) translate(-236.593750, -208.827084) "
-                                      x="221.229167" y="65.625" width="30.7291667" height="286.404167"></rect>
-                                <text id="Ember-Copy" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#444444">
-                                    <tspan x="20" y="128">Ember</tspan>
-                                </text>
-                                <rect id="Rectangle-4-Copy-14" fill="#7C7C7C"
-                                      transform="translate(197.343750, 125.693218) scale(-1, 1) rotate(-90.000000) translate(-197.343750, -125.693218) "
-                                      x="181.979167" y="22.5476617" width="30.7291667" height="206.291113"></rect>
-                                <text id="React-Copy" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#444444">
-                                    <tspan x="25" y="171">React</tspan>
-                                </text>
-                                <rect id="Rectangle-4-Copy-15" fill="#7C7C7C"
-                                      transform="translate(206.177083, 167.260151) scale(-1, 1) rotate(-90.000000) translate(-206.177083, -167.260151) "
-                                      x="190.8125" y="55.1018757" width="30.7291667" height="224.316551"></rect>
-                                <text id="Angular-2" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#444444">
-                                    <tspan x="0" y="85">Angular 2</tspan>
-                                </text>
-                                <rect id="Rectangle-4-Copy-16" fill="#7C7C7C"
-                                      transform="translate(176.989583, 82.126286) scale(-1, 1) rotate(-90.000000) translate(-176.989583, -82.126286) "
-                                      x="161.625" y="0.0104057139" width="30.7291667" height="164.23176"></rect>
-                                <text id="Inferno" font-family="OpenSans, Open Sans" font-size="13" font-weight="normal" fill="#444444">
-                                    <tspan x="16" y="41">Inferno</tspan>
-                                </text>
-                                <rect id="Rectangle-4-Copy-17" fill="#F23F3F"
-                                      transform="translate(136.968750, 39.559353) scale(-1, 1) rotate(-90.000000) translate(-136.968750, -39.559353) "
-                                      x="121.604167" y="-2.5" width="30.7291667" height="84.1187064"></rect>
-                                <text id="Time" transform="translate(237.593750, 257.000000) rotate(-360.000000) translate(-237.593750, -257.000000) "
-                                      font-family="OpenSans, Open Sans" font-size="12" font-weight="normal" letter-spacing="3" fill="#F40026">
-                                    <tspan x="214.854167" y="261.5">Tim</tspan>
-                                    <tspan x="244.690104" y="261.5">e</tspan>
-                                </text>
-                                <path d="M79.5833333,0.557205011 L79.5833333,269.460897" id="Path-3" stroke="#F40026"></path>
-                                <path d="M204.960362,55.3111767 L204.960362,424.386805" id="Path-3" stroke="#F40026"
-                                      transform="translate(205.574945, 239.812500) rotate(-270.000000) translate(-205.574945, -239.812500) "></path>
-                            </g>
-                        </g>
-                    </g>
-                </svg>
-            </div>
-        </div>
-        <a className="button lg5 sm6" href="#">Learn more about how Inferno performs</a>
     </section>
     <section className="compare-react container">
         <h3>React-like but, different.</h3>
