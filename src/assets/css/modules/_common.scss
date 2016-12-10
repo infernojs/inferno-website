@@ -91,4 +91,9 @@ body {
     border: 0;
     overflow-x: hidden;
     letter-spacing: 0.2px;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
 }

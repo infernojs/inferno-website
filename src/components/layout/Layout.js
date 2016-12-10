@@ -1,19 +1,11 @@
 import Inferno from 'inferno'
 import { IndexLink, Link } from 'inferno-router'
+import Header from '../../components/common/Header'
+
 
 export default function({ children }) {
     return <div>
-        <menu className="container">
-            <nav className="align-left">
-                <IndexLink>Home</IndexLink>
-            </nav>
-            <nav className="align-right">
-                <Link to="/about">About <DownArrow/></Link>
-                <Link to="/docs">Docs <DownArrow/></Link>
-                <Link to="/contribute">Contribute</Link>
-                <Link to="/help">Help</Link>
-            </nav>
-        </menu>
+        <Header/>
         <main>
             {children}
         </main>
@@ -52,7 +44,3 @@ export default function({ children }) {
         </footer>
     </div>
 }
-
-const DownArrow = () => (
-    <span className="down-arrow">&#x25BC;</span>
-)
