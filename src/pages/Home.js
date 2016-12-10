@@ -156,7 +156,7 @@ export default function() {
         <h3>React-like but, different.</h3>
         <div className="row">
             <ul className="options sm3 lg3">
-                <li class="active">Compatability</li>
+                <li className="active">Compatability</li>
                 <li>Custom Namespaces</li>
                 <li>Stateful Components</li>
             </ul>
@@ -169,13 +169,13 @@ export default function() {
         <h3>Try Our Example</h3>
         <div className="container">
             <div className="row">
-                <div class="lg7">
+                <div className="lg7">
                     <h4>Todo List Component</h4>
-                    <div class="code">CODE GOES HERE</div>
+                    <div className="code">CODE GOES HERE</div>
                 </div>
-                <div class="lg5">
+                <div className="lg5">
                     <h4>Imports</h4>
-                    <div class="code">CODE GOES HERE</div>
+                    <div className="code">CODE GOES HERE</div>
                 </div>
             </div>
         </div>
