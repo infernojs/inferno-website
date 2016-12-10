@@ -7,45 +7,20 @@
             max-width: 840px;
             margin: 0 auto;
             .inferno-logo {
-                display: block;
-                margin: 0 auto;
-                max-width: 150px;
+                max-width: 130px;
             }
             @include media-query($on-laptop) {
                 max-width: 600px;
-            }
-            .logo, .logo-text {
-                padding: 0px;
+                text-align: center;
             }
             h1 {
-                font-weight: normal;
-                font-size: 2.25rem;
-                text-align: left;
+                font-weight: bold;
+                font-size: 2rem;
                 margin: 0;
             }
             h2 {
                 font-size: 1.6rem;
                 font-weight: 200;
-                margin: 0 0 1rem;
-            }
-            .buttons {
-                padding-top: 0.25rem;
-                a {
-                    font-size: 0.85rem;
-                }
-                div:first-child {
-                    padding-right: 0px;
-                    @include media-query($on-laptop) {
-                    padding-right: $gutter;
-                    }
-                }
-            }
-            @include media-query($on-small) {
-                h1,
-                h2 {
-                    text-align: center;
-                    margin: 1rem 0rem;
-                }
             }
         }
         section.features {
@@ -109,17 +84,15 @@
                 display: block;
                 margin: 0px auto 5px auto;
             }
-
-             svg.graph {
+            svg.graph {
                 width: 391px;
                 height: 270px;
                 display: block;
                 margin: 0px auto 5px auto;
                 @include media-query($on-laptop) {
-                width: 100%;
+                    width: 100%;
+                }
             }
-            }
-
             ul {
                 max-width: 1100px;
                 list-style: none;
@@ -152,12 +125,13 @@
             .charts {
                 max-width: 80%;
                 margin: 0px auto;
-
                 @include media-query($on-laptop) {
-                margin: none;
-                  max-width: none;
-                    .visual {padding: 15px 0px;}
-            }
+                    margin: none;
+                    max-width: none;
+                    .visual {
+                        padding: 15px 0px;
+                    }
+                }
                 .copy {
                     display: flex;
                     align-items: center;
@@ -201,39 +175,39 @@
                     }
                 }
             }
-
             @include media-query($on-laptop) {
-            ul {
-                list-style: none;
-                padding: 0px;
-                display: flex;
-                flex-flow: row;
-                justify-content: space-between;
-                margin: 40px auto 40px auto;
-                li {
-                    -webkit-transition: all .2s ease-in-out;
-                    -o-transition: all .2s ease-in-out;
-                    transition: all .2s ease-in-out;
-                    flex: 1;
-                    display: inline-block;
-                    padding: 15px;
-                    cursor: pointer;
-                    width: 33.33%;
-                    text-align: center;
-                    border-right: none;
-                    border-top: 3px solid $grey;
-                    &:hover {
-                        color: $primary;
-                    }
-                    &.active {
-                        border-top: 3px solid $primary;
-                        color: $primary;
+                ul {
+                    width: 660px;
+                    list-style: none;
+                    padding: 0px;
+                    display: flex;
+                    flex-flow: row;
+                    justify-content: space-between;
+                    margin: 40px auto 40px auto;
+                                    overflow: auto;
+                    li {
+                        -webkit-transition: all .2s ease-in-out;
+                        -o-transition: all .2s ease-in-out;
+                        transition: all .2s ease-in-out;
+                        flex: 1;
+                        display: inline-block;
+                        padding: 15px;
+                        cursor: pointer;
+                        min-width: 220px;
+                        text-align: center;
                         border-right: none;
+                        border-top: 3px solid $grey;
+                        &:hover {
+                            color: $primary;
+                        }
+                        &.active {
+                            border-top: 3px solid $primary;
+                            color: $primary;
+                            border-right: none;
+                        }
                     }
                 }
             }
-            }
-
             .copy {
                 padding: 0px 25px 0px 25px;
                 display: flex;

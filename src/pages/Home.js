@@ -4,19 +4,13 @@ import InfernoLogo from '../components/common/Logo'
 export default function() {
     return <div className="home">
     <div className="hero-banner row">
-        <div className="logo xs4 sm3">
+        <div className="logo xs12 sm3">
             <InfernoLogo showName={false}/> </div>
         <div className="logo-text sm9">
             <h1>Inferno</h1>
             <h2>An extremely fast React-like javascript library for building modern user interfaces</h2>
-            <div className="row buttons">
-                <div className="sm4">
                     <a className="button">Get Started</a>
-                </div>
-                <div className="sm4">
                     <a className="button second" href="https://github.com/trueadm/inferno">Examples</a>
-                </div>
-            </div>
         </div>
     </div>
     <section className="features">

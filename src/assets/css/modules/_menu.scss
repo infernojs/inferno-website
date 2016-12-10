@@ -1,32 +1,40 @@
-header.container {
-    @include media-query($on-laptop) {
-        border-bottom: 1px solid $bg;
-        position: fixed;
-        padding-left: 0px;
-        padding-right: 0px;
-        background-color: $white;
-        z-index: 5;
-    }
-    .menu-bar {
-        float: right;
-        display: none;
-        cursor: pointer;
-        height: 44px;
-        svg {
-            fill: $primary;
+    nav {
+        text-align: right;
+        display: block;
+        padding: 0 5em;
+        width: 100%;
+        height: 6em;
+        line-height: 6em;
+        top: 0;
+        .menu-bar {
+            display: none;
+            @include media-query($on-laptop) {
+                display: block;
+                left: 0px;
+                            cursor: pointer;
+                top: 0px;
+                right: 0px;
+                position: fixed;
+                background: $white;
+                height: 44px;
+                border-bottom: 1px solid $secondGrey;
+                            svg {
+                                float: right;
+                fill: $primary;
+            }
+            }
         }
         @include media-query($on-laptop) {
-            display: block;
+            height: 100%;
+            padding: 0px;
+            padding-top: 45px;
+            border-left: 1px solid $secondGrey;
         }
-    }
-    nav {
-        float: right;
-        padding: 1rem 0;
         a {
             color: $g1;
             font-size: 1rem;
-            margin-left: 2rem;
-            display: inline-block;
+            line-height: 5em;
+            padding-left: 1.25em;
             @include media-query($on-laptop) {
                 display: block;
                 line-height: 35px;
@@ -70,4 +78,3 @@ header.container {
             }
         }
     }
-}

@@ -1,21 +1,23 @@
-        .home a.button {
-            -webkit-transition: all .2s ease-in-out;
-            -o-transition: all .2s ease-in-out;
-            transition: all .2s ease-in-out;
-            padding: 0.75rem 0rem;
-            font-size: 1rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            width: 100%;
-            text-align: center;
-            cursor: pointer;
-            display: block;
+.home a.button {
+display: inline-block;
+    text-decoration: none;
+    padding: 1em 1.5em;
+    border-radius: 2em;
+    text-align: center;
+    cursor: pointer;
+    font-size: 1em;
+    min-width: 160px;
+    font-weight: bold;
+    border: 0;
+    color: #fff;
+    background: $primary;
+    margin-right: 1rem;
             &:hover {
                 color: $white;
-                background-color: $secondary;
+                background-color: $primary;
             }
             @include media-query($on-laptop) {
-                margin-bottom: 1rem;
+                margin: 0.5em;
             }
             color: $white;
             background: $primary;
@@ -26,8 +28,8 @@
                 border: 2px solid $primary;
                 &:hover {
                     color: $white;
-                    background-color: $secondary;
-                    border: 2px solid $secondary;
+                    background-color: $primary;
+                    border: 2px solid $primary;
                 }
             }
         }

@@ -75,9 +75,15 @@ $on-laptop: 700px;
 }
 
 body {
-    font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
-    font-size: 13px;
-    font-weight: normal;
-    color: #3d464d;
-    letter-spacing: 0.2px;
+    color: #444;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: "Open Sans",Arial;
+    background-color: #fff;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    overflow-x: hidden;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
 }

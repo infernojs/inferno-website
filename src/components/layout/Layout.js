@@ -1,27 +1,11 @@
 import Inferno from 'inferno'
 import { IndexLink, Link } from 'inferno-router'
-
-function showMenu() {
-    alert('menu');
-    }
+import Header from '../../components/common/Header'
 
 
 export default function({ children }) {
     return <div>
-        <header className="container">
-                <div className="menu-bar" onClick={showMenu}>
-        <svg width="44px" height="44px" viewBox="0 0 44 44" preserveAspectRatio="none">
-            <path d="m 31.002119,15.984 c 0,0.82 -0.665,1.484 -1.484,1.484 l -15.032,0 c -0.819,0.001 -1.484,-0.664 -1.484,-1.484 l 0,0 c 0,-0.819 0.665,-1.484 1.484,-1.484 l 15.031,0 c 0.82,0 1.485,0.665 1.485,1.484 l 0,0 z" />
-            <path d="m 30.997882,21.944916 c 0,0.819 -0.665,1.484 -1.484,1.484 l -15.032001,0 c -0.819,0 -1.484,-0.665 -1.484,-1.484 l 0,0 c 0,-0.82 0.665,-1.484 1.484,-1.484 l 15.031001,0 c 0.82,-0.001 1.485,0.664 1.485,1.484 l 0,0 z" />
-            <path d="m 31.002119,28.016 c 0,0.819 -0.665,1.484 -1.484,1.484 l -15.032,0 c -0.819,0 -1.484,-0.665 -1.484,-1.484 l 0,0 c 0,-0.82 0.665,-1.484 1.484,-1.484 l 15.031,0 c 0.82,-0.001 1.485,0.664 1.485,1.484 l 0,0 z" /> </svg>
-    </div>
-            <nav>
-                <Link to="/about">About <DownArrow/></Link>
-                <Link to="/docs">Docs <DownArrow/></Link>
-                <Link to="/contribute">Contribute</Link>
-                <Link to="/help">Help</Link>
-            </nav>
-        </header>
+        <Header/>
         <main>
             {children}
         </main>
@@ -60,7 +44,3 @@ export default function({ children }) {
         </footer>
     </div>
 }
-
-const DownArrow = () => (
-    <span className="down-arrow">&#x25BC;</span>
-)
