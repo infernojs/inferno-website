@@ -17,6 +17,11 @@ export default class Benchmarks extends Component {
           name: 'JS Frameworks',
           description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac risus orci. enean faucibus mi erat, vitae fringilla metus egestas eget. Morbi at congue ligula, nec interdum est.',
           data: [
+            { label: 'Inferno', value: 0.3, bg: 'rgb(242, 63, 63)' },
+            { label: 'Angular 2', value: 0.6 },
+            { label: 'Ember', value: 0.65 },
+            { label: 'React', value: 0.8 },
+            { label: 'VueJS', value: 0.95 }
           ]
         },
         {
