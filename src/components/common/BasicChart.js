@@ -1,14 +1,6 @@
 import Inferno from 'inferno';
 
 export default function BasicChart({ data, settings }) {
-  // Define data to power the chart
-  // let data = chartData ? chartData : [
-  //   { label: 'Inferno', value: 0.3, bg: 'rgb(242, 63, 63)' },
-  //   { label: 'Angular 2', value: 0.6 },
-  //   { label: 'Ember', value: 0.65 },
-  //   { label: 'React', value: 0.8 },
-  //   { label: 'VueJS', value: 0.95 }
-  // ];
   // Define theme styles
   const theme = Object.assign(
     {
@@ -41,6 +33,10 @@ export default function BasicChart({ data, settings }) {
         bottomCell: {
           borderTop: '1px solid rgb(242, 63, 63)',
           borderRight: '1px solid rgb(242, 63, 63)'
+        },
+        noData: {
+          textAlign: 'center',
+          padding: '100px'
         }
       },
       labels: {
@@ -69,6 +65,13 @@ export default function BasicChart({ data, settings }) {
             </tr>
           )
         })
+      }
+      {
+        (data.length == 0) ?
+          <tr>
+            <td style={ theme.styles.yAxis }>&nbsp;</td>
+            <td style={ theme.styles.noData } colspan="2">No data has been supplied.</td>
+          </tr> : ''
       }
       <tr>
         <td style={ theme.styles.bottomCell }>&nbsp;</td>
