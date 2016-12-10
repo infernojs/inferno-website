@@ -134,35 +134,62 @@
                 -o-transition: all .2s ease-in-out;
                 transition: all .2s ease-in-out;
                 flex: 1;
-                display: inline-block;
-                padding: 15px;
                 cursor: pointer;
-                min-width: 220px;
                 text-align: center;
                 border-top: 3px solid $grey;
+                span {
+                    padding: 15px;
+                    display: block;
+                }
+                &::before {
+                    -webkit-transition: all .3s ease-in-out;
+                    -o-transition: all .3s ease-in-out;
+                    transition: all .3s ease-in-out;
+                    display: block;
+                    content: ' ';
+                    position: relative;
+                    left: 50%;
+                    top: -5px;
+                    margin-left: -5px;
+                    width: 0;
+                    height: 0;
+                    border-left: 10px solid transparent;
+                    border-right: 10px solid transparent;
+                    border-top: 10px solid $primary;
+                    opacity: 0;
+                }
                 &:hover {
                     color: $primary;
                 }
                 &.active {
                     border-top: 3px solid $primary;
                     color: $primary;
+                    &::before {
+                        opacity: 1;
+                        top: 0px;
+                    }
                 }
             }
         }
         .charts {
             max-width: 80%;
             margin: 0px auto;
-
-            @include media-query($on-laptop) {
-                margin: 0;
-                max-width: none;
-                .visual {
-                    padding: 15px 0px;
-                }
-            }
             .copy {
                 display: flex;
                 align-items: center;
+            }
+            .visual {
+                table {
+                    margin: 0px auto;
+                    width: 75%;
+                    @include media-query($on-laptop) {
+                        margin-top: 50px;
+                        width: 100%;
+                    }
+                    @include media-query($on-desktop) {
+                        margin-top: 50px;
+                    }
+                }
             }
         }
         .button {
@@ -202,7 +229,34 @@
                 }
             }
         }
-
+        .copy {
+            padding: 0px 25px 0px 25px;
+            display: flex;
+            align-items: center;
+        }
+        section.compare-react {
+            border-top: 1px solid $grey;
+            padding: 50px;
+            line-height: 25px;
+            @include media-query($on-laptop) {
+                padding: 10px $gutter;
+            }
+        }
+        section.try {
+            padding: 40px;
+            background: $grey;
+            @include media-query($on-laptop) {
+                padding: 10px $gutter;
+            }
+            h3 {
+                margin-bottom: 30px;
+            }
+            .code {
+                background: $secondGrey;
+                border-radius: 0.5rem;
+                padding: 15px;
+            }
+        }
         @include media-query($on-laptop) {
             ul {
                 list-style: none;

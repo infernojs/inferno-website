@@ -1,5 +1,6 @@
 import Inferno from 'inferno'
 import InfernoLogo from '../components/common/Logo'
+import Benchmarks from '../components/common/Benchmarks'
 
 export default function() {
     return <div className="home">
@@ -98,6 +99,7 @@ export default function() {
             </svg>
             Our Benchmarks
         </h3>
+        <Benchmarks/>
         <ul className="options">
             <li className="active">JS Frameworks</li>
             <li>Virtual DOM</li>
