@@ -25,9 +25,6 @@ $gutter: 15px;
     min-height: 1px;
     width: 100%;
     padding: 0 $gutter;
-    & > * {
-        //outline: 1px dashed red;
-    }
 }
 
 @each $breakpoint in map-keys($grid) {

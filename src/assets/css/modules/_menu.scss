@@ -11,24 +11,18 @@
             @include media-query($on-laptop) {
                 display: block;
                 left: 0px;
-                            cursor: pointer;
+                cursor: pointer;
                 top: 0px;
                 right: 0px;
                 position: fixed;
                 background: $white;
                 height: 44px;
                 border-bottom: 1px solid $secondGrey;
-                            svg {
-                                float: right;
-                fill: $primary;
+                svg {
+                    float: right;
+                    fill: $primary;
+                }
             }
-            }
-        }
-        @include media-query($on-laptop) {
-            height: 100%;
-            padding: 0px;
-            padding-top: 45px;
-            border-left: 1px solid $secondGrey;
         }
         a {
             color: $g1;
@@ -63,8 +57,11 @@
             }
         }
         @include media-query($on-laptop) {
+            height: 100%;
             width: 240px;
-            border-left: 1px solid $bg;
+            padding: 0px;
+            padding-top: 45px;
+            border-left: 1px solid $secondGrey;
             position: fixed;
             top: 0px;
             right: -240px;

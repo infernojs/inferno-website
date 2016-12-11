@@ -14,7 +14,7 @@ export default class Header extends Component {
 
     render() {
         return  <nav className={this.state.active ? "show" :""}>
-                <Link to="/about">About</Link>
+                <Link onClick={this.click.bind(this)} to="/about">About</Link>
                 <Link to="/docs">Docs</Link>
                 <Link to="/contribute">Contribute</Link>
                 <Link to="/help">Help</Link>
