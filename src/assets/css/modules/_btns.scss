@@ -1,37 +1,38 @@
-.home a.button {
-    text-decoration: none;
+.button {
+    -webkit-transition: all 250ms;
+    -moz-transition: all 250ms;
+    transition: all 250ms;
     padding: 1em 3.5em;
-    &.not-pad {
-    padding: 1em .5em;
-    }
     border-radius: 2em;
     text-align: center;
     cursor: pointer;
     font-weight: bold;
     border: 0;
-    color: #fff;
+    color: $white;
     background: $primary;
     margin-right: 1rem;
+    text-decoration: none;
+    &.not-pad {
+        padding: 1em .5em;
+    }
     &:hover {
         color: $white;
-        background-color: $primary;
+        background-color: $secondary;
     }
     @include media-query($on-laptop) {
         margin-right: 0px;
-    display: block;
-    margin: 25px auto;
+        display: block;
+        margin: 25px auto;
     }
-    color: $white;
-    background: $primary;
-    border: 0;
     &.second {
         color: $primary;
+        text-decoration: none;
         background: $white;
         border: 2px solid $primary;
         &:hover {
             color: $white;
-            background-color: $primary;
-            border: 2px solid $primary;
+            background-color: $secondary;
+            border: 2px solid $secondary;
         }
     }
 }

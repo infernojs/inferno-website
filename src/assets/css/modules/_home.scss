@@ -1,15 +1,15 @@
 .home {
     .hero-banner {
         padding: 140px $gutter;
-        @include media-query($on-laptop) {
-            padding: 70px $gutter;
-        }
         max-width: 840px;
         margin: 0 auto;
         .inferno-logo {
             display: block;
             margin: 0 auto;
             max-width: 150px;
+        }
+        @include media-query($on-laptop) {
+            padding: 70px $gutter;
         }
         @include media-query($on-laptop) {
             max-width: 600px;
@@ -35,6 +35,10 @@
                 text-align: center;
                 margin: 1rem 0rem;
             }
+        }
+        .buttons {
+            margin-top: 27.5px;
+            color: $white;
         }
     }
     section {
