@@ -1,6 +1,9 @@
 .home {
     .hero-banner {
         padding: 140px $gutter;
+        @include media-query($on-laptop) {
+            padding: 30px $gutter;
+        }
         max-width: 840px;
         margin: 0 auto;
         .inferno-logo {
@@ -45,7 +48,7 @@
         h3 {
             font-weight: 200;
             color: $primary;
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             text-align: center;
             margin-bottom: 40px;
         }
@@ -197,45 +200,10 @@
         &.compare-react {
             border-top: 1px solid $grey;
             padding: 50px;
-            line-height: 25px;
-            @include media-query($on-laptop) {
-                padding: 10px $gutter;
-            }
-            ul {
-                list-style: none;
-                padding: 0px;
-                margin-right: 15px;
-                margin-bottom: 0px;
-                @include media-query($on-laptop) {
-                    margin-right: 0px;
-                }
-                li {
-                    display: flex;
-                    align-items: center;
-                    -webkit-transition: all .2s ease-in-out;
-                    -o-transition: all .2s ease-in-out;
-                    transition: all .2s ease-in-out;
-                    text-align: right;
-                    cursor: pointer;
-                    padding: 5px 10px 10px 0px;
-                    border-right: 1px solid $grey;
-                    &.active {
-                        color: $primary;
-                        border-right: 2px solid $primary;
-                    }
-                    &:hover {
-                        color: $primary;
-                    }
-                }
-            }
-            .copy {
-                padding: 0px $gutter 0px $gutter;
-                display: flex;
-                align-items: center;
-                @include media-query($on-laptop) {
-                    margin: $gutter*2 0px;
-                    text-align: justify;
-                }
+            max-width: 1100px;
+            .content-accordion {
+                max-width: 950px;
+                margin: 0px auto
             }
         }
         &.try {

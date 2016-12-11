@@ -1,6 +1,7 @@
 import Inferno, { linkEvent } from 'inferno'
 import InfernoLogo from '../components/icons/IconInferno'
 import Benchmarks from '../components/common/Benchmarks'
+import ContentAccordion from '../components/common/ContentAccordion'
 import IconArchitecture from '../components/icons/IconArchitecture'
 import IconBenchmark from '../components/icons/IconBenchmark'
 import IconCompatible from '../components/icons/IconCompatible'
@@ -68,18 +69,7 @@ export default function() {
     </section>
     <section className="compare-react container">
         <h3>React-like but, different.</h3>
-        <div className="row">
-            <div className="sm3">
-            <ul className="options">
-                <li className="active">Compatability</li>
-                <li>Custom Namespaces</li>
-                <li>Stateful Components</li>
-            </ul>
-            </div>
-            <div className="copy sm8">
-                Inferno strives to be compatible with much of React’s basic API. However, in some places, alternative implementations have been used. Non-performant features have been removed or replaced where an alternative solution is easy to adopt without too many changes. Inferno doesn’t have React’s synthetic events, which means DOM elements have their events triggered in the same manner as you’d expect from the browser you’re running.
-            </div>
-        </div>
+        <ContentAccordion/>
     </section>
     <section className="try">
         <h3>Try Our Example</h3>

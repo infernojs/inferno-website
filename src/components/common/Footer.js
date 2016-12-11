@@ -15,7 +15,7 @@ export default function Footer() {
                 <div className="mit">
                     <a target="_blank" href="https://opensource.org/licenses/MIT">Project licensed under MIT</a>
                 </div>
-                <a className="contributors" href="https://github.com/trueadm/inferno/graphs/contributors"><IconContributors/> Contributors </a>
+                <a className="contributors" target="_blank" href="https://github.com/trueadm/inferno/graphs/contributors"><IconContributors/> Contributors </a>
             </div>
         </div>
     </footer>

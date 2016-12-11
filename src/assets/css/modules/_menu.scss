@@ -6,6 +6,7 @@
                 cursor: pointer;
                 top: $gutter;
                 position: absolute;
+                z-index: 10;
                 svg {
                     fill: $primary;
                 }
@@ -64,8 +65,8 @@
                 bottom: 0px;
                 background-color: $white;
                 z-index: 10;
-                -webkit-transition: right 1s;
-                transition: right 1s;
+                -webkit-transition: right .5s;
+                transition: right .5s;
                 &.show {
                     right: 0px;
                 }
