@@ -100,7 +100,7 @@
         &.benchmarks {
             padding: 40px;
             @include media-query($on-laptop) {
-                padding: 10px $gutter;
+                padding: 35px $gutter;
             }
             svg {
                 width: auto;
@@ -125,6 +125,11 @@
                 justify-content: space-between;
                 margin: 40px auto 40px auto;
                 overflow: auto;
+                @include media-query($on-small) {
+                    display: block;
+                    flex-flow: none;
+                    border: 1px solid $grey;
+                }
                 li {
                     -webkit-transition: all .2s ease-in-out;
                     -o-transition: all .2s ease-in-out;
@@ -164,6 +169,26 @@
                         &::before {
                             opacity: 1;
                             top: 0px;
+                        }
+                    }
+                    @include media-query($on-small) {
+                        display: inline-block;
+                        min-width: 50%;
+                        margin: 0px auto;
+                        border-top: 1px solid $grey;
+                        span {
+                            padding: 4px 7.5px;
+                        }
+                        &.active {
+                            border-top: 1px solid $primary;
+                        }
+                        &:nth-child(odd) {
+                            border-right: 1px solid $grey;
+                        }
+                        &:last-child {
+                            min-width: 100%;
+                            border-bottom: 0px;
+                            border-right: 0px;
                         }
                     }
                 }
@@ -208,9 +233,12 @@
         }
         &.try {
             padding: 40px;
-            background: $grey;
+            background: $tertiarygrey;
             @include media-query($on-laptop) {
                 padding: 10px $gutter;
+            }
+            @include media-query($on-laptop) {
+                padding: 40px 20px 40px 20px;
             }
             .code {
                 background: $secondGrey;
