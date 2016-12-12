@@ -7,6 +7,7 @@ import DemoInferno from './components/demo/Demo.Inferno'
 //import DemoReact from './components/Demo/Demo.React'
 import About from './pages/About'
 import Docs from './pages/Docs'
+//import REPL from './pages/REPL'
 
 function ReactDemo() {
     return <div>
