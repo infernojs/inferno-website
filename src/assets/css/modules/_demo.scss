@@ -31,7 +31,7 @@
 
 #demo-canvas {
     background: $black;
-    position: absolute;
+    position: relative;
     overflow: hidden;
 
     .particle, .field {
@@ -42,14 +42,6 @@
         width: 20px;
         height: 20px;
         border-radius: 10px;
-        mix-blend-mode: multiply;
-        transform: translateZ(0);
-        animation-name: flicker;
-        animation-duration:3ms;
-        animation-delay:200ms;
-        animation-timing-function: ease-in;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
     }
     .round {
         border-radius: 5px;
