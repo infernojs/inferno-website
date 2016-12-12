@@ -59,7 +59,7 @@ $gutter: 15px;
 
 /* Media-queries */
 
-$on-small: 480px;
+$on-small: 500px;
 $on-laptop: 700px;
 $on-desktop: 1000px;
 
@@ -75,6 +75,8 @@ $on-desktop: 1000px;
     display: table;
     clear: both;
 }
+
+main {padding-top: 54px;}
 
 body {
     height: 100%;

@@ -52,6 +52,10 @@
             text-align: center;
             margin-bottom: 40px;
         }
+        .copy {
+            display: flex;
+            align-items: center;
+        }
         &.features {
             background: $bg;
             border-bottom: 1px solid $bg;
@@ -171,10 +175,6 @@
             .charts {
                 max-width: 80%;
                 margin: 0px auto;
-                .copy {
-                    display: flex;
-                    align-items: center;
-                }
                 @include media-query($on-small) {
                     max-width: 100%;
                 }
@@ -200,6 +200,9 @@
         &.compare-react {
             border-top: 1px solid $grey;
             padding: 50px;
+            @include media-query($on-laptop) {
+                padding: $gutter;
+            }
             max-width: 1100px;
             .content-accordion {
                 max-width: 950px;

@@ -2,9 +2,9 @@
             display: none;
             @include media-query($on-laptop) {
                 display: block;
-                left: $gutter;
+                left: 5px;
                 cursor: pointer;
-                top: $gutter;
+                top: 5px;
                 position: absolute;
                 z-index: 10;
                 svg {

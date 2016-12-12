@@ -97,7 +97,7 @@ export default class Benchmarks extends Component {
               <BasicChart data={ this.state.list[this.state.current].data } />
           </div>
         </div>
-        <a className="button not-pad lg5 sm5 xs12" href="#">Learn more about how Inferno performs</a>
+        <a className="button not-pad lg5 sm xs10" href="#">Learn more about how Inferno performs</a>
       </div>
     )
   }
