@@ -12,7 +12,7 @@
             max-width: 150px;
         }
         @include media-query($on-laptop) {
-            padding: 70px $gutter;
+            padding: 0px $gutter;
         }
         @include media-query($on-laptop) {
             max-width: 600px;
