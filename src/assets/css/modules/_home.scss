@@ -36,7 +36,7 @@
             h1,
             h2 {
                 text-align: center;
-                margin: 1rem 0rem;
+                margin: 0rem;
             }
         }
         .buttons {
@@ -68,7 +68,6 @@
             svg {
                 width: auto;
                 fill: $primary;
-                padding-left: 0.25rem;
                 float: left;
                 @include media-query($on-small) {
                     margin: 0 auto;
