@@ -18,6 +18,7 @@
     &:hover {
         color: $white;
         background-color: $secondary;
+        text-decoration: none;
     }
     @include media-query($on-laptop) {
         margin-right: 0px;

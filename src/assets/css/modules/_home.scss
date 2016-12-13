@@ -12,7 +12,7 @@
             max-width: 150px;
         }
         @include media-query($on-laptop) {
-            padding: 70px $gutter;
+            padding: 0px $gutter;
         }
         @include media-query($on-laptop) {
             max-width: 600px;
@@ -36,7 +36,7 @@
             h1,
             h2 {
                 text-align: center;
-                margin: 1rem 0rem;
+                margin: 0rem;
             }
         }
         .buttons {
@@ -52,6 +52,10 @@
             text-align: center;
             margin-bottom: 40px;
         }
+        .copy {
+            display: flex;
+            align-items: center;
+        }
         &.features {
             background: $bg;
             border-bottom: 1px solid $bg;
@@ -64,7 +68,6 @@
             svg {
                 width: auto;
                 fill: $primary;
-                padding-left: 0.25rem;
                 float: left;
                 @include media-query($on-small) {
                     margin: 0 auto;
@@ -196,10 +199,6 @@
             .charts {
                 max-width: 80%;
                 margin: 0px auto;
-                .copy {
-                    display: flex;
-                    align-items: center;
-                }
                 @include media-query($on-small) {
                     max-width: 100%;
                 }
@@ -225,6 +224,9 @@
         &.compare-react {
             border-top: 1px solid $grey;
             padding: 50px;
+            @include media-query($on-laptop) {
+                padding: $gutter;
+            }
             max-width: 1100px;
             .content-accordion {
                 max-width: 950px;

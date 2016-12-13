@@ -1,9 +1,9 @@
 footer {
     background-color: $footer;
     .row {
-        padding: 0px 10px;
         justify-content: space-between;
         align-items: center;
+        margin: 0px $gutter;
         padding: 2rem 0rem 2rem 0rem;
         color: $white;
         .mit {
