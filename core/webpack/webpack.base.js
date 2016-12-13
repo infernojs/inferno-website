@@ -7,6 +7,7 @@ module.exports = {
     entry: {},
     node: {
         global: true,
+        node: true,
         fs: 'empty'
     },
     module: {

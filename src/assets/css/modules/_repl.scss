@@ -2,4 +2,14 @@
     width: 800px;
     margin: 0 auto;
     padding: 2rem;
+
+    .repl-editor {
+        position: relative;
+        border: 1px solid;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+    }
+    .hidden {
+        visibility: hidden;
+    }
 }

@@ -1,6 +1,9 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
-import { transform } from 'babel-core'
+import babelPluginInferno from 'babel-plugin-inferno'
+import Loading from '../components/repl/Loading'
+
+window.Inferno = Inferno;
 
 const options = {
     plugins: [
@@ -22,57 +25,109 @@ const options = {
     ]
 }
 
-function compile(code) {
+function compile(jsxCode) {
     try {
-        const transformedCode = transform(code, options).code
-        const ExportedComponent = eval(transformedCode)
+        const { code } = window.compiler.transform(jsxCode, options)
+        const ExportedComponent = eval(code)
         const infernoResult = <ExportedComponent/>
         return infernoResult
     } catch(ex) {
-        return 'Please do not use: import, require, console.log'
+        console.error('Compiler Error:', ex)
     }
 }
 
+const codeSample2 = `
+export default function test() {
+    return <div>it works! {JSON.stringify(process.env)}</div>;
+}
+`;
+const codeSample = `
+function findSequence(goal) {
+  function find(start, history) {
+    if (start == goal)
+      return history;
+    else if (start > goal)
+      return null;
+    else
+      return find(start + 5, "(" + history + " + 5)") ||
+             find(start * 3, "(" + history + " * 3)");
+  }
+  return find(1, "1");
+}
+`;
+
 export default class REPL extends Component {
+
+    componentWillMount() {
+        const self = this
+
+        // Execute code when Babel is available
+        if (!window.compiler) {
+            Object.defineProperty(window, 'Babel', {
+                writeable: true,
+                set(val) {
+                    window.compiler = val
+                    window.compiler.registerPlugin('babel-plugin-inferno', babelPluginInferno)
+                }
+            })
+        }
+
+        // Execute code when CodeMirror is available
+        let intval = setInterval(() => {
+            if (window.CodeMirror) {
+                console.debug('Loaded')
+                self.setState({ loaded: true })
+                clearInterval(intval)
+            }
+        }, 50)
+    }
+
+    componentDidUpdate() {
+        if (!window.editor && window.CodeMirror) {
+            const textArea = document.getElementById('repl-editor')
+            window.editor = new CodeMirror.fromTextArea(textArea, {
+                theme: "neo",
+                lineNumbers: true,
+                styleActiveLine: true
+            })
+            console.debug('Initialized')
+        }
+    }
 
     compile = (e) => {
         e.preventDefault()
-        const code = `
-        import Inferno from 'inferno';
-        
-        export default function() {
-            return <div>it works! {JSON.stringify(process.env)}</div>;
-        }`;
-
-        this.setState({ vNodes: compile(code) })
-        this.forceUpdate()
-        /*
-
-        const code222 = `
-        import Inferno from 'inferno';
-        import Component from 'inferno-component';
-
-        export default class Hello extends Component {
-            render() {
-                return <div>it works!</div>;
-            }
-        }
-        `;
-
-        fetchPOST(code).then(response => {
-            this.setState({ vNodes: response })
-            this.forceUpdate()
-        })*/
-        console.log('+++')
+        this.setState({ vNodes: compile(codeSample) })
     }
 
     render() {
         return <div className="repl">
-            <h2>REPL</h2>
+            <ScriptLoader condition={!window.compiler}
+                          src="https://unpkg.com/babel-standalone@6/babel.min.js"/>
+            <ScriptLoader condition={!window.editor}
+                          src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.js"/>
+            <ScriptLoader condition={!window.editor && this.state.loaded}
+                          onload={() => window.editor.setOption('mode', 'javascript')}
+                          src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/mode/javascript/javascript.min.js"/>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.css" rel="stylesheet"/>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/theme/neo.min.css" rel="stylesheet"/>
+
+            <h1>REPL</h1>
+            <div className="repl-editor">
+                {this.state.loaded || <Loading/>}
+                <textarea id="repl-editor" className={this.state.loaded ? '' : 'hidden'} value={codeSample}/>
+            </div>
             <button onClick={this.compile}>Test</button>
             <div>{this.state.vNodes}</div>
         </div>
     }
+}
+
+function ScriptLoader({ condition, src, onload }) {
+    const noop = () => {}
+    if (condition) {
+        return <script src={src} onLoad={onload || noop}/>
+    }
+    return null
 }
 
 function fetchPOST(code) {

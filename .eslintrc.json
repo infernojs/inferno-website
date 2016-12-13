@@ -21,6 +21,7 @@
   "globals": {
     "window": true,
     "decode": true,
+    "CodeMirror": true,
     "Inferno": true,
     "React": true,
     "ReactDOM": true

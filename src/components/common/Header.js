@@ -22,6 +22,7 @@ export default class Header extends Component {
                 <Link to="/docs">Docs</Link>
                 <Link to="/contribute">Contribute</Link>
                 <Link to="https://github.com/trueadm/inferno/issues">Help</Link>
+                <Link to="/repl">REPL</Link>
             </nav>
         </div>
         )
