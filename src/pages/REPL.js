@@ -69,7 +69,6 @@ export default class REPL extends Component {
         // Execute code when CodeMirror is available
         let intval = setInterval(() => {
             if (window.CodeMirror) {
-                console.debug('Loaded')
                 self.setState({ loaded: true })
                 clearInterval(intval)
             }
@@ -84,7 +83,6 @@ export default class REPL extends Component {
                 lineNumbers: true,
                 styleActiveLine: true
             })
-            console.debug('Initialized')
         }
     }
 

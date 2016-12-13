@@ -36,6 +36,9 @@ config.static.forEach(staticRoute => {
     app.use(mount(staticRoute.url, convert(serve(staticRoute.path))))
 })
 
+// Serve service worker
+app.use(serve(require('path').join(__dirname, '../assets/service')))
+
 app.use(render)
 
 app.listen(config.http.port, function() {

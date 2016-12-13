@@ -28,6 +28,21 @@ export default function({ hostname, config }) {
             <meta name="twitter:image" content="/assets/share.png" />
             <meta name="twitter:creator" content="@InfernoJS" />
             <link rel="icon" href="/assets/favicon.png?v=ngg42qbKBK"/>
+            <script dangerouslySetInnerHTML={{
+                __html: `
+                    if ('serviceWorker' in navigator) {
+                        const sw = navigator.serviceWorker
+                        console.debug('Worker: init')
+
+                        sw.register('/sw.js').then(() => {
+                            console.debug('Worker: registered')
+                        })
+
+                        sw.ready.then(function(registration) {
+                            console.debug('Worker: ready')
+                        })
+                    }`
+            }}/>
         </head>
         <body>
             <div id="root"/>
