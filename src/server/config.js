@@ -15,6 +15,10 @@ module.exports = {
             path: path.join(__dirname, '../assets')
         },
         {
+            url: '/service',
+            path: path.join(__dirname, '../assets/service')
+        },
+        {
             url: '/static',
             path: path.join(__dirname, '../docs')
         }

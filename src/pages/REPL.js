@@ -30,33 +30,25 @@ const options = {
 function compile(jsxCode) {
     try {
         const { code } = window.compiler.transform(jsxCode, options)
-        const ExportedComponent = eval(code)
+        const ExportedComponent = eval(code) //.replace(/"use strict";/g, '')
+        if (typeof ExportedComponent !== 'function') {
+            console.error('You must export at least one component')
+        }
         const infernoResult = <ExportedComponent/>
         return infernoResult
     } catch(ex) {
-        console.error('Compiler Error:', ex)
+        return <p>Compiler Error: {ex}</p>
     }
 }
 
-const codeSample2 = `
-export default function test() {
-    return <div>it works! {JSON.stringify(process.env)}</div>;
-}
-`;
 const codeSample = `
-function findSequence(goal) {
-  function find(start, history) {
-    if (start == goal)
-      return history;
-    else if (start > goal)
-      return null;
-    else
-      return find(start + 5, "(" + history + " + 5)") ||
-             find(start * 3, "(" + history + " * 3)");
-  }
-  return find(1, "1");
+export default function MainComponent() {
+    return <MyInfernoTest/>;
 }
-`;
+
+const MyInfernoTest = () => {
+    return <h2>It works!</h2>;
+}`;
 
 export default class REPL extends Component {
 
@@ -96,9 +88,10 @@ export default class REPL extends Component {
         }
     }
 
-    compile = (e) => {
+    handleCompile = (e) => {
         e.preventDefault()
-        this.setState({ vNodes: compile(codeSample) })
+        const vNodes = compile(window.editor.doc.getValue())
+        this.setState({ vNodes })
     }
 
     render() {
@@ -116,9 +109,11 @@ export default class REPL extends Component {
             <h1>REPL</h1>
             <div className="repl-editor">
                 {this.state.loaded || <Loading/>}
-                <textarea id="repl-editor" className={this.state.loaded ? '' : 'hidden'} value={codeSample}/>
+                <textarea id="repl-editor"
+                          className={this.state.loaded ? '' : 'hidden'}
+                          value={codeSample}/>
             </div>
-            <button onClick={this.compile}>Test</button>
+            <button onClick={this.handleCompile}>Test</button>
             <div>{this.state.vNodes}</div>
         </div>
     }

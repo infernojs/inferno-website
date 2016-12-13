@@ -4,17 +4,18 @@ import Header from '../../components/common/Header'
 import Footer from '../../components/common/Footer'
 
 function onComponentDidMount(domNode) {
-    console.warn('onComponentDidMount', domNode)
+    console.log('Service Worker Register')
     if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-                 .register('/assets/static/serviceWorker.js')
-                 .then(function() {
-                     console.log("Service Worker Registered");
-                 });
+        const sw = navigator.serviceWorker
 
-        navigator.serviceWorker.ready.then(function(registration) {
-            console.log('Service Worker Ready');
-        });
+        sw.register('/service/sw.js', {
+        }).then(() => {
+            console.log("Service Worker Registered")
+        })
+
+        sw.ready.then(function(registration) {
+            console.log('Service Worker Ready')
+        })
     }
 }
 
