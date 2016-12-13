@@ -3,7 +3,9 @@ import Component from 'inferno-component'
 import babelPluginInferno from 'babel-plugin-inferno'
 import Loading from '../components/repl/Loading'
 
-window.Inferno = Inferno;
+if (process.env.BROWSER) {
+    window.Inferno = Inferno;
+}
 
 const options = {
     plugins: [
