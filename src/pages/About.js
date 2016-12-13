@@ -11,7 +11,7 @@ export default function() {
         <section className="container">
             <p>Based on</p>
             <p>
-                <a href="https://github.com/nightwolfz/inferno-starter" target="_blank">
+                <a href="https://github.com/nightwolfz/inferno-starter" target="_blank" rel="noopener">
                     https://github.com/nightwolfz/inferno-starter
                 </a>
             </p>

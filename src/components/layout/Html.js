@@ -4,7 +4,9 @@ import Inferno from 'inferno'
  * This component is rendered on the server side
  */
 export default function({ hostname, config }) {
-    const serverURL = process.env.DEV ? `http://${hostname}:${config.http.port + 2}` : ''
+    const serverURL = `//${hostname}`
+    const bundleURL = process.env.DEV ? `${serverURL}:${config.http.port + 2}` : ''
+
     return <html>
         <head>
             <meta charSet="utf-8"/>
@@ -16,21 +18,21 @@ export default function({ hostname, config }) {
             <meta property="og:type" content="website" />
             <meta property="og:title" content="Inferno" />
             <meta property="og:description" content="An extremely fast React-like javascript library for building modern user interfaces." />
-            <meta property="og:url" content={ `${serverURL}` } />
+            <meta property="og:url" content={ serverURL } />
             <meta property="og:site_name" content="Inferno.js" />
-            <meta property="og:image" content={ `${serverURL}/assets/share.png` } />
+            <meta property="og:image" content="/assets/share.png" />
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:description" content="An extremely fast React-like javascript library for building modern user interfaces." />
             <meta name="twitter:title" content="Inferno" />
             <meta name="twitter:site" content="@InfernoJS" />
-            <meta name="twitter:image" content={ `${serverURL}/assets/share.png` } />
+            <meta name="twitter:image" content="/assets/share.png" />
             <meta name="twitter:creator" content="@InfernoJS" />
-            <link href={ `${serverURL}/build/bundle.css` } rel="stylesheet"/>
             <link rel="icon" href="/assets/favicon.png?v=ngg42qbKBK"/>
         </head>
         <body>
             <div id="root"/>
-            <script src={`${serverURL}/build/bundle.js`}/>
+            <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet"/>
+            <script src={`${bundleURL}/build/bundle.js`} async="async"/>
         </body>
     </html>
 }

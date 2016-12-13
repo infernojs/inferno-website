@@ -19,8 +19,8 @@ export default function() {
             <h1>Inferno</h1>
             <h2>An extremely fast React-like javascript library for building modern user interfaces.</h2>
             <div className="buttons">
-                    <a className="button xs8">Get Started</a>
-                    <a className="button second xs8" href="https://github.com/trueadm/inferno">Examples</a>
+                    <a className="button xs8" rel="noopener">Get Started</a>
+                    <a className="button second xs8" href="https://github.com/trueadm/inferno" rel="noopener">Examples</a>
             </div>
         </div>
     </div>

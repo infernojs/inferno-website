@@ -25,16 +25,17 @@ app.use(convert(bodyParser({
     bufferLimit: '4mb'
 })))
 
-// Serve static files
-config.http.static.forEach(staticRoute => {
-    logger('inferno:static')(staticRoute.path)
-    app.use(mount(staticRoute.url, serve(staticRoute.path)))
-})
-
 app.use(catcher)
 app.use(markdown.routes())
 app.use(hooks.routes())
 app.use(repl.routes())
+
+// Serve static files
+config.static.forEach(staticRoute => {
+    logger('inferno:static')(staticRoute.path)
+    app.use(mount(staticRoute.url, convert(serve(staticRoute.path))))
+})
+
 app.use(render)
 
 app.listen(config.http.port, function() {
