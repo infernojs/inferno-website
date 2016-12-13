@@ -104,14 +104,14 @@ export default class REPL extends Component {
     render() {
         return <div className="repl">
             <ScriptLoader condition={!window.compiler}
-                          src="https://unpkg.com/babel-standalone@6/babel.min.js"/>
+                          src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.19.0/babel.min.js"/>
             <ScriptLoader condition={!window.editor}
-                          src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.js"/>
+                          src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.js"/>
             <ScriptLoader condition={!window.editor && this.state.loaded}
                           onload={() => window.editor.setOption('mode', 'javascript')}
-                          src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/mode/javascript/javascript.min.js"/>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.css" rel="stylesheet"/>
-            <link href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/theme/neo.min.css" rel="stylesheet"/>
+                          src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/mode/javascript/javascript.min.js"/>
+            <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.css" rel="stylesheet"/>
+            <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/theme/neo.min.css" rel="stylesheet"/>
 
             <h1>REPL</h1>
             <div className="repl-editor">
