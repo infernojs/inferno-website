@@ -95,7 +95,7 @@ export default class REPL extends Component {
     }
 
     render() {
-        return <div className="repl">
+        return <div>
             <ScriptLoader condition={!window.compiler}
                           src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.19.0/babel.min.js"/>
             <ScriptLoader condition={!window.editor}
@@ -106,15 +106,22 @@ export default class REPL extends Component {
             <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.css" rel="stylesheet"/>
             <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/theme/neo.min.css" rel="stylesheet"/>
 
-            <h1>REPL</h1>
-            <div className="repl-editor">
-                {this.state.loaded || <Loading/>}
-                <textarea id="repl-editor"
-                          className={this.state.loaded ? '' : 'hidden'}
-                          value={codeSample}/>
+            <div className="repl">
+                <h1>REPL</h1>
+
+                <div className="row">
+                    <div className="sm6 repl-editor">
+                        {this.state.loaded || <Loading/>}
+                        <textarea id="repl-editor"
+                                  className={this.state.loaded ? '' : 'hidden'}
+                                  value={codeSample}/>
+                    </div>
+                    <div className="sm6 repl-output">
+                        {this.state.vNodes}
+                    </div>
+                </div>
+                <button onClick={this.handleCompile}>Test</button>
             </div>
-            <button onClick={this.handleCompile}>Test</button>
-            <div>{this.state.vNodes}</div>
         </div>
     }
 }
