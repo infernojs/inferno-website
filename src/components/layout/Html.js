@@ -29,19 +29,7 @@ export default function({ hostname, config }) {
             <meta name="twitter:creator" content="@InfernoJS" />
             <link rel="icon" href="/assets/favicon.png?v=ngg42qbKBK"/>
             <script dangerouslySetInnerHTML={{
-                __html: `
-                    if ('serviceWorker' in navigator) {
-                        const sw = navigator.serviceWorker
-                        console.debug('Worker: init')
-
-                        sw.register('/sw.js').then(() => {
-                            console.debug('Worker: registered')
-                        })
-
-                        sw.ready.then(function(registration) {
-                            console.debug('Worker: ready')
-                        })
-                    }`
+                __html: insertServiceWorker(false)
             }}/>
         </head>
         <body>
@@ -50,4 +38,22 @@ export default function({ hostname, config }) {
             <script src={`${bundleURL}/build/bundle.js`} async="async"/>
         </body>
     </html>
+}
+
+function insertServiceWorker(enabled) {
+	if (!enabled) return ''
+
+	return `
+	if ('serviceWorker' in navigator) {
+		const sw = navigator.serviceWorker
+		console.debug('Worker: init')
+
+		sw.register('/sw.js').then(() => {
+			console.debug('Worker: registered')
+		})
+
+		sw.ready.then(function(registration) {
+			console.debug('Worker: ready')
+		})
+	}`
 }

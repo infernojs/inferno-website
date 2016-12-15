@@ -1,12 +1,10 @@
 import Inferno from 'inferno'
 
-function componentDidMount() {
-    console.warn('ddddd')
-    document.title = 'Home'
-}
-
 export default function() {
-    return <div className="padding" onComponentDidMount={componentDidMount}>
+	if (process.env.BROWSER) {
+		document.title = 'About'
+	}
+    return <div className="padding">
         <h1>Inferno-website</h1>
         <section className="container">
             <p>Based on</p>

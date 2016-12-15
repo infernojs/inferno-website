@@ -1,0 +1,45 @@
+.docs {
+    aside.docs-menu {
+        padding: 0 2rem;
+
+        @include media-query($on-laptop) {
+            margin-top: $gutter*4;
+        }
+
+        a {
+            color: $primary;
+            line-height: 2rem;
+            display: block;
+            cursor: pointer;
+        }
+    }
+    aside.docs-content {
+        border-left: 2px solid #e0e0e0;
+        padding: 0 2rem;
+
+        h2 {
+            font-weight: normal;
+            font-size: 1.5rem;
+            color: #000;
+            border-bottom: 2px solid #e0e0e0;
+            line-height: 3rem;
+        }
+        h3 {
+            font-weight: normal;
+            font-size: 1.3rem;
+            color: $primary;
+        }
+
+        pre {
+            background: #f6f6f6;
+            padding: 1rem;
+            code {
+                background: inherit;
+            }
+        }
+        code {
+            color: #0e1954;
+            background: #e5f2ff;
+        }
+    }
+}

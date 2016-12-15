@@ -1,8 +1,15 @@
+@include media-query($on-small) {
+    main {
+        padding-top: 54px;
+    }
+}
+
 .home {
     .hero-banner {
         padding: 140px $gutter;
         @include media-query($on-laptop) {
             padding: 30px $gutter;
+            max-width: 600px;
         }
         max-width: 840px;
         margin: 0 auto;
@@ -10,12 +17,6 @@
             display: block;
             margin: 0 auto;
             max-width: 150px;
-        }
-        @include media-query($on-laptop) {
-            padding: 0px $gutter;
-        }
-        @include media-query($on-laptop) {
-            max-width: 600px;
         }
         .logo,
         .logo-text {
