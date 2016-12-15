@@ -13,9 +13,13 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.js$/,
+                test: /\.jsx?$/,
                 loader: 'babel-loader',
-                include: [sources(''), sources('../core')],
+                include: [
+                	sources(''),
+					sources('../core'),
+					sources('../node_modules/babel-plugin-inferno')
+				],
                 exclude: [sources('docs')],
                 query: {
                     cacheDirectory: false,
