@@ -1,6 +1,5 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
-import babelPluginInferno from 'babel-plugin-inferno'
 
 if (process.env.BROWSER) {
     window.Inferno = Inferno;
@@ -16,8 +15,10 @@ export default class Scripts extends Component {
             Object.defineProperty(window, 'Babel', {
                 writeable: true,
                 set(val) {
-                    window.compiler = val
-                    window.compiler.registerPlugin('babel-plugin-inferno', babelPluginInferno)
+                    require.ensure([], function(require){
+                        window.compiler = val
+                        window.compiler.registerPlugin('babel-plugin-inferno', require('babel-plugin-inferno'))
+                    })
                 }
             })
         }
