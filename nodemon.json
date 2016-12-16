@@ -6,11 +6,11 @@
   },
   "ext": "js",
   "ignore": [
-    "\\.git",
+    ".git",
+    "build",
     "npm-debug.log",
-    "node_modules/*",
-    "node_modules/.*.*/node_modules",
-    "src/assets/*"
+    "node_modules/**/*",
+    "src/assets/**/*"
   ],
   "watch": [
     "src/client/components/App",
