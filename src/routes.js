@@ -5,7 +5,6 @@ import NotFound from './components/layout/404'
 import Home from './pages/Home'
 import DemoInferno from './components/demo/Demo.Inferno'
 //import DemoReact from './components/Demo/Demo.React'
-import About from './pages/About'
 import Docs from './pages/Docs'
 import REPL from './pages/REPL'
 import Contribute from './pages/Contribute'
@@ -28,7 +27,6 @@ export default (
         <Route path="/docs/:path*" component={ Docs }/>
         <Route path="/docs" component={ Docs }/>
         <Route path="/repl" component={ REPL }/>
-        <Route path="/about" component={ About }/>
         <Route path="/contribute" component={ Contribute }/>
         <Route path="*" component={ NotFound }/>
     </Route>

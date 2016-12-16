@@ -55,7 +55,7 @@ export default class Docs extends Component {
                     {/*<MenuLink to={'/docs/api/inferno-test-utils.md'}>Inferno-test-utils</MenuLink>*/}
                 </ul>
 			</aside>
-			<aside className="docs-content xs12 sm9" id="markdown-root">
+			<aside className="docs-content" id="markdown-root">
 				{this.state.markdown}
 			</aside>
 		</section>

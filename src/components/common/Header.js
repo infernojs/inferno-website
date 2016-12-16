@@ -41,10 +41,10 @@ export default class Header extends Component {
                 <IconMenu/>
             </div>
             <nav className={ this.state.active ? 'open' : 'closed' }>
-                <MenuLink to="/about">About</MenuLink>
+                <MenuLink to="/">Home</MenuLink>
                 <MenuLink to="/docs">Docs</MenuLink>
                 <MenuLink to="/contribute">Contribute</MenuLink>
-                <MenuLink to="https://github.com/trueadm/inferno/issues">Help</MenuLink>
+                <a target="_blank" href="https://github.com/trueadm/inferno/issues">Help</a>
             </nav>
         </div>
         )
