@@ -37,15 +37,6 @@ function compile(jsxCode) {
     }
 }
 
-const codeSample = `
-export default function MainComponent() {
-    return <MyInfernoTest/>;
-}
-
-const MyInfernoTest = () => {
-    return <h2>It works!</h2>;
-}`;
-
 export default class Editor extends Component {
 
     componentDidMount() {
@@ -65,21 +56,21 @@ export default class Editor extends Component {
         this.setState({ vNodes })
     }
 
-    render() {
-        return <div>
+    render({ children }) {
+        return <div className="repl">
             <Scripts loaded={this.state.loaded}/>
             <div className="row">
-                <div className="sm6 repl-editor">
+                <div className="xs12 sm6 p-0 repl-editor">
                     {this.state.loaded || <Loading/>}
                     <textarea id="repl-editor"
                               className={this.state.loaded ? '' : 'hidden'}
-                              value={codeSample}/>
+                              value={children}/>
                 </div>
-                <div className="sm6 repl-output">
+                <div className="xs12 sm6 p-0 repl-output">
                     {this.state.vNodes}
                 </div>
             </div>
-            <button onClick={this.handleCompile}>Test</button>
+            <button onClick={this.handleCompile}>RUN CODE</button>
         </div>
     }
 }

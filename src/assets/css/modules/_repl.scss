@@ -1,7 +1,4 @@
 .repl {
-    width: 800px;
-    margin: 0 auto;
-
     .repl-editor {
         position: relative;
         border: 1px solid #ccc;
@@ -11,6 +8,8 @@
     .repl-output {
         position: relative;
         border: 1px solid #ccc;
+        background: #fff;
+        padding: 1rem !important;
         min-height: 6rem;
     }
 
@@ -21,8 +20,9 @@
     button {
         color: #fff;
         background-color: #e43a45;
-        font-size: 16px;
-        padding: 0.4rem 1rem;
+        font-size: 0.8rem;
+        line-height: 1rem;
+        padding: 0.8rem 1.4rem;
         margin: 1rem 0;
         border: 0;
         border-radius: 2px;

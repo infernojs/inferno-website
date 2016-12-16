@@ -9,6 +9,17 @@ import IconIsomorphic from '../components/icons/IconIsomorphic'
 import IconModular from '../components/icons/IconModular'
 import IconSize from '../components/icons/IconSize'
 import IconSpeed from '../components/icons/IconSpeed'
+import Editor from '../components/repl/Editor'
+
+const codeSample = `
+export default function MainComponent() {
+    return <MyInfernoTest/>;
+}
+
+const MyInfernoTest = () => {
+    return <h2>It works!</h2>;
+}
+`
 
 export default function() {
   return <div className="home">
@@ -73,18 +84,7 @@ export default function() {
     </section>
     <section className="try">
         <h3>Try Our Example</h3>
-        <div className="container">
-            <div className="row">
-                <div className="lg7">
-                    <h4>Todo List Component</h4>
-                    <div className="code">CODE GOES HERE</div>
-                </div>
-                <div className="lg5">
-                    <h4>Imports</h4>
-                    <div className="code">CODE GOES HERE</div>
-                </div>
-            </div>
-        </div>
+        <Editor>{codeSample}</Editor>
     </section>
 </div>
 }
