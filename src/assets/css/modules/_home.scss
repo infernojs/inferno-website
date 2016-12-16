@@ -58,7 +58,6 @@
             @include media-query($on-small) {
                 .row > * {
                     flex: 0 0 100%;
-                    max-width: 100%;
                 }
             }
             svg {
@@ -125,7 +124,6 @@
                 overflow: auto;
                 @include media-query($on-small) {
                     display: block;
-                    flex-flow: none;
                     border: 1px solid $grey;
                 }
                 li {
