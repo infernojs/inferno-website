@@ -30,7 +30,7 @@ export default class Header extends Component {
     render() {
 
         const MenuLink = (props) => {
-            return <Link activeClassName="selected" onClick={ this.closeSidebar } {...props}>
+            return <Link activeClassName="selected" {...props}>
                 {props.children}
             </Link>
         }

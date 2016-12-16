@@ -3,13 +3,27 @@
         padding: 2rem 1rem;
         width: 12rem;
 
-        a {
-            color: $primary;
-            line-height: 2rem;
-            display: block;
-            cursor: pointer;
+        ul {
+            padding: 0;
+            li {
+                list-style: none;
+                a {
+                    color: $primary;
+                    line-height: 1.6rem;
+                    margin-bottom: 0.6rem;
+                    border-bottom: 2px solid transparent;
+                    text-decoration: none;
+                    cursor: pointer;
+
+                    &:hover {
+
+                        border-bottom-color: $primary;
+                    }
+                }
+            }
         }
     }
+
     aside.docs-content {
         border-left: 1px solid $secondGrey;
         padding: 1rem;

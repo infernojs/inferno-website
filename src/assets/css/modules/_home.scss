@@ -133,7 +133,6 @@
                     flex: 1;
                     cursor: pointer;
                     text-align: center;
-                    min-width: 220px;
                     border-top: 3px solid $grey;
                     span {
                         padding: 15px;
@@ -223,7 +222,7 @@
             max-width: 1100px;
             .content-accordion {
                 max-width: 950px;
-                margin: 0px auto
+                margin: 0 auto
             }
         }
         &.try {

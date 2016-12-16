@@ -1,35 +1,59 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
-import createElement from 'inferno-create-element'
 import { Link } from 'inferno-router'
 
 export default class Docs extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            markdown: null
+            markdown: null,
+            prevURL: null
         }
     }
 
     componentDidMount() {
-		this.loadDocument('guides/installation.md')()
+		this.loadDocument('/docs/guides/installation.md')
     }
 
-	loadDocument = (path) => () => {
-		fetch(`/api/markdown?file=${path}`)
-		.then(response => response.json())
-		.then(response => {
-			this.setState({ markdown: response })
-			this.forceUpdate()
-		})
+	loadDocument = (to) => {
+        const { router } = this.context
+        const path = to.replace('/docs/', '')
+
+        fetch(`/api/markdown?file=${path}`)
+        .then(response => response.json())
+        .then(response => {
+            router.push(to)
+            this.setState({ markdown: response })
+            this.forceUpdate()
+        })
 	}
 
     render() {
+        const MenuLink = ({ to, children }) => {
+            return <li><a onClick={() => this.loadDocument(to)}>{children}</a></li>
+        }
+
         return <section className="docs row">
 			<aside className="docs-menu">
 				<h3>Guides</h3>
-				<a onClick={this.loadDocument('guides/installation.md')}>Installation</a>
-				<a onClick={this.loadDocument('guides/react-comparison.md')}>Comparison with React</a>
+                <ul>
+                    <MenuLink to={'/docs/guides/installation.md'}>Installation</MenuLink>
+                    <MenuLink to={'/docs/guides/react-comparison.md'}>Comparison with React</MenuLink>
+                </ul>
+                <h3>API</h3>
+                <ul>
+                    <MenuLink to={'/docs/api/inferno.md'}>Inferno</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-compat.md'}>Inferno-compat</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-component.md'}>Inferno-component</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-create-class.md'}>Inferno-create-class</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-create-element.md'}>Inferno-create-element</MenuLink>
+                    {/*<MenuLink to={'/docs/api/inferno-hyperscript.md'}>Inferno-hyperscript</MenuLink>*/}
+                    <MenuLink to={'/docs/api/inferno-mobx.md'}>Inferno-mobx</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-redux.md'}>Inferno-redux</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-router.md'}>Inferno-router</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-server.md'}>Inferno-server</MenuLink>
+                    {/*<MenuLink to={'/docs/api/inferno-test-utils.md'}>Inferno-test-utils</MenuLink>*/}
+                </ul>
 			</aside>
 			<aside className="docs-content xs12 sm9" id="markdown-root">
 				{this.state.markdown}

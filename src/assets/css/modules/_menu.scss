@@ -1,23 +1,19 @@
 $topnav-height: 2.8rem;
+$sidebar-width: 20rem;
 
 .menu {
     border-bottom: 1px solid $secondGrey;
-
-    .menu-toggle {
-        margin-top: -1px;
-        position: relative;
-    }
+    text-align: right;
 
     // Hamburger button
     svg {
         fill: $secondary;
-        height: $topnav-height;
         cursor: pointer;
         z-index: 10;
         display: none;
 
         @include media-query($on-small) {
-            display: block;
+            display: inline-block;
         }
     }
 }
@@ -30,10 +26,10 @@ nav {
     @include media-query($on-small) {
         display: flex;
         flex-flow: column;
-        margin-top: $topnav-height;
+        margin-top: calc(#{$topnav-height + 0.31rem});
         background-color: $white;
         border-left: 1px solid $secondGrey;
-        width: 240px;
+        width: $sidebar-width;
         height: 100%;
         padding: 1rem 0;
         top: 0;
@@ -46,10 +42,10 @@ nav {
     }
 
     &.open {
-        left: 0;
+        right: 0;
     }
     &.closed {
-        left: -240px;
+        right: -$sidebar-width;
     }
 
     a {
