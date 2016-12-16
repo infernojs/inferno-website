@@ -20,8 +20,7 @@
         background-color: $secondary;
         text-decoration: none;
     }
-    @include media-query($on-laptop) {
-        margin-right: 0px;
+    @include media-query($on-small) {
         display: block;
         margin: 25px auto;
     }

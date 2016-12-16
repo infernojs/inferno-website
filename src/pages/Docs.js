@@ -26,12 +26,12 @@ export default class Docs extends Component {
 
     render() {
         return <section className="docs row">
-			<aside className="docs-menu xs4 sm3">
+			<aside className="docs-menu">
 				<h3>Guides</h3>
 				<a onClick={this.loadDocument('guides/installation.md')}>Installation</a>
 				<a onClick={this.loadDocument('guides/react-comparison.md')}>Comparison with React</a>
 			</aside>
-			<aside className="docs-content xs8 sm9" id="markdown-root">
+			<aside className="docs-content xs12 sm9" id="markdown-root">
 				{this.state.markdown}
 			</aside>
 		</section>

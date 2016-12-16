@@ -1,18 +1,13 @@
-@include media-query($on-small) {
-    main {
-        padding-top: 54px;
-    }
-}
-
 .home {
     .hero-banner {
-        padding: 140px $gutter;
-        @include media-query($on-laptop) {
-            padding: 30px $gutter;
-            max-width: 600px;
-        }
+        padding: 6rem $gutter;
         max-width: 840px;
         margin: 0 auto;
+
+        @include media-query($on-small) {
+            padding: 30px $gutter;
+        }
+
         .inferno-logo {
             display: block;
             margin: 0 auto;
@@ -20,7 +15,7 @@
         }
         .logo,
         .logo-text {
-            padding: 0px;
+            padding: 0;
         }
         h1 {
             font-weight: normal;
@@ -33,11 +28,11 @@
             font-weight: 200;
             margin: 0 0 1rem;
         }
-        @include media-query($on-laptop) {
+        @include media-query($on-small) {
             h1,
             h2 {
                 text-align: center;
-                margin: 0rem;
+                margin: 0;
             }
         }
         .buttons {
@@ -82,12 +77,11 @@
                 padding-left: 1.25rem;
                 overflow: auto;
                 text-align: left;
-                font-weight: 200;
             }
             @include media-query($on-small) {
                 p,
                 h2 {
-                    padding-left: 0rem;
+                    padding-left: 0;
                     max-width: 240px;
                     margin: 0 auto;
                 }
@@ -103,7 +97,7 @@
         }
         &.benchmarks {
             padding: 40px;
-            @include media-query($on-laptop) {
+            @include media-query($on-small) {
                 padding: 35px $gutter;
             }
             svg {
@@ -116,7 +110,7 @@
                 height: 270px;
                 display: block;
                 margin: 0px auto 5px auto;
-                @include media-query($on-laptop) {
+                @include media-query($on-small) {
                     width: 100%;
                 }
             }
@@ -207,11 +201,11 @@
                     table {
                         margin: 0px auto;
                         width: 75%;
-                        @include media-query($on-laptop) {
+                        @include media-query($on-small) {
                             margin-top: 50px;
                             width: 100%;
                         }
-                        @include media-query($on-desktop) {
+                        @include media-query($on-large) {
                             margin-top: 50px;
                         }
                     }
@@ -225,7 +219,7 @@
         &.compare-react {
             border-top: 1px solid $grey;
             padding: 50px;
-            @include media-query($on-laptop) {
+            @include media-query($on-small) {
                 padding: $gutter;
             }
             max-width: 1100px;
@@ -237,12 +231,7 @@
         &.try {
             padding: 40px;
             background: $tertiarygrey;
-            @include media-query($on-laptop) {
-                padding: 10px $gutter;
-            }
-            @include media-query($on-laptop) {
-                padding: 40px 20px 40px 20px;
-            }
+
             .code {
                 background: $secondGrey;
                 border-radius: 0.5rem;

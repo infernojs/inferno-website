@@ -1,74 +1,75 @@
-        .menu-bar {
-            display: none;
-            @include media-query($on-laptop) {
-                display: block;
-                left: 5px;
-                cursor: pointer;
-                top: 5px;
-                position: absolute;
-                z-index: 10;
-                svg {
-                    fill: $primary;
-                }
-            }
-        }
+$topnav-height: 2.8rem;
 
-        nav {
-            text-align: right;
+.menu {
+    border-bottom: 1px solid $secondGrey;
+
+    .menu-toggle {
+        margin-top: -1px;
+        position: relative;
+    }
+
+    // Hamburger button
+    svg {
+        fill: $secondary;
+        height: $topnav-height;
+        cursor: pointer;
+        z-index: 10;
+        display: none;
+
+        @include media-query($on-small) {
             display: block;
-            padding: 0 5em;
-            width: 100%;
-            height: 6em;
-            line-height: 6em;
-            top: 0;
-            a {
-                color: $g1;
-                font-size: 1rem;
-                line-height: 5em;
-                padding-left: 1.25em;
-                @include media-query($on-laptop) {
-                    display: block;
-                    line-height: 35px;
-                    height: 35px;
-                    text-align: left;
-                    font-size: .75rem;
-                }
-                cursor: pointer;
-                text-align: right;
-                text-decoration: none;
-                transition: color 0.2s ease-in-out;
-                @include media-query($on-laptop) {
-                    margin-left: 1rem;
-                }
-                &:active,
-                &:hover {
-                    color: $primary;
-                    text-decoration: none;
-                }
-                &.selected {
-                    color: $primary;
-                }
-                .down-arrow {
-                    color: $primary;
-                    font-size: 0.65rem;
-                }
-            }
-            @include media-query($on-laptop) {
-                height: 100%;
-                width: 240px;
-                padding: 0px;
-                padding-top: 45px;
-                border-left: 1px solid $secondGrey;
-                position: fixed;
-                top: 0px;
-                right: -240px;
-                bottom: 0px;
-                background-color: $white;
-                z-index: 10;
-                -webkit-transition: right .5s;
-                transition: right .5s;
-                &.show {
-                    right: 0px;
-                }
-            }
         }
+    }
+}
+
+nav {
+    text-align: right;
+    padding: 0 2rem;
+    width: 100%;
+
+    @include media-query($on-small) {
+        display: flex;
+        flex-flow: column;
+        margin-top: $topnav-height;
+        background-color: $white;
+        border-left: 1px solid $secondGrey;
+        width: 240px;
+        height: 100%;
+        padding: 1rem 0;
+        top: 0;
+        cursor: pointer;
+        position: fixed;
+        z-index: 10;
+        transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+        box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+    }
+
+    &.open {
+        left: 0;
+    }
+    &.closed {
+        left: -240px;
+    }
+
+    a {
+        color: $g1;
+        text-align: left;
+        font-size: 1rem;
+        line-height: 3em;
+        padding-left: 1.25em;
+        cursor: pointer;
+        text-decoration: none;
+        transition: color 0.2s ease-in-out;
+
+        @include media-query($on-small) {
+            line-height: 3em;
+            text-align: left;
+        }
+        &:hover,
+        &.selected {
+            color: $primary;
+            text-decoration: underline;
+        }
+    }
+}

@@ -6,23 +6,46 @@ import IconMenu from '../icons/IconMenu'
 export default class Header extends Component {
     constructor(props) {
         super(props)
-        this.state = {active: false}
+        this.state = { active: false }
     }
-    click() {
-        this.setState({ active: ! this.state.active });
+
+    componentDidMount() {
+        const main = document.querySelector('main')
+        main.addEventListener('click', this.closeSidebar)
     }
+
+    componentWillUnmount() {
+        const main = document.querySelector('main')
+        main.removeEventListener('click', this.closeSidebar)
+    }
+
+    closeSidebar = () => {
+        this.setState({ active: false });
+    }
+
+    toggleSidebar = () => {
+        this.setState({ active: !this.state.active });
+    }
+
     render() {
+
+        const MenuLink = (props) => {
+            return <Link activeClassName="selected" onClick={ this.closeSidebar } {...props}>
+                {props.children}
+            </Link>
+        }
+
         return (
-        <div>
-            <div className="menu-bar" onClick={ this.click.bind(this) }>
-            <IconMenu/>
+        <div className="menu">
+            <div className="menu-toggle" onClick={ this.toggleSidebar }>
+                <IconMenu/>
             </div>
-            <nav className={ this.state.active ? "show" :"" }>
-                <Link onClick={ this.click.bind(this) } to="/about">About</Link>
-                <Link to="/docs">Docs</Link>
-                <Link to="/contribute">Contribute</Link>
-                <Link to="https://github.com/trueadm/inferno/issues">Help</Link>
-                <Link to="/repl">REPL</Link>
+            <nav className={ this.state.active ? 'open' : 'closed' }>
+                <MenuLink to="/about">About</MenuLink>
+                <MenuLink to="/docs">Docs</MenuLink>
+                <MenuLink to="/contribute">Contribute</MenuLink>
+                <MenuLink to="https://github.com/trueadm/inferno/issues">Help</MenuLink>
+                <MenuLink to="/repl">REPL</MenuLink>
             </nav>
         </div>
         )

@@ -2,9 +2,8 @@
 @import "../../../../node_modules/bootstrap/scss/mixins";
 @import "../../../../node_modules/bootstrap/scss/variables";
 @import "../../../../node_modules/bootstrap/scss/reboot";
-$columns: 12;
-$grid: ( xs: 0px, sm: 700px, lg: 990px);
-$gutter: 15px;
+@import "../../../../node_modules/bootstrap/scss/utilities";
+@import "/utilities";
 
 .container {
     margin: 0 auto;
@@ -17,59 +16,14 @@ $gutter: 15px;
 .row {
     display: flex;
     flex-wrap: wrap;
-    margin-right: -#{$gutter};
-    margin-left: -#{$gutter};
 }
 
-%column {
-    position: relative;
-    min-height: 1px;
-    width: 100%;
-    padding: 0 $gutter;
-}
-
-@each $breakpoint in map-keys($grid) {
-    @for $i from 1 through $columns {
-        .#{$breakpoint}#{$i} {
-            @extend %column;
-        }
+/*
+@include media-query($on-small) {
+    .row {
+        flex-wrap: wrap;
     }
-}
-
-@each $breakpoint in map-keys($grid) {
-    @for $i from 1 through $columns {
-        .#{$breakpoint}#{$i} {
-            @extend %column;
-        }
-    }
-    $width: map-get($grid, $breakpoint);
-    @media (min-width:$width) {
-        .#{$breakpoint} {
-            flex: 0 0 50%;
-            max-width: 50%;
-        }
-        @for $i from 1 through $columns {
-            .#{$breakpoint}#{$i} {
-                flex: 0 0 percentage($i/$columns);
-                max-width: percentage($i/$columns);
-            }
-        }
-    }
-}
-
-
-/* Media-queries */
-
-$on-small: 500px;
-$on-laptop: 700px;
-$on-desktop: 1000px;
-
-@mixin media-query($device) {
-    @media (max-width: $device) {
-        @content;
-    }
-};
-
+}*/
 
 .container::after {
     content: "";
@@ -80,7 +34,7 @@ $on-desktop: 1000px;
 body {
     height: 100%;
     background: #fff;
-    font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
     font-size: 13px;
     font-weight: normal;
     color: #3d464d;
@@ -94,4 +48,9 @@ body {
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
+}
+
+h1, h2 {
+    font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
+    font-weight: normal;
 }

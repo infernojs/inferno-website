@@ -1,5 +1,7 @@
+@import "/variables";
+
 .content-accordion {
-    @include media-query($on-laptop) {
+    @include media-query($on-small) {
         padding: 10px $gutter;
     }
     ul {
@@ -7,7 +9,7 @@
         padding: 0px;
         margin-right: 15px;
         margin-bottom: 0px;
-        @include media-query($on-laptop) {
+        @include media-query($on-small) {
             margin-right: 0px;
         }
         li {
@@ -53,7 +55,7 @@
     }
     .copy {
         padding: 0px $gutter;
-        @include media-query($on-laptop) {
+        @include media-query($on-small) {
             margin: $gutter*2 0px;
             text-align: justify;
         }

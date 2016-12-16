@@ -2,15 +2,12 @@ import Inferno from 'inferno'
 import Component from 'inferno-component'
 import { Link } from 'inferno-router'
 
-class NotFound extends Component {
+export default class NotFound extends Component {
     render() {
-        return <main className="text-center">
-            <p>&nbsp;</p>
+        return <div className="text-xs-center p-3">
             <h1>Page not found. Are you lost ?</h1>
 
             <Link to="/">Go to Homepage</Link>
-        </main>
+        </div>
     }
 }
-
-export default NotFound;

@@ -3,16 +3,15 @@ footer {
     .row {
         justify-content: space-between;
         align-items: center;
-        margin: 0px $gutter;
-        padding: 2rem 0rem 2rem 0rem;
+        margin: 0 $gutter;
+        padding: 2rem 0 2rem 0;
         color: $white;
         .mit {
             text-align: center;
         }
-        @include media-query($on-laptop) {
+        @include media-query($on-small) {
             padding: 15px $gutter;
-        }
-        @include media-query($on-laptop) {
+
             .mit,
             .contributors {
                 display: none;
@@ -28,7 +27,7 @@ footer {
             float: left;
             fill: $white;
             stroke: $white;
-            margin: 0px 5px;
+            margin: 0 5px;
         }
     }
 }
