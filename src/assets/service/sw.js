@@ -5,7 +5,6 @@ self.addEventListener('install', e => {
     function onCacheOpen(cache) {
         console.debug('Service cache')
         return cache.addAll([
-            '/',
             '//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.19.0/babel.min.js',
             '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.js',
             '//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/mode/javascript/javascript.min.js',
@@ -21,6 +20,11 @@ self.addEventListener('activate',  e => {
 });
 
 self.addEventListener('fetch', e => {
+    const isCDN = e.request.url.includes('://cdnjs');
+    if (!isCDN) {
+        return; // e.respondWith(fetch(e.request.url, { mode: 'no-cors' }));
+    }
+
     e.respondWith(
         caches.match(e.request).then(response => {
             // Cache hit - return response
@@ -39,9 +43,7 @@ self.addEventListener('fetch', e => {
                 // Check if we received a valid response
                 // Don't cache non-CDN requests
                 const isInvalid = !response || response.status !== 200 || response.type !== 'basic';
-                const isCDN = e.request.url.includes('cdnjs');
-
-                if (isInvalid || isCDN) {
+                if (isInvalid) {
                     console.debug('Fetch: excluded', e.request.url)
                     return response;
                 }

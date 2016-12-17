@@ -10,13 +10,16 @@ module.exports = {
         node: true,
         fs: 'empty'
     },
+    performance: {
+        hints: false
+    },
     module: {
         loaders: [
             {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
                 include: [
-                	sources(''),
+                    sources(''),
 					sources('../core'),
 					sources('../node_modules/babel-plugin-inferno')
 				],

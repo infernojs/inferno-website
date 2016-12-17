@@ -4,11 +4,9 @@ import 'isomorphic-fetch'
 import '../core/polyfills'
 import '../core/logger'
 import './assets/css/index.scss'
-import onEnter from '../core/helpers/onEnter'
 import Inferno from 'inferno'
-import { Router, match } from 'inferno-router'
 import createBrowserHistory from 'history/createBrowserHistory';
-import routes from './routes'
+import App from './components/App'
 
 // We render our react app into this element
 const root = document.getElementById('root')
@@ -17,12 +15,7 @@ const history = createBrowserHistory()
 /**
  * Render our component according to our routes
  */
-Inferno.render(<Router history={history}>
-    {routes}
-</Router>, root)
-
-// Fetch data on route change
-history.listen(location => onEnter(match(routes, location)))
+Inferno.render(<App history={history}/>, root)
 
 if (module.hot) {
     module.hot.accept()
