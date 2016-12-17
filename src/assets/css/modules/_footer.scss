@@ -9,9 +9,16 @@ footer {
         .mit {
             text-align: center;
         }
+        .built {
+            display: block;
+            opacity: 0.5;
+            a {
+                color: $grey;
+                text-decoration: underline;
+            }
+        }
         @include media-query($on-small) {
             padding: 15px $gutter;
-
             .mit,
             .contributors {
                 display: none;
