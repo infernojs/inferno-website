@@ -27,7 +27,7 @@ export default function BasicChart({ data, settings }) {
           margin: '0px 12.5px 12.5px 12.5px',
           height: '30px',
           transition: 'width 250ms',
-          background: 'rgb(124, 124, 124)',
+          background: '#545454',
           display: 'block'
         },
         bottomCell: {

@@ -90,10 +90,10 @@ export default class Benchmarks extends Component {
           }
         </ul>
         <div className="row charts">
-          <div className="lg4 copy">
+          <div className="lg5 copy">
               { this.state.list[this.state.current].description }
           </div>
-          <div className="lg8 visual">
+          <div className="lg7 visual">
               <BasicChart data={ this.state.list[this.state.current].data } />
           </div>
         </div>

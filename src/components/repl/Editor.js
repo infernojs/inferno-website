@@ -57,7 +57,7 @@ export default class Editor extends Component {
     }
 
     render({ children }) {
-        return <div className="repl">
+        return <div className="container repl">
             <Scripts loaded={this.state.loaded}/>
             <div className="row">
                 <div className="xs12 sm6 p-0 repl-editor">
@@ -70,7 +70,7 @@ export default class Editor extends Component {
                     {this.state.vNodes}
                 </div>
             </div>
-            <button className="button not-pad lg5 sm xs10" onClick={this.handleCompile}>RUN CODE</button>
+            <button className="button not-pad lg3 sm xs10" onClick={this.handleCompile}>Run Example Code</button>
         </div>
     }
 }

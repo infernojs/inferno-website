@@ -30,20 +30,20 @@ export default class ContentAccordion extends Component {
     return (
       <div className="content-accordion">
         <div className="row">
-            <div className="sm3">
-            <ul className="options">
-              {
-                this.state.list.map((item, index) => {
-                  return <li
-                    onClick={ linkEvent({ instance: this, index: index }, setCurrent ) }
-                    className={ this.state.current == index ? 'active' : '' }>
-                    <span>{ item.name }</span>
-                  </li>
-                })
-              }
-            </ul>
+            <div className="sm4">
+                <ul className="options">
+                  {
+                    this.state.list.map((item, index) => {
+                      return <li
+                        onClick={ linkEvent({ instance: this, index: index }, setCurrent ) }
+                        className={ this.state.current == index ? 'active' : '' }>
+                        <span>{ item.name }</span>
+                      </li>
+                    })
+                  }
+                </ul>
             </div>
-            <div className="copy sm8">
+            <div className="copy sm7">
                 { this.state.list[this.state.current].description }
             </div>
         </div>

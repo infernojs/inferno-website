@@ -1,6 +1,6 @@
 .home {
     .hero-banner {
-        padding: 6rem $gutter;
+        padding: 9rem $gutter;
         max-width: 840px;
         margin: 0 auto;
 
@@ -42,7 +42,7 @@
     }
     section {
         h3 {
-            font-weight: 200;
+            font-weight: 400;
             color: $primary;
             font-size: 1.5rem;
             text-align: center;
@@ -54,7 +54,7 @@
         }
         &.features {
             border-bottom: 1px solid $bg;
-
+            background-color: $bg;
             @include media-query($on-small) {
                 .row > * {
                     flex: 0 0 100%;
@@ -203,7 +203,7 @@
                 }
             }
             .charts {
-                max-width: 80%;
+                max-width: 95%;
                 margin: 0px auto;
                 @include media-query($on-small) {
                     max-width: 100%;
@@ -223,7 +223,7 @@
                 }
             }
             .button {
-                margin: 25px auto;
+                margin: 50px auto;
                 display: block;
             }
         }
