@@ -42,7 +42,7 @@ export default function() {
             <Benchmarks/>
         </section>
         <section className="compare-react container">
-            <h3>React-like but, different.</h3>
+            <h3>Inferno is different, yet familiar</h3>
             <ContentAccordion/>
         </section>
         <section className="try">

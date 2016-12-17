@@ -4,10 +4,11 @@
     @include media-query($on-small) {
         padding: 10px $gutter;
     }
-    ul {
+    .options {
         list-style: none;
-        padding: 0px;
+        padding: 5px 0px;
         margin-right: 15px;
+        border-right: 1px solid $grey;
         margin-bottom: 0px;
         @include media-query($on-small) {
             margin-right: 0px;
@@ -19,9 +20,9 @@
             -o-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
             text-align: right;
+            font-size: 0.9rem;
             cursor: pointer;
             padding: 7.5px 10px 10px 0px;
-            border-right: 1px solid $grey;
             &::before {
                 -webkit-transition: all .3s ease-in-out;
                 -o-transition: all .3s ease-in-out;
@@ -54,10 +55,23 @@
         }
     }
     .copy {
-        padding: 0px $gutter;
+        display: inline-block !important;
+        list-style: none;
         @include media-query($on-small) {
             margin: $gutter*2 0px;
             text-align: justify;
+        }
+        li {
+            font-size: 0.9rem;
+            min-width: 100%;
+            margin-bottom: 1rem;
+            &::before {
+                content: "•";
+                color: $primary;
+                position: absolute;
+                font-size: 1.5rem;
+                margin: -8px 0px 0px -17px;
+            }
         }
     }
 }
