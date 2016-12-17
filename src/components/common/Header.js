@@ -44,7 +44,7 @@ export default class Header extends Component {
                 <MenuLink to="/">Home</MenuLink>
                 <MenuLink to="/docs">Docs</MenuLink>
                 <MenuLink to="/contribute">Contribute</MenuLink>
-                <a target="_blank" href="https://github.com/trueadm/inferno/issues">Help</a>
+                <a target="_blank" href="https://github.com/trueadm/inferno/issues">Github</a>
             </nav>
         </div>
         )
