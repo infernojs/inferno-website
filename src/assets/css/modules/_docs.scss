@@ -3,37 +3,41 @@
         padding: 2rem 1rem;
         width: 12rem;
         flex-wrap: nowrap;
-
         @include media-query($on-small) {
             flex-wrap: wrap;
         }
-
         ul {
             padding: 0;
             li {
                 list-style: none;
                 a {
+                    -webkit-transition: all .2s ease-in-out;
+                    -o-transition: all .2s ease-in-out;
+                    transition: all .2s ease-in-out;
                     color: $primary;
                     line-height: 1.6rem;
                     margin-bottom: 0.6rem;
-                    border-bottom: 2px solid transparent;
+                    border-bottom: 1px solid transparent;
                     text-decoration: none;
                     cursor: pointer;
-
                     &:hover {
-
-                        border-bottom-color: $primary;
+                        border-bottom-color: $grey;
                     }
                 }
             }
         }
     }
-
     aside.docs-content {
-        border-left: 1px solid $secondGrey;
-        padding: 1rem;
+        border-left: 1px solid $bg;
+        padding: 1.5rem 2rem;
         flex: 1;
-
+        p {
+            font-size: 1rem;
+        }
+        hr {
+            border: 1px solid $grey;
+            background: none;
+        }
         h2 {
             font-weight: normal;
             font-size: 1.5rem;
@@ -47,17 +51,34 @@
             font-size: 1.3rem;
             color: $secondary;
         }
-
         pre {
-            background: #f6f6f6;
+            background: rgb(224, 224, 224);
             padding: 1rem;
+            border-radius: 3px;
             code {
                 background: inherit;
             }
         }
         code {
-            color: #0e1954;
-            background: #e5f2ff;
+            color: #555;
+            background: #efefef;
+            padding: 0.45rem;
+            font-size: 0.75rem;
+            border-radius: 5px;
+        }
+        a {
+            -webkit-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            color: #888;
+            line-height: 1.6rem;
+            margin-bottom: 0.6rem;
+            border-bottom: 1px solid transparent;
+            text-decoration: none;
+            cursor: pointer;
+            &:hover {
+                border-bottom-color: $grey;
+            }
         }
     }
 }

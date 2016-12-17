@@ -33,7 +33,7 @@ export default class Docs extends Component {
             return <li><a onClick={() => this.loadDocument(to)}>{children}</a></li>
         }
 
-        return <section className="docs row">
+        return <section className="container docs row">
 			<aside className="docs-menu">
 				<h3>Guides</h3>
                 <ul>
