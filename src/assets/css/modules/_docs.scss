@@ -2,6 +2,11 @@
     aside.docs-menu {
         padding: 2rem 1rem;
         width: 12rem;
+        flex-wrap: nowrap;
+
+        @include media-query($on-small) {
+            flex-wrap: wrap;
+        }
 
         ul {
             padding: 0;
