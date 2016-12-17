@@ -1,0 +1,42 @@
+.page {
+    padding: $gutter;
+    .inner {
+        max-width: 80%;
+        margin: 0px auto;
+        font-size: 1rem;
+        blockquote {
+            font-size: 1.75rem;
+            width: 85%;
+            margin: 2rem auto 2rem auto;
+            font-style: italic;
+            padding: 1rem 1rem 1rem 4rem;
+            small {
+                color: #888;
+                display: block;
+                font-size: 1.25rem;
+            }
+            &:before {
+                color: #ccc;
+                font-style: none !important;
+                content: open-quote;
+                font-size: 4em;
+                line-height: 0.1em;
+                margin: 35px 0px 0px -65px;
+                vertical-align: -0.4em;
+                position: absolute;
+            }
+        }
+        h1 {
+            margin-bottom: 1rem;
+            display: block;
+            width: 100%;
+            padding-bottom: 10px;
+            border-bottom: 1px solid $grey;
+        }
+        h2 {
+            display: block;
+            width: 100%;
+            color: $primary;
+        }
+    }
+}
