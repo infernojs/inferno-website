@@ -1,9 +1,11 @@
 import Inferno from 'inferno'
 import Component from 'inferno-component'
-import { Link } from 'inferno-router'
+import { Router, Link } from 'inferno-router'
+import InfernoLogo from '../icons/IconInferno'
 import IconMenu from '../icons/IconMenu'
 
 export default class Header extends Component {
+
     constructor(props) {
         super(props)
         this.state = { active: false }
@@ -28,24 +30,27 @@ export default class Header extends Component {
     }
 
     render() {
-
+        console.log(this);
         const MenuLink = (props) => {
             return <Link activeClassName="selected" {...props}>
                 {props.children}
             </Link>
         }
-
         return (
         <div className="menu">
-            <div className="menu-toggle" onClick={ this.toggleSidebar }>
-                <IconMenu/>
+            <div className="container row">
+                <div className="menu-toggle" onClick={ this.toggleSidebar }>
+                    <IconMenu/>
+                </div>
+                <MenuLink to="/" className="branding lg3"><InfernoLogo/> Inferno</MenuLink>
+                <nav className={ 'lg9 ' + (this.state.active ? 'open' : 'closed') }>
+                    <MenuLink to="/">Home</MenuLink>
+                    <MenuLink to="/about">About</MenuLink>
+                    <MenuLink to="/docs">Docs</MenuLink>
+                    <MenuLink to="/contribute">Contribute</MenuLink>
+                    <a target="_blank" href="https://github.com/trueadm/inferno/issues">Github</a>
+                </nav>
             </div>
-            <nav className={ this.state.active ? 'open' : 'closed' }>
-                <MenuLink to="/">Home</MenuLink>
-                <MenuLink to="/docs">Docs</MenuLink>
-                <MenuLink to="/contribute">Contribute</MenuLink>
-                <a target="_blank" href="https://github.com/trueadm/inferno/issues">Github</a>
-            </nav>
         </div>
         )
     }

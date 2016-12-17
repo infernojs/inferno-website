@@ -1,8 +1,8 @@
 import Inferno, { linkEvent } from 'inferno'
 import InfernoLogo from '../components/icons/IconInferno'
-import Benchmarks from '../components/common/Benchmarks'
 import ContentAccordion from '../components/common/ContentAccordion'
 import IconBenchmark from '../components/icons/IconBenchmark'
+import Benchmarks from '../components/home/Benchmarks'
 import Features from '../components/home/Features'
 import Editor from '../components/repl/Editor'
 
@@ -20,7 +20,8 @@ export default function() {
     return <div className="home">
         <div className="hero-banner row">
             <div className="logo xs12 sm3">
-                <InfernoLogo/></div>
+                <InfernoLogo/>
+            </div>
             <div className="logo-text sm9">
                 <h1>Inferno</h1>
                 <h2>An extremely fast React-like javascript library for building modern user interfaces.</h2>

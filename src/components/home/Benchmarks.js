@@ -1,6 +1,6 @@
 import Inferno, { linkEvent } from 'inferno';
 import Component from 'inferno-component';
-import BasicChart from './BasicChart'
+import BasicChart from '../common/BasicChart'
 
 const setCurrent = ({ instance, index }) => {
   instance.setState({ current: index });

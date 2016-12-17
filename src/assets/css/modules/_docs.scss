@@ -5,6 +5,7 @@
         flex-wrap: nowrap;
         @include media-query($on-small) {
             flex-wrap: wrap;
+            padding: 25px 0px;
         }
         ul {
             padding: 0;
@@ -28,6 +29,13 @@
         }
     }
     aside.docs-content {
+        @include media-query($on-small) {
+            width: 100%;
+            flex: none;
+            flex-wrap: wrap;
+            padding: 0px;
+            border: 0px;
+        }
         border-left: 1px solid $bg;
         padding: 1.5rem 2rem;
         flex: 1;

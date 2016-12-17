@@ -1,13 +1,11 @@
 .home {
     .hero-banner {
-        padding: 9rem $gutter;
-        max-width: 840px;
-        margin: 0 auto;
-
         @include media-query($on-small) {
             padding: 30px $gutter;
         }
-
+        padding: 9rem $gutter;
+        max-width: 840px;
+        margin: 0 auto;
         .inferno-logo {
             display: block;
             margin: 0 auto;

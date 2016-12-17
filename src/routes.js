@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import DemoInferno from './components/demo/Demo.Inferno'
 //import DemoReact from './components/Demo/Demo.React'
 import Docs from './pages/Docs'
+import About from './pages/About'
 import REPL from './pages/REPL'
 import Contribute from './pages/Contribute'
 
@@ -25,6 +26,7 @@ export default (
         <Route path="/demo" component={ DemoInferno }/>
         <Route path="/demo/react" component={ ReactDemo }/>
         <Route path="/docs/:path*" component={ Docs }/>
+        <Route path="/about" component={ About }/>
         <Route path="/docs" component={ Docs }/>
         <Route path="/repl" component={ REPL }/>
         <Route path="/contribute" component={ Contribute }/>

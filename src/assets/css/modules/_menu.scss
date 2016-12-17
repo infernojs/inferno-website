@@ -1,71 +1,92 @@
 $topnav-height: 2.8rem;
-$sidebar-width: 20rem;
-
+$sidebar-width: 50%;
 .menu {
     border-bottom: 1px solid $bg;
-    text-align: right;
-
+    padding: 7.5px;
+    // text-align: right;
     // Hamburger button
-    svg {
+    .branding {
+        @include media-query($on-small) {
+            width: 50%;
+        }
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
+        font-weight: normal;
+        color: #3d464d;
+        text-decoration: none;
+        font-size: 1.25rem;
+        margin: 0;
+        opacity: 1;
+        svg {
+            height: 42.5px;
+            margin-right: 7.5px;
+        }
+        &.selected {
+            opacity: 0;
+        }
+    }
+    .hamburger {
         fill: $secondary;
         cursor: pointer;
         z-index: 10;
         display: none;
-
         @include media-query($on-small) {
             display: inline-block;
         }
     }
-}
-
-nav {
-    text-align: right;
-    padding: 0 2rem;
-    width: 100%;
-
-    @include media-query($on-small) {
-        display: flex;
-        flex-flow: column;
-        margin-top: calc(#{$topnav-height + 0.31rem});
-        background-color: $white;
-        border-left: 1px solid $secondGrey;
-        width: $sidebar-width;
-        height: 100%;
-        padding: 1rem 0;
-        top: 0;
-        cursor: pointer;
-        position: fixed;
-        z-index: 10;
-        transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
-        box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.1);
-        box-sizing: border-box;
-    }
-
-    &.open {
-        right: 0;
-    }
-    &.closed {
-        right: -$sidebar-width * 2;
-    }
-
-    a, a:visited {
-        color: $g1;
-        text-align: left;
-        font-size: 1rem;
-        line-height: 3em;
-        padding-left: 1.25em;
-        cursor: pointer;
-        text-decoration: none;
-        transition: color 0.2s ease-in-out;
-
+    nav {
+        text-align: right;
+        padding-right: 0px;
         @include media-query($on-small) {
-            line-height: 3em;
-            text-align: left;
+            display: flex;
+            flex-flow: column;
+            margin-top: calc(#{$topnav-height + 0.31rem});
+            background-color: $white;
+            border-left: 1px solid $secondGrey;
+            width: $sidebar-width;
+            height: 100%;
+            padding: 1rem 0;
+            top: 0;
+            cursor: pointer;
+            position: fixed;
+            z-index: 10;
+            transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+            box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            margin: 0px;
+            border: 0px;
+            &.open {
+                right: 0;
+            }
+            &.closed {
+                right: -$sidebar-width * 2;
+            }
         }
-        &:hover,
-        &.selected {
-            color: $primary;
-            text-decoration: underline;
+        a, a:visited {
+            -webkit-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+            color: $g1;
+            text-align: left;
+            font-size: 1rem;
+            line-height: 3em;
+            padding-left: 1.25em;
+            cursor: pointer;
+            text-decoration: none;
+            transition: color 0.2s ease-in-out;
+            @include media-query($on-small) {
+                line-height: 3em;
+                text-align: left;
+            }
+            &:hover,
+            &.selected {
+                color: $primary;
+                text-decoration: underline;
+            }
         }
     }
 }
