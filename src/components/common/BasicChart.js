@@ -28,7 +28,15 @@ export default function BasicChart({ data, settings }) {
           height: '30px',
           transition: 'width 250ms',
           background: '#545454',
-          display: 'block'
+          display: 'block',
+          score: {
+            color: '#888',
+            fontSize: '11px',
+            position: 'relative',
+            right: '-100%',
+            marginLeft: '5px',
+            top: '24%'
+          }
         },
         bottomCell: {
           borderTop: '1px solid rgb(242, 63, 63)',
@@ -60,7 +68,8 @@ export default function BasicChart({ data, settings }) {
                       background: row.bg ? row.bg : theme.styles.bars.background
                     }
                   )
-                }>&nbsp;</div>
+                }>
+                { row.score ? <figure style={ theme.styles.bars.score }>{ row.score }</figure> : '' }</div>
               </td>
             </tr>
           )

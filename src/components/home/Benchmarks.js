@@ -15,7 +15,8 @@ export default class Benchmarks extends Component {
         {
           id: 'frameworks',
           name: 'JS Frameworks',
-          description: 'The <a href="http://www.stefankrause.net/wp/?p=316">JS web frameworks benchmark</a> is a simple benchmark, comparing various typical app operations for several JavaScript frameworks. The benchmarks creates a large table with randomized entries and measures the time for various operations.<br><br>The latest results were taken from <a href="http://stefankrause.net/js-frameworks-benchmark4/webdriver-ts/table.html">this chart</a>.',
+          description: 'The JS web frameworks benchmark is a simple benchmark, comparing various typical app operations for several JavaScript frameworks. The benchmarks creates a large table with randomized entries and measures the time for various operations.',
+          link: 'http://stefankrause.net/js-frameworks-benchmark4/webdriver-ts/table.html',
           data: [
             { label: 'Vanilla JS', value: 0.1, score: 1.0 },
             { label: 'Inferno 1.0', value: 0.14, bg: 'rgb(242, 63, 63)', score: 1.04 },
@@ -29,6 +30,7 @@ export default class Benchmarks extends Component {
           id: 'vdom',
           name: 'Virtual DOM',
           description: ' Etiam elit velit, malesuada sed mauris ut, suscipit vestibulum ante. Vestibulum pharetra orci a leo varius, nec luctus tellus consectetur. Donec eget consequat leo.',
+          link: '',
           data: [
             { label: 'Inferno', value: 0.25, bg: 'rgb(242, 63, 63)' },
             { label: 'Angular 2', value: 0.35 },
@@ -41,6 +43,7 @@ export default class Benchmarks extends Component {
           id: 'uibench',
           name: 'UI Bench',
           description: 'Praesent nibh mauris, accumsan vel quam quis, luctus mattis ex. Integer eu diam ultrices, ultrices lacus quis, volutpat lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          link: '',
           data: [
             { label: 'Inferno', value: 0.15, bg: 'rgb(242, 63, 63)' },
             { label: 'Angular 2', value: 0.6 },
@@ -53,6 +56,7 @@ export default class Benchmarks extends Component {
           id: 'dbmonster',
           name: 'DBMonster',
           description: 'Nulla eget sagittis ligula. Donec ornare consequat faucibus. Proin et sem facilisis, tincidunt quam nec, pellentesque lorem. Nulla facilisi. Suspendisse imperdiet purus ac sem fringilla pulvinar.',
+          link: '',
           data: [
             { label: 'Inferno', value: 0.1, bg: 'rgb(242, 63, 63)' },
             { label: 'Angular 2', value: 0.3 },
@@ -65,6 +69,7 @@ export default class Benchmarks extends Component {
           id: 'loadtime',
           name: 'Parse + Load Time',
           description: 'Nullam non felis ut neque consectetur commodo. Nullam rhoncus tincidunt ligula, nec feugiat erat laoreet pharetra. Nulla eget sagittis ligula. Donec ornare consequat faucibus.',
+          link: '',
           data: [
             { label: 'Inferno', value: 0.13, bg: 'rgb(242, 63, 63)' },
             { label: 'Angular 2', value: 0.9 },
@@ -92,13 +97,13 @@ export default class Benchmarks extends Component {
         </ul>
         <div className="row charts">
           <div className="lg5 copy">
-              { this.state.list[this.state.current].description }
+              <p>{ this.state.list[this.state.current].description }</p>
+              <a target="_blank" rel="noopener" className="button not-pad lg5 sm xs10" href={ this.state.list[this.state.current].link }>View the benchmark</a>
           </div>
           <div className="lg7 visual">
               <BasicChart data={ this.state.list[this.state.current].data } />
           </div>
         </div>
-        <a className="button not-pad lg5 sm xs10" href="#">Learn more about how Inferno performs</a>
       </div>
     )
   }
