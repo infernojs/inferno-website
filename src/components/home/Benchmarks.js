@@ -15,13 +15,14 @@ export default class Benchmarks extends Component {
         {
           id: 'frameworks',
           name: 'JS Frameworks',
-          description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac risus orci. enean faucibus mi erat, vitae fringilla metus egestas eget. Morbi at congue ligula, nec interdum est.',
+          description: 'The <a href="http://www.stefankrause.net/wp/?p=316">JS web frameworks benchmark</a> is a simple benchmark, comparing various typical app operations for several JavaScript frameworks. The benchmarks creates a large table with randomized entries and measures the time for various operations.<br><br>The latest results were taken from <a href="http://stefankrause.net/js-frameworks-benchmark4/webdriver-ts/table.html">this chart</a>.',
           data: [
-            { label: 'Inferno', value: 0.3, bg: 'rgb(242, 63, 63)' },
-            { label: 'Angular 2', value: 0.6 },
-            { label: 'Ember', value: 0.65 },
-            { label: 'React', value: 0.8 },
-            { label: 'VueJS', value: 0.95 }
+            { label: 'Vanilla JS', value: 0.1, score: 1.0 },
+            { label: 'Inferno 1.0', value: 0.14, bg: 'rgb(242, 63, 63)', score: 1.04 },
+            { label: 'Angular 2', value: 0.52, score: 1.42 },
+            { label: 'Ember 2', value: 0.74, score: 1.64 },
+            { label: 'React 15.4', value: 0.49, score: 1.39 },
+            { label: 'Vue 2', value: 0.47, score: 1.37 }
           ]
         },
         {

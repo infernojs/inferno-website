@@ -13,7 +13,7 @@ export default function() {
                 <IconSize/>
                 <div className="desc">
                     <h2>Tiny Size</h2>
-                    <p>Inferno is much smaller in size, 7kb vs 45kb gzip. This means inferno is faster to transfer over the network and much faster to parse.</p>
+                    <p>Inferno is much smaller in size, 8kb vs 45kb gzip. This means inferno is faster to transfer over the network and much faster to parse.</p>
                 </div>
             </div>
             <div className="xs12 lg4 row">
@@ -26,29 +26,29 @@ export default function() {
             <div className="xs12 lg4 row">
                 <IconSpeed/>
                 <div className="desc">
-                    <h2>Fastest</h2>
-                    <p>One the fastest front-end frameworks for rendering UI in the DOM.</p>
+                    <h2>Insane Performance</h2>
+                    <p>One the fastest front-end frameworks for rendering UI in the DOM, making 60 FPS on mobile possible.</p>
                 </div>
             </div>
             <div className="xs12 lg4 row">
                 <IconArchitecture/>
                 <div className="desc">
                     <h2>One-way Architecture</h2>
-                    <p>Component driven + One-way data flow architecture. Coupling with Redux, MobX or Ceberal supported.</p>
+                    <p>Component driven + One-way data flow architecture. Bindings also supplied for Redux, MobX or Ceberal.</p>
                 </div>
             </div>
             <div className="xs12 lg4 row">
                 <IconIsomorphic/>
                 <div className="desc">
                     <h2>Isomorphic</h2>
-                    <p>Isomorphic rendering on both client and server with the inferno-server package.</p>
+                    <p>Isomorphic rendering on both client and server, along with fast-booting from server-side renders.</p>
                 </div>
             </div>
             <div className="xs12 lg4 row">
                 <IconModular/>
                 <div className="desc">
                     <h2>Modular</h2>
-                    <p>Highly modular with very little opinion of how things should be done.</p>
+                    <p>Highly modular with very little opinion of how things should be done, removing bloat and unecessary overhead.</p>
                 </div>
             </div>
         </div>
