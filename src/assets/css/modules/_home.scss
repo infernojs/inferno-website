@@ -100,17 +100,11 @@
                 .row {
                     background: $bg;
                     transition: all 200ms ease;
-                    cursor: default;
-
                     .desc {
                         flex: 1;
                     }
                     padding: 2rem $gutter;
                     outline: 1px solid $white;
-
-                    &:hover {
-                        background: lighten($bg, 5);
-                    }
                 }
             }
         }
@@ -213,6 +207,9 @@
                 margin: 0px auto;
                 @include media-query($on-small) {
                     max-width: 100%;
+                    .visual, .copy {
+                        padding: 0px;
+                    }
                 }
                 .visual {
                     table {

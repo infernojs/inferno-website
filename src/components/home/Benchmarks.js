@@ -99,10 +99,13 @@ export default class Benchmarks extends Component {
           <div className="lg5 copy">
               <div className="center">
                   <p>{ this.state.list[this.state.current].description }</p>
-                  <a target="_blank"
-                    rel="noopener"
-                    className="button not-pad lg5 sm xs10"
-                    href={ this.state.list[this.state.current].link }>View the benchmark</a>
+                  {
+                    this.state.list[this.state.current].link ?
+                      <a target="_blank"
+                        rel="noopener"
+                        className="button not-pad lg5 sm xs10"
+                        href={ this.state.list[this.state.current].link }>View the benchmark</a> : ''
+                  }
               </div>
           </div>
           <div className="lg7 visual">

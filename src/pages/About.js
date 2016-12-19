@@ -15,8 +15,7 @@ export default class About extends Component {
                     exploring new and efficient methods.
                 </p>
                 <blockquote>
-                    Inferno 1.0 is really well written. It's how I would've written React.
-                    I'd recommend reading its source to learn.
+                    Inferno 1.0 is really well written. It's how I would've written React. I'd recommend reading its source to learn.
                     <small>&mdash; member of the React core team at Facebook</small>
                 </blockquote>
                 <h2>What's React?</h2>
