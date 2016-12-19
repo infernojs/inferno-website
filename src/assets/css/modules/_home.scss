@@ -47,12 +47,15 @@
             margin-bottom: 40px;
         }
         .copy {
+            display: flex;
             align-items: center;
-            p, a {
-                align-items: none;
-                display: inline-block;
-                max-width: 100%;
-                margin: 15px auto !important;
+            .center {
+                p, a {
+                    align-items: none;
+                    display: inline-block;
+                    max-width: 100%;
+                    margin: 15px auto !important;
+                }
             }
         }
         &.features {
