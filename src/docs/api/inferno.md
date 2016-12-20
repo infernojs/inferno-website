@@ -1,5 +1,5 @@
 ---
-title: Inferno API
+Inferno API
 ---
 
 ## `render`

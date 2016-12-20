@@ -1,5 +1,5 @@
 ---
-title: Inferno Compat
+Inferno Compat
 ---
 
 We understand that a lof of users will be migrating from React and might be using external dependencies which will depend on React. To get around this issue we have created `inferno-compat` which is designed to be a replacement for React within your code. 

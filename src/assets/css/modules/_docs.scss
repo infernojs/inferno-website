@@ -21,7 +21,9 @@
                     border-bottom: 1px solid transparent;
                     text-decoration: none;
                     cursor: pointer;
-                    &:hover {
+
+                    &:hover,
+                    &.selected {
                         border-bottom-color: $grey;
                     }
                 }

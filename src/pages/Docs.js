@@ -17,7 +17,7 @@ export default class Docs extends Component {
 
     componentDidMount() {
         const { params } = this.props
-		this.loadDocument(params.path || '/docs/guides/installation.md')
+		this.loadDocument(params.path || '/docs/guides/get-started.md')
     }
 
 	loadDocument = (to, changeRoute) => {
@@ -37,13 +37,18 @@ export default class Docs extends Component {
 
     render() {
         const MenuLink = ({ to, children }) => {
-            return <li><a onClick={() => this.loadDocument(to, true)}>{children}</a></li>
+            return <li>
+                <Link activeClassName="selected" to={to}>
+                    {children}
+                </Link>
+            </li>
         }
 
         return <section className="container docs row">
 			<aside className="docs-menu">
 				<h3>Guides</h3>
                 <ul>
+                    <MenuLink to={'/docs/guides/get-started.md'}>Get Started</MenuLink>
                     <MenuLink to={'/docs/guides/installation.md'}>Installation</MenuLink>
                     <MenuLink to={'/docs/guides/react-comparison.md'}>Comparison with React</MenuLink>
                 </ul>

@@ -1,5 +1,5 @@
 ---
-title: Comparison to React
+Comparison to React
 ---
 
 Inferno intentionally aims to have the same developer look and feel as [React](//facebook.github.io/react) – meaning that Inferno supports the majority of React's API and also utilises a "virtual DOM" behind the scenes. This decision was made due to the stability and high adoption of React in a relatively short period of time. The React API is well-recieved, documented, understood and battle-tested. Inferno could have created its own API, but that would have pushed people into having to learn yet another way of doing things. 
