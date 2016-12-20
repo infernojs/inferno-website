@@ -11,26 +11,33 @@ export default class Docs extends Component {
         }
     }
 
-    componentDidMount() {
-		this.loadDocument('/docs/guides/installation.md')
+    componentWillReceiveProps({ params }) {
+        this.loadDocument(params.path)
     }
 
-	loadDocument = (to) => {
+    componentDidMount() {
+        const { params } = this.props
+		this.loadDocument(params.path || '/docs/guides/installation.md')
+    }
+
+	loadDocument = (to, changeRoute) => {
         const { router } = this.context
-        const path = to.replace('/docs/', '')
+        const path = '/' + to.replace('/docs/', '')
+
+        if (changeRoute) {
+            return router.push(to)
+        }
 
         fetch(`/api/markdown?file=${path}`)
         .then(response => response.json())
         .then(response => {
-            router.push(to)
             this.setState({ markdown: response })
-            this.forceUpdate()
         })
 	}
 
     render() {
         const MenuLink = ({ to, children }) => {
-            return <li><a onClick={() => this.loadDocument(to)}>{children}</a></li>
+            return <li><a onClick={() => this.loadDocument(to, true)}>{children}</a></li>
         }
 
         return <section className="container docs row">
