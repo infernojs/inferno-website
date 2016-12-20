@@ -33,7 +33,7 @@ function compile(jsxCode) {
         const infernoResult = <ExportedComponent/>
         return infernoResult
     } catch(ex) {
-        return <p>Compiler Error: {ex}</p>
+        return <p>Compiler Error: {ex.message}</p>
     }
 }
 
@@ -42,16 +42,27 @@ export default class Editor extends Component {
     componentDidMount() {
         // Execute code when CodeMirror is available
         let intval = setInterval(() => {
-            if (window.CodeMirror) {
-                console.debug('Stopped interval, loaded = true')
+            if (window.CodeMirror && window.compiler) {
                 this.setState({ loaded: true })
+                this.initEditor()
+                this.handleCompile()
                 clearInterval(intval)
             }
         }, 50)
     }
 
+    initEditor = () => {
+        const textArea = document.getElementById('repl-editor')
+        window.editor = new CodeMirror.fromTextArea(textArea, {
+            theme: "neo",
+            lineNumbers: true,
+            styleActiveLine: true
+        })
+    }
+
     handleCompile = (e) => {
-        e.preventDefault()
+        if (e) e.preventDefault()
+
         const vNodes = compile(window.editor.doc.getValue())
         this.setState({ vNodes })
     }
