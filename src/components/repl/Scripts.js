@@ -25,7 +25,7 @@ export default class Scripts extends Component {
     }
 
     componentDidUpdate() {
-        if (!window.editor && window.CodeMirror) {
+        if (window.CodeMirror) {
             const textArea = document.getElementById('repl-editor')
             window.editor = new CodeMirror.fromTextArea(textArea, {
                 theme: "neo",

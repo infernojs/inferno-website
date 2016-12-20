@@ -40,11 +40,11 @@ function compile(jsxCode) {
 export default class Editor extends Component {
 
     componentDidMount() {
-        const self = this
         // Execute code when CodeMirror is available
         let intval = setInterval(() => {
             if (window.CodeMirror) {
-                self.setState({ loaded: true })
+                console.debug('Stopped interval, loaded = true')
+                this.setState({ loaded: true })
                 clearInterval(intval)
             }
         }, 50)
