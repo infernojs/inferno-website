@@ -29,13 +29,13 @@ export default function({ hostname, config, children }) {
             <meta name="twitter:image" content="/assets/share.png" />
             <meta name="twitter:creator" content="@InfernoJS" />
             <link rel="manifest" href="/assets/manifest.json"/>
+            <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet" defer="defer"/>
             <script dangerouslySetInnerHTML={{
                 __html: insertServiceWorker(true)
             }}/>
         </head>
         <body>
             <div id="root">{children && children}</div>
-            <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet"/>
             <script src={`${bundleURL}/build/bundle.js`} async="async"/>
         </body>
     </html>
