@@ -8,18 +8,17 @@ if (process.env.BROWSER) {
 export default class Scripts extends Component {
 
     componentDidMount() {
+
         // Execute code when Babel is available
-        if (!window.compiler) {
-            Object.defineProperty(window, 'Babel', {
-                writeable: true,
-                set(val) {
-                    require.ensure([], function(require){
-                        window.compiler = val
-                        window.compiler.registerPlugin('babel-plugin-inferno', require('babel-plugin-inferno'))
-                    })
-                }
-            })
-        }
+        let intval = setInterval(() => {
+            if (window.Babel && !window.compiler) {
+                require.ensure([], function(require){
+                    window.compiler = window.Babel
+                    window.compiler.registerPlugin('babel-plugin-inferno', require('babel-plugin-inferno'))
+                })
+                clearInterval(intval)
+            }
+        }, 50)
     }
 
     render({ loaded }) {

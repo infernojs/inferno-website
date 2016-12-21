@@ -15,8 +15,6 @@ export default async(ctx, next) => {
     // Run onEnter methods of matched component
     await onEnter(renderProps)
 
-    console.log('++++', renderProps.matched)
-
     content = renderToStaticMarkup(<Html hostname={ctx.hostname} config={config}>
         <RouterContext {...renderProps}/>
     </Html>)
