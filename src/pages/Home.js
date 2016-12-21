@@ -4,7 +4,7 @@ import ContentAccordion from '../components/common/ContentAccordion'
 import IconBenchmark from '../components/icons/IconBenchmark'
 import Benchmarks from '../components/home/Benchmarks'
 import Features from '../components/home/Features'
-import Editor from '../components/repl/Editor'
+//import Editor from '../components/repl/Editor'
 
 const codeSample = `
 export default function MainComponent() {
@@ -47,7 +47,7 @@ export default function() {
         </section>
         <section className="try">
             <h3>Try Our Example</h3>
-            <Editor>{codeSample}</Editor>
+            {/*<Editor>{codeSample}</Editor>*/}
         </section>
     </div>
 }

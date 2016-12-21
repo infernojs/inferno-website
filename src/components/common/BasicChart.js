@@ -55,37 +55,37 @@ export default function BasicChart({ data, settings }) {
   );
   return (
     <table className="inferno-basic-chart" style={ theme.styles.table }>
-      {
-        data.map((row) => {
-          return (
-            <tr>
-              <td style={ theme.styles.yAxis }>{ row.label }</td>
-              <td style={ theme.styles.barContainer }>
-                <div style={
-                  Object.assign(
-                    {}, theme.styles.bars, {
-                      width: `${row.value * 100}%`,
-                      background: row.bg ? row.bg : theme.styles.bars.background
-                    }
-                  )
-                }>
-                { row.score ? <figure style={ theme.styles.bars.score }>{ row.score }</figure> : '' }</div>
-              </td>
-            </tr>
-          )
-        })
-      }
-      {
-        (data.length == 0) ?
+        <tbody>
+            {data.map((row) => {
+                return (
+                <tr>
+                    <td style={ theme.styles.yAxis }>{ row.label }</td>
+                    <td style={ theme.styles.barContainer }>
+                        <div style={
+                            Object.assign(
+                            {}, theme.styles.bars, {
+                                width: `${row.value * 100}%`,
+                                background: row.bg ? row.bg : theme.styles.bars.background
+                            }
+                            )
+                        }>
+                            { row.score ? <figure style={ theme.styles.bars.score }>{ row.score }</figure> : '' }</div>
+                    </td>
+                </tr>
+                )
+            })}
+          {
+            (data.length == 0) ?
+              <tr>
+                <td style={ theme.styles.yAxis }>&nbsp;</td>
+                <td style={ theme.styles.noData } colSpan="2">No data has been supplied.</td>
+              </tr> : null
+          }
           <tr>
-            <td style={ theme.styles.yAxis }>&nbsp;</td>
-            <td style={ theme.styles.noData } colspan="2">No data has been supplied.</td>
-          </tr> : ''
-      }
-      <tr>
-        <td style={ theme.styles.bottomCell }>&nbsp;</td>
-        <td style={ theme.styles.xAxis}>{ theme.labels.xAxis }</td>
-      </tr>
+            <td style={ theme.styles.bottomCell }>&nbsp;</td>
+            <td style={ theme.styles.xAxis}>{ theme.labels.xAxis }</td>
+          </tr>
+        </tbody>
     </table>
   );
 }

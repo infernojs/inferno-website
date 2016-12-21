@@ -3,6 +3,8 @@
  */
 require('./core/compile')
 
+global.window = global.window || {}
+
 /**
  * Bootstrap our server
  */
