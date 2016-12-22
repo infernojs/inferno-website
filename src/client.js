@@ -18,5 +18,6 @@ const history = createBrowserHistory()
 Inferno.render(<App history={history}/>, root)
 
 if (module.hot) {
+    require('inferno-devtools');
     module.hot.accept()
 }
