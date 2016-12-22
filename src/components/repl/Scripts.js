@@ -7,32 +7,18 @@ if (process.env.BROWSER) {
 
 export default class Scripts extends Component {
 
-    componentWillMount() {
-        const self = this
+    componentDidMount() {
 
         // Execute code when Babel is available
-        if (!window.compiler) {
-            Object.defineProperty(window, 'Babel', {
-                writeable: true,
-                set(val) {
-                    require.ensure([], function(require){
-                        window.compiler = val
-                        window.compiler.registerPlugin('babel-plugin-inferno', require('babel-plugin-inferno'))
-                    })
-                }
-            })
-        }
-    }
-
-    componentDidUpdate() {
-        if (!window.editor && window.CodeMirror) {
-            const textArea = document.getElementById('repl-editor')
-            window.editor = new CodeMirror.fromTextArea(textArea, {
-                theme: "neo",
-                lineNumbers: true,
-                styleActiveLine: true
-            })
-        }
+        let intval = setInterval(() => {
+            if (window.Babel && !window.compiler) {
+                require.ensure([], function(require){
+                    window.compiler = window.Babel
+                    window.compiler.registerPlugin('babel-plugin-inferno', require('babel-plugin-inferno'))
+                })
+                clearInterval(intval)
+            }
+        }, 50)
     }
 
     render({ loaded }) {

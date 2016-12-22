@@ -1,5 +1,5 @@
 ---
-title: Inferno Component
+Inferno Component
 ---
 
 Inferno does not provide a stateful ES6 Component out of the box with the `inferno` package. Instead there is a separate package to maintain the ES6 Component. You can use the Inferno ES6 Component in exactly the same way as the React Component. It supports all our [lifecycle hooks]({{site.url}}/guides/lifecycle). 
@@ -34,4 +34,3 @@ class YourAwesomeComponent extends Component
     })
   }
 
-  

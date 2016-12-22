@@ -5,6 +5,9 @@ module.exports = {
         port: process.env.DEV ? 8080 : 8050,
         favicon: path.join(__dirname, '../assets/favicon.ico')
     },
+    server: {
+        SSR: true // Server side rendering
+    },
     static: [
         {
             url: '/build',

@@ -1,6 +1,5 @@
 ---
-title: Get Started
-next: /get-started/installation
+Get Started
 ---
 
 Let's start with some code. As you can see, Inferno intentionally keeps the same, good, design ideas as React regarding components: one-way data flow and separation of concerns.

@@ -3,7 +3,7 @@ import Inferno from 'inferno'
 /**
  * This component is rendered on the server side
  */
-export default function({ hostname, config }) {
+export default function({ hostname, config, children }) {
     const serverURL = `//${hostname}`
     const bundleURL = process.env.DEV ? `${serverURL}:${config.http.port + 2}` : ''
 
@@ -14,6 +14,7 @@ export default function({ hostname, config }) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
             <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta name="description" content="An extremely fast React-like javascript library for building modern user interfaces."/>
+            <meta name="theme-color" content="#ffffff"/>
             <meta property="og:locale" content="en_US" />
             <meta property="og:type" content="website" />
             <meta property="og:title" content="Inferno" />
@@ -27,14 +28,14 @@ export default function({ hostname, config }) {
             <meta name="twitter:site" content="@InfernoJS" />
             <meta name="twitter:image" content="/assets/share.png" />
             <meta name="twitter:creator" content="@InfernoJS" />
-            <link rel="icon" href="/assets/favicon.png?v=ngg42qbKBK"/>
+            <link rel="manifest" href="/assets/manifest.json"/>
+            <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet" defer="defer"/>
             <script dangerouslySetInnerHTML={{
-                __html: insertServiceWorker(false)
+                __html: insertServiceWorker(true)
             }}/>
         </head>
         <body>
-            <div id="root"/>
-            <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet"/>
+            <div id="root">{children && children}</div>
             <script src={`${bundleURL}/build/bundle.js`} async="async"/>
         </body>
     </html>
