@@ -30,7 +30,6 @@ export default class Header extends Component {
     }
 
     render() {
-        console.log(this);
         const MenuLink = (props) => {
             return <Link activeClassName="selected" {...props}>
                 {props.children}
