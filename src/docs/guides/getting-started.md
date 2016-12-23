@@ -1,5 +1,4 @@
----
-Get Started
+Getting Started
 ---
 
 Let's start with some code. As you can see, Inferno intentionally keeps the same, good, design ideas as React regarding components: one-way data flow and separation of concerns.
@@ -16,7 +15,7 @@ InfernoDOM.render(
   document.getElementById("app")
 )
 ```
-Furthermore, Inferno also uses ES6 components like React:
+Furthermore, Inferno also uses ES2015 components like React:
 
 ```javascript
 import Inferno from 'inferno';

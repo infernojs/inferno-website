@@ -4,12 +4,14 @@ const config = require('../config');
 const path = require('path');
 const url = require('url');
 const fs = require('mz/fs');
+const mime = require('mime');
+const zlib = require('zlib');
 const logger = require('debug');
 
 function serverpushConstructor(opts) {
 
     opts = opts ? opts : {};
-    opts.manifestName = opts.manifestName || 'push_manifest.json';
+    opts.manifest = opts.manifest || 'push_manifest.json';
     opts.gaeproxy = opts.gaeproxy ? true : false;
     opts.port = opts.port ? opts.port : false;
     opts.singleheader = opts.singleheader ? true : false;
@@ -18,21 +20,22 @@ function serverpushConstructor(opts) {
 
         return next().then(function() {
 
-            if (!ctx.response.is('html')) return;
+            if (!ctx.response.is('html')) {
+                console.log(ctx.url, ' is not HTML. Skipping...')
+                return;
+            } else {
+                console.log(ctx.url, ' is HTML')
+            }
 
             if ('nopush' in ctx.query) return;
 
-            return new Promise((res, rej) => {
+            return new Promise((res, req) => {
 
-                const manifestfile = path.resolve(opts.manifestName);
+                const manifestfile = path.resolve(opts.manifest);
 
                 fs.stat(manifestfile)
-                  .then(stat => {
-                      return stat.isFile();
-                  })
-                  .then(() => {
-                      return fs.readFile(manifestfile)
-                  })
+                  .then(stat => stat.isFile())
+                  .then(() =>  fs.readFile(manifestfile))
                   .then(file => {
                       let links = [];
                       let contents = [];
@@ -72,8 +75,21 @@ function serverpushConstructor(opts) {
                       }
                   })
                   .then(() => {
-                      console.log(' LINK SET ')
-                      res();
+                      logger('inferno:push')(' LINK SET ')
+
+                      ctx.state.h2push.contents.forEach(location => {
+                          const pathname = url.parse(location).pathname
+                          console.log('--', path.join(__dirname, '../../..', pathname))
+                          const content = fs.createReadStream(path.join(__dirname, '../../..', pathname));
+                          const p = ctx.res;
+
+                          content.pipe(zlib.createGzip()).pipe(p);
+                          //res();
+
+                          ctx.res.on('error', err => {
+                              console.error(err);
+                          });
+                      })
                   })
                   .catch(err => {
                       logger('inferno:push')(err)
