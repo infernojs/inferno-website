@@ -6,6 +6,7 @@ uploads/
 stats.json
 
 # Other
+*.pem
 *.log
 *.db
 .idea
