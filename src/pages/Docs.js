@@ -77,12 +77,14 @@ export default class Docs extends Component {
                     <MenuLink to={'/docs/api/inferno-component.md'}>Inferno-component</MenuLink>
                     <MenuLink to={'/docs/api/inferno-create-class.md'}>Inferno-create-class</MenuLink>
                     <MenuLink to={'/docs/api/inferno-create-element.md'}>Inferno-create-element</MenuLink>
-                    {/*<MenuLink to={'/docs/api/inferno-hyperscript.md'}>Inferno-hyperscript</MenuLink>*/}
+                    <MenuLink to={'/docs/api/inferno-hyperscript.md'}>Inferno-hyperscript</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-component.md'}>Inferno-devtools</MenuLink>
                     <MenuLink to={'/docs/api/inferno-mobx.md'}>Inferno-mobx</MenuLink>
                     <MenuLink to={'/docs/api/inferno-redux.md'}>Inferno-redux</MenuLink>
                     <MenuLink to={'/docs/api/inferno-router.md'}>Inferno-router</MenuLink>
                     <MenuLink to={'/docs/api/inferno-server.md'}>Inferno-server</MenuLink>
-                    {/*<MenuLink to={'/docs/api/inferno-test-utils.md'}>Inferno-test-utils</MenuLink>*/}
+                    <MenuLink to={'/docs/api/inferno-test-utils.md'}>Inferno-test-utils</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-test-utils.md'}>Inferno-vnode-flags</MenuLink>
                 </ul>
 			</aside>
 			<aside className="docs-content" id="markdown-root">
