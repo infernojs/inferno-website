@@ -1,0 +1,10 @@
+{
+  "/build/bundle.css": {
+	"type": "style",
+	"weight": 1
+  },
+  "/build/bundle.js": {
+	"type": "script",
+	"weight": 1
+  }
+}
