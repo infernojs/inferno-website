@@ -7,8 +7,8 @@ module.exports = {
     },
     server: {
         SSR: true, // Server side rendering
-        certificate: '/etc/letsencrypt/live/beta.infernojs.org/fullchain.pem',
-        certificate_key: '/etc/letsencrypt/live/beta.infernojs.org/privkey.pem',
+        certificate: path.join(__dirname, '../../fullchain.pem'),
+        certificate_key: path.join(__dirname, '../../privkey.pem'),
     },
     static: [
         {
