@@ -48,9 +48,27 @@ export default class Docs extends Component {
 			<aside className="docs-menu">
 				<h3>Guides</h3>
                 <ul>
-                    <MenuLink to={'/docs/guides/get-started.md'}>Get Started</MenuLink>
                     <MenuLink to={'/docs/guides/installation.md'}>Installation</MenuLink>
+                    <MenuLink to={'/docs/guides/getting-started.md'}>Getting Started</MenuLink>
+                    <MenuLink to={'/docs/guides/what-is-virtual-dom.md'}>What is Virtual DOM?</MenuLink>
+                    <MenuLink to={'/docs/guides/what-is-jsx.md'}>What is JSX?</MenuLink>
+                    <MenuLink to={'/docs/guides/alternatives-to-jsx.md'}>Alternatives to JSX</MenuLink>
+                    <MenuLink to={'/docs/guides/creating-components.md'}>Components</MenuLink>
+                    <MenuLink to={'/docs/guides/events.md'}>Events</MenuLink>
+                    <MenuLink to={'/docs/guides/state.md'}>State</MenuLink>
+                    <MenuLink to={'/docs/guides/forms.md'}>Forms</MenuLink>
+                    <MenuLink to={'/docs/guides/server-side-rendering.md'}>Server-side rendering</MenuLink>
+                    <MenuLink to={'/docs/guides/routing.md'}>Routing</MenuLink>
+                    <MenuLink to={'/docs/guides/devtools.md'}>Dev Tools</MenuLink>
+                    <MenuLink to={'/docs/guides/testing.md'}>Testing</MenuLink>
+                </ul>
+                <h3>Comparisons</h3>
+                <ul>
                     <MenuLink to={'/docs/guides/react-comparison.md'}>Comparison with React</MenuLink>
+                    <MenuLink to={'/docs/guides/preact-comparison.md'}>Comparison with Preact</MenuLink>
+                    <MenuLink to={'/docs/guides/angular-comparison.md'}>Comparison with Angular</MenuLink>
+                    <MenuLink to={'/docs/guides/ember-comparison.md'}>Comparison with Ember</MenuLink>
+                    <MenuLink to={'/docs/guides/vue-comparison.md'}>Comparison with Vue</MenuLink>
                 </ul>
                 <h3>API</h3>
                 <ul>
