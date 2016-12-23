@@ -28,56 +28,31 @@ export default class Benchmarks extends Component {
         },
         {
           id: 'vdom',
-          name: 'Virtual DOM',
-          description: ' Etiam elit velit, malesuada sed mauris ut, suscipit vestibulum ante. Vestibulum pharetra orci a leo varius, nec luctus tellus consectetur. Donec eget consequat leo.',
-          link: '',
+          name: 'Virtual DOM Benchmark',
+          description: 'The Virtual DOM Benchmark focuses on testing the children reconciliation algorithm used in various libraries. It is used by virtual DOM library authors to help optimize their algorithms. While not a perfect gauge of overall performance, it tests a key ingredient of popular Virtual DOM libraries.',
+          link: 'https://vdom-benchmark.github.io/vdom-benchmark/',
           data: [
-            { label: 'Inferno', value: 0.25, bg: 'rgb(242, 63, 63)' },
-            { label: 'Angular 2', value: 0.35 },
-            { label: 'Ember', value: 0.5 },
-            { label: 'React', value: 0.75 },
-            { label: 'VueJS', value: 0.85 }
+            { label: 'Inferno JS', value: 0.16, bg: 'rgb(242, 63, 63)', score: 1 },
+            { label: 'React', value: 0.6, score: 4.06 },
+            { label: 'Mithril', value: 1, score: 6.00 },
+            { label: 'virtual-dom', value: 0.54, score: 3.20 },
+            { label: 'snabbdom', value: 0.32, score: 1.94 }
           ]
         },
         {
           id: 'uibench',
           name: 'UI Bench',
-          description: 'Praesent nibh mauris, accumsan vel quam quis, luctus mattis ex. Integer eu diam ultrices, ultrices lacus quis, volutpat lorem. Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-          link: '',
+          description: 'UI Benchmark is considered a more accurate test of overall UI performance in a library. The tests were run with Full Render Time enabled and 5 Iterations. Read UI Benchmark\'s notes for caveats and stipulations before drawing further conclusions.',
+          link: 'https://localvoid.github.io/uibench/',
           data: [
-            { label: 'Inferno', value: 0.15, bg: 'rgb(242, 63, 63)' },
-            { label: 'Angular 2', value: 0.6 },
-            { label: 'Ember', value: 0.45 },
-            { label: 'React', value: 0.7 },
-            { label: 'VueJS', value: 0.85 }
+            { label: 'Inferno JS', value: 0.32, bg: 'rgb(242, 63, 63)', score: 1 },
+            { label: 'Vanilla JS', value: 0.70, score: 2.13 },
+            { label: 'React', value: 0.69, score: 2.10 },
+            { label: 'Preact', value: 1, score: 3.04 },
+            { label: 'DIO', value: 0.54, score: 1.64 },
+            { label: 'ivi', value: 0.36, score: 1.10 }
           ]
-        },
-        {
-          id: 'dbmonster',
-          name: 'DBMonster',
-          description: 'Nulla eget sagittis ligula. Donec ornare consequat faucibus. Proin et sem facilisis, tincidunt quam nec, pellentesque lorem. Nulla facilisi. Suspendisse imperdiet purus ac sem fringilla pulvinar.',
-          link: '',
-          data: [
-            { label: 'Inferno', value: 0.1, bg: 'rgb(242, 63, 63)' },
-            { label: 'Angular 2', value: 0.3 },
-            { label: 'Ember', value: 0.65 },
-            { label: 'React', value: 0.75 },
-            { label: 'VueJS', value: 0.85 }
-          ]
-        },
-        {
-          id: 'loadtime',
-          name: 'Parse + Load Time',
-          description: 'Nullam non felis ut neque consectetur commodo. Nullam rhoncus tincidunt ligula, nec feugiat erat laoreet pharetra. Nulla eget sagittis ligula. Donec ornare consequat faucibus.',
-          link: '',
-          data: [
-            { label: 'Inferno', value: 0.13, bg: 'rgb(242, 63, 63)' },
-            { label: 'Angular 2', value: 0.9 },
-            { label: 'Ember', value: 0.35 },
-            { label: 'React', value: 0.58 },
-            { label: 'VueJS', value: 0.85 }
-          ]
-        },
+        }
       ]
     };
   }
