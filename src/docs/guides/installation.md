@@ -1,4 +1,4 @@
-# Installation
+Installation
 ---
 
 The best way to start to use Inferno is by using [Create Inferno App](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
@@ -10,7 +10,8 @@ out [Inferno Starter Project](https://github.com/nightwolfz/inferno-starter) by 
 Our recommended approach to installing and using Inferno is via NPM. Alternatively, you can insert Inferno into your site via `<script>` resources
 directly the CDN. Both approaches are outlined below.
 
-## Core packages:
+Core packages:
+---
 
 The core package contains almost everything you need to get going and works out the box with JSX (note: JSX will need a build step).
 If you do not plan to use JSX, make sure you add the correct package to do so (check the Creating Virtual DOM section below).
@@ -71,7 +72,8 @@ https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta41/inferno-router.js
 Production:
 https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta41/inferno-router.min,js
 
-## Creating Virtual DOM
+Creating Virtual DOM
+---
 
 #### JSX:
 ```sh
