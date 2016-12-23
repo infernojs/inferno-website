@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="container">
             <div className="row">
                 <div className="social-network">
-                    <a target="_blank" rel="noopener" href="https://twitter.com/infernojs"><IconTwitter/></a>
+                    <a target="_blank" rel="noopener" href="https://twitter.com/inferno_js"><IconTwitter/></a>
                     <a target="_blank" rel="noopener" href="https://inferno-slack.herokuapp.com/"><IconSlack/></a>
                 </div>
                 <div className="mit">
