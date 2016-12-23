@@ -1,76 +1,91 @@
 Installation
 ---
 
-Very much like React, Inferno requires the **inferno** and the **inferno-dom** packages for consumption in the browser's DOM. Inferno also has the **inferno-server** package for server-side rendering of virtual DOM to HTML strings (differing from React's route of using *react-dom/server* for server-side rendering). Furthermore, rather than include the ES2015 component with class syntax in core (like React), the component is in a separate package **inferno-component** to allow for better modularity. We publish modules to NPM and to a [CDN](//cloudflare.com).
+The best way to start to use Inferno is by using [Create Inferno App](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
 
-## Package Overview
+Alternatively, you can get started with Inferno using the [Inferno Boilerplate](https://github.com/infernojs/inferno-boilerplate) for a very simple setup. 
+For a more advanced example demonstrating how Inferno might be used, we recommend trying 
+out [Inferno Starter Project](https://github.com/nightwolfz/inferno-starter) by [nightwolfz](https://github.com/nightwolfz/).
 
-### Inferno
-The core Inferno package. 
+Our recommended approach to installing and using Inferno is via NPM. Alternatively, you can insert Inferno into your site via `<script>` resources
+directly the CDN. Both approaches are outlined below.
 
+Core packages:
+---
 
+The core Inferno package contains almost everything you need to get going and works out the box with JSX (note: JSX will need a build step).
+If you do not plan to use JSX, make sure you add the correct package to do so (check the Creating Virtual DOM section below).
+
+*NPM:*
 ```sh
-npm install --save inferno
-```
-[NPM](//npmjs.com/package/inferno)
-[CDN](//cdnjs.cloudflare.com/ajax/libs/inferno/0.7.27/inferno.min.js)
-
-### Inferno DOM
-Browser DOM rendering package
-
-```sh
-npm install --save inferno-dom
-```
-
-[NPM](//npmjs.com/package/inferno-dom)
-[CDN](//cdnjs.cloudflare.com/ajax/libs/inferno/0.7.27/inferno-dom.min.js)
-
-### Inferno Component 
-ES2015 stateful components (with lifecycle events)
-
-```sh
-npm install --save inferno-component
+npm install --save inferno@beta42
 ```
 
-[NPM](//npmjs.com/package/inferno-component)
-[CDN](//cdnjs.cloudflare.com/ajax/libs/inferno/0.7.27/inferno-component.min.js)
+*CDN:*
+Development:
+https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta41/inferno.js
 
-### Create Element
-Helper for creating Inferno VNodes (similar to `React.createElement`)
+Production:
+https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta41/inferno.min.js
 
+### Support for ES2015 components:
+
+The core Inferno package does not support ES2015 class components, only functional components, out of the box. Including
+`inferno-component` will provide full ES2015 class support.
+
+*NPM:*
 ```sh
-npm install --save inferno-create-element
+npm install --save inferno-component@beta42
 ```
 
-[NPM](//npmjs.com/package/inferno-create-element)
-[CDN](//cdnjs.cloudflare.com/ajax/libs/inferno/0.7.27/inferno-create-element.min.js)
+*CDN:*
+Development:
+https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta41/inferno-component.js
 
-### Create Class
-Helper for creating Inferno Components via ES5 (similar to `React.createClass`)
+Production:
+https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta41/inferno-component.min.js
 
-```sh
-npm install --save inferno-create-class
-```
+### Compatibility with existing React apps
 
-[NPM](//npmjs.com/package/inferno-create-class)
-[CDN](//cdnjs.cloudflare.com/ajax/libs/inferno/0.7.27/inferno-create-class.min.js)
-
-### Inferno Server
-Server-side rendering package
+Inferno can support most React apps by using a compatibility layer that sits between React and Inferno. There is a cost in performance doing
+this, but this can help improve the size and performance of existing React 15.x apps.
 
 ```sh
-npm install --save inferno-server
+npm install --save-dev inferno-compat@beta42
 ```
 
-[NPM](//npmjs.com/package/inferno-server)
-[CDN](//cdnjs.cloudflare.com/ajax/libs/inferno/0.7.27/inferno-server.min.js)
+Note: Make sure you read more about [`inferno-compat`](https://github.com/trueadm/inferno/tree/master/packages/inferno-compat) before using it.
 
-### Router
-Basic routing functionality
+### Routing support:
 
+Inferno's router will provide basic routing support and is usable on both the server and client. For more information on how to use `inferno-router`, visit the project page.
+
+*NPM:*
 ```sh
-npm install --save inferno-router
+npm install --save inferno-router@beta42
 ```
 
-[NPM](//npmjs.com/package/inferno-router)
-[CDN](//cdnjs.cloudflare.com/ajax/libs/inferno/0.7.27/inferno-router.min.js)
+*CDN:*
+Development:
+https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta41/inferno-router.js
+
+Production:
+https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta41/inferno-router.min,js
+
+Creating Virtual DOM
+---
+
+#### JSX:
+```sh
+npm install --save-dev babel-plugin-inferno@beta17
+```
+
+#### Hyperscript:
+```sh
+npm install --save inferno-hyperscript@beta42
+```
+
+#### createElement:
+```sh
+npm install --save inferno-create-element@beta42
+```
