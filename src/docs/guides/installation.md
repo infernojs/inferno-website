@@ -13,7 +13,7 @@ directly the CDN. Both approaches are outlined below.
 Core packages:
 ---
 
-The core package contains almost everything you need to get going and works out the box with JSX (note: JSX will need a build step).
+The core Inferno package contains almost everything you need to get going and works out the box with JSX (note: JSX will need a build step).
 If you do not plan to use JSX, make sure you add the correct package to do so (check the Creating Virtual DOM section below).
 
 *NPM:*
