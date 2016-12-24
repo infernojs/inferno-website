@@ -4,26 +4,22 @@
 @import "../../../../node_modules/bootstrap/scss/reboot";
 @import "../../../../node_modules/bootstrap/scss/utilities";
 @import "/utilities";
-
 .container {
     margin: 0 auto;
     padding-left: $gutter;
     padding-right: $gutter;
     width: 100%;
     max-width: 1200px;
+    @include media-query($on-small) {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
 }
-
-/*
-@include media-query($on-small) {
-    .row {
-        flex-wrap: wrap;
-    }
-}*/
 
 .container::after {
     content: "";
@@ -50,7 +46,8 @@ body {
     -webkit-touch-callout: none;
 }
 
-h1, h2 {
+h1,
+h2 {
     font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;
     font-weight: normal;
 }

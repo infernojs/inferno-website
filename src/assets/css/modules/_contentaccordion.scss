@@ -12,6 +12,7 @@
         margin-bottom: 0px;
         @include media-query($on-small) {
             margin-right: 0px;
+            margin: 40px auto 0px auto;
         }
         li {
             display: flex;
@@ -60,7 +61,7 @@
         margin: 1.5rem 0 0 1rem;
         @include media-query($on-small) {
             margin: $gutter*2 0px;
-            text-align: justify;
+            padding: 0px;
         }
         li {
             font-size: 0.9rem;

@@ -1,16 +1,32 @@
 .page {
     padding: $gutter;
+    @include media-query($on-small) {
+        padding: 0px;
+        padding-top: $gutter;
+    }
     .inner {
         max-width: 80%;
         margin: 0px auto;
         font-size: 1rem;
+        @include media-query($on-small) {
+            font-size: 13px;
+        }
         blockquote {
             font-size: 1.75rem;
             width: 85%;
             margin: 2rem auto 2rem auto;
             font-style: italic;
             padding: 1rem 1rem 1rem 4rem;
+            @include media-query($on-small) {
+                width: 85%;
+                margin: 1rem auto 1rem auto;
+                padding: 1rem;
+                font-size: 16px;
+            }
             small {
+                @include media-query($on-small) {
+                    font-size: 1rem;
+                }
                 color: #888;
                 display: block;
                 font-size: 1.25rem;
@@ -24,6 +40,9 @@
                 margin: 35px 0px 0px -65px;
                 vertical-align: -0.4em;
                 position: absolute;
+                @include media-query($on-small) {
+                    margin: 35px 0px 0px -45px;
+                }
             }
         }
         h1 {
@@ -34,6 +53,7 @@
             border-bottom: 1px solid $grey;
         }
         h2 {
+            margin-top: 80px;
             display: block;
             width: 100%;
             color: $primary;

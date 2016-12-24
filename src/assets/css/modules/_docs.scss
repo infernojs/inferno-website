@@ -5,7 +5,8 @@
         flex-wrap: nowrap;
         @include media-query($on-small) {
             flex-wrap: wrap;
-            padding: 25px 0px;
+            padding: $gutter;
+            width: 100%;
         }
         ul {
             padding: 0;
@@ -34,8 +35,9 @@
         @include media-query($on-small) {
             width: 100%;
             flex: none;
+
             flex-wrap: wrap;
-            padding: 0px;
+                       padding: $gutter;
             border: 0px;
         }
         border-left: 1px solid $bg;
@@ -43,6 +45,10 @@
         flex: 1;
         p {
             font-size: 1rem;
+            @include media-query($on-small) {
+                        font-size: 13px;
+            }
+
         }
         hr {
             border: 1px solid $grey;
@@ -60,11 +66,16 @@
             font-weight: normal;
             font-size: 1.3rem;
             color: $secondary;
+            margin-top: 80px;
+        }
+        h4 {
+            margin-top: 40px;
         }
         pre {
             background: rgb(224, 224, 224);
             padding: 1rem;
             border-radius: 3px;
+            margin-bottom: 40px;
             code {
                 background: inherit;
             }
