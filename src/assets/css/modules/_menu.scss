@@ -1,7 +1,7 @@
 $topnav-height: 2.8rem;
 $sidebar-width: 50%;
 .menu {
-    border-bottom: 1px solid $bg;
+    border-bottom: 1px solid $grey;
     padding: 7.5px;
     // text-align: right;
     // Hamburger button
@@ -30,7 +30,7 @@ $sidebar-width: 50%;
         }
     }
     .hamburger {
-        fill: $secondary;
+        fill: $primary;
         cursor: pointer;
         z-index: 10;
         display: none;
@@ -46,7 +46,7 @@ $sidebar-width: 50%;
             flex-flow: column;
             margin-top: calc(#{$topnav-height + 0.31rem});
             background-color: $white;
-            border-left: 1px solid $secondGrey;
+            border-left: 1px solid $grey;
             width: $sidebar-width;
             height: 100%;
             padding: 1rem 0;
@@ -70,7 +70,7 @@ $sidebar-width: 50%;
             -webkit-transition: all .2s ease-in-out;
             -o-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
-            color: $g1;
+            color: $black;
             text-align: left;
             font-size: 1rem;
             line-height: 3em;
