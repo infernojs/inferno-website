@@ -1,6 +1,6 @@
 footer {
-    background-color: $footer;
-    .row {
+    background: $primary;
+    .foot .row {
         justify-content: space-between;
         align-items: center;
         margin: 0 $gutter;
@@ -35,6 +35,31 @@ footer {
             fill: $white;
             stroke: $white;
             margin: 0 5px;
+        }
+    }
+    .supporters {
+        padding: 1rem;
+        background-color: $footer;
+        a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 0px;
+            &:last-child {
+                border-right: none;
+            }
+            svg, img {
+                display: block;
+                margin: 0px auto;
+                width: 60%;
+            }
+            &.fill svg {
+                fill: white;
+            }
+            &:hover {
+                opacity: 0.8;
+            }
         }
     }
 }

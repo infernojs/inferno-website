@@ -3,7 +3,6 @@ $sidebar-width: 50%;
 .menu {
     border-bottom: 1px solid $bg;
     padding: 7.5px;
-    // text-align: right;
     // Hamburger button
     .branding {
         @include media-query($on-small) {
@@ -27,6 +26,7 @@ $sidebar-width: 50%;
         }
         &.selected {
             opacity: 0;
+            visibility: hidden;
         }
     }
     .hamburger {

@@ -30,7 +30,7 @@ export default function BasicChart({ data, settings }) {
           background: '#545454',
           display: 'block',
           score: {
-            color: '#888',
+            color: 'rgb(93, 93, 93)',
             fontSize: '11px',
             position: 'relative',
             right: '-100%',
