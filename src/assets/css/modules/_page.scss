@@ -11,12 +11,12 @@
             font-style: italic;
             padding: 1rem 1rem 1rem 4rem;
             small {
-                color: #888;
+                color: lighten($black, 20%);
                 display: block;
                 font-size: 1.25rem;
             }
             &:before {
-                color: #ccc;
+                color: lighten($black, 20%);
                 font-style: none !important;
                 content: open-quote;
                 font-size: 4em;
