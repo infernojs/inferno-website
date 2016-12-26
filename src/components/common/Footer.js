@@ -30,16 +30,16 @@ export default function Footer() {
         <div className="supporters">
             <div className="container">
                 <div className="row">
-                    <a target="_blank" rel="noopener" href="https://www.digitalocean.com/" className="lg3 fill">
+                    <a target="_blank" rel="noopener" href="https://www.digitalocean.com/" className="lg3 sm6 fill">
                         <LogoDO/>
                     </a>
-                    <a target="_blank" rel="noopener" href="http://info.saucelabs.com/" className="lg3">
+                    <a target="_blank" rel="noopener" href="http://info.saucelabs.com/" className="lg3 sm6">
                         <LogoSauceLabs/>
                     </a>
-                    <a target="_blank" rel="noopener" href="browserstack.com" className="lg3 fill">
+                    <a target="_blank" rel="noopener" href="browserstack.com" className="lg3 sm6 fill">
                         <LogoBrowserstack/>
                     </a>
-                    <a target="_blank" rel="noopener" href="http://thegrid.io" className="lg3">
+                    <a target="_blank" rel="noopener" href="http://thegrid.io" className="lg3 sm6">
                         <LogoTheGrid/>
                     </a>
                 </div>
