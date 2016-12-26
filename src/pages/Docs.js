@@ -43,7 +43,6 @@ export default class Docs extends Component {
                 </Link>
             </li>
         }
-
         return <section className="container docs row">
 			<aside className="docs-menu">
 				<h3>Guides</h3>

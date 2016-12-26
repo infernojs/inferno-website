@@ -36,6 +36,9 @@
         .buttons {
             margin-top: 27.5px;
             color: $white;
+            .button {
+                padding: 0.75em 3.5em;
+            }
         }
     }
     section {
