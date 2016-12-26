@@ -41,6 +41,7 @@ footer {
         padding: 1rem;
         background-color: $footer;
         a {
+
             display: flex;
             align-items: center;
             justify-content: center;
@@ -61,6 +62,19 @@ footer {
                 opacity: 0.8;
             }
         }
+
+        @include media-query($on-medium) {
+            a {
+                border-right: 0px;
+                min-height: 4rem;
+                &:nth-child(odd) {
+                    border-right: 1px solid rgba(255, 255, 255, 0.2);
+                }
+                &:nth-child(1), &:nth-child(2) {
+                   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                }
+            }
+        }
         @include media-query($on-small) {
             a {
                 border-right: 0px;
@@ -68,6 +82,9 @@ footer {
                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
                 &:last-child {
                     border-bottom: none;
+                }
+                &:nth-child(odd) {
+                    border-right: 0px;
                 }
             }
         }
