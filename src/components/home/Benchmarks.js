@@ -33,7 +33,7 @@ export default class Benchmarks extends Component {
           link: 'https://vdom-benchmark.github.io/vdom-benchmark/',
           data: [
             { label: 'Inferno JS', value: 0.16, bg: '#e41f1c', score: 1 },
-            { label: 'React', value: 0.6, score: 4.06 },
+            { label: 'React 15.4', value: 0.6, score: 4.06 },
             { label: 'Mithril', value: 1, score: 6.00 },
             { label: 'virtual-dom', value: 0.54, score: 3.20 },
             { label: 'snabbdom', value: 0.32, score: 1.94 }
@@ -47,7 +47,7 @@ export default class Benchmarks extends Component {
           data: [
             { label: 'Inferno JS', value: 0.32, bg: '#e41f1c', score: 1 },
             { label: 'Vanilla JS', value: 0.70, score: 2.13 },
-            { label: 'React', value: 0.69, score: 2.10 },
+            { label: 'React 15.4', value: 0.69, score: 2.10 },
             { label: 'Preact', value: 1, score: 3.04 },
             { label: 'DIO', value: 0.54, score: 1.64 },
             { label: 'ivi', value: 0.36, score: 1.10 }
