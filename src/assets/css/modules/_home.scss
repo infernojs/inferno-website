@@ -225,12 +225,18 @@
             }
         }
         &.try {
-            padding: 40px;
-            background: $tertiarygrey;
+            padding: 2rem;
+            background: $bg;
             .code {
-                background: $secondGrey;
+                background: $bg;
                 border-radius: 0.5rem;
                 padding: 15px;
+            }
+            @include media-query($on-small) {
+                padding: 2.5rem 0rem;
+                .container {
+                    padding: 0rem 1rem 0rem 1rem;
+                }
             }
         }
     }

@@ -20,7 +20,10 @@
     }
     .CodeMirror pre {
          @include media-query($on-small) {
-        font-size: 13px;
+            font-size: 13px;
         }
+    }
+    .CodeMirror-linenumber {
+        color: black !important;
     }
 }

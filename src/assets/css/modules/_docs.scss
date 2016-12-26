@@ -16,8 +16,9 @@
                     -webkit-transition: all .2s ease-in-out;
                     -o-transition: all .2s ease-in-out;
                     transition: all .2s ease-in-out;
-                    color: $primary;
-                    line-height: 1.6rem;
+                    color: $black;
+                    display: inline-block;
+                    line-height: 1.25rem;
                     margin-bottom: 0.6rem;
                     border-bottom: 1px solid transparent;
                     text-decoration: none;
@@ -25,7 +26,8 @@
 
                     &:hover,
                     &.selected {
-                        border-bottom-color: $grey;
+                        color: $primary;
+                        border-bottom-color: $primary;
                     }
                 }
             }
@@ -40,7 +42,7 @@
                        padding: $gutter;
             border: 0px;
         }
-        border-left: 1px solid $bg;
+        border-left: 1px solid $grey;
         padding: 1.5rem 2rem;
         flex: 1;
         p {
@@ -57,8 +59,8 @@
         h2 {
             font-weight: normal;
             font-size: 1.5rem;
-            color: #000;
-            border-bottom: 1px solid #e0e0e0;
+            color: $black;
+            border-bottom: 1px solid $grey;
             line-height: 3rem;
             margin-bottom: 1rem;
         }
@@ -70,28 +72,32 @@
         }
         h4 {
             margin-top: 40px;
+            color: $primary;
         }
         pre {
-            background: rgb(224, 224, 224);
+            background: $bg;
+            border: 1px solid $grey;
             padding: 1rem;
             border-radius: 3px;
             margin-bottom: 40px;
             code {
                 background: inherit;
+                border: none;
             }
         }
         code {
-            color: #555;
-            background: #efefef;
+            color: $black;
+            background: $bg;
+            border: 1px solid $grey;
             padding: 0.45rem;
-            font-size: 0.75rem;
+            font-size: .9rem;
             border-radius: 5px;
         }
         a {
             -webkit-transition: all .2s ease-in-out;
             -o-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
-            color: #888;
+            color: $primary;
             line-height: 1.6rem;
             margin-bottom: 0.6rem;
             border-bottom: 1px solid transparent;

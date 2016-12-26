@@ -2,7 +2,7 @@
 
 .content-accordion {
     @include media-query($on-small) {
-        padding: 10px $gutter;
+        padding: 0px;
     }
     .options {
         list-style: none;
@@ -21,7 +21,6 @@
             -o-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
             text-align: right;
-            font-size: 0.9rem;
             cursor: pointer;
             padding: 7.5px 10px 10px 0px;
             &::before {
@@ -64,7 +63,6 @@
             padding: 0px;
         }
         li {
-            font-size: 0.9rem;
             min-width: 100%;
             margin-bottom: 1rem;
             &::before {

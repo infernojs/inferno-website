@@ -18,7 +18,7 @@
     }
     &:hover {
         color: $white;
-        background-color: $secondary;
+        background-color: $black;
         text-decoration: none;
     }
     @include media-query($on-small) {
@@ -32,8 +32,7 @@
         border: 2px solid $primary;
         &:hover {
             color: $white;
-            background-color: $secondary;
-            border: 2px solid $secondary;
+            background-color: $primary;
         }
     }
 }
