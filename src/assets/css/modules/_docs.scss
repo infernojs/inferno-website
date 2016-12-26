@@ -1,7 +1,7 @@
 .docs {
     aside.docs-menu {
         padding: 2rem 1rem;
-        width: 12rem;
+        width: 14rem;
         flex-wrap: nowrap;
         @include media-query($on-small) {
             flex-wrap: wrap;
@@ -43,7 +43,7 @@
             border: 0px;
         }
         border-left: 1px solid $grey;
-        padding: 1.5rem 2rem;
+        padding: 1.75rem 2.25rem;
         flex: 1;
         p {
             font-size: 1rem;
