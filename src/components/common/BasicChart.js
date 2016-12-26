@@ -16,8 +16,8 @@ export default function BasicChart({ data, settings }) {
         xAxis: {
           padding: '7.5px',
           textAlign: 'center',
-          borderTop: '1px solid rgb(242, 63, 63)',
-          color: 'rgb(242, 63, 63)',
+          borderTop: '1px solid #e41f1c',
+          color: '#e41f1c',
           textTransform: 'uppercase'
         },
         barContainer: {
@@ -29,18 +29,18 @@ export default function BasicChart({ data, settings }) {
           transition: 'width 250ms',
           background: '#545454',
           display: 'block',
-          score: {
-            color: 'rgb(93, 93, 93)',
-            fontSize: '11px',
-            position: 'relative',
-            right: '-100%',
-            marginLeft: '5px',
-            top: '24%'
-          }
+        },
+        score: {
+          color: 'rgb(93, 93, 93)',
+          fontSize: '11px',
+          position: 'relative',
+          right: '-100%',
+          marginLeft: '5px',
+          top: '24%'
         },
         bottomCell: {
-          borderTop: '1px solid rgb(242, 63, 63)',
-          borderRight: '1px solid rgb(242, 63, 63)'
+          borderTop: '1px solid #e41f1c',
+          borderRight: '1px solid #e41f1c'
         },
         noData: {
           textAlign: 'center',
@@ -69,7 +69,8 @@ export default function BasicChart({ data, settings }) {
                             }
                             )
                         }>
-                            { row.score ? <figure style={ theme.styles.bars.score }>{ row.score }</figure> : '' }</div>
+                          { row.score ? <figure style={ theme.styles.score }>{ row.score }</figure> : '' }
+                        </div>
                     </td>
                 </tr>
                 )
