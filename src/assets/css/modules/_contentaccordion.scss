@@ -2,7 +2,7 @@
 
 .content-accordion {
     @include media-query($on-small) {
-        padding: 10px $gutter;
+        padding: 0px;
     }
     .options {
         list-style: none;
