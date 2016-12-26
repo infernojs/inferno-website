@@ -37,7 +37,8 @@ export default class Header extends Component {
         }
         return (
         <div className="menu">
-            <div className="container row">
+            <div className="container">
+            <div className="row">
                 <div className="menu-toggle" onClick={ this.toggleSidebar }>
                     <IconMenu/>
                 </div>
@@ -49,7 +50,7 @@ export default class Header extends Component {
                     <a target="_blank" rel="noopener" href="https://github.com/trueadm/inferno/issues" onClick={ this.closeSidebar }>Contribute</a>
                     <a target="_blank" rel="noopener" href="https://github.com/infernojs" onClick={ this.closeSidebar }>Github</a>
                 </nav>
-            </div>
+            </div></div>
         </div>
         )
     }

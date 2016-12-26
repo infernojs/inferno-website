@@ -78,18 +78,25 @@ $sidebar-width: 50%;
             text-align: left;
             font-size: 1rem;
             line-height: 3em;
-            padding-left: 1.25em;
+            margin-left: 1.25em;
+            padding-bottom: 3px;
             cursor: pointer;
             text-decoration: none;
             transition: color 0.2s ease-in-out;
             @include media-query($on-small) {
                 line-height: 3em;
                 text-align: left;
+                margin-left: 0em;
+                padding-left: 1.25em;
             }
             &:hover,
             &.selected {
                 color: $primary;
-                text-decoration: underline;
+                text-decoration: none;
+                border-bottom: 3px solid $primary;
+                @include media-query($on-small) {
+                border-bottom: 0px;
+                }
             }
         }
     }
