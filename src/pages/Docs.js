@@ -17,7 +17,7 @@ export default class Docs extends Component {
 
     componentDidMount() {
         const { params } = this.props
-		this.loadDocument(params.path || '/docs/guides/get-started.md')
+		this.loadDocument(params.path || '/docs/guides/installation.md')
     }
 
 	loadDocument = (to, changeRoute) => {
