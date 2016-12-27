@@ -5,7 +5,7 @@ export default class About extends Component {
     render() {
         return <section className="container page row">
             <div className="inner">
-    			<h1>About Inferno</h1>
+                <h1>About Inferno</h1>
                 <h2>Objective</h2>
                 <p>
                     Inferno is designed to be a light-weight and blazing fast React-like
