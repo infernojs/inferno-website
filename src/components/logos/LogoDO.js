@@ -11,9 +11,9 @@ export default () => {
               <g id="XMLID_287_">
                 <path id="XMLID_288_" d="M64.4 127v-24.2c25.6 0 45.5-25.4 35.7-52.3-3.6-10-11.6-17.9-21.6-21.6-27-9.8-52.3 10-52.3 35.7L2 64.7C2 23.8 41.5-8 84.3 5.4c18.7 5.8 33.6 20.7 39.4 39.4C137 87.6 105.2 127 64.4 127z"/>
               </g>
-              <path id="XMLID_286_" class="st0" d="M64.4 102.9h-24v-24h24z"/>
-              <path id="XMLID_285_" class="st0" d="M40.3 121.5H21.8v-18.6h18.6v18.6z"/>
-              <path id="XMLID_284_" class="st0" d="M21.9 102.9H6.3V87.4h15.5v15.5z"/>
+              <path id="XMLID_286_" className="st0" d="M64.4 102.9h-24v-24h24z"/>
+              <path id="XMLID_285_" className="st0" d="M40.3 121.5H21.8v-18.6h18.6v18.6z"/>
+              <path id="XMLID_284_" className="st0" d="M21.9 102.9H6.3V87.4h15.5v15.5z"/>
             </g>
           </g>
         </g>
