@@ -6,7 +6,7 @@ module.exports = {
         favicon: path.join(__dirname, '../assets/favicon.ico')
     },
     server: {
-        SSR: true, // Server side rendering
+        SSR: false, // Server side rendering
         certificate: path.join(__dirname, '../../fullchain.pem'),
         certificate_key: path.join(__dirname, '../../privkey.pem'),
     },
