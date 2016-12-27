@@ -8,21 +8,23 @@ import Features from '../components/home/Features'
 import Editor from '../components/repl/Editor'
 
 const codeSample = `
-// Our default export
-export default () => {
-    return <MyInfernoTest onComponentDidMount={onComponentDidMount}/>;
-}
+/* Our default export */
+export default () => (
+    <MyInfernoTest onComponentDidMount={onDidMount}/>
+);
 
 let time = (new Date()).toLocaleString()
 
-function onComponentDidMount(domNode) {
-    setInterval(function() {
-        domNode.querySelector('span').innerHTML = (new Date()).toLocaleString()
-    }, 1000)
-}
+const MyInfernoTest = () => (
+    <h2>Current time: <span>{time.toString()}</span></h2>
+);
 
-const MyInfernoTest = () => {
-    return <h2>Current time: <span>{time.toString()}</span></h2>;
+// Update time
+function onDidMount(domNode) {
+    setInterval(function() {
+        const span = domNode.querySelector('span');
+        span.innerHTML = (new Date()).toLocaleString();
+    }, 500)
 }
 `
 
