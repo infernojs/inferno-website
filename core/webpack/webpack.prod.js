@@ -90,7 +90,7 @@ compiler.run(function(err, stats) {
     }))
 
     // Write a stats.json for the webpack bundle visualizer
-    writeWebpackStats(stats)
+    //writeWebpackStats(stats)
 
     if (stats.hasErrors()) {
         logger('webpack:error')(stats.compilation.errors.toString())
