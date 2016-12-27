@@ -37,6 +37,9 @@ export default class Docs extends Component {
 
     render() {
         const MenuLink = ({ to, children }) => {
+            if (to.indexOf('http') === 0) {
+                return <li><a target="_blank" rel="noopener" href={to}>{children}</a></li>
+            }
             return <li>
                 <Link activeClassName="selected" to={to}>
                     {children}
