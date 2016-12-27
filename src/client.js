@@ -8,10 +8,6 @@ import Inferno from 'inferno'
 import createBrowserHistory from 'history/createBrowserHistory';
 import App from './components/App'
 
-if (module.hot) {
-    require('inferno-devtools');
-}
-
 // We render our react app into this element
 const root = document.getElementById('root')
 const history = createBrowserHistory()
@@ -23,4 +19,5 @@ Inferno.render(<App history={history}/>, root)
 
 if (module.hot) {
     module.hot.accept()
+    require('inferno-devtools');
 }

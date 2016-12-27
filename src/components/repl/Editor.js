@@ -69,7 +69,11 @@ export default class Editor extends Component {
         this.setState({ vNodes })
     }
 
-    render({ children }) {
+    render({ children, loaded }) {
+        if (!loaded) {
+            return null;
+        }
+
         return <div className="repl">
             <Scripts loaded={this.state.loaded}/>
             <div className="row">

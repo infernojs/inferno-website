@@ -20,6 +20,7 @@ export default async(ctx, next) => {
     </Html>)
 
     try {
+        ctx.type = 'text/html'
         ctx.body = '<!DOCTYPE html>\n' + content
     } catch(error) {
         if (error.redirect) {
