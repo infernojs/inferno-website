@@ -1,4 +1,5 @@
 import Inferno, { linkEvent } from 'inferno'
+import { Link } from 'inferno-router'
 import InfernoLogo from '../components/icons/IconInferno'
 import ContentAccordion from '../components/common/ContentAccordion'
 import IconBenchmark from '../components/icons/IconBenchmark'
@@ -26,7 +27,7 @@ export default function() {
                 <h1>Inferno</h1>
                 <h2>An extremely fast React-like JavaScript library for building modern user interfaces.</h2>
                 <div className="buttons">
-                    <a className="button xs8" rel="noopener" href="http://localhost:8080/docs/guides/getting-started.md">Get Started</a>
+                    <Link className="button xs8" to="/docs/guides/getting-started.md">Get Started</Link>
                     <a className="button second xs8" target="_blank" href="https://github.com/infernojs/inferno/tree/master/examples" rel="noopener">Examples</a>
                 </div>
             </div>

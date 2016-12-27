@@ -45,7 +45,9 @@ export default class Editor extends Component {
             if (window.CodeMirror && window.compiler) {
                 this.setState({ loaded: true })
                 this.initEditor()
-                this.handleCompile()
+                setTimeout(() => {
+                    this.handleCompile()
+                }, 100)
                 clearInterval(intval)
             }
         }, 50)
