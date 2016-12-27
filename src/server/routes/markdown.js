@@ -23,7 +23,7 @@ async function parseMarkDown(file) {
         fs.readFile(location, 'utf-8', async(err, data) => {
             if (err) {
                 resolve(<p>No document found at: <b>/docs{file}</b></p>)
-                return console.error(err)
+                return console.warn(`No document found at: "/docs${file}"`)
             }
 
             const parser = new CommonMark.Parser();
