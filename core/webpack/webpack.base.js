@@ -20,8 +20,7 @@ module.exports = {
                 loader: 'babel-loader',
                 include: [
                     sources(''),
-					sources('../core'),
-					sources('../node_modules/babel-plugin-inferno')
+					sources('../core')
 				],
                 exclude: [sources('docs')],
                 query: {

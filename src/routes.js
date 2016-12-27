@@ -3,7 +3,7 @@ import { Route } from 'inferno-router'
 import Layout from './components/layout/Layout'
 import NotFound from './components/layout/404'
 import Home from './pages/Home'
-import DemoInferno from './components/demo/Demo.Inferno'
+//import DemoInferno from './components/demo/Demo.Inferno'
 //import DemoReact from './components/Demo/Demo.React'
 import Docs from './pages/Docs'
 import About from './pages/About'
@@ -22,7 +22,7 @@ function ReactDemo() {
 export default (
     <Route component={ Layout }>
         <Route path="/" component={ Home }/>
-        <Route path="/demo" component={ DemoInferno }/>
+        {/*<Route path="/demo" component={ DemoInferno }/>*/}
         <Route path="/demo/react" component={ ReactDemo }/>
         <Route path="/docs/:path*" component={ Docs }/>
         <Route path="/about" component={ About }/>
