@@ -7,8 +7,7 @@ import Benchmarks from '../components/home/Benchmarks'
 import Features from '../components/home/Features'
 import Editor from '../components/repl/Editor'
 
-const codeSample = `
-/* Our default export */
+const codeSample = `// Our default export
 export default () => (
     <MyInfernoTest onComponentDidMount={onDidMount}/>
 );
