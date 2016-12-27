@@ -70,7 +70,7 @@ export default class Editor extends Component {
     }
 
     render({ children }) {
-        return <div className="container repl">
+        return <div className="repl">
             <Scripts loaded={this.state.loaded}/>
             <div className="row">
                 <div className="xs12 sm6 p-0 repl-editor">

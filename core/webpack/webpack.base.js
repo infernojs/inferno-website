@@ -5,11 +5,6 @@ const sources = (location) => path.join(__dirname, '../../src', location)
 
 module.exports = {
     entry: {},
-    node: {
-        global: true,
-        node: true,
-        fs: 'empty'
-    },
     performance: {
         hints: false
     },
@@ -50,7 +45,7 @@ module.exports = {
             },
             {
                 test: /\.(css|scss)(\?.+)?$/,
-                loader: ExtractCSS.extract(['css-loader?sourceMap', 'sass-loader?sourceMap']),
+                loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize']),
                 include: [sources('assets'), sources('client/components')]
             },
             {
