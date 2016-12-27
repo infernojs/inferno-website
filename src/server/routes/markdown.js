@@ -8,21 +8,23 @@ import xssFilters from 'xss-filters'
 
 export default router()
 .get('/api/markdown', async(ctx, next) => {
-    const { file = 'guides/overview.md'} = ctx.query
+    const { file } = ctx.query
 
     if (file.includes('..')) {
-        return ctx.body = '<!DOCTYPE html>Cannot access this path'
+        return ctx.body = <p>Cannot access this path</p>
     }
 
-    const location = path.join(__dirname, `../../docs/${file}`)
-
-    ctx.body = await parseMarkDown(location)
+    ctx.body = await parseMarkDown(file)
 })
 
-async function parseMarkDown(location) {
+async function parseMarkDown(file) {
     return new Promise((resolve) => {
+        const location = path.join(__dirname, `../../docs/${file}`)
         fs.readFile(location, 'utf-8', async(err, data) => {
-            if (err) return console.error(err)
+            if (err) {
+                resolve(<p>No document found at: <b>/docs{file}</b></p>)
+                return console.error(err)
+            }
 
             const parser = new CommonMark.Parser();
             const renderer = new InfernoRenderer();
