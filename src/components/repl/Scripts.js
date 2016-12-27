@@ -3,6 +3,7 @@ import Component from 'inferno-component'
 
 if (process.env.BROWSER) {
     window.Inferno = Inferno;
+    window.Component = Component;
 }
 
 export default class Scripts extends Component {

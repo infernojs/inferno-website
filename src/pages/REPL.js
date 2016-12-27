@@ -3,12 +3,21 @@ import Component from 'inferno-component'
 import Editor from '../components/repl/Editor'
 
 const codeSample = `
-export default function MainComponent() {
-    return <MyInfernoTest/>;
+// Our default export
+export default () => {
+    return <MyInfernoTest onComponentDidMount={onComponentDidMount}/>;
+}
+
+let time = (new Date()).toLocaleString()
+
+function onComponentDidMount(domNode) {
+    setInterval(function() {
+        domNode.querySelector('span').innerHTML = (new Date()).toLocaleString()
+    }, 1000)
 }
 
 const MyInfernoTest = () => {
-    return <h2>It works!</h2>;
+    return <h2>Current time: <span>{time.toString()}</span></h2>;
 }
 `
 
