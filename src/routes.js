@@ -19,10 +19,10 @@ function ReactDemo() {
 /**
  * Routes are defined here.
  */
+//<Route path="/demo" component={ DemoInferno }/>
 export default (
     <Route component={ Layout }>
         <Route path="/" component={ Home }/>
-        {/*<Route path="/demo" component={ DemoInferno }/>*/}
         <Route path="/demo/react" component={ ReactDemo }/>
         <Route path="/docs/:path*" component={ Docs }/>
         <Route path="/about" component={ About }/>

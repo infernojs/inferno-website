@@ -12,8 +12,8 @@ Object.assign(config, {
         bundle: [
             path.join(__dirname, '../../core/polyfills.js'),
             path.join(__dirname, '../../src/client.js')
-        ],
-        react: path.join(__dirname, '../../src/components/demo/Demo.React.js')
+        ]
+        //react: path.join(__dirname, '../../src/components/demo/Demo.React.js')
     },
     output: {
         publicPath: '/build/'
@@ -90,7 +90,7 @@ compiler.run(function(err, stats) {
     }))
 
     // Write a stats.json for the webpack bundle visualizer
-    //writeWebpackStats(stats)
+    writeWebpackStats(stats)
 
     if (stats.hasErrors()) {
         logger('webpack:error')(stats.compilation.errors.toString())
