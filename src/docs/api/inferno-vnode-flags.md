@@ -1,4 +1,5 @@
-# inferno-vnode-flags
+inferno-vnode-flags
+---
 
 Inferno VNode Flags is a small utility library for [Inferno](https://github.com/trueadm/inferno).
 

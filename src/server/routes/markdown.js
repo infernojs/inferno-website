@@ -22,8 +22,11 @@ async function parseMarkDown(file) {
         const location = path.join(__dirname, `../../docs/${file}`)
         fs.readFile(location, 'utf-8', async(err, data) => {
             if (err) {
-                resolve(<p>No document found at: <b>/docs{file}</b></p>)
-                return console.warn(`No document found at: "/docs${file}"`)
+                if (process.env.DEV) {
+                    console.warn(`No document found at: "/docs${file}"`)
+                    return resolve(<p>No document found at: <b>/docs{file}</b></p>)
+                }
+                return resolve(<p>Documentation is under development.</p>)
             }
 
             const parser = new CommonMark.Parser();
@@ -55,7 +58,7 @@ let defaultRenderers = {
     linebreak: 'br',
     image: 'img',
     item: 'li',
-    link: 'a',
+    //link: 'a',
     paragraph: 'p',
     strong: 'strong',
     thematic_break: 'hr', // eslint-disable-line camelcase
@@ -84,7 +87,15 @@ let defaultRenderers = {
     heading(props) {
         return createElement('h' + props.level, getCoreProps(props), props.children);
     },
-
+    link(props) {
+        return createElement('a', {
+            href: props.href,
+            title: props.title,
+            target: '_blank',
+            rel: 'noopener',
+            literal: props.literal
+        }, props.children);
+    },
     text: null,
     softbreak: null
 };

@@ -1,4 +1,3 @@
----
 Inferno Component
 ---
 

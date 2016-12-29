@@ -1,4 +1,4 @@
-inferno-hyperscript
+Hyperscript
 ---
 > [Hyperscript][hyperscript] syntax for [Inferno][inferno] termplates.
 
@@ -30,3 +30,6 @@ Returns an Inferno VNode from a Hyperscript representation.
   If a tag string, the tag name is parsed out, and the `id` and `className` propertires of the properties argument will be modified.
 * **properties** `(Object)` *(optional)* An object containing the properties you'd like to set on the element.
 * **children** `(Array|String)` *(optional)* An array of `h()` children or strings, This will create childen or text nodes respectively.
+
+[hyperscript]: https://github.com/dominictarr/hyperscript
+[inferno]: https://github.com/trueadm/inferno

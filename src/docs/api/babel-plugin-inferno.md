@@ -1,4 +1,3 @@
----
 Babel Plugin
 ---
 

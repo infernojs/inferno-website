@@ -1,4 +1,4 @@
-Inferno Router
+Routing
 ---
 
 Inferno Router is a routing library for **Inferno**
@@ -8,7 +8,7 @@ Usage of `inferno-router` is similar to that of [react-router](https://github.co
 ## Install
 
 ```
-npm install inferno-router@beta37
+npm install inferno-router
 ```
 
 ## Features
@@ -47,7 +47,7 @@ function Users({ children, params }) {
 }
 
 function User({ params }) {
-  return <div>{ params.username }</div>
+  return <div>{ JSON.stringify(params) }</div>
 }
 
 const routes = (
@@ -145,13 +145,13 @@ function Home({ params }) {
   // ...
 }
 
-function authorizedOnly({ props, router }) {
+function authorizedOnly(props, router) {
   if (!props.loggedIn) {
     router.push('/login');
   }
 }
 
-function sayGoodBye({ props, router }) {
+function sayGoodBye(props, router) {
   alert('Good bye!')
 }
 
@@ -166,4 +166,3 @@ Inferno.render((
 
 * `<IndexRoute>` is the same as `<Route path="/">"`
 * `<IndexLink>` is the same as `<Link to="/">`
-

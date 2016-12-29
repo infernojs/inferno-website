@@ -52,21 +52,21 @@ export default class Docs extends Component {
                 <ul>
                     <MenuLink to={'/docs/guides/installation.md'}>Installation</MenuLink>
                     <MenuLink to={'/docs/guides/getting-started.md'}>Getting Started</MenuLink>
-                    <MenuLink to={'/docs/guides/what-is-jsx.md'}>What is JSX?</MenuLink>
-                    <MenuLink to={'/docs/guides/project-layout.md'}>Project Layout</MenuLink>
-                    <MenuLink to={'/docs/guides/event-handling.md'}>Event Handling</MenuLink>
-                    <MenuLink to={'/docs/guides/form-input.md'}>Form Input</MenuLink>
-                    <MenuLink to={'/docs/guides/creating-components.md'}>Components</MenuLink>
+                    {/*<MenuLink to={'/docs/guides/what-is-jsx.md'}>What is JSX?</MenuLink>*/}
+                    {/*<MenuLink to={'/docs/guides/project-layout.md'}>Project Layout</MenuLink>*/}
+                    {/*<MenuLink to={'/docs/guides/event-handling.md'}>Event Handling</MenuLink>*/}
+                    {/*<MenuLink to={'/docs/guides/form-input.md'}>Form Input</MenuLink>*/}
+                    {/*<MenuLink to={'/docs/guides/creating-components.md'}>Components</MenuLink>*/}
                 </ul>
                 <h3>Advanced</h3>
                 <ul>
-                    <MenuLink to={'/docs/guides/what-is-virtual-dom.md'}>What is Virtual DOM?</MenuLink>
+                    {/*<MenuLink to={'/docs/guides/what-is-virtual-dom.md'}>What is Virtual DOM?</MenuLink>*/}
                     <MenuLink to={'/docs/guides/alternatives-to-jsx.md'}>Alternatives to JSX</MenuLink>
                     <MenuLink to={'/docs/guides/devtools.md'}>Dev Tools</MenuLink>
-                    <MenuLink to={'/docs/guides/state.md'}>State</MenuLink>
+                    {/*<MenuLink to={'/docs/guides/state.md'}>State</MenuLink>*/}
                     <MenuLink to={'/docs/guides/routing.md'}>Routing</MenuLink>
                     <MenuLink to={'/docs/guides/server-side-rendering.md'}>Server-side rendering</MenuLink>
-                    <MenuLink to={'/docs/guides/testing.md'}>Testing</MenuLink>
+                    <MenuLink to={'/docs/guides/routing.md'}>Testing</MenuLink>
                     <MenuLink to={'/docs/guides/typescriot-support.md'}>TypeScript Support</MenuLink>
                 </ul>
                 <h3>Meta</h3>
