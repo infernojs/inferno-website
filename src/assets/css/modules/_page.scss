@@ -58,5 +58,22 @@
             width: 100%;
             color: $primary;
         }
+        ul {
+            list-style: none;
+            li {
+                min-width: 100%;
+                margin-bottom: 1rem;
+                a {
+                    color: $primary;
+                }
+                &::before {
+                    content: "•";
+                    color: $primary;
+                    position: absolute;
+                    font-size: 1.5rem;
+                    margin: -8px 0px 0px -17px;
+                }
+            }
+        }
     }
 }

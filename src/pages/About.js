@@ -55,6 +55,19 @@ export default class About extends Component {
                     and seeing animations, routing, complex UIs instantly appear is not going to
                     happen on an average mobile device (especially in emerging countries).
                 </p>
+                <h2>Read About Inferno</h2>
+                <p>
+                    As the Inferno community grows and evolves, we hope that other people will
+                    contribute by writing new articles about the library or the community surrounding it.
+                    Here's a collection of some articles published to date:
+                    <ul>
+                        <li><a target="_blank" rel="noopener" href="https://auth0.com/blog/learn-about-inferno-js-build-and-authenticate-an-app/?utm_source=twitter&utm_medium=sc&utm_campaign=inferno">Learn About Inferno JS: Build and Authenticate an App</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=11837082">Hacker News</a></li>
+                        <li><a target="_blank" rel="noopener" href="http://survivejs.com/blog/inferno-interview/">Inferno - Blazing fast, React-like UI library - Interview with Dominic Gannaway</a></li>
+                        <li><a target="_blank" rel="noopener" href="http://www.stefankrause.net/wp/?p=316">JS web frameworks benchmark – Round 4</a></li>
+                        <li><a target="_blank" rel="noopener" href="https://medium.com/javascript-inside/introduction-to-functional-front-ends-with-inferno-a188454c3e19#.dg7uhrnoc">Introduction To Functional Front-Ends With Inferno</a></li>
+                    </ul>
+                </p>
                 <h2>Mobile</h2>
                 <p>
                     Inferno proves that it is possible to be fast on mobile. Parse-time, load-time,
