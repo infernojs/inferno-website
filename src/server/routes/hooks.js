@@ -40,6 +40,7 @@ function getSecret(body) {
 function pullAndUpdate() {
     return execute('cd', ['/www/inferno-website'])
     .then(() => execute('git', ['pull']))
+    .then(() => execute('pm2', ['restart', 'infernojs']))
 }
 
 // Run commands
