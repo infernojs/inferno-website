@@ -157,7 +157,9 @@ function sayGoodBye(props, router) {
 
 Inferno.render((
   <Router history={ createBrowserHistory() }>
-    <IndexRoute component={ Home } onEnter={ authorizedOnly } onLeave={ sayGoodBye } />
+    <IndexRoute component={ Home } 
+                onEnter={ authorizedOnly } 
+                onLeave={ sayGoodBye } />
   </Router>
 ), container);
 ```
