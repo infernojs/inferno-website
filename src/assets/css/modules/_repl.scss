@@ -29,4 +29,7 @@
     .CodeMirror-linenumber {
         color: black !important;
     }
+    .CodeMirror-line .cm-comment {
+        color: #4e4e4e;
+    }
 }
