@@ -38,18 +38,20 @@ function getSecret(body) {
 
 // Pulls master from github while our watcher automatically rebuilds the bundle
 function pullAndUpdate() {
-    return execute('git' ['pull'])
+    return execute('cd', ['/www/inferno-website'])
+    .then(() => execute('git', ['pull']))
 }
 
 // Run commands
 function execute(cmd, args) {
     return new Promise((resolve) => {
+        console.log('Command:', cmd, args.join(' '))
+
         const child = spawn(cmd, args);
         let output = '';
 
         child.stdout.on('data', function (buffer) { output += buffer.toString() });
         child.stdout.on('end', function() {
-            console.log('Command:', cmd, args.join(' '))
             console.log('Output:', output)
             resolve(output)
         });
