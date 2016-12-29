@@ -38,7 +38,13 @@ export default class ContentAccordion extends Component {
         {
           name: 'Other Frameworks',
           description: [
-
+            'Inferno is generally smaller (8kb) than most frameworks even when Gzipped. In comparison to other popular libraries: Ember (123kb), Angular2 (119kb) and Vue (23kb).',
+            'Inferno doesn\'t ship with data fetching or model facilities, it focuses on making the UI as fast as possible and leaves the data side to developers.',
+            'Other monolithic libraries typically ship with an array of features that make them easy to use but bloats delivery to end-users.',
+            'Inferno structures its rendering and UI logic into functional and class components, other frameworks may have more opinionated or elaborate structures.',
+            'Inferno uses JSX (with Babel) and Hyperscript to define the structure of a UI. Other libraries may utilize custom templating methods ie. Angular uses more attribute-based binding and Angular expressions. Since Inferno is a Virtual DOM implementation, JSX allows developers to write their markup with flexibility and transforms the markup into a virtualized DOM structure with quick and efficient diffing. This is a key ingredient to it\'s speed.',
+            'Inferno supports isomorphic (or universal) with the use of the inferno-server module. Other application frameworks may struggle with this task due to their structure or require specialized infrastructure to achieve the same result.',
+            'Inferno is extremely well suited for building progressive web applications that respond quickly and efficiently to user interaction.'
           ]
         }
       ]
