@@ -6,6 +6,7 @@ uploads/
 stats.json
 
 # Other
+INFERNOJS_SECRET
 *.pem
 *.log
 *.db
