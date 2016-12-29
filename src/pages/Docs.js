@@ -66,12 +66,12 @@ export default class Docs extends Component {
                     {/*<MenuLink to={'/docs/guides/state.md'}>State</MenuLink>*/}
                     <MenuLink to={'/docs/guides/routing.md'}>Routing</MenuLink>
                     <MenuLink to={'/docs/guides/server-side-rendering.md'}>Server-side rendering</MenuLink>
-                    <MenuLink to={'/docs/guides/routing.md'}>Testing</MenuLink>
-                    <MenuLink to={'/docs/guides/typescriot-support.md'}>TypeScript Support</MenuLink>
+                    {/*<MenuLink to={'/docs/guides/testing.md'}>Testing</MenuLink>*/}
+                    <MenuLink to={'/docs/guides/typescript-support.md'}>TypeScript Support</MenuLink>
                 </ul>
                 <h3>Meta</h3>
                 <ul>
-                    <MenuLink to={'/docs/guides/comparisons-with-other-frameworks.md'}>Comparisons with Other Frameworks</MenuLink>
+                    {/*<MenuLink to={'/docs/guides/comparisons-with-other-frameworks.md'}>Comparisons with Other Frameworks</MenuLink>*/}
                     <MenuLink to={'https://inferno-slack.herokuapp.com/'}>Join the Inferno Community</MenuLink>
                 </ul>
                 <h3>API</h3>
