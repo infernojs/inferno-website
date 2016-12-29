@@ -1,4 +1,4 @@
-Typescript support
+TypeScript support
 ---
 
 Inferno itself and all its' modules are written in TypeScript 2.
