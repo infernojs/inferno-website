@@ -8,7 +8,7 @@ Usage of `inferno-router` is similar to that of [react-router](https://github.co
 ## Install
 
 ```
-npm install inferno-router@beta37
+npm install inferno-router
 ```
 
 ## Features

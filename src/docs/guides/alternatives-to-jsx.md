@@ -1,6 +1,6 @@
 Hyperscript
 ---
-> [Hyperscript][hyperscript] syntax for [Inferno][inferno] termplates.
+> [Hyperscript](https://github.com/dominictarr/hyperscript) syntax for [Inferno](https://github.com/trueadm/inferno) termplates.
 
 ## Usage
 
@@ -31,5 +31,6 @@ Returns an Inferno VNode from a Hyperscript representation.
 * **properties** `(Object)` *(optional)* An object containing the properties you'd like to set on the element.
 * **children** `(Array|String)` *(optional)* An array of `h()` children or strings, This will create childen or text nodes respectively.
 
-[hyperscript]: https://github.com/dominictarr/hyperscript
-[inferno]: https://github.com/trueadm/inferno
+
+Documentation: <https://github.com/dominictarr/hyperscript>
+

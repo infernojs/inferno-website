@@ -18,15 +18,15 @@ Make sure you also install a way of creating [virtual DOM](todo) content. This c
 
 *NPM:*
 ```sh
-npm install --save inferno@beta42
+npm install --save inferno
 ```
 
 *CDN:*
 Development:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno.js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno.js>
 
 Production:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno.min.js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno.min.js>
 
 ### Support for ES2015 components:
 
@@ -35,15 +35,15 @@ The core Inferno package does not support ES2015 class components, only function
 
 *NPM:*
 ```sh
-npm install --save inferno-component@beta42
+npm install --save inferno-component
 ```
 
 *CDN:*
 Development:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno-component.js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-component.js>
 
 Production:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno-component.min.js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-component.min.js>
 
 ### Compatibility with existing React apps
 
@@ -51,7 +51,7 @@ Inferno can support most React apps by using a compatibility layer that sits bet
 this, but this can help improve the size and performance of existing React 15.x apps.
 
 ```sh
-npm install --save-dev inferno-compat@beta42
+npm install --save-dev inferno-compat
 ```
 
 Note: Make sure you read more about [`inferno-compat`](https://github.com/trueadm/inferno/tree/master/packages/inferno-compat) before using it.
@@ -63,15 +63,15 @@ Check out the [routing guide]() for more information on how this works.
 
 *NPM:*
 ```sh
-npm install --save inferno-router@beta42
+npm install --save inferno-router
 ```
 
 *CDN:*
 Development:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno-router.js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-router.js>
 
 Production:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno-router.min,js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-router.min.js>
 
 ### Server-side rendering support:
 
@@ -80,7 +80,7 @@ Check out the [server-side rendering guide]() for more information on how this w
 
 *NPM:*
 ```sh
-npm install --save inferno-server@beta42
+npm install --save inferno-server
 ```
 
 Installing a virtual DOM package
@@ -96,29 +96,29 @@ There are many different ways you can create virtual DOM with Inferno.
 This package requires Babel 6+ and Node JS in order to compile JSX to JS.
 
 ```sh
-npm install --save-dev babel-plugin-inferno@beta17
+npm install --save-dev babel-plugin-inferno
 ```
 
 #### Hyperscript:
 ```sh
-npm install --save inferno-hyperscript@beta42
+npm install --save inferno-hyperscript
 ```
 
 *CDN:*
 Development:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno-hyperscript.js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-hyperscript.js>
 
 Production:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno-hyperscript.min,js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-hyperscript.min.js>
 
 #### createElement:
 ```sh
-npm install --save inferno-create-element@beta42
+npm install --save inferno-create-element
 ```
 
 *CDN:*
 Development:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno-create-element.js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-create-element.js>
 
 Production:
-https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0-beta42/inferno-create-element.min,js
+<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-create-element.min.js>
