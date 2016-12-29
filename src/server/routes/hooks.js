@@ -6,19 +6,26 @@ import router from 'koa-router'
 
 export default router()
 .post('/api/hooks', async(ctx, next) => {
-    const { fields, headers } = ctx.request
-    const signature = getSecret(JSON.stringify(fields))
+    await new Promise((resolve) => {
+        const { fields, headers } = ctx.request
+        const signature = getSecret(JSON.stringify(fields))
 
-    if (signature === headers['x-hub-signature'].substr(5)) {
-        console.info('Signature matched, restarting server...')
-        pullAndUpdate()
-    } else {
-        console.warn('Signature mismatch')
-    }
-
-    ctx.body = {
-        success: true
-    }
+        if (signature === headers['x-hub-signature'].substr(5)) {
+            console.info('Signature matched, restarting server...')
+            pullAndUpdate().then(() => {
+                ctx.body = {
+                    success: true
+                }
+                resolve()
+            })
+        } else {
+            console.warn('Signature mismatch')
+            ctx.body = {
+                success: false
+            }
+            resolve()
+        }
+    })
 })
 
 // Checks if we're authorized to restart the server
@@ -31,21 +38,23 @@ function getSecret(body) {
 
 // Pulls master from github while our watcher automatically rebuilds the bundle
 function pullAndUpdate() {
-    execute('cd', ['/www/infernojs'], () => execute('git' ['pull']))
+    return execute('cd', ['/www/infernojs'])
+    .then(() => execute('git' ['pull']))
 }
 
 // Run commands
 function execute(cmd, args, callback) {
-    const spawn = require('child_process').spawn;
-    const child = spawn(cmd, args);
-    let output = '';
+    return new Promise((resolve) => {
+        const child = spawn(cmd, args)
+        let output = ''
 
-    child.stdout.on('data', function(buffer) {
-        output += buffer.toString()
-    })
-    child.stdout.on('end', function() {
-        console.log('Command:', cmd, args.join(' '))
-        console.log('Output:', output)
-        callback && callback()
+        child.stdout.on('data', function(buffer) {
+            output += buffer.toString()
+        })
+        child.stdout.on('end', function() {
+            console.log('Command:', cmd, args.join(' '))
+            console.log('Output:', output)
+            resolve()
+        })
     })
 }
