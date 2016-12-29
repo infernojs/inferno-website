@@ -38,8 +38,7 @@ function getSecret(body) {
 
 // Pulls master from github while our watcher automatically rebuilds the bundle
 function pullAndUpdate() {
-    return execute('cd', ['/www/inferno-website'])
-    .then(() => execute('git' ['pull']))
+    return execute('git' ['pull'])
 }
 
 // Run commands
