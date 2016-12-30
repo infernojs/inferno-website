@@ -82,7 +82,7 @@ export default class Docs extends Component {
                     {/*<MenuLink to={'/docs/guides/comparisons-with-other-frameworks'}>Comparisons with Other Frameworks</MenuLink>*/}
                     <MenuLink to={'https://inferno-slack.herokuapp.com/'}>Join the Inferno Community</MenuLink>
                 </ul>
-                
+
 			</aside>
 			<aside className="docs-content" id="markdown-root">
 				{this.state.markdown}
@@ -90,48 +90,3 @@ export default class Docs extends Component {
 		</section>
     }
 }
-
-/*
-let markdown = ''
-
-function onComponentDidMount() {
-	fetch('/api/markdown?file=guides/installation')
-	.then(response => response.json())
-	.then(response => {
-		markdown = response
-	})
-}
-
-function DocsContent() {
-	if (process.env.BROWSER) {
-		document.title = 'About'
-	}
-	return <aside id="markdown-root">
-		<DocsContent onComponentDidMount={onComponentDidMount}/>
-	</aside>
-}
-
-export default function Docs() {
-	if (process.env.BROWSER) {
-		document.title = 'About'
-	}
-	return <aside id="markdown-root">
-		<DocsContent/>
-	</aside>
-}*/
-
-function toArray(arr) {
-    return Array.isArray(arr) ? arr : [arr]
-}
-
-/*
-    render() {
-        return <div className="container padding markdown">
-            <aside>
-                <Link to="/docs/guides/overview">Overview</Link>
-                <Link to="/docs/guides/installation">Installation</Link>
-            </aside>
-            <aside id="markdown-root"/>
-        </div>
-    }
-* */

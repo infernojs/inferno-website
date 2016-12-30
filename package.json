@@ -73,6 +73,7 @@
     "markdown-loader": "^0.1.7",
     "mz": "^2.6.0",
     "node-sass": "4.1.1",
+    "prismjs": "^1.6.0",
     "promise-polyfill": "6.0.2",
     "sass-loader": "4.1.1",
     "serve-favicon": "2.3.2",
