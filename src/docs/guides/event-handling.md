@@ -11,7 +11,7 @@ function clickMe(event) {
 Then you render a VNode with this event passed as props:
 ```
 Inferno.render(
-  <div onClick={ clickMe } />, 
+  <div onclick={ clickMe } />, 
   document.getElementById('app')
 );
 ```
@@ -25,7 +25,7 @@ Inferno's event system in favour of using the native event system supplied by th
 native DOM event is `oninput`).
 
 This feature is a very recent addition to Inferno, so there are only a handful of events that use Inferno's event system:
-- `onClick`
+- `onclick`
 - `onDblClick`
 - `onMouseMove`
 - `onMouseDown`

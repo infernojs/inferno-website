@@ -87,7 +87,7 @@ export default class Editor extends Component {
                     {this.state.vNodes}
                 </div>
             </div>
-            <button className="button not-pad lg3 sm xs10" onClick={this.handleCompile}>Run Example Code</button>
+            <button className="button not-pad lg3 sm xs10" onclick={this.handleCompile}>Run Example Code</button>
         </div>
     }
 }
