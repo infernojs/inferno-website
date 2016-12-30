@@ -74,6 +74,8 @@
                 width: auto;
                 fill: $primary;
                 float: left;
+                flex: 0 0 50px;
+
                 @include media-query($on-small) {
                     margin: 0 auto;
                     margin-bottom: $gutter;
@@ -96,7 +98,9 @@
                     background: $bg;
                     transition: all 200ms ease;
                     .desc {
-                        flex: 1;
+                        flex: 1 0 0px; /* unit needed IE support */
+                        max-width: 100%;
+                        min-width: 0;
                     }
                     padding: 2rem $gutter;
                     outline: 1px solid $white;
@@ -154,7 +158,8 @@
                     -webkit-transition: all .2s ease-in-out;
                     -o-transition: all .2s ease-in-out;
                     transition: all .2s ease-in-out;
-                    flex: 1;
+                    flex: 1 1 auto;
+                    max-width: 100%;
                     cursor: pointer;
                     text-align: center;
                     border-top: 3px solid $grey;

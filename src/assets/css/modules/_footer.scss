@@ -51,7 +51,8 @@ footer {
             }
             svg, img {
                 display: block;
-                margin: 0px auto;
+                flex: 0 0 50%;
+                max-width: 50%;
                 width: 50%;
             }
             &.fill svg {
