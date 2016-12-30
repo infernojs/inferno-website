@@ -41,7 +41,7 @@ export default class Demo extends Component {
         const { paused, lifetime, emissionRate, round } = this.state
 
         return <section id="demo-wrapper">
-            <button onclick={this.setPause}>
+            <button onClick={this.setPause}>
                 {paused ? 'Resume' : 'Pause'}
             </button>
 

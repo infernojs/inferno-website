@@ -64,7 +64,7 @@ export default class Benchmarks extends Component {
           {
             this.state.list.map((item, index) => {
               return <li
-                onclick={ linkEvent({ instance: this, index: index }, setCurrent ) }
+                onClick={ linkEvent({ instance: this, index: index }, setCurrent ) }
                 className={ this.state.current == index ? 'active' : '' }>
                 <span>{ item.name }</span>
               </li>

@@ -169,7 +169,7 @@ function handleClick(props, event) {
 }
 
 function MyComponent(props) {
-	return <div><input type="text" onclick={ linkEvent(props, handleClick) } /><div>;
+	return <div><input type="text" onClick={ linkEvent(props, handleClick) } /><div>;
 }
 ```
 
@@ -186,7 +186,7 @@ function handleClick(instance, event) {
 
 class MyComponent extends Component {
 	render () {
-		return <div><input type="text" onclick={ linkEvent(this, handleClick) } /><div>;
+		return <div><input type="text" onClick={ linkEvent(this, handleClick) } /><div>;
 	}
 }
 ```
