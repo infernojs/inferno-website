@@ -12,11 +12,12 @@
             font-size: 13px;
         }
         blockquote {
+            border-radius: 0.5rem;
             font-size: 1.75rem;
-            width: 85%;
+            width: 100%;
             margin: 2rem auto 2rem auto;
             font-style: italic;
-            padding: 1rem 1rem 1rem 4rem;
+            padding: 2.5rem 5rem 2.5rem 8rem;
             @include media-query($on-small) {
                 width: 85%;
                 margin: 1rem auto 1rem auto;
@@ -58,13 +59,21 @@
             width: 100%;
             color: $primary;
         }
-        ul {
+        .list {
             list-style: none;
+            margin-top: 0.85rem;
+            padding: 0px;
             li {
+                -webkit-transition: all .2s ease-in-out;
+                -o-transition: all .2s ease-in-out;
+                transition: all .2s ease-in-out;
                 min-width: 100%;
-                margin-bottom: 1rem;
+                border-bottom: 1px solid $grey;
+                padding: 0.75rem 3rem 0.75rem 3rem;
                 a {
                     color: $primary;
+                    width: 100%;
+                    display: block;
                 }
                 &::before {
                     content: "•";
@@ -72,6 +81,13 @@
                     position: absolute;
                     font-size: 1.5rem;
                     margin: -8px 0px 0px -17px;
+                }
+                &:hover {
+                    background-color: $grey;
+                    color: white;
+                }
+                &:last-child {
+                    border-bottom: 0px;
                 }
             }
         }
