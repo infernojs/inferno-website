@@ -52,11 +52,10 @@ export default class Docs extends Component {
                 <ul>
                     <MenuLink to={'/docs/guides/installation'}>Installation</MenuLink>
                     <MenuLink to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
+                    <MenuLink to={'/docs/guides/components'}>Components</MenuLink>
                     <MenuLink to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
                     {/*<MenuLink to={'/docs/guides/project-layout'}>Project Layout</MenuLink>*/}
-                    
-                    {/*<MenuLink to={'/docs/guides/form-input'}>Form Input</MenuLink>*/}
-                    <MenuLink to={'/docs/guides/components'}>Components</MenuLink>
+                    <MenuLink to={'/docs/guides/form-input'}>Form Input</MenuLink>
                 </ul>
                 <h3>API</h3>
                 <ul>
