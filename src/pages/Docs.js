@@ -52,11 +52,11 @@ export default class Docs extends Component {
                 <ul>
                     <MenuLink to={'/docs/guides/installation'}>Installation</MenuLink>
                     <MenuLink to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
-                    {/*<MenuLink to={'/docs/guides/what-is-jsx'}>What is JSX?</MenuLink>*/}
+                    <MenuLink to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
                     {/*<MenuLink to={'/docs/guides/project-layout'}>Project Layout</MenuLink>*/}
-                    {/*<MenuLink to={'/docs/guides/event-handling'}>Event Handling</MenuLink>*/}
+                    
                     {/*<MenuLink to={'/docs/guides/form-input'}>Form Input</MenuLink>*/}
-                    {/*<MenuLink to={'/docs/guides/creating-components'}>Components</MenuLink>*/}
+                    <MenuLink to={'/docs/guides/components'}>Components</MenuLink>
                 </ul>
                 <h3>API</h3>
                 <ul>
@@ -77,6 +77,7 @@ export default class Docs extends Component {
                 <h3>Advanced</h3>
                 <ul>
                     {/*<MenuLink to={'/docs/guides/what-is-virtual-dom'}>What is Virtual DOM?</MenuLink>*/}
+                    <MenuLink to={'/docs/guides/what-is-jsx'}>What is JSX?</MenuLink>
                     <MenuLink to={'/docs/guides/alternatives-to-jsx'}>Alternatives to JSX</MenuLink>
                     <MenuLink to={'/docs/guides/devtools'}>Dev Tools</MenuLink>
                     {/*<MenuLink to={'/docs/guides/state'}>State</MenuLink>*/}
