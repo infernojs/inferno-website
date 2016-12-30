@@ -44,32 +44,32 @@ Below are all the different lifecycle event names that can be applied to functio
 	</thead>
 	<tbody>
 		<tr>
-			<td>`onComponentWillMount`</td>
+			<td><code>onComponentWillMount</code></td>
 			<td>a functional component is about to mount</td>
 			<td></td>
 		</tr>
 		<tr>
-			<td>`onComponentDidMount`</td>
+			<td><code>onComponentDidMount</code></td>
 			<td>a functional component has mounted successfully</td>
-			<td>`domNode`</td>
+			<td><code>domNode</code></td>
 		</tr>
 		<tr>
-			<td>`onComponentShouldUpdate`</td>
+			<td><code>onComponentShouldUpdate</code></td>
 			<td>a functional component has been triggered to updated</td>
-			<td>`lastProps, nextProps`</td>
+			<td><code>lastProps, nextProps</code></td>
 		</tr>
 		<tr>
-			<td>`onComponentWillUpdate`</td>
+			<td><code>onComponentWillUpdate</code></td>
 			<td>a functional component is about to perform an update</td>
-			<td>`lastProps, nextProps`</td>
+			<td><code>lastProps, nextProps</code></td>
 		</tr>
 		<tr>
-			<td>`onComponentDidUpdate`</code></td>
+			<td><code>onComponentDidUpdate</code></td>
 			<td>a functional component has performed an updated</td>
-			<td>`lastProps, nextProps`</code></td>
+			<td><code>lastProps, nextProps</code></td>
 		</tr>
 		<tr>
-			<td>`onComponentWillUnmount`</td>
+			<td><code>onComponentWillUnmount</code></td>
 			<td>a functional component is about to be unmounted</td>
 			<td></td>
 		</tr>

@@ -117,10 +117,11 @@
         }
         code {
             color: $black;
-            background: $bg;
+            background-color: rgba(0,0,0,0.04);
             border: none;
-            padding: 0.35rem;
-            font-size: .9rem;
+            padding-top: 0.2em;
+            padding-bottom: 0.2em;
+            font-size: 85%;
             border-radius: 5px;
         }
         a {
@@ -135,6 +136,30 @@
             cursor: pointer;
             &:hover {
                 border-bottom-color: $grey;
+            }
+        }
+        table {
+            display: block;
+            width: 100%;
+            overflow: auto;
+            margin-bottom: 16px;
+            margin-top: 10px;
+
+            tr {
+                background-color: #fff;
+                border-top: 1px solid #ccc;
+            }
+            th {
+                padding: 6px 13px;
+                border: 1px solid #ddd;
+                font-weight: bold;
+            }
+            td {
+                padding: 6px 13px;
+                border: 1px solid #ddd;
+            }
+            tr:nth-child(2n) {
+                background-color: #f8f8f8;
             }
         }
     }
