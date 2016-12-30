@@ -1,5 +1,4 @@
-Dev Tools
----
+# Dev Tools
 
 Inferno has developer tools that matches those of React.
 

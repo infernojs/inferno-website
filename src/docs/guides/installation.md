@@ -1,5 +1,4 @@
-Installation
----
+# Installation
 
 The best way to start to use Inferno is by using [Create Inferno App](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
 
@@ -8,25 +7,21 @@ For a more advanced example demonstrating how Inferno might be used, we recommen
 out [Inferno Starter Project](https://github.com/nightwolfz/inferno-starter) by [nightwolfz](https://github.com/nightwolfz/).
 
 Our recommended approach to installing and using Inferno is via NPM. Alternatively, you can insert Inferno into your site via `<script>` resources
-directly the CDN. Both approaches are outlined below.
+directly from the CDN. Both approaches are outlined below.
 
-Core packages:
----
+## Core packages:
 
 The core Inferno package contains almost everything you need to get going and works out the box with JSX (note: JSX will need a build step).
-Make sure you also install a way of creating [virtual DOM](todo) content. This can be found in the [Installing a virtual DOM package]() section below.
 
 *NPM:*
 ```sh
 npm install --save inferno
 ```
-
-*CDN:*
-Development:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno.js>
-
-Production:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno.min.js>
+*Scripts:*
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno.min.js"></script>
+```
 
 ### Support for ES2015 components:
 
@@ -37,13 +32,11 @@ The core Inferno package does not support ES2015 class components, only function
 ```sh
 npm install --save inferno-component
 ```
-
-*CDN:*
-Development:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-component.js>
-
-Production:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-component.min.js>
+*Scripts:*
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-component.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-component.min.js"></script>
+```
 
 ### Compatibility with existing React apps
 
@@ -65,13 +58,11 @@ Check out the [routing guide]() for more information on how this works.
 ```sh
 npm install --save inferno-router
 ```
-
-*CDN:*
-Development:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-router.js>
-
-Production:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-router.min.js>
+*Scripts:*
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-router.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-router.min.js"></script>
+```
 
 ### Server-side rendering support:
 
@@ -83,15 +74,14 @@ Check out the [server-side rendering guide]() for more information on how this w
 npm install --save inferno-server
 ```
 
-Installing a virtual DOM package
----
+## Installing a virtual DOM package
 
 Behind the scenes, Inferno uses a concept called virtual DOM to create views/components that make up your UI. If you want to understand more about what
 virtual DOM is, check the [virtual DOM guide](todo).
 
 There are many different ways you can create virtual DOM with Inferno.
 
-#### JSX:
+### JSX:
 
 This package requires Babel 6+ and Node JS in order to compile JSX to JS.
 
@@ -99,26 +89,24 @@ This package requires Babel 6+ and Node JS in order to compile JSX to JS.
 npm install --save-dev babel-plugin-inferno
 ```
 
-#### Hyperscript:
+### Hyperscript:
+*NPM:*
 ```sh
 npm install --save inferno-hyperscript
 ```
+*Scripts:*
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-hyperscript.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-hyperscript.min.js"></script>
+```
 
-*CDN:*
-Development:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-hyperscript.js>
-
-Production:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-hyperscript.min.js>
-
-#### createElement:
+### createElement:
+*NPM:*
 ```sh
 npm install --save inferno-create-element
 ```
-
-*CDN:*
-Development:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-create-element.js>
-
-Production:
-<https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-create-element.min.js>
+*Scripts:*
+```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-create-element.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-create-element.min.js"></script>
+```

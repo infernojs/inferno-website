@@ -1,8 +1,13 @@
-Hyperscript
----
+# Alternatives to JSX
+
+JSX isn't the only way to create Inferno VNodes. The two supported core packages for created 
+Inferno VNodes are `inferno-hyperscript` and `inferno-create-element`. They are explained below:
+
+## Hyperscript
+
 > [Hyperscript](https://github.com/dominictarr/hyperscript) syntax for [Inferno](https://github.com/trueadm/inferno) termplates.
 
-## Usage
+### Usage
 
 ```javascript
 var h = require('inferno-hyperscript');
@@ -20,9 +25,9 @@ module.exports = function ExampleComponent(props) {
 };
 ```
 
-## Documentation
+### Documentation
 
-### `h(componentOrTag, properties, children)`
+#### `h(componentOrTag, properties, children)`
 
 Returns an Inferno VNode from a Hyperscript representation.
 
@@ -31,6 +36,7 @@ Returns an Inferno VNode from a Hyperscript representation.
 * **properties** `(Object)` *(optional)* An object containing the properties you'd like to set on the element.
 * **children** `(Array|String)` *(optional)* An array of `h()` children or strings, This will create childen or text nodes respectively.
 
-
 Documentation: <https://github.com/dominictarr/hyperscript>
+
+## createElement
 

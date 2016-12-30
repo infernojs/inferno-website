@@ -1,5 +1,5 @@
-inferno-hyperscript
----
+# inferno-hyperscript
+
 > [Hyperscript][hyperscript] syntax for [Inferno][inferno] termplates.
 
 ## Usage

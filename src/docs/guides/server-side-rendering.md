@@ -1,7 +1,6 @@
-Inferno Server
----
+# Server-side rendering
 
-Inferno supplies a server utility to render virtual DOM nodes into markup to be send from a server  
+Inferno's `inferno-server` package supplies a server utility to render virtual DOM nodes into markup to be send from a server  
 
 
 

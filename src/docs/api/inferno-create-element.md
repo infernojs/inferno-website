@@ -1,5 +1,5 @@
-inferno-create-element
----
+# inferno-create-element
+
 > Inferno package with helpers to create Inferno elements
 
 ## Install

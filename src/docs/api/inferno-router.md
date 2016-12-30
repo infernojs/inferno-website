@@ -1,5 +1,4 @@
-Inferno Router
----
+# Inferno Router
 
 Inferno Router is a routing library for **Inferno**
 

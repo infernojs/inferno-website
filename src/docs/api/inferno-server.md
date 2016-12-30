@@ -1,5 +1,4 @@
-Inferno Server
----
+# Inferno Server
 
 Inferno supplies a server utility to render virtual DOM nodes into markup to be send from a server  
 

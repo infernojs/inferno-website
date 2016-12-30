@@ -1,5 +1,5 @@
-inferno-create-class
----
+# inferno-create-class
+
 > Provides a helper to create Inferno Components without needing ES2015
 
 Note: this is similar to `React.createClass` in that methods are out-bound. However, this module does not support mixins.

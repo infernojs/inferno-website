@@ -62,19 +62,43 @@
             border: 1px solid $grey;
             background: none;
         }
+        h1 {
+            border-bottom: 1px solid $grey;
+            line-height: 3rem;
+            margin-bottom: 1rem;
+        }
         h2 {
             font-weight: normal;
             font-size: 1.5rem;
             color: $black;
-            border-bottom: 1px solid $grey;
-            line-height: 3rem;
+            padding-top: 1rem;
             margin-bottom: 1rem;
+
+            code {
+                color: $black;
+                background: $bg;
+                font-weight: bold;
+                border: none;
+                padding: 0.25rem;
+                font-size: 1.4rem;
+                border-radius: 5px;
+            }            
         }
         h3 {
             font-weight: normal;
             font-size: 1.3rem;
             color: $secondary;
             margin-top: 30px;
+
+            code {
+                color: $black;
+                background: $bg;
+                font-weight: bold;
+                border: none;
+                padding: 0.25rem;
+                font-size: 1.2rem;
+                border-radius: 5px;
+            }                  
         }
         h4 {
             margin-top: 40px;
@@ -82,7 +106,7 @@
         }
         pre {
             background: $bg;
-            border: 1px solid $grey;
+            border: none;
             padding: 1rem;
             border-radius: 3px;
             margin-bottom: 40px;
@@ -95,8 +119,8 @@
         code {
             color: $black;
             background: $bg;
-            border: 1px solid $grey;
-            padding: 0.45rem;
+            border: none;
+            padding: 0.35rem;
             font-size: .9rem;
             border-radius: 5px;
         }

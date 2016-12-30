@@ -1,5 +1,5 @@
-inferno-test-utils
----
+# inferno-test-utils
+
 > Inferno package for helping write good tests for Inferno
 
 This package serves as a small set of test addons that help people build Inferno applications with good tests.
