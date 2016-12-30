@@ -47,8 +47,7 @@ function insertServiceWorker(enabled) {
 
 	return `
 	if ('serviceWorker' in navigator) {
-		const sw = navigator.serviceWorker
-		console.debug('Worker: init')
+		var sw = navigator.serviceWorker
 
 		sw.register('/sw.js').then(function () {
 			console.debug('Worker: registered')
