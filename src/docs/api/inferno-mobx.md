@@ -1,15 +1,13 @@
 # Inferno Mobx API
 
 This package provides the bindings for MobX and Inferno.
-Exports `observer` and `connect` decorators, a `Provider` and some development utilities.
-
-## Install
+Exports `connect` function, a `Provider` component and some development utilities.
 
 ```
-npm install --save mobx inferno-mobx
+npm install mobx inferno-mobx --save
 ```
 
-### connect(componentClass)
+## `connect(componentClass)`
 
 Function (and decorator) that converts a functional component or a component class into a reactive component.
 See the [mobx](https://mobxjs.github.io/mobx/refguide/observer-component.html) documentation for more details.
@@ -40,7 +38,7 @@ class TodoView extends Component {
 const TodoView = connect(props => <div>{props.todo.title}</div>)
 ```
 
-### connect(storesArray, componentClass)
+## `connect(storesArray, componentClass)`
 
 An alternative version of connect with your stores automatically injected into props.
 
@@ -55,7 +53,7 @@ class MyComponent extends Component {
 const MyComponent = connect(['storeName'], props => <div>{props.storeName.data}</div>)
 ```
 
-### Provider
+## `Provider`
 
 `Provider` is a component that can pass stores (or other stuff) using context mechanism to child components. This is useful if you have things that you don't want to pass through multiple layers of components explicitly.
 
@@ -107,8 +105,7 @@ let myStore2 = observable(['some', 'array'])
 For more information on how to use `mobx observables`,  visit [mobx](https://github.com/mobxjs/mobx)
 
 
-Full Example
----
+# Full Example
 
 ```javascript
 // MyComponent.js
