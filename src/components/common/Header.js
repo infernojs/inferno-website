@@ -31,11 +31,21 @@ export default class Header extends Component {
     }
 
     render() {
-        const MenuLink = (props) => (
-            <Link activeClassName="selected" {...props} onClick={ this.closeSidebar }>
+        const MenuLink = (props, { router }) => {
+            // Hacky solution to highlight the correct menu item
+            let classNames = props.className ? props.className.split(' ') : []
+            if (!classNames.includes('branding')) {
+                if (router.url
+                && (router.url === props.to
+                || (router.url.includes('/docs/') && props.to.includes('/docs/'))
+                )) {
+                    classNames.push('selected')
+                }
+            }
+            return <Link to={props.to} className={classNames.join(' ')} onClick={ this.closeSidebar }>
                 {props.children}
             </Link>
-        )
+        }
 
         return (
         <div className="menu">
