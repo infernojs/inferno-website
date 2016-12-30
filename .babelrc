@@ -1,12 +1,11 @@
 {
-  "presets":[
-    ["es2015", { "loose": true, "modules": "commonjs" }]
-  ],
   "plugins": [
     "add-module-exports",
     "transform-decorators-legacy",
     "transform-class-properties",
     "transform-object-rest-spread",
+	"transform-es2015-modules-commonjs",
+	"transform-es2015-destructuring",
     "babel-plugin-inferno",
     ["fast-async"]
   ]
