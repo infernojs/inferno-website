@@ -1,4 +1,4 @@
-# Inferno Server
+# Inferno Server API
 
 ## `renderToString`
 

@@ -1,4 +1,4 @@
-# Inferno VNode Flags
+# Inferno VNode Flags API
 
 ## `VNodeFlags`
  - `.Text`

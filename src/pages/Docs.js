@@ -65,6 +65,7 @@ export default class Docs extends Component {
                     <MenuLink to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
                     <MenuLink to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
                     <MenuLink to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
                     <MenuLink to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
                     <MenuLink to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
                 </ul>

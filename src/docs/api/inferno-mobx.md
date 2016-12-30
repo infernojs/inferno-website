@@ -1,4 +1,4 @@
-# Inferno Mobx
+# Inferno Mobx API
 
 This package provides the bindings for MobX and Inferno.
 Exports `observer` and `connect` decorators, a `Provider` and some development utilities.
