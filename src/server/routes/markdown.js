@@ -1,9 +1,9 @@
+import CommonMark from 'commonmark'
 import Inferno from 'inferno'
+import createElement from 'inferno-create-element'
 import fs from 'fs'
 import path from 'path'
 import router from 'koa-router'
-import CommonMark from 'commonmark'
-import createElement from 'inferno-create-element'
 import xssFilters from 'xss-filters'
 
 export default router()
@@ -19,11 +19,11 @@ export default router()
 
 async function parseMarkDown(file) {
     return new Promise((resolve) => {
-        const location = path.join(__dirname, `../../docs/${file}`)
+        const location = path.join(__dirname, `../../docs/${file}.md`)
         fs.readFile(location, 'utf-8', async(err, data) => {
             if (err) {
                 if (process.env.DEV) {
-                    console.warn(`No document found at: "/docs${file}"`)
+                    console.warn(`No document found at: "/docs${file}.md"`)
                     return resolve(<p>No document found at: <b>/docs{file}</b></p>)
                 }
                 return resolve(<p>Documentation is under development.</p>)

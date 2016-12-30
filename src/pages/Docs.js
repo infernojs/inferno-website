@@ -1,5 +1,5 @@
-import Inferno from 'inferno'
 import Component from 'inferno-component'
+import Inferno from 'inferno'
 import { Link } from 'inferno-router'
 
 export default class Docs extends Component {
@@ -17,7 +17,7 @@ export default class Docs extends Component {
 
     componentDidMount() {
         const { params } = this.props
-		this.loadDocument(params.path || '/guides/installation.md')
+		this.loadDocument(params.path || '/guides/installation')
     }
 
 	loadDocument = (to, changeRoute) => {
@@ -50,46 +50,47 @@ export default class Docs extends Component {
 			<aside className="docs-menu">
 				<h3>Guides</h3>
                 <ul>
-                    <MenuLink to={'/docs/guides/installation.md'}>Installation</MenuLink>
-                    <MenuLink to={'/docs/guides/getting-started.md'}>Getting Started</MenuLink>
-                    {/*<MenuLink to={'/docs/guides/what-is-jsx.md'}>What is JSX?</MenuLink>*/}
-                    {/*<MenuLink to={'/docs/guides/project-layout.md'}>Project Layout</MenuLink>*/}
-                    {/*<MenuLink to={'/docs/guides/event-handling.md'}>Event Handling</MenuLink>*/}
-                    {/*<MenuLink to={'/docs/guides/form-input.md'}>Form Input</MenuLink>*/}
-                    {/*<MenuLink to={'/docs/guides/creating-components.md'}>Components</MenuLink>*/}
-                </ul>
-                <h3>Advanced</h3>
-                <ul>
-                    {/*<MenuLink to={'/docs/guides/what-is-virtual-dom.md'}>What is Virtual DOM?</MenuLink>*/}
-                    <MenuLink to={'/docs/guides/alternatives-to-jsx.md'}>Alternatives to JSX</MenuLink>
-                    <MenuLink to={'/docs/guides/devtools.md'}>Dev Tools</MenuLink>
-                    {/*<MenuLink to={'/docs/guides/state.md'}>State</MenuLink>*/}
-                    <MenuLink to={'/docs/guides/routing.md'}>Routing</MenuLink>
-                    <MenuLink to={'/docs/guides/server-side-rendering.md'}>Server-side rendering</MenuLink>
-                    {/*<MenuLink to={'/docs/guides/testing.md'}>Testing</MenuLink>*/}
-                    <MenuLink to={'/docs/guides/typescript-support.md'}>TypeScript Support</MenuLink>
-                </ul>
-                <h3>Meta</h3>
-                <ul>
-                    {/*<MenuLink to={'/docs/guides/comparisons-with-other-frameworks.md'}>Comparisons with Other Frameworks</MenuLink>*/}
-                    <MenuLink to={'https://inferno-slack.herokuapp.com/'}>Join the Inferno Community</MenuLink>
+                    <MenuLink to={'/docs/guides/installation'}>Installation</MenuLink>
+                    <MenuLink to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
+                    {/*<MenuLink to={'/docs/guides/what-is-jsx'}>What is JSX?</MenuLink>*/}
+                    {/*<MenuLink to={'/docs/guides/project-layout'}>Project Layout</MenuLink>*/}
+                    {/*<MenuLink to={'/docs/guides/event-handling'}>Event Handling</MenuLink>*/}
+                    {/*<MenuLink to={'/docs/guides/form-input'}>Form Input</MenuLink>*/}
+                    {/*<MenuLink to={'/docs/guides/creating-components'}>Components</MenuLink>*/}
                 </ul>
                 <h3>API</h3>
                 <ul>
-                    <MenuLink to={'/docs/api/inferno.md'}>Inferno</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-compat.md'}>Inferno-compat</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-component.md'}>Inferno-component</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-create-class.md'}>Inferno-create-class</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-create-element.md'}>Inferno-create-element</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-hyperscript.md'}>Inferno-hyperscript</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-component.md'}>Inferno-devtools</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-mobx.md'}>Inferno-mobx</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-redux.md'}>Inferno-redux</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-router.md'}>Inferno-router</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-server.md'}>Inferno-server</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-test-utils.md'}>Inferno-test-utils</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-test-utils.md'}>Inferno-vnode-flags</MenuLink>
+                    <MenuLink to={'/docs/api/inferno'}>Inferno</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-compat'}>Inferno-compat</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-component'}>Inferno-component</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-create-class'}>Inferno-create-class</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-create-element'}>Inferno-create-element</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-hyperscript'}>Inferno-hyperscript</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-component'}>Inferno-devtools</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
                 </ul>
+                <h3>Advanced</h3>
+                <ul>
+                    {/*<MenuLink to={'/docs/guides/what-is-virtual-dom'}>What is Virtual DOM?</MenuLink>*/}
+                    <MenuLink to={'/docs/guides/alternatives-to-jsx'}>Alternatives to JSX</MenuLink>
+                    <MenuLink to={'/docs/guides/devtools'}>Dev Tools</MenuLink>
+                    {/*<MenuLink to={'/docs/guides/state'}>State</MenuLink>*/}
+                    <MenuLink to={'/docs/guides/routing'}>Routing</MenuLink>
+                    <MenuLink to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
+                    {/*<MenuLink to={'/docs/guides/testing'}>Testing</MenuLink>*/}
+                    <MenuLink to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
+                </ul>
+                <h3>Meta</h3>
+                <ul>
+                    {/*<MenuLink to={'/docs/guides/comparisons-with-other-frameworks'}>Comparisons with Other Frameworks</MenuLink>*/}
+                    <MenuLink to={'https://inferno-slack.herokuapp.com/'}>Join the Inferno Community</MenuLink>
+                </ul>
+                
 			</aside>
 			<aside className="docs-content" id="markdown-root">
 				{this.state.markdown}
@@ -102,7 +103,7 @@ export default class Docs extends Component {
 let markdown = ''
 
 function onComponentDidMount() {
-	fetch('/api/markdown?file=guides/installation.md')
+	fetch('/api/markdown?file=guides/installation')
 	.then(response => response.json())
 	.then(response => {
 		markdown = response
@@ -135,8 +136,8 @@ function toArray(arr) {
     render() {
         return <div className="container padding markdown">
             <aside>
-                <Link to="/docs/guides/overview.md">Overview</Link>
-                <Link to="/docs/guides/installation.md">Installation</Link>
+                <Link to="/docs/guides/overview">Overview</Link>
+                <Link to="/docs/guides/installation">Installation</Link>
             </aside>
             <aside id="markdown-root"/>
         </div>

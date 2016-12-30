@@ -1,8 +1,9 @@
-import Inferno from 'inferno'
+import { Link, Router } from 'inferno-router'
+
 import Component from 'inferno-component'
-import { Router, Link } from 'inferno-router'
-import InfernoLogo from '../icons/IconInferno'
 import IconMenu from '../icons/IconMenu'
+import Inferno from 'inferno'
+import InfernoLogo from '../icons/IconInferno'
 
 export default class Header extends Component {
 
@@ -47,7 +48,7 @@ export default class Header extends Component {
                 <nav className={ 'lg9 sm9 ' + (this.state.active ? 'open' : 'closed') }>
                     <MenuLink to="/">Home</MenuLink>
                     <MenuLink to="/about">About</MenuLink>
-                    <MenuLink to="/docs/guides/getting-started.md">Docs</MenuLink>
+                    <MenuLink to="/docs/guides/getting-started">Docs</MenuLink>
                     <a target="_blank" rel="noopener" href="https://github.com/trueadm/inferno/issues" onClick={ this.closeSidebar }>Contribute</a>
                     <a target="_blank" rel="noopener" href="https://github.com/infernojs" onClick={ this.closeSidebar }>Github</a>
                 </nav>

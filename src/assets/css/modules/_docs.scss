@@ -1,5 +1,6 @@
 .docs {
     flex-wrap: nowrap;
+    flex-direction: row;
 
     @include media-query($on-medium) {
         flex-wrap: wrap;
@@ -7,8 +8,8 @@
 
     aside.docs-menu {
         padding: 2rem 1rem;
-        width: 14rem;
         flex-wrap: nowrap;
+        min-width: 14rem;
         @include media-query($on-small) {
             flex-wrap: wrap;
             padding: $gutter;
@@ -42,15 +43,14 @@
     aside.docs-content {
         @include media-query($on-small) {
             width: 100%;
-            flex: none;
-
             flex-wrap: wrap;
-                       padding: $gutter;
+            padding: $gutter;
             border: 0px;
         }
         border-left: 1px solid $grey;
-        padding: 1.75rem 2.25rem;
-        flex: 1;
+        padding: 1.75rem 0 1.75rem 2.25rem;
+        flex-grow: 2;
+        max-width: calc( 100% - 14rem );
         p {
             font-size: 1rem;
             @include media-query($on-small) {

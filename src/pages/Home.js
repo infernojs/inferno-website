@@ -1,12 +1,12 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
-import { Link } from 'inferno-router'
-import InfernoLogo from '../components/icons/IconInferno'
-import ContentAccordion from '../components/common/ContentAccordion'
-import IconBenchmark from '../components/icons/IconBenchmark'
 import Benchmarks from '../components/home/Benchmarks'
-import Features from '../components/home/Features'
+import Component from 'inferno-component'
+import ContentAccordion from '../components/common/ContentAccordion'
 import Editor from '../components/repl/Editor'
+import Features from '../components/home/Features'
+import IconBenchmark from '../components/icons/IconBenchmark'
+import Inferno from 'inferno'
+import InfernoLogo from '../components/icons/IconInferno'
+import { Link } from 'inferno-router'
 
 const codeSample = `// Our default export
 export default () => (
@@ -50,7 +50,7 @@ export default class Home extends Component {
                     <h1>Inferno</h1>
                     <h2>An extremely fast React-like JavaScript library for building modern user interfaces.</h2>
                     <div className="buttons">
-                        <Link className="button xs8" to="/docs/guides/getting-started.md">Get Started</Link>
+                        <Link className="button xs8" to="/docs/guides/getting-started">Get Started</Link>
                         <a className="button second xs8" target="_blank" href="https://github.com/infernojs/inferno/tree/master/examples" rel="noopener">Examples</a>
                     </div>
                 </div>
