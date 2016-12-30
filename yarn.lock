@@ -1228,13 +1228,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@*, debug@^2.1.1, debug@^2.2.0:
-  version "2.5.1"
-  resolved "https://registry.yarnpkg.com/debug/-/debug-2.5.1.tgz#9107bb4a506052ec2a02314bc606313ed2b921c1"
-  dependencies:
-    ms "0.7.2"
-
-debug@^2.5.2:
+debug@*, debug@^2.1.1, debug@^2.2.0, debug@^2.5.2:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.0.tgz#bc596bcabe7617f11d9fa15361eded5608b8499b"
   dependencies:
@@ -2195,53 +2189,49 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-inferno-component@1.0.0-beta45:
-  version "1.0.0-beta45"
-  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-1.0.0-beta45.tgz#1d2350f44166d1627a36d60604f1a26326250427"
+inferno-component@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-1.0.1.tgz#d0cb590fbfab00f06e50a1dcf3c3a14c297dee32"
   dependencies:
-    inferno "1.0.0-beta45"
+    inferno "1.0.1"
 
-inferno-create-class@1.0.0-beta45:
-  version "1.0.0-beta45"
-  resolved "https://registry.yarnpkg.com/inferno-create-class/-/inferno-create-class-1.0.0-beta45.tgz#535729fae0637fbc82400b861dbeb6ed70969580"
+inferno-create-class@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/inferno-create-class/-/inferno-create-class-1.0.1.tgz#1c863d116d585dedaf46de42b8ff429ff0adc630"
   dependencies:
-    inferno "1.0.0-beta45"
-    inferno-component "1.0.0-beta45"
+    inferno "1.0.1"
+    inferno-component "1.0.1"
 
-inferno-create-element@1.0.0-beta45:
-  version "1.0.0-beta45"
-  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-1.0.0-beta45.tgz#3926e518cb038d135dd780c167a84309eaf6ebbd"
+inferno-create-element@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-1.0.1.tgz#e786187e9373539a93994b91db3f54345faaba0e"
   dependencies:
-    inferno "1.0.0-beta45"
+    inferno "1.0.1"
 
-inferno-devtools@1.0.0-beta45:
-  version "1.0.0-beta45"
-  resolved "https://registry.yarnpkg.com/inferno-devtools/-/inferno-devtools-1.0.0-beta45.tgz#a21533d1c206690825d258bd6bdab83aa3533d0d"
+inferno-devtools@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/inferno-devtools/-/inferno-devtools-1.0.1.tgz#9f12ca67975d44708da128495e3027795b57b212"
   dependencies:
-    inferno "1.0.0-beta45"
-    inferno-component "1.0.0-beta45"
+    inferno "1.0.1"
+    inferno-component "1.0.1"
 
-inferno-router@1.0.0-beta45:
-  version "1.0.0-beta45"
-  resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-1.0.0-beta45.tgz#53b29c6ca036b465f7091aad0b0be1c8228af337"
+inferno-router@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-1.0.1.tgz#df726b6985e6a3d3ffb742ea2d223100c5f3cab5"
   dependencies:
-    inferno "1.0.0-beta45"
-    inferno-component "1.0.0-beta45"
-    inferno-create-element "1.0.0-beta45"
+    inferno "1.0.1"
+    inferno-component "1.0.1"
+    inferno-create-element "1.0.1"
 
-inferno-server@1.0.0-beta45:
-  version "1.0.0-beta45"
-  resolved "https://registry.yarnpkg.com/inferno-server/-/inferno-server-1.0.0-beta45.tgz#f028bf33b0fc4888c3b8e616528f561d03a8c6b0"
+inferno-server@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/inferno-server/-/inferno-server-1.0.1.tgz#4847c8e45dba1fbe7346d23d0d140c94c78c231d"
   dependencies:
-    inferno "1.0.0-beta45"
+    inferno "1.0.1"
 
-inferno@1.0.0-beta45:
-  version "1.0.0-beta45"
-  resolved "https://registry.yarnpkg.com/inferno/-/inferno-1.0.0-beta45.tgz#fb433e789dd5fb65d82a9d592125592878e86f5d"
-
-inferno@^1.0.0-beta45:
-  version "1.0.0-beta9"
-  resolved "https://registry.yarnpkg.com/inferno/-/inferno-1.0.0-beta9.tgz#1ccd596a182f738d7c91b0129cde85162ee122ba"
+inferno@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-1.0.1.tgz#fd29c03618b79aa75dca749a187d1e4000e27758"
 
 infinity-agent@^2.0.0:
   version "2.0.3"

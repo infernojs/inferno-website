@@ -23,12 +23,10 @@ export default class Header extends Component {
     }
 
     closeSidebar = (e) => {
-        e.stopPropagation();
         this.setState({ active: false });
     }
 
     toggleSidebar = (e) => {
-        e.stopPropagation();
         this.setState({ active: !this.state.active });
     }
 
