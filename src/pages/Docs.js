@@ -60,16 +60,8 @@ export default class Docs extends Component {
                 <h3>API</h3>
                 <ul>
                     <MenuLink to={'/docs/api/inferno'}>Inferno</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-compat'}>Inferno-compat</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-component'}>Inferno-component</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-create-class'}>Inferno-create-class</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-create-element'}>Inferno-create-element</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-hyperscript'}>Inferno-hyperscript</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-devtools'}>Inferno-devtools</MenuLink>
                     <MenuLink to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
                     <MenuLink to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
                     <MenuLink to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
                     <MenuLink to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
                 </ul>
