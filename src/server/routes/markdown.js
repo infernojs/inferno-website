@@ -3,6 +3,7 @@ import Inferno from 'inferno'
 import createElement from 'inferno-create-element'
 import fs from 'fs'
 import path from 'path'
+import prism from 'prismjs'
 import router from 'koa-router'
 import xssFilters from 'xss-filters'
 
@@ -77,8 +78,15 @@ let defaultRenderers = {
         return createElement(tag, attrs, props.children);
     },
     code_block(props) { // eslint-disable-line camelcase
+        let html = prism.highlight(props.literal, prism.languages.javascript);
         let className = props.language && 'language-' + props.language;
-        let code = createElement('code', { className: className }, props.literal);
+        let code = createElement('code', {
+            className: className,
+            dangerouslySetInnerHTML: {
+                __html: html
+            }
+        }, props.literal);
+
         return createElement('pre', getCoreProps(props), code);
     },
     code(props) {
