@@ -22,11 +22,13 @@ export default class Header extends Component {
         main.removeEventListener('click', this.closeSidebar)
     }
 
-    closeSidebar = () => {
+    closeSidebar = (e) => {
+        e.stopPropagation();
         this.setState({ active: false });
     }
 
-    toggleSidebar = () => {
+    toggleSidebar = (e) => {
+        e.stopPropagation();
         this.setState({ active: !this.state.active });
     }
 

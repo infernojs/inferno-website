@@ -29,7 +29,10 @@ export default class Demo extends Component {
         this.setState({ paused: true })
     }
 
-    setPause = () => this.setState({ paused: !this.state.paused })
+    setPause = (e) => {
+        e.stopPropagation();
+        this.setState({ paused: !this.state.paused });
+    }
     setEmission = (e) => this.setState({ emissionRate: e.target.value|0 })
     setLifetime = (e) => this.setState({ lifetime: e.target.value|0 })
     setRounded = (e) => this.setState({ round: !this.state.round })

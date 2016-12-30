@@ -1,7 +1,8 @@
 import Inferno, { linkEvent } from 'inferno';
 import Component from 'inferno-component';
 
-const setCurrent = ({ instance, index }) => {
+const setCurrent = ({ instance, index }, e) => {
+  e.stopPropagation();
   instance.setState({ current: index });
 };
 
