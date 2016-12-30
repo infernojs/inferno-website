@@ -70,11 +70,12 @@ export default class Home extends Component {
                 <ContentAccordion/>
             </section>
             <section className="try">
-                <h3>Try Our Example</h3>
-
-                <Editor loaded={this.state.loaded}>
-                    {codeSample}
-                </Editor>
+                <div className="container">
+                    <h3>Try Our Example</h3>
+                    <Editor loaded={this.state.loaded}>
+                        {codeSample}
+                    </Editor>
+                </div>
             </section>
         </div>
     }

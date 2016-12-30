@@ -2,12 +2,6 @@
 
 > Inferno package with helpers to create Inferno elements
 
-## Install
-
-```
-npm install inferno-create-element
-```
-
 ## Usage
 
 ```js

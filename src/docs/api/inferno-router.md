@@ -4,12 +4,6 @@ Inferno Router is a routing library for **Inferno**
 
 Usage of `inferno-router` is similar to that of [react-router](https://github.com/ReactTraining/react-router/blob/master/docs/API).  
 
-## Install
-
-```
-npm install inferno-router
-```
-
 ## Features
 
 * Router / RouterContext

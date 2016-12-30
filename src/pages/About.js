@@ -6,6 +6,10 @@ export default class About extends Component {
         return <section className="container page row">
             <div className="inner">
                 <h1>About Inferno</h1>
+                <blockquote>
+                    Inferno 1.0 is really well written. It's how I would've written React. I'd recommend reading its source to learn.
+                    <small>&mdash; member of the React core team at Facebook</small>
+                </blockquote>
                 <h2>Objective</h2>
                 <p>
                     Inferno is designed to be a light-weight and blazing fast React-like
@@ -14,10 +18,6 @@ export default class About extends Component {
                     it's development is tasked with continuously improving performance and
                     exploring new and efficient methods.
                 </p>
-                <blockquote>
-                    Inferno 1.0 is really well written. It's how I would've written React. I'd recommend reading its source to learn.
-                    <small>&mdash; member of the React core team at Facebook</small>
-                </blockquote>
                 <h2>What's React?</h2>
                 <p>
                     For those not familiar with React, Inferno is a JavaScript library for
@@ -60,7 +60,7 @@ export default class About extends Component {
                     As the Inferno community grows and evolves, we hope that other people will
                     contribute by writing new articles about the library or the community surrounding it.
                     Here's a collection of some articles published to date:
-                    <ul>
+                    <ul className="list">
                         <li><a target="_blank" rel="noopener" href="https://auth0.com/blog/learn-about-inferno-js-build-and-authenticate-an-app/?utm_source=twitter&utm_medium=sc&utm_campaign=inferno">Learn About Inferno JS: Build and Authenticate an App</a></li>
                         <li><a target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=11837082">Hacker News</a></li>
                         <li><a target="_blank" rel="noopener" href="http://survivejs.com/blog/inferno-interview/">Inferno - Blazing fast, React-like UI library - Interview with Dominic Gannaway</a></li>

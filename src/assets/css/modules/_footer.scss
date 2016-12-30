@@ -1,5 +1,5 @@
 footer {
-    background: $primary;
+    background: $footer;
     .foot .row {
         justify-content: space-between;
         align-items: center;
@@ -39,13 +39,12 @@ footer {
     }
     .supporters {
         padding: 1rem;
-        background-color: $footer;
+        background-color: white;
         a {
-
             display: flex;
             align-items: center;
             justify-content: center;
-            border-right: 1px solid rgba(255, 255, 255, 0.2);
+            border-right: 1px solid $grey;
             padding: 0px;
             &:last-child {
                 border-right: none;
@@ -56,13 +55,12 @@ footer {
                 width: 50%;
             }
             &.fill svg {
-                fill: white;
+                fill: $footer;
             }
             &:hover {
                 opacity: 0.8;
             }
         }
-
         @include media-query($on-medium) {
             a {
                 border-right: 0px;
