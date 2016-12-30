@@ -34,14 +34,47 @@ Lifeycle events for functional components get applied as if they were normal `pr
 
 Below are all the different lifecycle event names that can be applied to functional components:
 
-| Name                      | Triggered when                                                 | Arguments to callback           |
-| -----------               | --------------                                                 | -----------------------         |
-| `onComponentWillMount`    | a functional component is about to mount                       |                                 |
-| `onComponentDidMount`     | a functional component has mounted successfully                | `domNode`                       |
-| `onComponentShouldUpdate` | a functional component has been triggered to updated           | `lastProps, nextProps`          |
-| `onComponentWillUpdate`   | a functional component is about to perform an update           | `lastProps, nextProps`          |
-| `onComponentDidUpdate`    | a functional component has performed an updated                | `lastProps, nextProps`          |
-| `onComponentWillUnmount`  | a functional component is about to be unmounted                |                                 |
+<table>
+	<thead>
+		<tr>
+			<th>Name</th>
+			<th>Triggered when</th>
+			<th>Arguments to callback</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>`onComponentWillMount`</td>
+			<td>a functional component is about to mount</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>`onComponentDidMount`</td>
+			<td>a functional component has mounted successfully</td>
+			<td>`domNode`</td>
+		</tr>
+		<tr>
+			<td>`onComponentShouldUpdate`</td>
+			<td>a functional component has been triggered to updated</td>
+			<td>`lastProps, nextProps`</td>
+		</tr>
+		<tr>
+			<td>`onComponentWillUpdate`</td>
+			<td>a functional component is about to perform an update</td>
+			<td>`lastProps, nextProps`</td>
+		</tr>
+		<tr>
+			<td>`onComponentDidUpdate`</code></td>
+			<td>a functional component has performed an updated</td>
+			<td>`lastProps, nextProps`</code></td>
+		</tr>
+		<tr>
+			<td>`onComponentWillUnmount`</td>
+			<td>a functional component is about to be unmounted</td>
+			<td></td>
+		</tr>
+	</tbody>
+<table>
 
 If you were to use a functional component lifecycle event, please note that they do not work exactly as ES2015 lifecycle events do.
 They have different arguments passed to the events and have no form of state. 
