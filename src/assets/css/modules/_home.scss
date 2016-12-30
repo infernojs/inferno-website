@@ -90,6 +90,18 @@
                 overflow: auto;
                 text-align: left;
             }
+            // Feature boxes
+            .features-wrapper {
+                .row {
+                    background: $bg;
+                    transition: all 200ms ease;
+                    .desc {
+                        flex: 1;
+                    }
+                    padding: 2rem $gutter;
+                    outline: 1px solid $white;
+                }
+            }
             @include media-query($on-small) {
                 p,
                 h2 {
@@ -101,17 +113,9 @@
                     text-align: center;
                     margin-bottom: 1rem;
                 }
-            }
-            // Feature boxes
-            .features-wrapper {
-                .row {
-                    background: $bg;
-                    transition: all 200ms ease;
-                    .desc {
-                        flex: 1;
-                    }
-                    padding: 2rem $gutter;
-                    outline: 1px solid $white;
+                .features-wrapper .row .desc {
+                    flex: none;
+                    width: 100%;
                 }
             }
         }
@@ -239,7 +243,7 @@
                 padding: 15px;
             }
             @include media-query($on-small) {
-                padding: 2.5rem 0rem;
+                padding: 2.5rem 0.75rem;
                 .container {
                     padding: 0rem 1rem 0rem 1rem;
                 }

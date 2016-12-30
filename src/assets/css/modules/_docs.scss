@@ -44,6 +44,7 @@
         @include media-query($on-small) {
             width: 100%;
             flex-wrap: wrap;
+            max-width: 100%;
             padding: $gutter;
             border: 0px;
         }
@@ -82,7 +83,7 @@
                 padding: 0.25rem;
                 font-size: 1.4rem;
                 border-radius: 5px;
-            }            
+            }
         }
         h3 {
             font-weight: normal;
@@ -98,7 +99,7 @@
                 padding: 0.25rem;
                 font-size: 1.2rem;
                 border-radius: 5px;
-            }                  
+            }
         }
         h4 {
             margin-top: 40px;

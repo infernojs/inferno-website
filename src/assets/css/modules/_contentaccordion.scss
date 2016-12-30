@@ -52,6 +52,14 @@
             &:hover {
                 color: $primary;
             }
+            @include media-query($on-small) {
+                &.active {
+                    background-color: $grey;
+                    color: black;
+                    border-top-left-radius: 7px;
+                    border-bottom-left-radius: 7px;
+                }
+            }
         }
     }
     .copy {
@@ -59,7 +67,7 @@
         list-style: none;
         margin: 1.5rem 0 0 1rem;
         @include media-query($on-small) {
-            margin: $gutter*2 0px;
+            margin: $gutter * 2 1.25rem;
             padding: 0px;
         }
         li {
