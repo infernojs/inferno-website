@@ -60,6 +60,7 @@ export default class Docs extends Component {
                 <h3>API</h3>
                 <ul>
                     <MenuLink to={'/docs/api/inferno'}>Inferno</MenuLink>
+                    <MenuLink to={'/docs/api/inferno-component'}>Inferno-component</MenuLink>
                     <MenuLink to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
                     <MenuLink to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
                     <MenuLink to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
