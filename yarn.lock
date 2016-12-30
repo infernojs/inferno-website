@@ -19,9 +19,9 @@ acorn-dynamic-import@^2.0.0:
   dependencies:
     acorn "^4.0.3"
 
-acorn-es7-plugin@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/acorn-es7-plugin/-/acorn-es7-plugin-1.1.3.tgz#6a032a71f1faf396a1a29729c7b150fe480cc17a"
+acorn-es7-plugin@>=1.1.5:
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/acorn-es7-plugin/-/acorn-es7-plugin-1.1.5.tgz#f31e1a618f439bfdde8851dd875a3a163ca8201f"
 
 acorn-jsx@^3.0.0:
   version "3.0.1"
@@ -1228,7 +1228,7 @@ date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
 
-debug@*, debug@^2.1.1, debug@^2.2.0, debug@^2.5.2:
+debug@*, debug@^2.1.1, debug@^2.2.0, debug@^2.6.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.0.tgz#bc596bcabe7617f11d9fa15361eded5608b8499b"
   dependencies:
@@ -1672,11 +1672,11 @@ extsprintf@1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.0.2.tgz#e1080e0658e300b06294990cc70e1502235fd550"
 
-fast-async@6.1.2:
-  version "6.1.2"
-  resolved "https://registry.yarnpkg.com/fast-async/-/fast-async-6.1.2.tgz#ad34b85c18aa1207a825dc9c0faa19e77f1c22a6"
+fast-async@6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/fast-async/-/fast-async-6.2.0.tgz#7ebb47836cac1288ce89c2116506bf3e4e03d79d"
   dependencies:
-    nodent ">=2.6.12"
+    nodent ">=3.0.8"
 
 fast-levenshtein@~2.0.4:
   version "2.0.5"
@@ -2189,49 +2189,49 @@ indexof@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/indexof/-/indexof-0.0.1.tgz#82dc336d232b9062179d05ab3293a66059fd435d"
 
-inferno-component@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-1.0.1.tgz#d0cb590fbfab00f06e50a1dcf3c3a14c297dee32"
+inferno-component@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-component/-/inferno-component-1.0.2.tgz#baa06b8363b597fd88b06198e2adc290f071ec19"
   dependencies:
-    inferno "1.0.1"
+    inferno "1.0.2"
 
-inferno-create-class@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/inferno-create-class/-/inferno-create-class-1.0.1.tgz#1c863d116d585dedaf46de42b8ff429ff0adc630"
+inferno-create-class@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-create-class/-/inferno-create-class-1.0.2.tgz#100b0b9564dfd152b5c0489127eabf0e5afed57f"
   dependencies:
-    inferno "1.0.1"
-    inferno-component "1.0.1"
+    inferno "1.0.2"
+    inferno-component "1.0.2"
 
-inferno-create-element@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-1.0.1.tgz#e786187e9373539a93994b91db3f54345faaba0e"
+inferno-create-element@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-create-element/-/inferno-create-element-1.0.2.tgz#3681ce88c647e0340dd8ed7bd9ac86b00a5aaffb"
   dependencies:
-    inferno "1.0.1"
+    inferno "1.0.2"
 
-inferno-devtools@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/inferno-devtools/-/inferno-devtools-1.0.1.tgz#9f12ca67975d44708da128495e3027795b57b212"
+inferno-devtools@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-devtools/-/inferno-devtools-1.0.2.tgz#11ce1a5877ae67402f91fea53ecbb68f019c5f19"
   dependencies:
-    inferno "1.0.1"
-    inferno-component "1.0.1"
+    inferno "1.0.2"
+    inferno-component "1.0.2"
 
-inferno-router@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-1.0.1.tgz#df726b6985e6a3d3ffb742ea2d223100c5f3cab5"
+inferno-router@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-router/-/inferno-router-1.0.2.tgz#baad71339eca3d7ed4d1f3fa6f3981a56f1b9ae7"
   dependencies:
-    inferno "1.0.1"
-    inferno-component "1.0.1"
-    inferno-create-element "1.0.1"
+    inferno "1.0.2"
+    inferno-component "1.0.2"
+    inferno-create-element "1.0.2"
 
-inferno-server@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/inferno-server/-/inferno-server-1.0.1.tgz#4847c8e45dba1fbe7346d23d0d140c94c78c231d"
+inferno-server@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/inferno-server/-/inferno-server-1.0.2.tgz#08d2e1aa251fb8aac0124b23091a00862c48bd77"
   dependencies:
-    inferno "1.0.1"
+    inferno "1.0.2"
 
-inferno@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/inferno/-/inferno-1.0.1.tgz#fd29c03618b79aa75dca749a187d1e4000e27758"
+inferno@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/inferno/-/inferno-1.0.2.tgz#738e6d0704d6b783284da268e02fa08ad6e4b5e3"
 
 infinity-agent@^2.0.0:
   version "2.0.3"
@@ -3163,18 +3163,18 @@ nodemon@1.11.0:
     undefsafe "0.0.3"
     update-notifier "0.5.0"
 
-nodent-runtime@^3.0.3:
+nodent-runtime@>=3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/nodent-runtime/-/nodent-runtime-3.0.3.tgz#49a25f4f4efb092c40d97be9e73de7e53a5f8361"
 
-nodent@>=2.6.12:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/nodent/-/nodent-3.0.7.tgz#08dd540baf834c136648aeaa9ae8ecd4bf92aa52"
+nodent@>=3.0.8:
+  version "3.0.8"
+  resolved "https://registry.yarnpkg.com/nodent/-/nodent-3.0.8.tgz#53bd61d2b5d3bfdcb44c28b63065d6c86cf552f0"
   dependencies:
     acorn ">=2.5.2"
-    acorn-es7-plugin "^1.1.3"
-    nodent-runtime "^3.0.3"
-    resolve "^1.1.7"
+    acorn-es7-plugin ">=1.1.5"
+    nodent-runtime ">=3.0.3"
+    resolve "1.2.0"
     source-map "0.5.6"
 
 "nopt@2 || 3", nopt@~3.0.6:
@@ -4069,7 +4069,7 @@ resolve-pathname@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/resolve-pathname/-/resolve-pathname-2.0.2.tgz#e55c016eb2e9df1de98e85002282bfb38c630436"
 
-resolve@^1.1.6, resolve@^1.1.7:
+resolve@1.2.0, resolve@^1.1.6:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.2.0.tgz#9589c3f2f6149d1417a40becc1663db6ec6bc26c"
 
