@@ -1,1 +1,1 @@
-# Inferno Component
+# Inferno Component API
