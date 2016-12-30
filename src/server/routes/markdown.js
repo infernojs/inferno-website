@@ -57,7 +57,7 @@ async function parseMarkDown(file) {
     Prism.languages.insertBefore('inside', 'attr-value',{
         'script': {
             // Allow for one level of nesting
-            pattern: /=(\{(?:\{[^}]*\}|[^}])+\})/i,
+            pattern: /=(\{(?:\{[^}]*}|[^}])+})/i,
             inside: jsxExpression,
             'alias': 'language-javascript'
         }
