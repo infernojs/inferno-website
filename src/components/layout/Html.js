@@ -30,6 +30,7 @@ export default function({ hostname, config, children }) {
             <meta name="twitter:creator" content="@InfernoJS" />
             <link rel="manifest" href="/assets/manifest.json"/>
             <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet" defer="defer"/>
+            <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
             <script dangerouslySetInnerHTML={{
                 __html: insertServiceWorker(true)
             }}/>
@@ -49,7 +50,7 @@ function insertServiceWorker(enabled) {
 		const sw = navigator.serviceWorker
 		console.debug('Worker: init')
 
-		sw.register('/sw.js').then(() => {
+		sw.register('/sw.js').then(function () {
 			console.debug('Worker: registered')
 		})
 
