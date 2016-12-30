@@ -36,7 +36,7 @@ class Demo extends React.Component {
         const { paused, lifetime, emissionRate, round } = this.state
 
         return React.createElement('section', { id: 'demo-wrapper' }, [
-            React.createElement('button', { key: 1, onclick: this.setPause }, paused ? 'Resume' : 'Pause'),
+            React.createElement('button', { key: 1, onClick: this.setPause }, paused ? 'Resume' : 'Pause'),
             React.createElement(Controller, {
                 key: 2,
                 setRounded:  this.setRounded,

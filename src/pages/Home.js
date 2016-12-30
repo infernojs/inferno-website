@@ -50,7 +50,7 @@ export default class Home extends Component {
                     <h1>Inferno</h1>
                     <h2>An extremely fast React-like JavaScript library for building modern user interfaces.</h2>
                     <div className="buttons">
-                        <Link className="button xs8" to="/docs/guides/getting-started">Get Started</Link>
+                        <Link className="button xs8" to="/docs/guides/installation">Get Started</Link>
                         <a className="button second xs8" target="_blank" href="https://github.com/infernojs/inferno/tree/master/examples" rel="noopener">Examples</a>
                     </div>
                 </div>
