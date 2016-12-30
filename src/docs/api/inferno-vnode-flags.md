@@ -1,18 +1,19 @@
 # Inferno VNode Flags
 
-## `VNodeFlags.Text`
-## `VNodeFlags.HtmlElement`
-## `VNodeFlags.ComponentClass`
-## `VNodeFlags.ComponentFunction`
-## `VNodeFlags.ComponentUnknown`
-## `VNodeFlags.HasKeyedChildren`
-## `VNodeFlags.HasNonKeyedChildren`
-## `VNodeFlags.SvgElement`
-## `VNodeFlags.MediaElement`
-## `VNodeFlags.InputElement`
-## `VNodeFlags.TextareaElement`
-## `VNodeFlags.SelectElement`
-## `VNodeFlags.Void`
+## `VNodeFlags`
+ - `.Text`
+ - `.HtmlElement`
+ - `.ComponentClass`
+ - `.ComponentFunction`
+ - `.ComponentUnknown`
+ - `.HasKeyedChildren`
+ - `.HasNonKeyedChildren`
+ - `.SvgElement`
+ - `.MediaElement`
+ - `.InputElement`
+ - `.TextareaElement`
+ - `.SelectElement`
+ - `.Void`
 
 Inferno VNode flags are used to describe what type of elmenent/component the VNode will be. A VNode can be used to describe a
 `<div>`, `<h1>`, `<Component>` etc, each of these might have a different flag identity.
