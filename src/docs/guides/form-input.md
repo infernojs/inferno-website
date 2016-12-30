@@ -16,7 +16,7 @@ This form has the default HTML form behavior of browsing to a new page when the 
 
 ## Controlled Components
 
-In HTML, form elements such as <input>, <textarea>, and <select> typically maintain their own state and update it based on user input. In Inferno, mutable state is typically kept in the state property of components, and only updated with setState().
+In HTML, form elements such as `<input>`, `<textarea>`, and `<select>` typically maintain their own state and update it based on user input. In Inferno, mutable state is typically kept in the state property of components, and only updated with setState().
 
 We can combine the two by making the Inferno state be the "single source of truth". Then the Inferno component that renders a form also controls what happens in that form on subsequent user input. An input form element whose value is controlled by Inferno in this way is called a "controlled component".
 
