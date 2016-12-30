@@ -4,12 +4,6 @@
 
 Note: this is similar to `React.createClass` in that methods are out-bound. However, this module does not support mixins.
 
-## Install
-
-```
-npm install inferno-create-class
-```
-
 ## Usage
 
 ```js
