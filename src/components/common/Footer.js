@@ -22,24 +22,26 @@ export default function Footer() {
                         Website built with Inferno using <a target="_blank" rel="noopener" href="https://github.com/infernojs/create-inferno-app">create-inferno-app</a>
                     </div>
                 </div>
+        <div className="contributors">
                 <a target="_blank" rel="noopener" href="https://github.com/trueadm/inferno/graphs/contributors" className="contributors">
                     <IconContributors/> Contributors
                 </a>
             </div>
         </div>
+        </div>
         <div className="supporters">
             <div className="container">
                 <div className="row">
-                    <a target="_blank" rel="noopener" href="https://www.digitalocean.com/" className="lg3 sm6 fill">
+                    <a target="_blank" rel="noopener" href="https://www.digitalocean.com/" className="lg3 xs6 fill">
                         <LogoDO/>
                     </a>
-                    <a target="_blank" rel="noopener" href="http://info.saucelabs.com/" className="lg3 sm6">
+                    <a target="_blank" rel="noopener" href="http://info.saucelabs.com/" className="lg3 xs6">
                         <LogoSauceLabs/>
                     </a>
-                    <a target="_blank" rel="noopener" href="browserstack.com" className="lg3 sm6 fill">
+                    <a target="_blank" rel="noopener" href="browserstack.com" className="lg3 xs6 fill">
                         <LogoBrowserstack/>
                     </a>
-                    <a target="_blank" rel="noopener" href="http://thegrid.io" className="lg3 sm6">
+                    <a target="_blank" rel="noopener" href="http://thegrid.io" className="lg3 xs6">
                         <LogoTheGrid/>
                     </a>
                 </div>
