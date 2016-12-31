@@ -90,7 +90,7 @@ function FunctionalComponent({ props }) {
 	return <div>Hello world</div>;
 }
 
-Inferno.render(<FunctionalComponent onComponentDidMount={ mounted } />, document.body);
+Inferno.render(<FunctionalComponent onComponentDidMount={ mounted } />, document.getElementById('app'));
 ```
 
 ## ES2015 Class Components
