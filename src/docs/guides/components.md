@@ -95,8 +95,133 @@ Inferno.render(<FunctionalComponent onComponentDidMount={ mounted } />, document
 
 ## ES2015 Class Components
 
-TODO
+Inferno offers ES2015 class components as a separate package called `inferno-component`, unlike other libraries like React. To install this functionality
+you can install via NPM or using the script from the CDN:
+
+*NPM:*
+```sh
+npm install --save inferno-component
+```
+*Scripts:*
+```html
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-component.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-component.min.js"></script>
+```
+
+Note: `inferno-component` works exactly like React's `React.Component` API works.
+
+To use `inferno-component`, very much like React, you create a `class` and extends `Component`:
+
+```jsx
+import Inferno from 'inferno';
+import Component from 'inferno-component';
+
+
+class MyComponent extends Component {
+	render() {
+		return <div>Hello world</div>;
+	}
+}
+
+Inferno.render(<MyComponent />, document.getElementById('app'));
+```
+
+### Class Lifeycle Events
+
+Like functional components, ES2015 class components have lifecycle events too. The work exactly like React's class
+components do. Below are a list of all the lifecycle events:
+
+<table>
+	<thead>
+		<tr>
+			<th>Lifecycle method</th>
+			<th>When it gets called</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td><code>componentWillMount</code></td>
+			<td>before the component gets mounted to the DOM</td>
+		</tr>
+		<tr>
+			<td><code>componentDidMount</code></td>
+			<td>after the component gets mounted to the DOM</td>
+		</tr>
+		<tr>
+			<td><code>componentWillUnmount</code></td>
+			<td>prior to removal from the DOM</td>
+		</tr>
+		<tr>
+			<td><code>componentDidUnmount</code></td>
+			<td>after removal from the DOM</td>
+		</tr>
+		<tr>
+			<td><code>componentWillReceiveProps</code></td>
+			<td>before new props get accepted</td>
+		</tr>
+		<tr>
+			<td><code>shouldComponentUpdate</code></td>
+			<td>before <code>render()</code>. Return <code>false</code> to skip render</td>
+		</tr>
+		<tr>
+			<td><code>componentWillUpdate</code></td>
+			<td>before <code>render()</code></td>
+		</tr>
+		<tr>
+			<td><code>componentDidUpdate</code></td>
+			<td>after <code>render()</code></td>
+		</tr>
+	</tbody>
+</table>
+
+The below is an example of using the `componentDidMount` lifecycle event to request AJAX data on a component:
+
+```jsx
+import Inferno from 'inferno';
+import Component from 'inferno-component'
+import myAPI from './myAPI';
+
+class AjaxComponent extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			data: []
+		};
+	}
+	componentDidMount() {
+		myAPI.fetch('/item-names').then((data) => {
+			this.setState({
+				data
+			});
+		});
+	}
+	render() {
+		return (
+			<ul>
+				{
+					this.state.data.map(data => 
+						<li>{  data.name }</li>
+					)
+				}
+			</ul>
+		);
+	}
+}
+```
 
 ## ES5 Class Components
 
-TODO
+Inferno offers ES5 class components as a separate package called `inferno-create-class`, unlike other libraries like React. To install this functionality
+you can install via NPM or using the script from the CDN:
+
+*NPM:*
+```sh
+npm install --save inferno-create-class
+```
+*Scripts:*
+```html
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-create-class.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-create-class.min.js"></script>
+```
+
+Note: `inferno-create-class` works exactly like React's `React.createClass()` API works.
