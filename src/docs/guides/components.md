@@ -108,7 +108,7 @@ npm install --save inferno-component
 <script src="https://unpkg.com/inferno@1.0.3/dist/inferno-component.min.js"></script>
 ```
 
-Note: `inferno-component` works exactly like React's `React.Component` API works.
+Note: `inferno-component` works exactly like React's [`React.Component`](https://facebook.github.io/react/docs/react-api.html#react.component) API works.
 
 To use `inferno-component`, very much like React, you create a `class` and extends `Component`:
 
@@ -224,4 +224,4 @@ npm install --save inferno-create-class
 <script src="https://unpkg.com/inferno@1.0.3/dist/inferno-create-class.min.js"></script>
 ```
 
-Note: `inferno-create-class` works exactly like React's `React.createClass()` API works.
+Note: `inferno-create-class` works exactly like React's [`React.createClass()`](https://facebook.github.io/react/docs/react-api.html#createclass) API works.
