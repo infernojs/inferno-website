@@ -51,7 +51,7 @@ export default class Home extends Component {
                     <h2>An extremely fast React-like JavaScript library for building modern user interfaces.</h2>
                     <div className="buttons">
                         <Link className="button xs8" to="/docs/guides/installation">Get Started</Link>
-                        <a className="button second xs8" target="_blank" href="https://github.com/infernojs/inferno/tree/master/examples" rel="noopener">Examples</a>
+                        <a className="button second xs8" target="_blank" href="https://github.com/infernojs/inferno" rel="noopener">GitHub</a>
                     </div>
                 </div>
             </div>
@@ -70,11 +70,12 @@ export default class Home extends Component {
                 <ContentAccordion/>
             </section>
             <section className="try">
-                <h3>Try Our Example</h3>
-
-                <Editor loaded={this.state.loaded}>
-                    {codeSample}
-                </Editor>
+                <div className="container">
+                    <h3>Try Our Example</h3>
+                    <Editor loaded={this.state.loaded}>
+                        {codeSample}
+                    </Editor>
+                </div>
             </section>
         </div>
     }

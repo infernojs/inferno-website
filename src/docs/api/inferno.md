@@ -193,17 +193,6 @@ class MyComponent extends Component {
 
 `linkEvent()` offers better performance than binding an event in a class constructor and using arrow functions, so use it where possible.
 
-## `renderToString`
-
-```javascript
-import Inferno from 'inferno';
-import InfernoServer from 'inferno-server';
-
-InfernoServer.renderToString(<div />);
-```
-
-Render a virtual node into an HTML string, given the supplied virtual DOM.
-
 ## `options`
 
 You can set default options for Inferno using `Inferno.options`. Below are the following options:

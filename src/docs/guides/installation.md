@@ -19,8 +19,8 @@ npm install --save inferno
 ```
 *Scripts:*
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno.min.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno.min.js"></script>
 ```
 
 ### Support for ES2015 components:
@@ -34,8 +34,8 @@ npm install --save inferno-component
 ```
 *Scripts:*
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-component.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-component.min.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-component.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-component.min.js"></script>
 ```
 
 ### Compatibility with existing React apps
@@ -60,8 +60,8 @@ npm install --save inferno-router
 ```
 *Scripts:*
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-router.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-router.min.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-router.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-router.min.js"></script>
 ```
 
 ### Server-side rendering support:
@@ -96,8 +96,8 @@ npm install --save inferno-hyperscript
 ```
 *Scripts:*
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-hyperscript.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-hyperscript.min.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-hyperscript.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-hyperscript.min.js"></script>
 ```
 
 ### createElement:
@@ -107,6 +107,6 @@ npm install --save inferno-create-element
 ```
 *Scripts:*
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-create-element.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/1.0.0/inferno-create-element.min.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-create-element.js"></script>
+<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-create-element.min.js"></script>
 ```

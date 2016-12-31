@@ -38,7 +38,7 @@ export default function Footer() {
                     <a target="_blank" rel="noopener" href="http://info.saucelabs.com/" className="lg3 xs6">
                         <LogoSauceLabs/>
                     </a>
-                    <a target="_blank" rel="noopener" href="browserstack.com" className="lg3 xs6 fill">
+                    <a target="_blank" rel="noopener" href="https://www.browserstack.com/" className="lg3 xs6 fill">
                         <LogoBrowserstack/>
                     </a>
                     <a target="_blank" rel="noopener" href="http://thegrid.io" className="lg3 xs6">

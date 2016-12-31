@@ -37,7 +37,7 @@ class MyComponent extends Component {
   }
 }
 
-Inferno.render(<MyComponent />, document.body);
+Inferno.render(<MyComponent />, document.getElementById('app'));
 ```
 
 ### More Examples
