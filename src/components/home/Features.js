@@ -20,7 +20,7 @@ export default function() {
                 <IconCompatible/>
                 <div className="desc">
                     <h2>React Compatible</h2>
-                    <p>React-like API, concepts and component lifecycle events. Switch over easily with inferno-compact.</p>
+                    <p>React-like API, concepts and component lifecycle events. Switch over easily with inferno-compat.</p>
                 </div>
             </div>
             <div className="xs12 lg4 row">
