@@ -113,6 +113,9 @@
                 background: inherit;
                 border: none;
                 padding: 0;
+                            @include media-query($on-small) {
+                        font-size: .70rem;
+            }
             }
         }
         code {

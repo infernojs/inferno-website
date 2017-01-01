@@ -23,6 +23,9 @@
         }
         h2 {
             font-size: 1.6rem;
+            @include media-query($on-small) {
+                 font-size: 1rem;
+            }
             font-weight: 200;
             margin: 0 0 1rem;
         }
@@ -165,6 +168,10 @@
                     border-top: 3px solid $grey;
                     span {
                         padding: 15px;
+                        @include media-query($on-small) {
+                            padding: 15px 0px 0px 0px;
+                            font-size: .75rem;
+                        }
                         display: block;
                     }
                     &::before {

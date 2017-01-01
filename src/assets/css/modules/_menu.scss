@@ -35,7 +35,7 @@ $sidebar-width: 50%;
         z-index: 10;
         display: none;
         @include media-query($on-small) {
-            display: inline-block;
+            display: block;
         }
     }
     nav {
