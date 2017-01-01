@@ -6,8 +6,11 @@ footer {
         margin: 0 $gutter;
         padding: 2rem 0 2rem 0;
         color: $white;
-        .mit {
+        & > * {
             text-align: center;
+            @include media-query($on-medium) {
+                margin: $gutter/2 auto;
+            }
         }
         .built {
             display: block;
@@ -17,15 +20,8 @@ footer {
                 text-decoration: underline;
             }
         }
-        @include media-query($on-small) {
+        @include media-query($on-medium) {
             padding: 15px $gutter;
-            .mit,
-            .contributors {
-                display: none;
-            }
-            .social-network {
-                margin: 0 auto;
-            }
         }
         a {
             color: $white;
@@ -49,9 +45,11 @@ footer {
             &:last-child {
                 border-right: none;
             }
-            svg, img {
+            svg,
+            img {
                 display: block;
-                margin: 0px auto;
+                flex: 0 0 50%;
+                max-width: 50%;
                 width: 50%;
             }
             &.fill svg {
@@ -68,8 +66,9 @@ footer {
                 &:nth-child(odd) {
                     border-right: 1px solid rgba(255, 255, 255, 0.2);
                 }
-                &:nth-child(1), &:nth-child(2) {
-                   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                &:nth-child(1),
+                &:nth-child(2) {
+                    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
                 }
             }
         }
@@ -78,11 +77,13 @@ footer {
                 border-right: 0px;
                 padding: 1rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+                flex: 0 0 100%;
+                max-width: 100%;
                 &:last-child {
                     border-bottom: none;
                 }
                 &:nth-child(odd) {
-                    border-right: 0px;
+                    border-right: none;
                 }
             }
         }

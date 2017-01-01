@@ -29,7 +29,7 @@ export default class Benchmarks extends Component {
         },
         {
           id: 'vdom',
-          name: 'Virtual DOM Benchmark',
+          name: 'Virtual DOM',
           description: 'The Virtual DOM Benchmark focuses on testing the children reconciliation algorithm used in various libraries. It is used by virtual DOM library authors to help optimize their algorithms. While not a perfect gauge of overall performance, it tests a key ingredient of popular Virtual DOM libraries.',
           link: 'https://vdom-benchmark.github.io/vdom-benchmark/',
           data: [

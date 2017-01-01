@@ -31,11 +31,19 @@ export default class Header extends Component {
     }
 
     render() {
-        const MenuLink = (props) => (
-            <Link activeClassName="selected" {...props} onClick={ this.closeSidebar }>
+        const MenuLink = (props, { router }) => {
+            // Hacky solution to highlight the correct menu item
+            let classNames = props.className ? props.className.split(' ') : []
+            if (router.url
+            && (router.url === props.to
+            || (router.url.includes('/docs/') && props.to.includes('/docs/'))
+            )) {
+                classNames.push('selected')
+            }
+            return <Link to={props.to} className={classNames.join(' ')} onClick={ this.closeSidebar }>
                 {props.children}
             </Link>
-        )
+        }
 
         return (
         <div className="menu">
@@ -48,7 +56,7 @@ export default class Header extends Component {
                 <nav className={ 'lg9 sm9 ' + (this.state.active ? 'open' : 'closed') }>
                     <MenuLink to="/">Home</MenuLink>
                     <MenuLink to="/about">About</MenuLink>
-                    <MenuLink to="/docs/guides/getting-started">Docs</MenuLink>
+                    <MenuLink to="/docs/guides/installation">Docs</MenuLink>
                     <a target="_blank" rel="noopener" href="https://github.com/trueadm/inferno/issues" onClick={ this.closeSidebar }>Contribute</a>
                     <a target="_blank" rel="noopener" href="https://github.com/infernojs" onClick={ this.closeSidebar }>Github</a>
                 </nav>
