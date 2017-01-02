@@ -92,6 +92,10 @@ const app = express();
 
 app.use((req, res) => {
   const renderProps = match(routes, req.originalUrl);
+  if (renderProps.redirect) {
+    return res.redirect(renderProps.redirect)
+  }
+  
   const content = (<Html><RouterContext {...renderProps}/></Html>);
 
   res.send('<!DOCTYPE html>\n' + renderToString(content));
@@ -124,6 +128,10 @@ const app = new Koa()
 
 app.use(async(ctx, next) => { 
   const renderProps = match(routes, ctx.url);
+  if (renderProps.redirect) {
+    return ctx.redirect(renderProps.redirect)
+  }
+  
   const content = (<Html><RouterContext {...renderProps}/></Html>);
   
   ctx.body = '<!DOCTYPE html>\n' + renderToString(content);
