@@ -39,12 +39,23 @@ The `Link` component can be used to trigger changes in the router. Supply a `to`
 
 A convenience component that automatically sets the component path to `/`.
 
+## Redirect
+
+Does a 302 redirect on the server side and a `history.replace` on the browser.
+
+```js
+<Redirect from="/oldpath" to="/newpath"/>
+```
+
 ## `match`
 
 Match is a convenience function that returns all routes that match a supplied URL. The first argument is a list of available routes and the second is the current URL.
 
 ```js
 const renderProps = match(routes, req.originalUrl);
+if (renderProps.redirect) {
+    // handle redirect
+}
 ```
 
 ## `matchPath`

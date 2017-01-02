@@ -15,6 +15,7 @@ npm install inferno-router
 * Router / RouterContext
 * Route / IndexRoute
 * Link / IndexLink
+* Redirect / IndexRedirect
 * browserHistory / memoryHistory
 * onEnter / onLeave hooks
 * params / querystring parsing
@@ -161,6 +162,15 @@ Inferno.render((
                 onLeave={ sayGoodBye } />
   </Router>
 ), container);
+```
+
+## Redirect
+
+```js
+<Router history={ createBrowserHistory() }>
+  <Redirect from="/oldpath" to="/newpath"/>
+  <Route path="/newpath" component={ MyComponent }/>
+</Router>
 ```
 
 ## Notes
