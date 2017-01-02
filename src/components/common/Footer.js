@@ -7,6 +7,19 @@ import LogoSauceLabs from '../logos/LogoSauceLabs'
 import LogoBrowserstack from '../logos/LogoBrowserstack'
 import LogoTheGrid from '../logos/LogoTheGrid'
 
+const GACode = () => {
+    return {
+        __html: `
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-89701958-1', 'auto');
+            ga('send', 'pageview');`
+    }
+};
+
 export default function Footer() {
     return (
     <footer>
@@ -22,7 +35,7 @@ export default function Footer() {
                         Website built with Inferno using <a target="_blank" rel="noopener" href="https://github.com/infernojs/create-inferno-app">create-inferno-app</a>
                     </div>
                 </div>
-        <div className="contributors">
+                <div className="contributors">
                 <a target="_blank" rel="noopener" href="https://github.com/trueadm/inferno/graphs/contributors" className="contributors">
                     <IconContributors/> Contributors
                 </a>
@@ -47,6 +60,7 @@ export default function Footer() {
                 </div>
             </div>
         </div>
+        <script dangerouslySetInnerHTML={ GACode() } defer />
     </footer>
     )
 }

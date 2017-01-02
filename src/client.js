@@ -14,7 +14,11 @@ if (module.hot) {
 
 // We render our react app into this element
 const root = document.getElementById('root')
-const history = createBrowserHistory()
+const history = createBrowserHistory();
+
+history.listen((location, action) => {
+  ga('send', 'pageview', location.pathname);
+});
 
 /**
  * Render our component according to our routes

@@ -66,8 +66,7 @@ export default function BasicChart({ data, settings }) {
                             {}, theme.styles.bars, {
                                 width: `${row.value * 100}%`,
                                 background: row.bg ? row.bg : theme.styles.bars.background
-                            }
-                            )
+                            })
                         }>
                           { row.score ? <figure style={ theme.styles.score }>{ row.score }</figure> : '' }
                         </div>
