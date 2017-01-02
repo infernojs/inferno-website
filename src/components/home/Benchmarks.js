@@ -5,7 +5,7 @@ import BasicChart from '../common/BasicChart'
 const setCurrent = ({ instance, index }, e) => {
   e.stopPropagation();
   instance.setState({ current: index });
-  ga('send', 'event', 'Benchmark', this.state.list[this.state.current].name);
+  ga('send', 'event', 'Benchmark', instance.state.list[instance.state.current].name);
 };
 
 export default class Benchmarks extends Component {
