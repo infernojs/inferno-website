@@ -24,7 +24,7 @@ function onDidMount(domNode) {
     setInterval(function() {
         const span = domNode.querySelector('span');
         span.innerHTML = (new Date()).toLocaleString();
-    }, 500)
+    }, 100)
 }
 `
 
