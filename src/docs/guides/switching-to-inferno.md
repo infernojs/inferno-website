@@ -1,6 +1,6 @@
 # Switching to Inferno
 
-Inferno aims to provide all the great benefits that React does, plus other great features for people already familiar with the React ecosystem. Switching to Inferno from React is possible with the `inferno-compat` module. The module acts as a compatibility layer that makes React-based modules work with Inferno's internals, without any code changes.
+Inferno aims to provide all the great benefits that React does, plus other convenience features for developers already familiar with the React ecosystem. Switching to Inferno from React is possible with the `inferno-compat` module. It acts as a compatibility layer that makes React-based modules work with Inferno's internals, without any code changes.
 
 It provides the same exports as `react` and `react-dom`, meaning you can use your build tool of choice to drop it in where React is being depended on.
 
