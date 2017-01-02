@@ -10,7 +10,7 @@ var InfernoTestUtils = Inferno.TestUtils; // ES5 with inferno-with-addons.js
 
 ## Overview
 
-`InfernoTestUtils` makes it easy to test Inferno component in the test framework of your choice. Facebook use [Jest](https://facebook.github.io/jest/) which can be learned through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/tutorial-react.html#content), but Inferno core uses [Mocha](https://www.mochajs.org).
+`InfernoTestUtils` makes it easy to test Inferno components in the test framework of your choice. Facebook uses [Jest](https://facebook.github.io/jest/) which can be learned through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/tutorial-react.html#content), but Inferno core uses [Mocha](https://www.mochajs.org).
 
 > Note:
 >
@@ -33,7 +33,7 @@ var InfernoTestUtils = Inferno.TestUtils; // ES5 with inferno-with-addons.js
 
 ### Shallow Rendering
 
-Shallow Rendering is currently not supported in Inferno. 
+Shallow Rendering is currently not supported in Inferno.
 
 * * *
 
@@ -163,7 +163,7 @@ Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclas
 
 ```javascript
 scryRenderedDOMComponentsWithTag(
-  root: VNode, 
+  root: VNode,
   tagName: string
 ): VNode[]
 ```
