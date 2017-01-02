@@ -19,14 +19,15 @@ $sidebar-width: 50%;
         text-decoration: none;
         font-size: 1.25rem;
         margin: 0;
-        opacity: 1;
+        opacity: 0;
+        visibility: hidden;
         svg {
             height: 42.5px;
             margin-right: 7.5px;
         }
-        &.selected {
-            opacity: 0;
-            visibility: hidden;
+        &.show {
+            opacity: 1;
+            visibility: visible;
         }
     }
     .hamburger {

@@ -40,6 +40,9 @@ export default class Header extends Component {
             )) {
                 classNames.push('selected')
             }
+            if (classNames.indexOf('branding') !== -1 && router.url != '/') {
+                classNames.push('show');
+            }
             return <Link to={props.to} className={classNames.join(' ')} onClick={ this.closeSidebar }>
                 {props.children}
             </Link>
