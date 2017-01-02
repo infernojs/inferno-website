@@ -10,7 +10,7 @@ var InfernoTestUtils = Inferno.TestUtils; // ES5 with inferno-with-addons.js
 
 ## Overview
 
-`InfernoTestUtils` makes it easy to test Inferno component in the test framework of your choice. Inferno uses [Mocha](https://mochajs.org) and [Karma](https://www.karmajs.org). 
+`InfernoTestUtils` makes it easy to test Inferno component in the test framework of your choice. Facebook use [Jest](https://facebook.github.io/jest/) which can be learned through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/tutorial-react.html#content), but Inferno core uses [Mocha](https://www.mochajs.org).
 
 > Note:
 >
