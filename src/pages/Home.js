@@ -8,24 +8,23 @@ import Inferno from 'inferno'
 import InfernoLogo from '../components/icons/IconInferno'
 import { Link } from 'inferno-router'
 
-const codeSample = `// Our default export
-export default () => (
-    <MyInfernoTest onComponentDidMount={onDidMount}/>
-);
-
-let time = (new Date()).toLocaleString()
-
-const MyInfernoTest = () => (
-    <h2>Current time: <span>{time.toString()}</span></h2>
-);
-
-// Update time
-function onDidMount(domNode) {
-    setInterval(function() {
-        const span = domNode.querySelector('span');
-        span.innerHTML = (new Date()).toLocaleString();
-    }, 500)
+const codeSample = `
+class MyInfernoTest extends Component {
+    componentDidMount() {
+        setInterval(() => {
+            this.setState({ 
+                time: (new Date()).toLocaleString() 
+            });
+        }, 200);
+    }
+    render() {
+        return <h2>
+            Current time: <span>{this.state.time}</span>
+        </h2>
+    }
 }
+
+export default MyInfernoTest;
 `
 
 export default class Home extends Component {

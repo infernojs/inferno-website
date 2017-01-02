@@ -15,6 +15,7 @@ npm install inferno-router
 * Router / RouterContext
 * Route / IndexRoute
 * Link / IndexLink
+* Redirect / IndexRedirect
 * browserHistory / memoryHistory
 * onEnter / onLeave hooks
 * params / querystring parsing
@@ -91,6 +92,10 @@ const app = express();
 
 app.use((req, res) => {
   const renderProps = match(routes, req.originalUrl);
+  if (renderProps.redirect) {
+    return res.redirect(renderProps.redirect)
+  }
+  
   const content = (<Html><RouterContext {...renderProps}/></Html>);
 
   res.send('<!DOCTYPE html>\n' + renderToString(content));
@@ -123,6 +128,10 @@ const app = new Koa()
 
 app.use(async(ctx, next) => { 
   const renderProps = match(routes, ctx.url);
+  if (renderProps.redirect) {
+    return ctx.redirect(renderProps.redirect)
+  }
+  
   const content = (<Html><RouterContext {...renderProps}/></Html>);
   
   ctx.body = '<!DOCTYPE html>\n' + renderToString(content);
@@ -161,6 +170,15 @@ Inferno.render((
                 onLeave={ sayGoodBye } />
   </Router>
 ), container);
+```
+
+## Redirect
+
+```js
+<Router history={ createBrowserHistory() }>
+  <Redirect from="/oldpath" to="/newpath"/>
+  <Route path="/newpath" component={ MyComponent }/>
+</Router>
 ```
 
 ## Notes

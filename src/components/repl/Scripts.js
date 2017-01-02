@@ -24,15 +24,15 @@ export default class Scripts extends Component {
 
     render({ loaded }) {
         return <div>
+            <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.css" rel="stylesheet"/>
+            <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/theme/neo.min.css" rel="stylesheet"/>
             <ScriptLoader condition={!window.compiler}
                           src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.19.0/babel.min.js"/>
             <ScriptLoader condition={!window.editor}
                           src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.js"/>
-            <ScriptLoader condition={!window.editor && loaded}
+            <ScriptLoader condition={window.editor && loaded}
                           onload={() => window.editor.setOption('mode', 'javascript')}
                           src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/mode/javascript/javascript.min.js"/>
-            <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/codemirror.min.css" rel="stylesheet"/>
-            <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.21.0/theme/neo.min.css" rel="stylesheet"/>
         </div>
     }
 }
