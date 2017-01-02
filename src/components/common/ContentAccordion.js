@@ -4,6 +4,7 @@ import Component from 'inferno-component';
 const setCurrent = ({ instance, index }, e) => {
   e.stopPropagation();
   instance.setState({ current: index });
+  ga('send', 'event', 'Benchmark', instance.state.list[instance.state.current].name);
 };
 
 export default class ContentAccordion extends Component {
