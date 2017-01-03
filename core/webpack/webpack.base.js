@@ -5,8 +5,10 @@ const Clean = require('clean-webpack-plugin')
 const ExtractCSS = require('extract-text-webpack-plugin')
 
 const root = join(__dirname, '..', '..')
+const pubDir = join(root, 'public')
+const srcDir = join(root, 'src')
 
-const sources = (location) => join(root, 'src', location)
+const src = loc => join(srcDir, loc)
 
 module.exports = {
     entry: {},
@@ -19,11 +21,11 @@ module.exports = {
                 test: /\.jsx?$/,
                 loader: 'babel-loader',
                 include: [
-                    sources(''),
-					sources('../core'),
-					sources('../node_modules/babel-plugin-inferno')
+                    srcDir,
+					src('../core'),
+					src('../node_modules/babel-plugin-inferno')
 				],
-                exclude: [sources('docs')],
+                exclude: [src('docs')],
                 query: {
                     cacheDirectory: false,
                     presets: [],
@@ -41,27 +43,27 @@ module.exports = {
             {
                 test: /\.(jpg|png|svg)(\?.+)?$/,
                 loader: 'url-loader?limit=100000',
-                include: [sources('assets'), sources('client/components')]
+                include: [src('assets'), src('client/components')]
             },
             {
                 test: /\.(ttf|otf|eot|woff2?)(\?.+)?$/,
                 loader: 'file-loader',
-                include: [sources('assets'), sources('client/components')]
+                include: [src('assets'), src('client/components')]
             },
             {
                 test: /\.(css|scss)(\?.+)?$/,
                 loader: ExtractCSS.extract(['css-loader?sourceMap&minimize', 'sass-loader?sourceMap&minimize']),
-                include: [sources('assets'), sources('client/components')]
+                include: [src('assets'), src('client/components')]
             },
             {
                 test: /\.md$/,
                 loader: 'html-loader!markdown-loader',
-                include: [sources('docs'), sources('client/components')]
+                include: [src('docs'), src('client/components')]
             },
             {
                 test: /\.json$/,
                 loader: 'json-loader',
-                exclude: [sources('src')]
+                exclude: [srcDir]
             }
         ]
     },
