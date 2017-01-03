@@ -1,8 +1,11 @@
-const path = require('path')
+const { join } = require('path');
 const webpack = require('webpack')
 const Clean = require('clean-webpack-plugin')
 const ExtractCSS = require('extract-text-webpack-plugin')
-const sources = (location) => path.join(__dirname, '../../src', location)
+
+const root = join(__dirname, '..', '..')
+
+const sources = (location) => join(root, 'src', location)
 
 module.exports = {
     entry: {},
@@ -65,16 +68,17 @@ module.exports = {
     output: {
         filename: 'bundle.js',
         sourcePrefix: '',
-        path: path.resolve(__dirname, '../../build')
+        path: sources('build')
     },
 
     resolve: {
         alias: {
-            'core': path.join(__dirname, '../')
+            'core': join(__dirname, '../')
         }
     },
 
     plugins: [
+        new Clean(['public'], {root: root}),
         new ExtractCSS({ filename: 'bundle.css', allChunks: true })
     ]
 };
