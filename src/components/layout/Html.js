@@ -14,6 +14,7 @@ export default function({ hostname, config, children }) {
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
             <meta httpEquiv="Content-Type" content="text/html; charset=UTF-8"/>
             <meta name="description" content="An extremely fast React-like javascript library for building modern user interfaces."/>
+            <meta name="keywords" content="javascript, framework, performance, fast, UI, programming, code, component, inferno, infernojs"/>
             <meta name="theme-color" content="#ffffff"/>
             <meta property="og:locale" content="en_US" />
             <meta property="og:type" content="website" />
