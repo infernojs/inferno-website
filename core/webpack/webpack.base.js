@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const Clean = require('clean-webpack-plugin')
 const ExtractCSS = require('extract-text-webpack-plugin')
 const sources = (location) => path.join(__dirname, '../../src', location)
 
