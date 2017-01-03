@@ -82,6 +82,10 @@ module.exports = {
 
     plugins: [
         new Clean(['build', 'public'], {root: root}),
+        new Copy([
+            {context: srcDir, from: 'docs/**', to: pubDir},
+            {context: srcDir, from: 'assets/**', to: pubDir}
+        ]),
         new ExtractCSS({ filename: 'bundle.css', allChunks: true })
     ]
 };
