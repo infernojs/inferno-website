@@ -1,5 +1,6 @@
 const { join } = require('path');
 const webpack = require('webpack')
+const Copy = require('copy-webpack-plugin')
 const Clean = require('clean-webpack-plugin')
 const ExtractCSS = require('extract-text-webpack-plugin')
 
