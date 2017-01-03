@@ -79,7 +79,7 @@ module.exports = {
     },
 
     plugins: [
-        new Clean(['public'], {root: root}),
+        new Clean(['build', 'public'], {root: root}),
         new ExtractCSS({ filename: 'bundle.css', allChunks: true })
     ]
 };
