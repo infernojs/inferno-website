@@ -1,6 +1,6 @@
 const { join } = require('path')
 
-const pubDir = join(__dirname, '..', '..', 'public')
+const pubDir = join(__dirname, '../../public')
 
 module.exports = {
     http: {
@@ -14,7 +14,7 @@ module.exports = {
     },
     static: [
         {
-            url: '/index.html',
+            url: '/',
             path: pubDir
         },
         {

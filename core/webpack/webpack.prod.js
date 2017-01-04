@@ -62,11 +62,15 @@ config.plugins.push(
         staticFileGlobs: ['public/**'],
         navigateFallback: 'public/index.html',
         staticFileGlobsIgnorePatterns: [/\.map$/],
-        filepath: 'public/assets/service/offline.js',
+        filepath: 'public/offline.js',
         verbose: true,
         stripPrefixMulti: {
             'public/': '/'
-        }
+        },
+        runtimeCaching: [{
+            handler: 'cacheFirst',
+            urlPattern: /(cdnjs\.cloudflare\.com)|(cdn\.polyfill\.io)/,
+        }]
     })
 )
 
