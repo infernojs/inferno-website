@@ -45,6 +45,19 @@ body {
     -webkit-touch-callout: none;
 }
 
+#root {
+    background: #fff;
+    z-index: 1;
+}
+
+#load {
+    position: absolute;
+    text-align: center;
+    bottom: 16px;
+    width: 100%;
+    z-index: -1;
+}
+
 h1,
 h2 {
     font-family: "Open Sans", "lucida grande", "Segoe UI", arial, verdana, "lucida sans unicode", tahoma, sans-serif;

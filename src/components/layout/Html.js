@@ -33,6 +33,7 @@ export default function({ hostname, config, children }) {
             <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet" defer="defer"/>
         </head>
         <body>
+            <a id="load" href="https://github.com/infernojs/inferno">Inferno JS</a>
             <div id="root">{children && children}</div>
             <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer="defer"></script>
             <script src={`${bundleURL}/build/bundle.js`} async="async"/>
