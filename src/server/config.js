@@ -1,27 +1,33 @@
-const path = require('path')
+const { join } = require('path')
+
+const pubDir = join(__dirname, '../../public')
 
 module.exports = {
     http: {
         port: process.env.DEV ? 8080 : 8050,
-        favicon: path.join(__dirname, '../assets/favicon.ico')
+        favicon: join(__dirname, '../assets/favicon.ico')
     },
     server: {
         SSR: true, // Server side rendering
-        certificate: path.join(__dirname, '../../fullchain.pem'),
-        certificate_key: path.join(__dirname, '../../privkey.pem'),
+        certificate: join(__dirname, '../../fullchain.pem'),
+        certificate_key: join(__dirname, '../../privkey.pem'),
     },
     static: [
         {
+            url: '/',
+            path: pubDir
+        },
+        {
             url: '/build',
-            path: path.join(__dirname, '../../build')
+            path: join(pubDir, 'build')
         },
         {
             url: '/assets',
-            path: path.join(__dirname, '../assets')
+            path: join(pubDir, 'assets')
         },
         {
             url: '/static',
-            path: path.join(__dirname, '../docs')
+            path: join(pubDir, 'docs')
         }
     ]
 }

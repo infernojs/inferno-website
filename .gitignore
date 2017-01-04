@@ -1,5 +1,6 @@
 # APP
 node_modules
+public/
 build/
 data/
 uploads/

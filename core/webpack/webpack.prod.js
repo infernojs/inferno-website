@@ -1,7 +1,8 @@
-const path = require('path')
 const logger = require('debug')
+const { join } = require('path')
 const webpack = require('webpack')
 const config = require('./webpack.base.js')
+const SWPrecache = require('sw-precache-webpack-plugin');
 
 // Merge with base configuration
 //-------------------------------
@@ -10,10 +11,10 @@ Object.assign(config, {
     devtool: 'source-map',
     entry: {
         bundle: [
-            path.join(__dirname, '../../core/polyfills.js'),
-            path.join(__dirname, '../../src/client.js')
+            join(__dirname, '../../core/polyfills.js'),
+            join(__dirname, '../../src/client.js')
         ]
-        //react: path.join(__dirname, '../../src/components/demo/Demo.React.js')
+        //react: join(__dirname, '../../src/components/demo/Demo.React.js')
     },
     output: {
         publicPath: '/build/'
@@ -43,7 +44,8 @@ logger('server:webpack')('Environment: Production')
 
 // Save files to disk
 //-------------------------------
-config.output.path = path.join(__dirname, '../../build')
+const pubDir = join(__dirname, '..', '..', 'public')
+config.output.path = join(pubDir, 'build')
 config.plugins.push(
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
@@ -54,6 +56,21 @@ config.plugins.push(
         output: {
             comments: false
         }
+    }),
+    new SWPrecache({
+        cacheId: 'infernojs-site',
+        staticFileGlobs: ['public/**'],
+        navigateFallback: 'public/index.html',
+        staticFileGlobsIgnorePatterns: [/\.map$/],
+        filepath: 'public/offline.js',
+        verbose: true,
+        stripPrefixMulti: {
+            'public/': '/'
+        },
+        runtimeCaching: [{
+            handler: 'cacheFirst',
+            urlPattern: /(cdnjs\.cloudflare\.com)|(cdn\.polyfill\.io)/,
+        }]
     })
 )
 

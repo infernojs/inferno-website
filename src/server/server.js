@@ -43,7 +43,8 @@ config.static.forEach(staticRoute => {
 })
 
 // Serve service worker
-app.use(serve(require('path').join(__dirname, '../assets/service')))
+// app.use(serve(require('path').join(__dirname, '../assets/service')))
+app.use(serve(require('path').join(__dirname, '../../public/assets/service')))
 
 // Render inferno app
 app.use(render)
