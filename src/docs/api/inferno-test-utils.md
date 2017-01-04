@@ -5,7 +5,7 @@
 ```javascript
 import InfernoTestUtils from 'inferno-test-utils' // ES6
 var InfernoTestUtils = require('inferno-test-utils') // ES5 with npm
-var InfernoTestUtils = Inferno.TestUtils; // ES5 with inferno-with-addons.js
+var InfernoTestUtils = Inferno.TestUtils; // ES5 with inferno-test-utils.js
 ```
 
 ## Overview

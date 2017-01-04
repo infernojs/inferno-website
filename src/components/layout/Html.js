@@ -31,31 +31,12 @@ export default function({ hostname, config, children }) {
             <meta name="twitter:creator" content="@InfernoJS" />
             <link rel="manifest" href="/assets/manifest.json"/>
             <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet" defer="defer"/>
-            <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
-            <script dangerouslySetInnerHTML={{
-                __html: insertServiceWorker(true)
-            }}/>
         </head>
         <body>
+            <a id="load" href="https://github.com/infernojs/inferno">Inferno JS</a>
             <div id="root">{children && children}</div>
+            <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer="defer"></script>
             <script src={`${bundleURL}/build/bundle.js`} async="async"/>
         </body>
     </html>
-}
-
-function insertServiceWorker(enabled) {
-	if (!enabled) return ''
-
-	return `
-	if ('serviceWorker' in navigator) {
-		var sw = navigator.serviceWorker
-
-		sw.register('/sw.js').then(function () {
-			console.debug('Worker: registered')
-		})
-
-		sw.ready.then(function(registration) {
-			console.debug('Worker: ready')
-		})
-	}`
 }
