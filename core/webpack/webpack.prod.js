@@ -68,6 +68,10 @@ config.plugins.push(
             'public/': '/'
         },
         runtimeCaching: [{
+            handler: 'networkFirst',
+            urlPattern: /\/api\/markdown/,
+            // urlPattern: /infernojs\.org\/api\/markdown/,
+        }, {
             handler: 'cacheFirst',
             urlPattern: /(cdnjs\.cloudflare\.com)|(cdn\.polyfill\.io)/,
         }]
