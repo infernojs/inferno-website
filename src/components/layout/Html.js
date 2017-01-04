@@ -31,10 +31,10 @@ export default function({ hostname, config, children }) {
             <meta name="twitter:creator" content="@InfernoJS" />
             <link rel="manifest" href="/assets/manifest.json"/>
             <link href={ `${bundleURL}/build/bundle.css` } rel="stylesheet" defer="defer"/>
-            <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
         </head>
         <body>
             <div id="root">{children && children}</div>
+            <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer="defer"></script>
             <script src={`${bundleURL}/build/bundle.js`} async="async"/>
         </body>
     </html>
