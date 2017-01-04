@@ -69,9 +69,9 @@ module.exports = {
     },
 
     output: {
-        filename: 'bundle.js',
         sourcePrefix: '',
-        path: sources('build')
+        filename: 'bundle.js',
+        path: join(pubDir, 'build')
     },
 
     resolve: {
@@ -84,7 +84,9 @@ module.exports = {
         new Clean(['build', 'public'], {root: root}),
         new Copy([
             {context: srcDir, from: 'docs/**', to: pubDir},
-            {context: srcDir, from: 'assets/**', to: pubDir}
+            {context: srcDir, from: 'assets/*', to: pubDir},
+            {context: srcDir, from: 'index.html', to: pubDir},
+            {context: srcDir, from: 'assets/s*/**', to: pubDir}
         ]),
         new ExtractCSS({ filename: 'bundle.css', allChunks: true })
     ]

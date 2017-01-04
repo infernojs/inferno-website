@@ -25,6 +25,11 @@ history.listen((location, action) => {
  */
 Inferno.render(<App history={history}/>, root)
 
+// cache all assets if browser supports serviceworker
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/assets/service/offline.js')
+}
+
 if (module.hot) {
     module.hot.accept()
 }
