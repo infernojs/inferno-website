@@ -26,9 +26,9 @@ function MyComponent(props) {
 Functional components do not have state, instead they solely rely on `props` being pass into the component. Unlike React and
 other UI libraries, Inferno provides lifecycle events for functional components.
 
-### Functional Component Lifeycle events
+### Functional Component Lifecycle events
 
-Lifeycle events for functional components get applied as if they were normal `props`. For example:
+Lifecycle events for functional components get applied as if they were normal `props`. For example:
 
 `<MyComponent onComponentWillMount={ ... } />`
 
@@ -126,7 +126,7 @@ class MyComponent extends Component {
 Inferno.render(<MyComponent />, document.getElementById('app'));
 ```
 
-### Class Lifeycle Events
+### Class Lifecycle Events
 
 Like functional components, ES2015 class components have lifecycle events too. The work exactly like React's class
 components do. Below are a list of all the lifecycle events:
