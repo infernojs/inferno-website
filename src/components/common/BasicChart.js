@@ -53,6 +53,9 @@ export default function BasicChart({ data, settings }) {
     },
     settings
   );
+
+  const maxValue = Math.max(...data.map(row => row.score ))
+
   return (
     <table className="inferno-basic-chart" style={ theme.styles.table }>
         <tbody>
@@ -64,7 +67,7 @@ export default function BasicChart({ data, settings }) {
                         <div style={
                             Object.assign(
                             {}, theme.styles.bars, {
-                                width: `${row.value * 100}%`,
+                                width: `${(row.score / maxValue) * 100}%`,
                                 background: row.bg ? row.bg : theme.styles.bars.background
                             })
                         }>
