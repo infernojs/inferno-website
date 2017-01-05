@@ -36,7 +36,7 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="contributors">
-                <a target="_blank" rel="noopener" href="https://github.com/trueadm/inferno/graphs/contributors" className="contributors">
+                <a target="_blank" rel="noopener" href="https://github.com/infernojs/inferno/graphs/contributors" className="contributors">
                     <IconContributors/> Contributors
                 </a>
             </div>
