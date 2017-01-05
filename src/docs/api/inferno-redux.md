@@ -10,8 +10,8 @@ The `Provider` component allows an application to connect to a Redux store.
 
 ```jsx
 import Inferno from 'inferno'
-import { Provider } from 'inferno-redux
-import { createStore } from 'redux
+import { Provider } from 'inferno-redux'
+import { createStore } from 'redux'
 
 // Component Declarations... 
 
