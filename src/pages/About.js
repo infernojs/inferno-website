@@ -56,7 +56,6 @@ export default class About extends Component {
                     month and 300k downloads from the CDN. Inferno is actively being vetted or already
                     in production by these companies:
                     <ul className="list columns">
-                        <li>Microsoft</li>
                         <li>The Grid</li>
                         <li>Uber</li>
                         <li>Evite.com</li>
