@@ -64,6 +64,7 @@ export default class About extends Component {
                         <li>Evite.com</li>
                         <li>Globo.com (Brazil)</li>
                     </ul>
+                    If your company/project is actively using Inferno, we'd love to know about it!
                 </p>
                 <h2>Read About Inferno</h2>
                 <p>
