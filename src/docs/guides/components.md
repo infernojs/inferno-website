@@ -1,6 +1,6 @@
 # Components
 
-Inferno offers three different types of components to use when building a UI, functional componentns, ES2015 class components and ES5 class components.
+Inferno offers three different types of components to use when building a UI: functional components, ES2015 class components and ES5 class components.
 
 ## Functional Components
 
