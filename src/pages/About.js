@@ -58,9 +58,7 @@ export default class About extends Component {
                     <ul className="list columns">
                         <li>Microsoft</li>
                         <li>The Grid</li>
-                        <li>Tesco (UK)</li>
                         <li>Uber</li>
-                        <li>Yahoo</li>
                         <li>Evite.com</li>
                         <li>Globo.com (Brazil)</li>
                     </ul>
