@@ -13,7 +13,7 @@ export default function() {
                 <IconSize/>
                 <div className="desc">
                     <h2>Tiny Size</h2>
-                    <p>Inferno is much smaller in size, 8kb vs 45kb gzip. This means inferno is faster to transfer over the network and much faster to parse.</p>
+                    <p>Inferno is much smaller in size, 9kb vs 45kb gzip. This means inferno is faster to transfer over the network and much faster to parse.</p>
                 </div>
             </div>
             <div className="xs12 lg4 row">
