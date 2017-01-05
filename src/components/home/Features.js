@@ -34,7 +34,7 @@ export default function() {
                 <IconArchitecture/>
                 <div className="desc">
                     <h2>One-way Architecture</h2>
-                    <p>Component driven + One-way data flow architecture. Bindings also supplied for Redux, MobX or Ceberal.</p>
+                    <p>Component driven + One-way data flow architecture. Bindings also supplied for Redux, MobX and Cerebral.</p>
                 </div>
             </div>
             <div className="xs12 lg4 row">
