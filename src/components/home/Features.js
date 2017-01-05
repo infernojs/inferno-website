@@ -27,7 +27,7 @@ export default function() {
                 <IconSpeed/>
                 <div className="desc">
                     <h2>Insane Performance</h2>
-                    <p>One the fastest front-end frameworks for rendering UI in the DOM, making 60 FPS on mobile possible.</p>
+                    <p>One of the fastest front-end frameworks for rendering UI in the DOM, making 60 FPS on mobile possible.</p>
                 </div>
             </div>
             <div className="xs12 lg4 row">
