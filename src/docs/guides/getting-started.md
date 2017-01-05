@@ -42,4 +42,4 @@ Inferno.render(<MyComponent />, document.getElementById('app'));
 
 ### More Examples
 
-- [**Simple Clock** (@JSFiddle)](https://jsfiddle.net/o01mvsyn/)
+- [**Simple Clock** (@JSFiddle)](https://jsfiddle.net/u7p19pvc/)
