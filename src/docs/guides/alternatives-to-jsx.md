@@ -1,11 +1,11 @@
 # Alternatives to JSX
 
-JSX isn't the only way to create Inferno VNodes. The two supported core packages for created 
+JSX isn't the only way to create Inferno VNodes. The two supported core packages for created
 Inferno VNodes are `inferno-hyperscript` and `inferno-create-element`. They are explained below:
 
 ## Hyperscript
 
-> [Hyperscript](https://github.com/dominictarr/hyperscript) syntax for [Inferno](https://github.com/trueadm/inferno) termplates.
+> [Hyperscript](https://github.com/dominictarr/hyperscript) syntax for [Inferno](https://github.com/trueadm/inferno) templates. Hyperscript is a simple standardized syntax for creating VDOMs for use in Inferno.
 
 ### Usage
 
@@ -40,3 +40,27 @@ Documentation: <https://github.com/dominictarr/hyperscript>
 
 ## createElement
 
+Alternatively to JSX, you may also create VDOM elements using the `createElement` method. The API is very similar to that that found with React's createElement()
+
+#### `createElement(componentOrTag, properties, [...children])`
+
+Returns an Inferno VNode from calling the method directly.
+
+```js
+import Component from 'inferno-component';
+import createElement from 'inferno-create-element';
+
+class BasicComponent extends Component {
+    render() {
+        return createElement('div', {
+               className: 'basic'
+           },
+           createElement('span', {
+               className: this.props.name
+           }, 'The title is ', this.props.title)
+       )
+    }
+}
+
+Inferno.render(createElement(BasicComponent, { title: 'abc' }), document.body);
+```
