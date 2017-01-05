@@ -31,14 +31,6 @@ export default class About extends Component {
                     via inferno-server and NodeJS, so you can write awesome UIs that get
                     rendered full-stack.
                 </p>
-                <h2>Performance (It's really fast!)</h2>
-                <p>
-                    In terms of performance, Inferno is currently the fastest JavaScript UI library
-                    there is – both in benchmarks and actual real-world scenarios. It excels on the
-                    browser at initial page load, parse times, render times and update times.
-                    Inferno's server-side rendering is around 5x faster than React, around 3x
-                    faster than Angular 2 and around 1.5x faster than Preact and Vue.
-                </p>
                 <h2>History</h2>
                 <p>
                     Inferno started as an idea two years ago, to see if a UI library could really
@@ -54,6 +46,24 @@ export default class About extends Component {
                     lose bloat, they need to care about performance. Developing on a MacBook Pro
                     and seeing animations, routing, complex UIs instantly appear is not going to
                     happen on an average mobile device (especially in emerging countries).
+                </p>
+                <h2>Who's Using Inferno?</h2>
+                <p>
+                    Inferno 1.0 was officially released in early January 2017, however many projects
+                    have already started using Inferno either in production or for internal testing.
+                    In a short period of time Inferno grew from around 150 Github stars at the start
+                    of the year, to around 7300 by the end of the year, 15 NPM downloads to 15k a
+                    month and 300k downloads from the CDN. Inferno is actively being vetted or already
+                    in production by these companies:
+                    <ul className="list columns">
+                        <li>Microsoft</li>
+                        <li>The Grid</li>
+                        <li>Tesco (UK)</li>
+                        <li>Uber</li>
+                        <li>Yahoo</li>
+                        <li>Evite.com</li>
+                        <li>Globo.com (Brazil)</li>
+                    </ul>
                 </p>
                 <h2>Read About Inferno</h2>
                 <p>
