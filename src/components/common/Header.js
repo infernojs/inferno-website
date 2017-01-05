@@ -60,7 +60,7 @@ export default class Header extends Component {
                     <MenuLink to="/">Home</MenuLink>
                     <MenuLink to="/about">About</MenuLink>
                     <MenuLink to="/docs/guides/installation">Docs</MenuLink>
-                    <a target="_blank" rel="noopener" href="https://github.com/trueadm/inferno/issues" onClick={ this.closeSidebar }>Contribute</a>
+                    <a target="_blank" rel="noopener" href="https://github.com/infernojs/inferno/issues" onClick={ this.closeSidebar }>Contribute</a>
                     <a target="_blank" rel="noopener" href="https://medium.com/inferno-js" onClick={ this.closeSidebar }>Blog</a>
                     <a target="_blank" rel="noopener" href="https://github.com/infernojs" onClick={ this.closeSidebar }>Github</a>
                 </nav>
