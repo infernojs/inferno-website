@@ -57,7 +57,6 @@ export default class About extends Component {
                     in production by these companies:
                     <ul className="list columns">
                         <li>The Grid</li>
-                        <li>Uber</li>
                         <li>Evite.com</li>
                         <li>Globo.com (Brazil)</li>
                     </ul>
