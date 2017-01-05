@@ -52,7 +52,7 @@ Note: Make sure you read more about [`inferno-compat`](https://github.com/truead
 ### Routing support:
 
 Inferno's router will provide basic routing support and is usable on both the server and client. For more information on how to use `inferno-router`, visit the project page.
-Check out the [routing guide]() for more information on how this works.
+Check out the [routing guide](routing) for more information on how this works.
 
 *NPM:*
 ```sh
@@ -67,7 +67,7 @@ npm install --save inferno-router
 ### Server-side rendering support:
 
 Inferno is isomorphic, which means it can work on both the server (with Node JS) and the client. It can render your components on the server using the `inferno-server` package.
-Check out the [server-side rendering guide]() for more information on how this works.
+Check out the [server-side rendering guide](server-side-rendering) for more information on how this works.
 
 *NPM:*
 ```sh
