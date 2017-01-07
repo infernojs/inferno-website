@@ -39,7 +39,7 @@ export default class ContentAccordion extends Component {
         {
           name: 'Other Frameworks',
           description: [
-            'Inferno is generally smaller (9kb) than most frameworks even when Gzipped. In comparison to other popular libraries: Ember (1kb), Angular2 (119kb) and Vue (18kb).',
+            'Inferno is generally smaller (9kb) than most frameworks even when Gzipped. In comparison to other popular libraries: Ember (130kb), Angular2 (119kb) and Vue (18kb).',
             'Inferno doesn\'t ship with data fetching or model facilities, it focuses on making the UI as fast as possible and leaves the data side to developers.',
             'Other monolithic libraries typically ship with an array of features that make them easy to use but bloats delivery to end-users.',
             'Inferno structures its rendering and UI logic into functional and class components, other frameworks may have more opinionated or elaborate structures.',
