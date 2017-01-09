@@ -15,7 +15,7 @@ export default class About extends Component {
                     Inferno is designed to be a light-weight and blazing fast React-like
                     Javascript library for building modern interfaces. It was also designed
                     to be React compatible, modular and isomorphic. The community supporting
-                    it's development is tasked with continuously improving performance and
+                    its development is tasked with continuously improving performance and
                     exploring new and efficient methods.
                 </p>
                 <h2>What's React?</h2>
