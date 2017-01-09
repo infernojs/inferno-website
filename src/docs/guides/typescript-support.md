@@ -1,6 +1,6 @@
 # TypeScript Support
 
-The Inferno project and all its' modules are written in TypeScript 2. The typings are included in the distribution. The main Inferno project source can be checked out and imported directly into your TS application.
+The Inferno project and all its modules are written in TypeScript 2. The typings are included in the distribution. The main Inferno project source can be checked out and imported directly into your TS application.
 
 ## Example Repository
 
@@ -8,4 +8,4 @@ Don't forget to have a look at the [`inferno-typescript-example` repository](htt
 
 ## Why Typescript?
 
-Typescript has been a pleasure to use on the Inferno project. During development we found that it provided many benefits. According to core team developers, Typescript saved the project from a lot of potentially difficult bugs. It's type safety, fast compiler and language features worked wonderfully to the Inferno team.
+Typescript has been a pleasure to use on the Inferno project. During development we found that it provided many benefits. According to core team developers, TypeScript saved the project from a lot of potentially difficult bugs. Its type safety, fast compiler and language features worked wonderfully to the Inferno team.
