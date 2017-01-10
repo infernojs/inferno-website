@@ -7,6 +7,8 @@ import Inferno from 'inferno';
 import { Router, Route, IndexRoute } from 'inferno-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
+const browserHistory = createBrowserHistory();
+
 const routes = (
   <Router history={ browserHistory }>
     <Route component={ App }>
