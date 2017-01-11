@@ -6,11 +6,11 @@ next: /guides/benefits/list-rendering/
 
 ## List Rendering
 
-Inferno has two ways of rendering lists: Keyed algorithm and Non keyd algorithm. Choosing which one to use is up to the developer, therefore it is important to understand the differences between them. The main difference is that keyed lists will preserve the internal state of list items. For example focus,value,(data-attributes),etc. will remain as they were before and after rendering as long as specific list item is still rendered.
+Inferno has two ways of rendering lists: Keyed algorithm and Non keyd algorithm. Choosing which one to use is up to the developer, therefore it is important to understand the differences between them. The main difference is that keyed lists will preserve the internal state of list items. For example focus, value, (data-attributes) etc. will remain as they were before and after rendering as long as a specific list item is still rendered.
 
 ### Keyed algorithm
 
-The basic idea behind keyed algorithm is to minimize the number of patch operations. This performs better when changes between lists are minimal. Key is a special property that is not rendered to HTML DOM. It can be anything from string to number and is only used to track specific node. Typically this is id/guid related to the data you are rendering. Remember that key needs to be unique only accros its siblings, not globally.
+The basic idea behind keyed algorithm is to minimize the number of patch operations. This performs better when changes between lists are minimal. Key is a special property that is not rendered to HTML DOM. It can be anything from string to number and is only used to track specific node. Typically this is id/guid related to the data you are rendering. Remember that key needs to be unique only across its siblings, not globally.
 
 ### Non keyed algorithm
 
@@ -64,7 +64,7 @@ Example3: NonKeyed complex changes
 2nd render: <div><span>secondchanged</span><span>first</span></div>
 => [change text 'first' => 'secondchanged', change text 'second' => 'first', removeNode <span>third</span>]
 ```
-In this example nonekeyed version will patch nodes in order and lose internal states.
+In this example nonkeyed version will patch nodes in order and lose internal states.
 
 
 ### JSX Compile time flags (new in 1.0.0)
