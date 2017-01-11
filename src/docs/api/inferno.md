@@ -207,4 +207,4 @@ This enables `findDOMNode()`. We strongly recommend against using this API as it
 
 ***Default: `true`***
 
-This enables DOM node recycling within Inferno, so that DOM nodes are re-used upon diposal. It can have significant performance benefits, but may also cause side-effects with custom elements.
+This enables DOM node recycling within Inferno, so that DOM nodes are re-used upon disposal. It can have significant performance benefits, but may also cause side-effects with custom elements.
