@@ -40,6 +40,24 @@ class MyComponent extends Component {
 Inferno.render(<MyComponent />, document.getElementById('app'));
 ```
 
+
+### Inferno Options
+
+You can set default options for Inferno using `Inferno.options`. Below are the following options:
+
+### - `findDOMNodeEnabled`
+
+***Default: `false`***
+
+This enables `findDOMNode()`. We strongly recommend against using this API as it introduces a significant impact to performance. In the future this API command will be removed, along with `findDOMNode()`;
+
+### - `recyclingEnabled`
+
+***Default: `true`***
+
+This enables DOM node recycling within Inferno, so that DOM nodes are re-used upon disposal. It can have significant performance benefits, but may also cause side-effects with custom elements.
+
+
 ### More Examples
 
 - [**Simple Clock** (@JSFiddle)](https://jsfiddle.net/u7p19pvc/)

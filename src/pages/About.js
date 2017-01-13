@@ -83,7 +83,6 @@ export default class About extends Component {
                     better understood by modern JavaScript engines and can be highly optimised to
                     perform far better than other libraries/frameworks.
                 </p>
-
             </div>
 		</section>
     }
