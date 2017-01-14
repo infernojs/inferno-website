@@ -56,9 +56,9 @@ export default class About extends Component {
                     month and 300k downloads from the CDN. Inferno is actively being vetted or already
                     in production by these companies:
                     <ul className="list columns">
-                        <li>The Grid</li>
-                        <li>Evite.com</li>
-                        <li>Globo.com (Brazil)</li>
+                        <li><a target="_blank" rel="noopener" href="http://www.thegrid.io">The Grid</a></li>
+                        <li><a target="_blank" rel="noopener" href="http://www.evite.com">Evite.com</a></li>
+                        <li><a target="_blank" rel="noopener" href="http://www.globo.com">Globo.com (Brazil)</a></li>
                     </ul>
                     If your company/project is actively using Inferno, we'd love to know about it!
                 </p>

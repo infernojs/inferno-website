@@ -71,9 +71,10 @@
                 border-bottom: 1px solid $grey;
                 padding: 0.75rem 0rem 0.75rem 3rem;
                 a {
-                    color: $primary;
+                    color: #444;
                     width: 100%;
                     display: block;
+                    cursor: pointer;
                 }
                 &::before {
                     content: "•";
@@ -84,10 +85,11 @@
                 }
                 &:hover {
                     background-color: $grey;
-                    color: white;
                 }
-                &:last-child {
-                    border-bottom: 0px;
+                @include media-query($on-small) {
+                    min-width: 100%;
+                    width: 100%;
+                    border-right: 0px;
                 }
             }
             &.columns {
