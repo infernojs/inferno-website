@@ -77,7 +77,7 @@ Below are all the different lifecycle event names that can be applied to functio
 <table>
 
 If you were to use a functional component lifecycle event, please note that they do not work exactly as ES2015 lifecycle events do.
-They have different arguments passed to the events and have no form of state. 
+They have different arguments passed to the events and have no form of state.
 
 Below is an example of how you might use a functional component with lifecycle events:
 
@@ -199,7 +199,7 @@ class AjaxComponent extends Component {
 		return (
 			<ul>
 				{
-					this.state.data.map(data => 
+					this.state.data.map(data =>
 						<li>{  data.name }</li>
 					)
 				}
@@ -225,3 +225,13 @@ npm install --save inferno-create-class
 ```
 
 Note: `inferno-create-class` works exactly like React's [`React.createClass()`](https://facebook.github.io/react/docs/react-api.html#createclass) API works.
+
+## Inject HTML Helper
+
+`dangerouslySetInnerHTML` is a replacement for using innerHTML. Setting HTML from code is risky because it's easy to inadvertently expose your users to a cross-site scripting (XSS) attack. You can set HTML directly from a component property, but you have to type out dangerouslySetInnerHTML and pass an object with a __html key, to remind yourself that it's dangerous.
+
+```js
+function MyComponent() {
+  return <div dangerouslySetInnerHTML={ { __html: 'Your content will go here' } } />;
+}
+```

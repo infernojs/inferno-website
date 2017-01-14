@@ -75,7 +75,7 @@ This is the base class for Inferno Components when they're defined using ES6 cla
 import Inferno from 'inferno';
 
 const MyComponent = ({ name, age }) => (
-  <span>My name is: { name } and my age is: {age}</span>  
+  <span>My name is: { name } and my age is: {age}</span>
 );
 ```
 
@@ -154,7 +154,7 @@ Once enabled via `options.findDOMNodeEnabled()` at the start of an application, 
 
 Note: we recommend using a `ref` callback on a component to find its instance, rather than using `findDOMNode()`. `findDOMNode()` cannot be used on functional components and it introduces a significant performance impact.
 
-If a component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements. 
+If a component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
 In most cases, you can attach a ref to the DOM node and avoid using `findDOMNode()` at all. When render returns null or false, `findDOMNode()` returns null.
 
 ## `linkEvent` (package: `inferno`)
@@ -193,7 +193,7 @@ class MyComponent extends Component {
 
 `linkEvent()` offers better performance than binding an event in a class constructor and using arrow functions, so use it where possible.
 
-## `options`
+# Inferno Options
 
 You can set default options for Inferno using `Inferno.options`. Below are the following options:
 
@@ -203,7 +203,7 @@ You can set default options for Inferno using `Inferno.options`. Below are the f
 
 This enables `findDOMNode()`. We strongly recommend against using this API as it introduces a significant impact to performance. In the future this API command will be removed, along with `findDOMNode()`;
 
-### - `recyclingEnabled` 
+### - `recyclingEnabled`
 
 ***Default: `true`***
 
