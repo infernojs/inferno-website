@@ -55,7 +55,7 @@ export default class Header extends Component {
                 <div className="menu-toggle" onClick={ this.toggleSidebar }>
                     <IconMenu/>
                 </div>
-                <MenuLink to="/" className="branding lg3 sm3"><InfernoLogo/> Inferno</MenuLink>
+                <MenuLink to="/" className="branding lg3 sm3"><InfernoLogo/> Inferno<small>v{ Inferno.version }</small></MenuLink>
                 <nav className={ 'lg9 sm9 ' + (this.state.active ? 'open' : 'closed') }>
                     <MenuLink to="/">Home</MenuLink>
                     <MenuLink to="/about">About</MenuLink>

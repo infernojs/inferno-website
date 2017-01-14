@@ -25,6 +25,12 @@ $sidebar-width: 50%;
             height: 42.5px;
             margin-right: 7.5px;
         }
+        small {
+            font-size: .65rem;
+            height: 10px;
+            margin-left: 4px;
+            color: #888;
+        }
         &.show {
             opacity: 1;
             visibility: visible;
