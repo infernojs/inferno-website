@@ -148,7 +148,7 @@ const newVNode = Inferno.cloneVNode(vNode, { id: 'new' }); // we are adding an i
 Inferno.render(newVNode, container);
 ```
 
-## `findDOMNode` (package: `inferno`)
+## `findDOMNode`
 
 Once enabled via `options.findDOMNodeEnabled()` at the start of an application, `findDOMNode()` is enabled.
 
@@ -157,7 +157,7 @@ Note: we recommend using a `ref` callback on a component to find its instance, r
 If a component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
 In most cases, you can attach a ref to the DOM node and avoid using `findDOMNode()` at all. When render returns null or false, `findDOMNode()` returns null.
 
-## `linkEvent` (package: `inferno`)
+## `linkEvent`
 
 `linkEvent()` is a helper function that allows attachment of `props`/`state`/`context` or other data to events without needing to `bind()` them or use arrow functions/closures. This is extremely useful when dealing with events in functional components. Below is an example:
 
