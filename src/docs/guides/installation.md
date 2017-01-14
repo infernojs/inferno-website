@@ -2,8 +2,8 @@
 
 The best way to start to use Inferno is by using [Create Inferno App](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
 
-Alternatively, you can get started with Inferno using the [Inferno Boilerplate](https://github.com/infernojs/inferno-boilerplate) for a very simple setup. 
-For a more advanced example demonstrating how Inferno might be used, we recommend trying 
+Alternatively, you can get started with Inferno using the [Inferno Boilerplate](https://github.com/infernojs/inferno-boilerplate) for a very simple setup.
+For a more advanced example demonstrating how Inferno might be used, we recommend trying
 out [Inferno Starter Project](https://github.com/nightwolfz/inferno-starter) by [nightwolfz](https://github.com/nightwolfz/).
 
 Our recommended approach to installing and using Inferno is via NPM. Alternatively, you can insert Inferno into your site via `<script>` resources
@@ -19,8 +19,8 @@ npm install --save inferno
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno.js"></script>
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno.min.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno.min.js"></script>
 ```
 
 ### Support for ES2015 components:
@@ -34,8 +34,8 @@ npm install --save inferno-component
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-component.js"></script>
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-component.min.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno-component.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno-component.min.js"></script>
 ```
 
 ### Compatibility with existing React apps
@@ -60,8 +60,8 @@ npm install --save inferno-router
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-router.js"></script>
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-router.min.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno-router.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno-router.min.js"></script>
 ```
 
 ### Server-side rendering support:
@@ -96,8 +96,8 @@ npm install --save inferno-hyperscript
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-hyperscript.js"></script>
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-hyperscript.min.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno-hyperscript.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno-hyperscript.min.js"></script>
 ```
 
 ### createElement:
@@ -107,6 +107,6 @@ npm install --save inferno-create-element
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-create-element.js"></script>
-<script src="https://unpkg.com/inferno@1.0.3/dist/inferno-create-element.min.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno-create-element.js"></script>
+<script src="https://unpkg.com/inferno@[version]/dist/inferno-create-element.min.js"></script>
 ```

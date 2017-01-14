@@ -32,7 +32,7 @@ export default function Footer() {
                 <div className="mit">
                     <a target="_blank" rel="noopener" href="https://opensource.org/licenses/MIT">Project licensed under MIT.</a>
                     <div className="built">
-                        Website built with Inferno using <a target="_blank" rel="noopener" href="https://github.com/infernojs/create-inferno-app">create-inferno-app</a>
+                        Website built with Inferno { Inferno.version } using <a target="_blank" rel="noopener" href="https://github.com/infernojs/create-inferno-app">create-inferno-app</a>
                     </div>
                 </div>
                 <div className="contributors">

@@ -88,7 +88,7 @@ export default class Docs extends Component {
 
 			</aside>
 			<aside className="docs-content" id="markdown-root">
-				{this.state.markdown}
+				{ this.state.markdown }
 			</aside>
 		</section>
     }

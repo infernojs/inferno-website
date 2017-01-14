@@ -33,6 +33,7 @@ async function parseMarkDown(file) {
             const parser = new CommonMark.Parser();
             const renderer = new InfernoRenderer();
             const input = '# This is a header\n\nAnd this is a paragraph';
+            data = data.replace(/\[version\]/g, Inferno.version);
             const ast = parser.parse(data);
             const MarkdownResult = renderer.render(ast);
 
