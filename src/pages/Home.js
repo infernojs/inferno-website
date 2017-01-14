@@ -12,8 +12,8 @@ const codeSample = `
 class MyInfernoTest extends Component {
     componentDidMount() {
         setInterval(() => {
-            this.setState({ 
-                time: (new Date()).toLocaleString() 
+            this.setState({
+                time: (new Date()).toLocaleString()
             });
         }, 200);
     }
@@ -46,7 +46,7 @@ export default class Home extends Component {
                     <InfernoLogo/>
                 </div>
                 <div className="logo-text sm9">
-                    <h1>Inferno</h1>
+                    <h1>Inferno<small>v{ Inferno.version }</small></h1>
                     <h2>An extremely fast React-like JavaScript library for building modern user interfaces.</h2>
                     <div className="buttons">
                         <Link className="button xs8" to="/docs/guides/installation">Get Started</Link>
