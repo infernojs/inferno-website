@@ -56,6 +56,7 @@ export default class Docs extends Component {
                     <MenuLink to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
                     {/*<MenuLink to={'/docs/guides/project-layout'}>Project Layout</MenuLink>*/}
                     <MenuLink to={'/docs/guides/forms'}>Forms</MenuLink>
+                    <MenuLink to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
                     <MenuLink to={'/docs/guides/switching-to-inferno'}>Switching to Inferno</MenuLink>
                 </ul>
                 <h3>API</h3>

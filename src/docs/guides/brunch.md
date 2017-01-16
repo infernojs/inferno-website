@@ -1,5 +1,7 @@
 # Brunch
 
+A modern JS skeleton with Inferno for Brunch.
+
 [Brunch](http://brunch.io/) is a builder. Not a generic task runner, but a specialized tool focusing on the production of a small number of deployment-ready files from a large number of heterogenous development files or trees.
 In this guide you'll find everything you need to know in order to get your next [Inferno](http://infernojs.org) project started using Brunch.
 
@@ -7,7 +9,7 @@ In this guide you'll find everything you need to know in order to get your next 
 
 Make sure you have the following dependencies installed and up to date:
 * [Node.js](http://nodejs.org): `brew install node` on macOS
-* [Brunch](http://brunch.io): `npm install -g brunch`. 
+* [Brunch](http://brunch.io): `npm install -g brunch`.
 
 ## Getting started
 
@@ -45,7 +47,7 @@ Any Brunch project consists of the following:
 
 * a *config*, which allows you to customize various aspects of Brunch, as well as configure plugins (see [config reference](http://brunch.io/docs/config))
 * *package.json*, which lists the plugins you want Brunch to use, as well as your app's own dependencies
-	* a *plugin* is what allows Brunch to provide any custom behavior or handle all the various JS-/CSS- transpiled languages for you (see [using plugins](http://brunch.io/docs/using-plugins) and [plugins list](http://brunch.io/plugins) to get an idea)
+  * a *plugin* is what allows Brunch to provide any custom behavior or handle all the various JS-/CSS- transpiled languages for you (see [using plugins](http://brunch.io/docs/using-plugins) and [plugins list](http://brunch.io/plugins) to get an idea)
 * *source files* — files that you author in your preferred language, which later get compiled into either JS or CSS
 * *assets* — files that are copied as-is (in some cases these can be compiled too, e.g. Jade → HTML)
 * *vendor files* — JS and CSS files that do not need any processing
@@ -88,26 +90,26 @@ Then update `brunch-config.js` as follows:
 
 ```
 module.exports = {
-	npm: {
-		globals: {
-			Inferno: 'inferno',
-			Component: 'inferno-component',
-			Promise: 'bluebird' // Added bluebird
-		}
-	},
-	files: {
-		javascripts: { joinTo: 'app.js' },
-		stylesheets: { joinTo: 'app.css' }
-	},
-	plugins: {
-		babel: {
-				presets: ['es2015'],
-				plugins: ['inferno']
-		}
-	},
-	modules: {
-		autoRequire: { 'app.js': ['initialize'] }
-	}
+  npm: {
+    globals: {
+      Inferno: 'inferno',
+      Component: 'inferno-component',
+      Promise: 'bluebird' // Added bluebird
+    }
+  },
+  files: {
+    javascripts: { joinTo: 'app.js' },
+    stylesheets: { joinTo: 'app.css' }
+  },
+  plugins: {
+    babel: {
+      presets: ['es2015'],
+      plugins: ['inferno']
+    }
+  },
+  modules: {
+    autoRequire: { 'app.js': ['initialize'] }
+  }
 };
 ```
 
@@ -137,29 +139,29 @@ Let's set the precision for arithmetic operations for example. Our new `brunch-c
 
 ```
 module.exports = {
-	npm: {
-		globals: {
-			Inferno: 'inferno',
-			Component: 'inferno-component',
-			Promise: 'bluebird' // Added bluebird
-		}
-	},
-	files: {
-		javascripts: { joinTo: 'app.js' },
-		stylesheets: { joinTo: 'app.css' }
-	},
-	plugins: {
-		babel: {
-			presets: ['es2015'],
-			plugins: ['inferno']
-		},
-		sass: {
-			precision: 8 // Added precision for arithmetic operations
-		}
-	},
-	modules: {
-		autoRequire: { 'app.js': ['initialize'] }
-	}
+  npm: {
+    globals: {
+      Inferno: 'inferno',
+      Component: 'inferno-component',
+      Promise: 'bluebird' // Added bluebird
+    }
+  },
+  files: {
+    javascripts: { joinTo: 'app.js' },
+    stylesheets: { joinTo: 'app.css' }
+  },
+  plugins: {
+    babel: {
+      presets: ['es2015'],
+      plugins: ['inferno']
+    },
+    sass: {
+      precision: 8 // Added precision for arithmetic operations
+    }
+  },
+  modules: {
+    autoRequire: { 'app.js': ['initialize'] }
+  }
 };
 ```
 
