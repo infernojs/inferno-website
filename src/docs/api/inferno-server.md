@@ -62,7 +62,9 @@ const App = function({ color = 'red', name }) {
 InfernoServer.streamQueueAsString(App).pipe(res);
 ```
 
-The following is an example of stateful component providing a Promise. The renderer will queue the promise and render it's tree upon completion. Use `getInitialProps()` which receives props and context as parameters. The object returned in the promise is merged into the props of the component.
+The following is an example of stateful component providing a Promise. The renderer will queue the promise and upon being resolved, stream its output to the client. Use `getInitialProps()` to denote an async action, which receives props and context as parameters. The object returned in the promise is merged into the props of the component.
+
+Having access to props and context in this manner gives you the ability to pass in any necessary dependencies ie. a database connector, incoming props from a parent etc.
 
 ```jsx
 class MyAsyncComponent extends Component<any, any> {
