@@ -181,6 +181,54 @@ Inferno.render((
 </Router>
 ```
 
+## Code Splitting with Webpack
+
+When bundling your project with Webpack, by default a large bundle of JavaScript is created that contains all the code for your entire site or application. This can be an unnecessary amount of data for the browser to fetch and parse when some of that code is only used for certain Routes. 
+
+Webpack can automatically create bundles for each route if you use the `getComponent` property of a Route instead of the `component` property, and call `require()` for those components manually. The example below will create separate bundles for the root, "about", and wildcard routes.
+
+```js
+import Inferno from 'inferno';
+import { Router, Route, IndexRoute } from 'inferno-router';
+import createBrowserHistory from 'history/createBrowserHistory';
+
+const browserHistory = createBrowserHistory();
+
+Inferno.render((
+  <Router history={ browserHistory }>
+    <Route component={ App }>
+    <IndexRoute
+      getComponent={(props, cb) => {
+        require.ensure([], require => cb(null, require('/your/webpack/path/to/the/Home/component').default));
+      }}
+    />
+    <Route 
+      path="/about"
+      getComponent={(props, cb) => {
+        require.ensure([], require => cb(null, require('/your/webpack/path/to/the/About/component').default));
+      }}
+     />
+    <Route 
+      path="*"
+      getComponent={(props, cb) => {
+        require.ensure([], require => cb(null, require('/your/webpack/path/to/the/NoMatch/component').default));
+      }}
+    />
+    </Route>
+  </Router>
+), document.getElementById('root'));
+```
+
+Your Webpack configuration's "output" rules also need to be updated so that the bundles all output to a different file, otherwise they'll all attempt to create a "bundle.js" file by default. For example:
+
+```js
+  output: {
+    filename: '[name]-[hash].js',
+    ...
+  },
+```
+For more information on Webpack code splitting, [visit its documentation.](https://webpack.js.org/guides/code-splitting/)
+
 ## Notes
 
 * `<IndexRoute>` is the same as `<Route path="/">"`
