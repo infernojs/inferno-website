@@ -46,6 +46,7 @@ export default class Docs extends Component {
                 </Link>
             </li>
         }
+
         return <section className="container docs row">
 			<aside className="docs-menu">
 				<h3>Guides</h3>
@@ -80,13 +81,13 @@ export default class Docs extends Component {
                     <MenuLink to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
                     {/*<MenuLink to={'/docs/guides/testing'}>Testing</MenuLink>*/}
                     <MenuLink to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
+                    <MenuLink to={'/docs/guides/optimisations'}>Optimisations</MenuLink>
                 </ul>
                 <h3>Meta</h3>
                 <ul>
                     {/*<MenuLink to={'/docs/guides/comparisons-with-other-frameworks'}>Comparisons with Other Frameworks</MenuLink>*/}
                     <MenuLink to={'https://inferno-slack.herokuapp.com/'}>Join the Inferno Community</MenuLink>
                 </ul>
-
 			</aside>
 			<aside className="docs-content" id="markdown-root">
 				{ this.state.markdown }
