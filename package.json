@@ -82,7 +82,7 @@
     "spdy": "^3.4.4",
     "style-loader": "0.13.1",
     "sw-precache-webpack-plugin": "^0.8.0",
-    "webpack": "2.2.0-rc.3",
+    "webpack": "2.2.1",
     "xss-filters": "^1.2.7"
   },
   "devDependencies": {
@@ -91,6 +91,6 @@
     "eslint": "^3.14.1",
     "inferno-devtools": "1.2.2",
     "nodemon": "1.11.0",
-    "webpack-dev-server": "2.2.0-rc.0"
+    "webpack-dev-server": "2.2.1"
   }
 }
