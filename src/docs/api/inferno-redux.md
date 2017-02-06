@@ -1,6 +1,6 @@
 # Inferno Redux API
 
-We understand that a lot of application in the React ecosystem use [Redux](//reduxjs.org) to manage data. Thus we have a created a port of React-Redux for Inferno to ease the process of porting an application over. 
+We understand that a lot of application in the React ecosystem use [Redux](//reduxjs.org) to manage data. Thus we have created a port of React-Redux for Inferno to ease the process of porting an application over. 
 
 ## `Provider`
 
