@@ -11,7 +11,7 @@ Functional components are pure functions that represent the "render" functions o
 import Inferno from 'inferno';
 
 function MyComponent(props) {
-	return <div>I am a functional component<div>;
+	return <div>I am a functional component</div>;
 }
 ```
 *Using createElement:*
