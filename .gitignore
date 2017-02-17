@@ -16,3 +16,4 @@ INFERNOJS_SECRET
 *.map
 .sass-cache/*
 .TemporaryItems/*
+.vscode
