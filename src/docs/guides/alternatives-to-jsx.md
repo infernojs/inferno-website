@@ -5,7 +5,7 @@ Inferno VNodes are `inferno-hyperscript` and `inferno-create-element`. They are 
 
 ## Hyperscript
 
-> [Hyperscript](https://github.com/dominictarr/hyperscript) syntax for [Inferno](https://github.com/trueadm/inferno) templates. Hyperscript is a simple standardized syntax for creating VDOMs for use in Inferno.
+> [Hyperscript](https://github.com/hyperhype/hyperscript) syntax for [Inferno](https://github.com/trueadm/inferno) templates. Hyperscript is a simple standardized syntax for creating VDOMs for use in Inferno.
 
 ### Usage
 
@@ -36,7 +36,7 @@ Returns an Inferno VNode from a Hyperscript representation.
 * **properties** `(Object)` *(optional)* An object containing the properties you'd like to set on the element.
 * **children** `(Array|String)` *(optional)* An array of `h()` children or strings, This will create childen or text nodes respectively.
 
-Documentation: <https://github.com/dominictarr/hyperscript>
+Documentation: <https://github.com/hyperhype/hyperscript>
 
 ## createElement
 
