@@ -1,5 +1,7 @@
 # Inferno Test Utils
 
+**NOTE: This is the API for v1.3**
+
 Suite of utilities for testing Inferno applications. Works harmoniously other test frameworks such as [Jest](https://facebook.github.io/jest/) and [Mocha](https://www.mochajs.org).
 
 **Installation**
