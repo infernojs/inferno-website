@@ -1,210 +1,297 @@
 # Inferno Test Utils
 
+**NOTE: This is the API for v1.3**
+
+Suite of utilities for testing Inferno applications. Works harmoniously other test frameworks such as [Jest](https://facebook.github.io/jest/) and [Mocha](https://www.mochajs.org).
+
+**Installation**
+
+```
+npm install inferno-test-utils --save-dev
+```
+
 **Importing**
 
-```javascript
-import InfernoTestUtils from 'inferno-test-utils' // ES6
-var InfernoTestUtils = require('inferno-test-utils') // ES5 with npm
-var InfernoTestUtils = Inferno.TestUtils; // ES5 with inferno-test-utils.js
+```js
+var InfernoTestUtils = require('inferno-test-utils') // ES5
+import InfernoTestUtils from 'inferno-test-utils'    // ES6
 ```
 
-## Overview
+## Contents
 
-`InfernoTestUtils` makes it easy to test Inferno components in the test framework of your choice. Facebook uses [Jest](https://facebook.github.io/jest/) which can be learned through the Jest website's [React Tutorial](http://facebook.github.io/jest/docs/tutorial-react.html#content), but Inferno core uses [Mocha](https://www.mochajs.org).
+* [`renderIntoDocument`](#renderintodocumentvnodetree)
+* [`findAllInRenderedTree`](#findallinrenderedtreerenderedtree-predicate)
+* [`findAllInVNodeTree`](#findallinvnodetreevnodetree-predicate)
+* [`scryRenderedDOMElementsWithClass`](#scryrendereddomelementswithclassrenderedtree-classname)
+* [`findRenderedDOMElementWithClass`](#findrendereddomelementwithclassrenderedtree-classname)
+* [`scryRenderedDOMElementsWithTag`](#scryrendereddomelementswithtagrenderedtree-tagname)
+* [`findRenderedDOMElementWithTag`](#findrendereddomelementwithtagrenderedtree-tagname)
+* [`scryRenderedVNodesWithType`](#scryrenderedvnodeswithtyperenderedtree-type)
+* [`findRenderedVNodeWithType`](#findrenderedvnodewithtyperenderedtree-type)
+* [`scryVNodesWithType`](#scryvnodeswithtypevnodetree-type)
+* [`findVNodeWithType`](#findvnodewithtypevnodetree-type)
+* [`isVNode`](#isvnodeinstance)
+* [`isVNodeOfType`](#isvnodeoftypeinstance-type)
+* [`isDOMVNode`](#isdomvnodeinstance)
+* [`isDOMVNodeOfType`](#isdomvnodeoftypeinstance-type)
+* [`isFunctionalVNode`](#isfunctionalvnodeinstance)
+* [`isFunctionalVNodeOfType`](#isfunctionalvnodeoftypeinstance-type)
+* [`isClassVNode`](#isclassvnodeinstance)
+* [`isClassVNodeOfType`](#isclassvnodeoftypeinstance-type)
+* [`isDOMElement`](#isdomelementinstance)
+* [`isDOMElementOfType`](#isdomelementoftypeinstance-type)
+* [`isRenderedClassComponent`](#isrenderedclasscomponentinstance)
+* [`isRenderedClassComponentOfType`](#isrenderedclasscomponentoftypeinstance-type)
 
-> Note:
->
-> Airbnb has released a testing utility called Enzyme for React, currently this is does not support Inferno, but support is in the work. If you're interested in helping bring support, it's worth checking out: [http://airbnb.io/enzyme/](http://airbnb.io/enzyme/)
+### `renderIntoDocument(VNodeTree)`
 
- - [`renderIntoDocument()`](#renderintodocument)
- - [`mockComponent()`](#mockcomponent)
- - [`isElement()`](#iselement)
- - [`isElementOfType()`](#iselementoftype)
- - [`isDOMComponent()`](#isdomcomponent)
- - [`isCompositeComponent()`](#iscompositecomponent)
- - [`isCompositeComponentWithType()`](#iscompositecomponentwithtype)
- - [`findAllInRenderedTree()`](#findallinrenderedtree)
- - [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass)
- - [`findRenderedDOMComponentWithClass()`](#findrendereddomcomponentwithclass)
- - [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag)
- - [`findRenderedDOMComponentWithTag()`](#findrendereddomcomponentwithtag)
- - [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype)
- - [`findRenderedComponentWithType()`](#findrenderedcomponentwithtype)
+Renders `VNodeTree` into a detached DOM element in the document and returns a rendered `VNode` tree.
 
-### Shallow Rendering
+_This function requires a DOM_.
 
-Shallow Rendering is currently not supported in Inferno.
-
-* * *
-
-## Reference
-
-* * *
-
-### `renderIntoDocument()`
-
-```javascript
-renderIntoDocument(
-  element: VNode
-): VNode
+```js
+const VNodeTree = (
+  <div className="outer">
+    <SomeComponent className="inner"/>
+  </div>
+);
+const renderedTree = renderIntoDocument(VNodeTree);
 ```
 
-Render a Inferno element into a detached DOM node in the document. **This function requires a DOM.**
+### `findAllInRenderedTree(renderedTree, predicate)`
 
-> Note:
->
-> You will need to have `window`, `window.document` and `window.document.createElement` globally available **before** you import `Inferno`.
+Calls `predicate` with each `VNode` instance in `renderedTree`. 
 
-* * *
+Returns an array of `VNodes` where `predicate` returns `true`.
 
-### `mockComponent()`
-
-```javascript
-mockComponent(
-  componentClass,
-  mockTagName?: string
-)
+```js
+const VNodeTree = (
+  <div className="outer">
+    <SomeComponent className="inner"/>
+  </div>
+);
+const renderedTree = renderIntoDocument(VNodeTree);
+const predicate = (VNode) => VNode.type === SomeComponent;
+const result = findAllInRenderedTree(renderedTree, predicate);
 ```
 
-Pass a mocked component module to this method to augment it with useful methods that allow it to be used as a dummy Inferno component. Instead of rendering as usual, the component will become a simple `<div>` (or other tag if `mockTagName` is provided) containing any provided children.
+### `findAllInVNodeTree(VNodeTree, predicate)`
 
-* * *
+Calls `predicate` with each `VNode` instance in `VNodeTree`. 
 
-### `isElement()`
+Returns an array of `VNodes` where `predicate` returns `true`.
 
-```javascript
-isElement(element: VNode): boolean
+```js
+const VNodeTree = (
+  <div className="outer">
+    <SomeComponent className="inner"/>
+  </div>
+);
+const predicate = (VNode) => VNode.type === SomeComponent;
+const result = findAllInVNodeTree(VNodeTree, predicate);
 ```
 
-Returns `true` if `element` is any Inferno element.
+### `scryRenderedDOMElementsWithClass(renderedTree, className)`
 
-* * *
+Returns an array of DOM elements with `className`.
 
-### `isElementOfType()`
+`className` can be a space-separated string or an array of strings.
 
-```javascript
-isElementOfType(inst: VNode, componentClass: Function): boolean
+```js
+const VNodeTree = (
+  <div className="outer">
+    <SomeComponent className="inner one"/>
+    <SomeComponent className="inner two"/>
+  </div>
+);
+const renderedTree = renderIntoDocument(VNodeTree);
+const result1 = scryRenderedDOMElementsWithClass(renderedTree, 'inner');
+const result2 = scryRenderedDOMElementsWithClass(renderedTree, 'inner one');
+const result3 = scryRenderedDOMElementsWithClass(renderedTree, ['inner', 'two']);
+const result4 = scryRenderedDOMElementsWithClass(renderedTree, 'three'); // Empty array
 ```
 
-Returns `true` if `element` is a Inferno element whose type is of a Inferno `componentClass`.
+### `findRenderedDOMElementWithClass(renderedTree, className)`
 
-* * *
+Returns a single DOM element with `className`. If more than one matches are found, throws an error.
 
-### `isDOMComponent()`
+`className` can be a space-separated string or an array of strings.
 
-```javascript
-isDOMComponent(inst: any): boolean
+```js
+const VNodeTree = (
+  <div className="outer">
+    <SomeComponent className="inner one"/>
+    <SomeComponent className="inner two"/>
+  </div>
+);
+const renderedTree = renderIntoDocument(VNodeTree);
+const result1 = scryRenderedDOMElementsWithClass(renderedTree, 'outer');
+const result2 = scryRenderedDOMElementsWithClass(renderedTree, 'inner one');
+// Will throw an error because more than 1 matches were found...
+const result3 = scryRenderedDOMElementsWithClass(renderedTree, 'inner');
 ```
 
-Returns `true` if `instance` is a DOM component (such as a `<div>` or `<span>`).
+### `scryRenderedDOMElementsWithTag(renderedTree, tagName)`
 
-* * *
+Returns an array of DOM elements with `tagName`.
 
-### `isCompositeComponent()`
-
-```javascript
-isCompositeComponent(inst): boolean
+```js
+const VNodeTree = (
+  <div>
+    <h1>Heading</h1>
+    <p>Paragraph One</p>
+    <p>Paragraph Two</p>
+    <p>Paragraph Three</p>
+  </div>
+);
+const renderedTree = renderIntoDocument(VNodeTree);
+const result1 = scryRenderedDOMElementsWithTag(renderedTree, 'h1');
+const result3 = scryRenderedDOMElementsWithTag(renderedTree, 'p');
+const result4 = scryRenderedVNodesWithType(renderedTree, 'span'); // Empty array
 ```
 
-Returns `true` if `instance` is a user-defined component, such as a class or a function.
+### `findRenderedDOMElementWithTag(renderedTree, tagName)`
 
-* * *
+Returns a single DOM element with `tagName`. If more than one matches are found, throws an error.
 
-### `isCompositeComponentWithType()`
-
-```javascript
-isCompositeComponentWithType(inst, type: Function): boolean
+```js
+const VNodeTree = (
+  <div>
+    <h1>Heading</h1>
+    <div>
+      <p>Paragraph One</p>
+      <p>Paragraph Two</p>
+      <p>Paragraph Three</p>
+    </div>
+  </div>
+);
+const renderedTree = renderIntoDocument(VNodeTree);
+const result1 = findRenderedDOMElementWithTag(renderedTree, 'h1');
+// Will throw an error because more than 1 matches were found...
+const result2 = findRenderedDOMElementWithTag(renderedTree, 'p');
 ```
 
-Returns `true` if `instance` is a component whose type is of a Inferno `componentClass`.
+### `scryRenderedVNodesWithType(renderedTree, type)`
 
-* * *
+Returns an array of rendered `VNodes` with `type`.
 
-### `findAllInRenderedTree()`
-
-```javascript
-findAllInRenderedTree(
-  inst: any,
-  test: Function
-): VNode[]
+```js
+const VNodeTree = (
+  <div>
+    <h1>Heading</h1>
+    <SomeComponent/>
+    <SomeComponent/>
+  </div>
+);
+const renderedTree = renderIntoDocument(VNodeTree);
+const result1 = scryRenderedVNodesWithType(renderedTree, 'h1');
+const result2 = scryRenderedVNodesWithType(renderedTree, SomeComponent);
+const result3 = scryRenderedVNodesWithType(renderedTree, 'p'); // Empty array
 ```
 
-Traverse all components in `tree` and accumulate all components where `test(component)` is `true`. This is not that useful on its own, but it's used as a primitive for other test utils.
+### `findRenderedVNodeWithType(renderedTree, type)`
 
-* * *
+Returns a single rendered `VNode` with `type`. If more than one matches are found, throws an error.
 
-### `scryRenderedDOMComponentsWithClass()`
-
-```javascript
-scryRenderedDOMComponentsWithClass(
-  root: VNode,
-  classNames: string | string[]
-): VNode[]
+```js
+const VNodeTree = (
+  <div>
+    <h1>Heading</h1>
+    <p>Paragraph 1</p>
+    <p>Paragraph 2</p>
+    <SomeComponent/>
+    <AnotherComponent/>
+    <AnotherComponent/>
+  </div>
+);
+const renderedTree = renderIntoDocument(VNodeTree);
+const result1 = findRenderedVNodeWithType(renderedTree, 'h1');
+const result2 = findRenderedVNodeWithType(renderedTree, SomeComponent);
+// Will throw an error because more than 1 matches were found...
+const result3 = findRenderedVNodeWithType(renderedTree, 'p');
+const result4 = findRenderedVNodeWithType(renderedTree, AnotherComponent);
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the class name matching `className`.
+### `scryVNodesWithType(VNodeTree, type)`
 
-* * *
+Returns an array of `VNodes` with `type`.
 
-### `findRenderedDOMComponentWithClass()`
-
-```javascript
-findRenderedDOMComponentsWithClass(
-  root: VNode,
-  classNames: Function
-): VNode
+```js
+const VNodeTree = (
+  <div>
+    <h1>Heading</h1>
+    <SomeComponent/>
+    <SomeComponent/>
+  </div>
+);
+const result1 = scryVNodesWithType(VNodeTree, 'h1');
+const result2 = scryVNodesWithType(VNodeTree, SomeComponent);
+const result3 = scryVNodesWithType(VNodeTree, 'p'); // Empty array
 ```
 
-Like [`scryRenderedDOMComponentsWithClass()`](#scryrendereddomcomponentswithclass) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+### `findVNodeWithType(VNodeTree, type)`
 
-* * *
+Returns a single `VNode` with `type`. If more than one matches are found, throws an error.
 
-### `scryRenderedDOMComponentsWithTag()`
-
-```javascript
-scryRenderedDOMComponentsWithTag(
-  root: VNode,
-  tagName: string
-): VNode[]
+```js
+const VNodeTree = (
+  <div>
+    <h1>Heading</h1>
+    <SomeComponent/>
+    <SomeComponent/>
+  </div>
+);
+const result1 = findVNodeWithType(VNodeTree, 'h1');
+// Will throw an error because more than 1 matches were found...
+const result2 = findVNodeWithType(VNodeTree, SomeComponent);
 ```
 
-Finds all DOM elements of components in the rendered tree that are DOM components with the tag name matching `tagName`.
+## Type Checkers
 
-* * *
+### `isVNode(instance)`
 
-### `findRenderedDOMComponentWithTag()`
+Returns `true` when `instance` is a `VNode`.
 
-```javascript
-findenderedDOMComponentsWithTag(
-  root: VNode,
-  tagName: Function
-): VNode
-```
+### `isVNodeOfType(instance, type)`
 
-Like [`scryRenderedDOMComponentsWithTag()`](#scryrendereddomcomponentswithtag) but expects there to be one result, and returns that one result, or throws exception if there is any other number of matches besides one.
+Returns `true` when `instance` is a `VNode` of `type`.
 
-* * *
+### `isDOMVNode(instance)`
 
-### `scryRenderedComponentsWithType()`
+Returns `true` when `instance` is a DOM-type `VNode`.
 
-```javascript
-scryRenderedComponentsWithType(
-  root: VNode,
-  componentType: Function
-): VNode[]
-```
+### `isDOMVNodeOfType(instance, type)`
 
-Finds all instances of components with type equal to `componentClass`.
+Returns `true` when `instance` is a DOM-type `VNode` of `type`.
 
-* * *
+### `isFunctionalVNode(instance)`
 
-### `findRenderedComponentWithType()`
+Returns `true` when `instance` is a functional-type `VNode`.
 
-```javascript
-findRenderedComponentWithType(
-  root: VNode,
-  componentClass: Function
-): VNode
-```
+### `isFunctionalVNodeOfType(instance, type)`
 
-Same as [`scryRenderedComponentsWithType()`](#scryrenderedcomponentswithtype) but expects there to be one result and returns that one result, or throws exception if there is any other number of matches besides one.
+Returns `true` when `instance` is a functional-type `VNode` of `type`.
+
+### `isClassVNode(instance)`
+
+Returns `true` when `instance` is a class-type `VNode`.
+
+### `isClassVNodeOfType(instance, type)`
+
+Returns `true` when `instance` is a class-type `VNode` of `type`.
+
+### `isDOMElement(instance)`
+
+Returns `true` when `instance` is a DOM element.
+
+### `isDOMElementOfType(instance, type)`
+
+Returns `true` when `instance` is a DOM element of `type`.
+
+### `isRenderedClassComponent(instance)`
+
+Returns `true` when `instance` is a rendered class `VNode`.
+
+### `isRenderedClassComponentOfType(instance, type)`
+
+Returns `true` when `instance` is a rendered class `VNode` of `type`.
