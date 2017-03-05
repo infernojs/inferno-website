@@ -1,22 +1,16 @@
----
-title: List Rendering
-permalink: /guides/benefits/list-rendering/
-next: /guides/benefits/list-rendering/
----
-
-## List Rendering
+# List Rendering
 
 Inferno has two ways of rendering lists: Keyed algorithm and Non keyd algorithm. Choosing which one to use is up to the developer, therefore it is important to understand the differences between them. The main difference is that keyed lists will preserve the internal state of list items. For example focus, value, (data-attributes) etc. will remain as they were before and after rendering as long as a specific list item is still rendered.
 
-### Keyed algorithm
+## Keyed algorithm
 
 The basic idea behind keyed algorithm is to minimize the number of patch operations. This performs better when changes between lists are minimal. Key is a special property that is not rendered to HTML DOM. It can be anything from string to number and is only used to track specific node. Typically this is id/guid related to the data you are rendering. Remember that key needs to be unique only across its siblings, not globally.
 
-### Non keyed algorithm
+## Non keyed algorithm
 
 By default Inferno uses non keyed algorithm on every array. It goes through all nodes in order. This is the better choice when you don't need to preserve internal state of list items, and no items are added or removed from the middle of the array. Non keyed algorithm has an advantage in performance when rendering static lists.
 
-#### Examples and differences
+### Examples and differences
 
 Example1: Keyed only appending
 ```javascript
@@ -67,15 +61,14 @@ Example3: NonKeyed complex changes
 In this example nonkeyed version will patch nodes in order and lose internal states.
 
 
-### JSX Compile time flags (new in 1.0.0)
+## JSX Compile time flags (new in 1.0.0)
 
 JSX Plugin will by default add childrenTypes based on the nested elements and generally does this well. However, when children are built dynamically, they are marked with unknownChildrenType which means Inferno will look up the children type runtime.
 Since version 1.0.0 Inferno has added support to specify children type at the root node level. This is very useful when children are built dynamically and no other compile time information is available.
 
 ```javascript
-import Inferno from 'inferno';
+import {render} from 'inferno';
 import Component from 'inferno-component';
-import InfernoDOM from 'inferno-dom';
 
 class MyComponent extends Component {
   constructor(props) {
@@ -89,33 +82,16 @@ class MyComponent extends Component {
 
   render() {
     return (
-      <div ChildrenTypes={Inferno.ChildrenTypes.KEYED}>
+      <div hasKeyedChildren>
         {this.buildItems()}
       </div>
     )
   }
 }
 
-InfernoDOM.render(<MyComponent />, document.body);
+render(<MyComponent />, document.body);
 ```
 
-In the above example MyComponent returns div which has childrenType specified compile time. That information is then passed to blueprint of that div.
-This results in better runtime performance but childrenType cannot be changed from now on.
-
-There are four types of childrenTypes available to use.
-
-```javascript
-Inferno.ChildrenTypes = {
-    NON_KEYED: 1,
-    KEYED: 2,
-    NODE: 3,
-    TEXT: 4,
-    UNKNOWN: 5
-};
-```
-
-NON_KEYED = Any type of array
-KEYED = Array, items must have key specified.
-NODE = Single Virtual Element (div, span, ul, Components... etc.)
-TEXT = String, text only
-UNKNOWN = Anything, Let Inferno decide runtime
+In the above example MyComponent returns div which has special attribute `hasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
+This results in better runtime performance but childrenType cannot be changed from now on. JSX specific children values are `hasKeyedChildren` and `hasNonKeyedChildren`.
+When not using JSX, children properties can be defined using `inferno-vnode-flags`. See its documentation for more information.

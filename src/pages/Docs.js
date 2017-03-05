@@ -82,6 +82,7 @@ export default class Docs extends Component {
                     {/*<MenuLink to={'/docs/guides/testing'}>Testing</MenuLink>*/}
                     <MenuLink to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
                     <MenuLink to={'/docs/guides/optimisations'}>Optimisations</MenuLink>
+                    <MenuLink to={'/docs/guides/benefits/list-rendering'}>Lists & keys</MenuLink>
                 </ul>
                 <h3>Meta</h3>
                 <ul>
