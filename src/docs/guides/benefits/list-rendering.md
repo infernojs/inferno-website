@@ -94,4 +94,4 @@ render(<MyComponent />, document.body);
 
 In the above example MyComponent returns div which has special attribute `hasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
 This results in better runtime performance but childrenType cannot be changed from now on. JSX specific children values are `hasKeyedChildren` and `hasNonKeyedChildren`.
-When not using JSX, children properties can be defined using `inferno-vnode-flags`. See its documentation for more information.
+When not using JSX, children properties can be defined using [inferno-vnode-flags](http://localhost:8080/docs/api/inferno-vnode-flags). See its documentation for more information.
