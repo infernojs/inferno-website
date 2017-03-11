@@ -1,7 +1,7 @@
 # Inferno-website
 
 <p>&nbsp;</p>
-<p align="center"><img src="http://infernojs.org/img/inferno.png" width="150px"></p>
+<p align="center"><img src="https://avatars2.githubusercontent.com/u/14214240?v=3&s=400" width="150px"></p>
 <p>&nbsp;</p>
 
 ## Installation
