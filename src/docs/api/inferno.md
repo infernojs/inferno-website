@@ -5,7 +5,9 @@
 ```javascript
 import Inferno from 'inferno';
 
-Inferno.render(<div />, document.body);
+const root = document.getElementById('root')
+
+Inferno.render(<div />, root);
 ```
 
 Render a virtual node into the DOM in the supplied container given the supplied virtual DOM. If the virtual node was previously rendered
@@ -38,6 +40,8 @@ Creates an Inferno VNode using a similar API to that found with React's `createE
 import Component from 'inferno-component';
 import createElement from 'inferno-create-element';
 
+const root = document.getElementById('root')
+
 class BasicComponent extends Component {
     render() {
         return createElement('div', {
@@ -50,7 +54,7 @@ class BasicComponent extends Component {
     }
 }
 
-Inferno.render(createElement(BasicComponent, { title: 'abc' }), document.body);
+Inferno.render(createElement(BasicComponent, { title: 'abc' }), root);
 ```
 
 ## `Component`

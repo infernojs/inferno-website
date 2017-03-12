@@ -62,5 +62,5 @@ class BasicComponent extends Component {
     }
 }
 
-Inferno.render(createElement(BasicComponent, { title: 'abc' }), document.body);
+Inferno.render(createElement(BasicComponent, { title: 'abc' }), document.getElementById('root'));
 ```
