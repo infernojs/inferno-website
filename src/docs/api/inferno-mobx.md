@@ -64,11 +64,12 @@ import { Provider } from 'inferno-mobx'
 
 let myStore = { whatever: 'some data'}
 
+
 Inferno.render(<Provider myStore={ myStore }>
     <Router>
         <IndexRoute component={ MyComponent } />
     </Router>
-</Provider>, document.body)
+</Provider>, document.getElementById('root'))
 ```
 
 You can add more than one store (it is also recommended to do so to separate your logic), each prop added to `Provider` defines a store.
@@ -79,7 +80,7 @@ let myStore2 = 'world'
 
 Inferno.render(<Provider myStore1={ myStore1 } myStore2={ myStore2 }>
     <MyComponent/>
-</Provider>, document.body)
+</Provider>, document.getElementById('root'))
 ```
 
 You can later on access your store using `connect`

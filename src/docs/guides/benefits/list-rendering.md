@@ -70,6 +70,8 @@ Since version 1.0.0 Inferno has added support to specify children type at the ro
 import {render} from 'inferno';
 import Component from 'inferno-component';
 
+const root = document.getElementById('root')
+
 class MyComponent extends Component {
   constructor(props) {
     super(props);
@@ -89,7 +91,7 @@ class MyComponent extends Component {
   }
 }
 
-render(<MyComponent />, document.body);
+render(<MyComponent />, root);
 ```
 
 In the above example MyComponent returns div which has special attribute `hasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
