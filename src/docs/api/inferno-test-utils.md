@@ -32,7 +32,7 @@ const renderedTree = renderIntoDocument(vNodeTree);
 
 ### `findAllInRenderedTree(renderedTree, predicate)`
 
-Calls `predicate` with each `VNode` instance in `renderedTree`. 
+Calls `predicate` with each `VNode` instance in `renderedTree`.
 
 Returns an array of `VNode` instances where `predicate` returns `true`.
 
@@ -49,7 +49,7 @@ const result = findAllInRenderedTree(renderedTree, predicate);
 
 ### `findAllInVNodeTree(vNodeTree, predicate)`
 
-Calls `predicate` with each `VNode` instance in `vNodeTree`. 
+Calls `predicate` with each `VNode` instance in `vNodeTree`.
 
 Returns an array of `VNode` instances where `predicate` returns `true`.
 
@@ -97,10 +97,10 @@ const vNodeTree = (
   </div>
 );
 const renderedTree = renderIntoDocument(vNodeTree);
-const result1 = scryRenderedDOMElementsWithClass(renderedTree, 'outer');
-const result2 = scryRenderedDOMElementsWithClass(renderedTree, 'inner one');
+const result1 = findRenderedDOMElementWithClass(renderedTree, 'outer');
+const result2 = findRenderedDOMElementWithClass(renderedTree, 'inner one');
 // Will throw an error because more than 1 matches were found...
-const result3 = scryRenderedDOMElementsWithClass(renderedTree, 'inner');
+const result3 = findRenderedDOMElementWithClass(renderedTree, 'inner');
 ```
 
 ### `scryRenderedDOMElementsWithTag(renderedTree, tagName)`
