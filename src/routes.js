@@ -16,6 +16,10 @@ function ReactDemo() {
     </div>
 }
 
+function Wrap(props) {
+    return props.children;
+}
+
 /**
  * Routes are defined here.
  */
@@ -24,9 +28,10 @@ export default (
     <Route component={ Layout }>
         <IndexRoute component={ Home }/>
         <Route path="/demo/react" component={ ReactDemo }/>
-        <Route path="/docs/:path*" component={ Docs }/>
+        <Route path="/docs" component={ Wrap }>
+            <Route path="*" component={Docs} />
+        </Route>
         <Route path="/about" component={ About }/>
-        <Route path="/docs" component={ Docs }/>
         <Route path="/contribute" component={ Contribute }/>
         <Route path="*" component={ NotFound }/>
     </Route>
