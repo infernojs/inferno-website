@@ -1,5 +1,5 @@
 import Inferno from 'inferno'
-import { Route } from 'inferno-router'
+import { IndexRoute, Route } from 'inferno-router'
 import Layout from './components/layout/Layout'
 import NotFound from './components/layout/404'
 import Home from './pages/Home'
@@ -22,7 +22,7 @@ function ReactDemo() {
 //<Route path="/demo" component={ DemoInferno }/>
 export default (
     <Route component={ Layout }>
-        <Route path="/" component={ Home }/>
+        <IndexRoute component={ Home }/>
         <Route path="/demo/react" component={ ReactDemo }/>
         <Route path="/docs/:path*" component={ Docs }/>
         <Route path="/about" component={ About }/>
