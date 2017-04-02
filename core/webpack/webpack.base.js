@@ -32,6 +32,7 @@ module.exports = {
                     presets: [],
                     plugins: [
                         "add-module-exports",
+                        "transform-es2015-modules-commonjs",
                         "transform-es2015-destructuring",
                         "transform-object-rest-spread",
                         "transform-decorators-legacy",
