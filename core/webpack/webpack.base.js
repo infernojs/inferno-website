@@ -22,11 +22,12 @@ module.exports = {
                 loader: 'babel-loader',
                 include: [
                     srcDir,
-					src('../core'),
-					src('../node_modules/babel-plugin-inferno')
-				],
+                    src('../core'),
+                    src('../node_modules/babel-plugin-inferno')
+                ],
                 exclude: [src('docs')],
                 query: {
+                    babelrc: false,
                     cacheDirectory: false,
                     presets: [],
                     plugins: [
