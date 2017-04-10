@@ -11,8 +11,8 @@ if (process.env.BROWSER) {
 }
 
 export default class Demo extends Component {
-    constructor() {
-        super()
+    constructor(props, context) {
+        super(props, context)
         this.state = {
             paused: true,
             round: false,
