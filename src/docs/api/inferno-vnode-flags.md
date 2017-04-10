@@ -30,7 +30,7 @@ const flag = VNodeFlags.HtmlElement | VNodeFlags.HasKeyedChildren;
 import Inferno from 'inferno';
 import VNodeFlags from 'inferno-vnode-flags';
 
-const vNode = Inferno.createVNode(VNodeFlags.Element, 'div', { className: 'example' }, 'Hello world!');
+const vNode = Inferno.createVNode(VNodeFlags.Element, 'div', 'example', 'Hello world!');
 
 Inferno.render(vNode, container);
 ```

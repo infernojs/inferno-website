@@ -54,7 +54,7 @@ function StaticComponent(props) {
 
 Inferno.createVNode:
 
-`Inferno.createVNode(flags: VNodeFlags, type: Type, props: Props, children: InfernoChildren, events: object, key: any, ref: Ref, noNormalize: boolean))`
+`Inferno.createVNode(flags: VNodeFlags, type: Type, className: string, children: InfernoChildren, props: Props, key: any, ref: Ref, noNormalize: boolean))`
 
 Complete references:
 
