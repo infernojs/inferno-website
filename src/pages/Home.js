@@ -10,6 +10,12 @@ import { Link } from 'inferno-router'
 
 const codeSample = `
 class MyInfernoTest extends Component {
+    constructor(props, context) {
+        super(props, context);
+        this.state = {
+            time: null
+        };
+    }
     componentDidMount() {
         setInterval(() => {
             this.setState({
@@ -28,8 +34,8 @@ export default MyInfernoTest;
 `
 
 export default class Home extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props);
         this.state = {
             loaded: false
         }
