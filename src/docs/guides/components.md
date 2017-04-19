@@ -35,10 +35,6 @@ you can install via NPM or using the script from the CDN:
 ```sh
 npm install --save inferno-component
 ```
-*Scripts:*
-```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/3.0.3/inferno.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/inferno/3.0.3/inferno.min.js"></script>
 ```
 
 Note: `inferno-component` works exactly like React's [`React.Component`](https://facebook.github.io/react/docs/react-api.html#react.component) API works.
@@ -70,8 +66,8 @@ npm install --save inferno-create-class
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-create-class.js"></script>
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-create-class.min.js"></script>
+<script src="https://unpkg.com/inferno-create-class@[version]/dist/inferno-create-class.js"></script>
+<script src="https://unpkg.com/inferno-create-class@[version]/dist/inferno-create-class.min.js"></script>
 ```
 
 Note: `inferno-create-class` works exactly like React's [`React.createClass()`](https://facebook.github.io/react/docs/react-api.html#createclass) API works.

@@ -53,11 +53,11 @@ This enables `findDOMNode()`. We strongly recommend against using this API as it
 
 ### - `recyclingEnabled`
 
-***Default: `true`***
+***Default: Inferno 1.3+ `false`***
 
 This enables DOM node recycling within Inferno, so that DOM nodes are re-used upon disposal. It can have significant performance benefits, but may also cause side-effects with custom elements.
 
 
 ### More Examples
 
-- [**Simple Clock** (@JSFiddle)](https://jsfiddle.net/u7p19pvc/)
+- [**Simple Clock** (@JSFiddle)](https://jsfiddle.net/wqxuags2/)

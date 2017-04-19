@@ -34,8 +34,8 @@ npm install --save inferno-component
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-component.js"></script>
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-component.min.js"></script>
+<script src="https://unpkg.com/inferno-component@[version]/dist/inferno-component.js"></script>
+<script src="https://unpkg.com/inferno-component@[version]/dist/inferno-component.min.js"></script>
 ```
 
 ### Compatibility with existing React apps
@@ -60,8 +60,8 @@ npm install --save inferno-router
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-router.js"></script>
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-router.min.js"></script>
+<script src="https://unpkg.com/inferno-router@[version]/dist/inferno-router.js"></script>
+<script src="https://unpkg.com/inferno-router@[version]/dist/inferno-router.min.js"></script>
 ```
 
 ### Server-side rendering support:
@@ -96,8 +96,8 @@ npm install --save inferno-hyperscript
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-hyperscript.js"></script>
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-hyperscript.min.js"></script>
+<script src="https://unpkg.com/inferno-hyperscript@[version]/dist/inferno-hyperscript.js"></script>
+<script src="https://unpkg.com/inferno-hyperscript@[version]/dist/inferno-hyperscript.min.js"></script>
 ```
 
 ### createElement:
@@ -107,6 +107,6 @@ npm install --save inferno-create-element
 ```
 *Scripts:*
 ```html
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-create-element.js"></script>
-<script src="https://unpkg.com/inferno@[version]/dist/inferno-create-element.min.js"></script>
+<script src="https://unpkg.com/inferno-create-element@[version]/dist/inferno-create-element.js"></script>
+<script src="https://unpkg.com/inferno-create-element@[version]/dist/inferno-create-element.min.js"></script>
 ```
