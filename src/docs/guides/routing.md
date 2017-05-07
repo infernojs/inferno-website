@@ -199,7 +199,7 @@ Inferno.render((
     <Route component={ App }>
     <IndexRoute
       getComponent={(props, cb) => {
-        require.ensure([], require => cb(null, require('/your/webpack/path/to/the/Home/component').default));
+        require.ensure([], require => cb(null, require('/your/webpack/path/to/the/Home/component').default), 'custom-chunk-filename');
       }}
     />
     <Route 
@@ -224,6 +224,7 @@ Your Webpack configuration's "output" rules also need to be updated so that the 
 ```js
   output: {
     filename: '[name]-[hash].js',
+    chunkFilename: '[name]-[hash].js', // pass name of module as third argument to require.ensure for naming the chunk 
     ...
   },
 ```
