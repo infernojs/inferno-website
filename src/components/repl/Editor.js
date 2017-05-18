@@ -38,6 +38,13 @@ function compile(jsxCode) {
 }
 
 export default class Editor extends Component {
+    constructor(props, context) {
+        super(props, context);
+
+        this.state = {
+            loaded: false
+        };
+    }
 
     componentDidMount() {
         // Execute code when CodeMirror is available

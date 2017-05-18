@@ -28,11 +28,11 @@ export default (
     <Route component={ Layout }>
         <IndexRoute component={ Home }/>
         <Route path="/demo/react" component={ ReactDemo }/>
-        <Route path="/docs" component={ Wrap }>
-            <Route path="*" component={Docs} />
-        </Route>
+        <Route path="/docs/:path*" component={ Docs }/>
+        <Route path="/docs" component={ Docs }/>
         <Route path="/about" component={ About }/>
         <Route path="/contribute" component={ Contribute }/>
         <Route path="*" component={ NotFound }/>
     </Route>
+
 )

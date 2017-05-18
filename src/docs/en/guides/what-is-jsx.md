@@ -111,7 +111,7 @@ const element = (
 );
 const element = Inferno.createVNode(
   'h1',
-  {className: 'greeting'},
+  'greeting',
   'Hello, Inferno!'
 );
 ```
@@ -122,9 +122,7 @@ const element = Inferno.createVNode(
 const element = {
     flags: 2,
     type: 'h1',
-    props: {
-      className: 'greeting',
-    },
+    className: 'greeting',
     children: 'Hello Inferno!'
 };
 ```

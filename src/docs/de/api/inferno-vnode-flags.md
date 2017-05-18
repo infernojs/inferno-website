@@ -15,16 +15,15 @@
  - `.SelectElement`
  - `.Void`
 
-Inferno VNode flags are used to describe what type of element/component the VNode will be. A VNode can be used to describe a
-`<div>`, `<h1>`, `<Component>` etc, each of these might have a different flag identity.
+Inferno VNode-Flags werden genutzt, um zu beschreiben welchen Element-/Komponenten-Typ ein VNode annehmen wird. Ein VNode kann genutzt werden um ein `<div>`, `<h1>`, `<Component>`, usw. zu beschreiben. Jedes der Genannten können unterschiedliche Identitäts-Flags haben.
 
-You can easily combine multiple flags, by using bitwise operators. A common use case is an element that has keyed children:
+Mehrere Flags können mit der Bit-weise Operation kombiniert werden. Ein gängiger Anwendungsfall ist ein Element, welches gekennzeichnete Kind-Elemente hat:
 
 ```js
 const flag = VNodeFlags.HtmlElement | VNodeFlags.HasKeyedChildren;
 ```
 
-## Example Usage
+## Beispiel
 
 ```js
 import Inferno from 'inferno';
