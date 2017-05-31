@@ -35,7 +35,6 @@ you can install via NPM or using the script from the CDN:
 ```sh
 npm install --save inferno-component
 ```
-```
 
 Note: `inferno-component` works exactly like React's [`React.Component`](https://facebook.github.io/react/docs/react-api.html#react.component) API works.
 
