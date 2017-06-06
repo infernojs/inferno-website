@@ -20,15 +20,9 @@ npm install inferno-router
 * onEnter / onLeave hooks
 * params / querystring parsing
 
-## Usage (client-side)
+## Components Setup (client and server-side)
 
 ```js
-import Inferno from 'inferno';
-import { Router, Route, IndexRoute } from 'inferno-router';
-import createBrowserHistory from 'history/createBrowserHistory';
-
-const browserHistory = createBrowserHistory();
-
 function App({ children }) {
   // ...
 }
@@ -51,19 +45,30 @@ function User({ params }) {
 }
 
 const routes = (
-  <Router history={ browserHistory }>
-    <Route component={ App }>
-      <IndexRoute component={ Home }/>
-      <Route path="users" component={ Users }>
-        <Route path="/user/:username" component={ User }/>
-      </Route>
-      <Route path="*" component={ NoMatch }/>
+  <Route component={ App }>
+    <IndexRoute component={ Home }/>
+    <Route path="users" component={ Users }>
+      <Route path="/user/:username" component={ User }/>
     </Route>
-  </Router>
+    <Route path="*" component={ NoMatch }/>
+  </Route>
 );
 
+export default routes;
+```
+
+## Usage (client-side)
+
+```js
+import Inferno from 'inferno';
+import { Router } from 'inferno-router';
+import createBrowserHistory from 'history/createBrowserHistory';
+import routes from './routes';
+
+const browserHistory = createBrowserHistory();
+
 // Render HTML on the browser
-Inferno.render(routes, document.getElementById('root'));
+Inferno.render(<Router history={ browserHistory }>{routes}</Router>, document.getElementById('root'));
 ```
 
 ## Server-side rendering (express)
