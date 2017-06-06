@@ -23,6 +23,8 @@ npm install inferno-router
 ## Components Setup (client and server-side)
 
 ```js
+import { Route, IndexRoute } from 'inferno-router';
+
 function App({ children }) {
   // ...
 }
