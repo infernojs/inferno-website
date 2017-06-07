@@ -203,9 +203,9 @@ import createBrowserHistory from 'history/createBrowserHistory';
 const Home = (props, cb) =>
   import(/* webpackChunkName: "custom-chunk-filename" */ '/your/webpack/path/to/the/Home/component').then(component => cb(null, component.default));
 const About = (props, cb) =>
-  import('/your/webpack/path/to/the/About/component').then(component => cb(null, component.default);
+  import('/your/webpack/path/to/the/About/component').then(component => cb(null, component.default));
 const NoMatch = (props, cb) =>
-  import('/your/webpack/path/to/the/NoMatch/component').then(component => cb(null, component.default);
+  import('/your/webpack/path/to/the/NoMatch/component').then(component => cb(null, component.default));
 
 const browserHistory = createBrowserHistory();
 
