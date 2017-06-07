@@ -200,27 +200,28 @@ import Inferno from 'inferno';
 import { Router, Route, IndexRoute } from 'inferno-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
+const Home = (props, cb) =>
+  import(/* webpackChunkName: "custom-chunk-filename" */ '/your/webpack/path/to/the/Home/component').then(component => cb(null, component.default));
+const About = (props, cb) =>
+  import('/your/webpack/path/to/the/About/component').then(component => cb(null, component.default);
+const NoMatch = (props, cb) =>
+  import('/your/webpack/path/to/the/NoMatch/component').then(component => cb(null, component.default);
+
 const browserHistory = createBrowserHistory();
 
 Inferno.render((
   <Router history={ browserHistory }>
     <Route component={ App }>
     <IndexRoute
-      getComponent={(props, cb) => {
-        require.ensure([], require => cb(null, require('/your/webpack/path/to/the/Home/component').default), 'custom-chunk-filename');
-      }}
+      getComponent={Home}
     />
     <Route 
       path="/about"
-      getComponent={(props, cb) => {
-        require.ensure([], require => cb(null, require('/your/webpack/path/to/the/About/component').default));
-      }}
+      getComponent={About}
      />
     <Route 
       path="*"
-      getComponent={(props, cb) => {
-        require.ensure([], require => cb(null, require('/your/webpack/path/to/the/NoMatch/component').default));
-      }}
+      getComponent={NoMatch}
     />
     </Route>
   </Router>
