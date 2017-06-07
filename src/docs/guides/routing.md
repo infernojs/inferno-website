@@ -193,7 +193,7 @@ Inferno.render((
 
 When bundling your project with Webpack, by default a large bundle of JavaScript is created that contains all the code for your entire site or application. This can be an unnecessary amount of data for the browser to fetch and parse when some of that code is only used for certain Routes. 
 
-Webpack can automatically create bundles for each route if you use the `getComponent` property of a Route instead of the `component` property, and call `require()` for those components manually. The example below will create separate bundles for the root, "about", and wildcard routes.
+Webpack can automatically create bundles for each route if you use the `getComponent` property of a Route instead of the `component` property, and call it using `import()`. Refer to the [Webpack Documentation](https://webpack.js.org/guides/code-splitting-async/) for more information on the `import()` Syntax. The example below will create separate bundles for the root, "about", and wildcard routes.
 
 ```js
 import Inferno from 'inferno';
