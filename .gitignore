@@ -17,3 +17,6 @@ INFERNOJS_SECRET
 .sass-cache/*
 .TemporaryItems/*
 .vscode
+
+package-lock.json
+*.orig
