@@ -193,7 +193,7 @@ Inferno.render((
 
 When bundling your project with Webpack, by default a large bundle of JavaScript is created that contains all the code for your entire site or application. This can be an unnecessary amount of data for the browser to fetch and parse when some of that code is only used for certain Routes. 
 
-Webpack can automatically create bundles for each route if you use the `getComponent` property of a Route instead of the `component` property, and call it using `import()`. If you are using Typescript the `require.ensure()` Syntax is needed, head to [Microsoft/Typescript#14495](https://github.com/Microsoft/TypeScript/issues/14495) for more information on the Issue. Refer to the [Webpack Documentation](https://webpack.js.org/guides/code-splitting-async/) for more Information on Code Splitting. The example below will create separate bundles for the root, "about", and wildcard routes.
+Webpack can automatically create bundles for each route if you use the `getComponent` property of a Route instead of the `component` property, and call it using `import()`. If you are using Typescript the `require.ensure()` syntax is needed, head to [Microsoft/Typescript#14495](https://github.com/Microsoft/TypeScript/issues/14495) for more information on the issue. Refer to the [Webpack Documentation](https://webpack.js.org/guides/code-splitting-async/) for more information on Code Splitting. The example below will create separate bundles for the root, "about", and wildcard routes.
 
 ```js
 import Inferno from 'inferno';
@@ -205,7 +205,7 @@ const Home = (props, cb) =>
 const About = (props, cb) =>
   import('/your/webpack/path/to/the/About/component').then(component => cb(null, component.default));
 
-// Typescript Syntax
+// Typescript syntax
 const NoMatch = (props, cb) =>
   require.ensure([], require => cb(null, require('/your/webpack/path/to/the/NoMatch/component').default), 'custom-chunk-filename-2');
 
