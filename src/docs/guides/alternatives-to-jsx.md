@@ -1,7 +1,7 @@
 # Alternatives to JSX
 
 JSX isn't the only way to create Inferno VNodes. The two supported core packages for created
-Inferno VNodes are `inferno-hyperscript` and `inferno-create-element`. They are explained below:
+Inferno VNodes are `inferno-hyperscript` and `inferno-create-element`. They are described below.
 
 ## Hyperscript
 
@@ -31,8 +31,8 @@ module.exports = function ExampleComponent(props) {
 
 Returns an Inferno VNode from a Hyperscript representation.
 
-* **componentOrTag** `(Object|String)` can be an Inferno component **OR** tag string with optional css class names and ids in the format `h1#some-id.foo.bar`.
-  If a tag string, the tag name is parsed out, and the `id` and `className` propertires of the properties argument will be modified.
+* **componentOrTag** `(Object|String)` can be an Inferno component **OR** tag string with optional CSS class names and ids in the format `h1#some-id.foo.bar`.
+  If a tag string, the tag name is parsed out, and the `id` and `className` properties of the `properties` argument will be modified.
 * **properties** `(Object)` *(optional)* An object containing the properties you'd like to set on the element.
 * **children** `(Array|String)` *(optional)* An array of `h()` children or strings, This will create childen or text nodes respectively.
 

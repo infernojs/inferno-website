@@ -1,10 +1,10 @@
 # List Rendering
 
-Inferno has two ways of rendering lists: Keyed algorithm and Non keyd algorithm. Choosing which one to use is up to the developer, therefore it is important to understand the differences between them. The main difference is that keyed lists will preserve the internal state of list items. For example focus, value, (data-attributes) etc. will remain as they were before and after rendering as long as a specific list item is still rendered.
+Inferno has two ways of rendering lists: Keyed algorithm and Non keyed algorithm. Choosing which one to use is up to the developer, and therefore it is important to understand the differences between them. The main difference is that keyed lists will preserve the internal state of list items. For example focus, value, (data-attributes) etc. will remain as they were before and after rendering as long as a specific list item is still rendered.
 
 ## Keyed algorithm
 
-The basic idea behind keyed algorithm is to minimize the number of patch operations. This performs better when changes between lists are minimal. Key is a special property that is not rendered to HTML DOM. It can be anything from string to number and is only used to track specific node. Typically this is id/guid related to the data you are rendering. Remember that key needs to be unique only across its siblings, not globally.
+The basic idea behind keyed algorithm is to minimize the number of patch operations. This performs better when changes between lists are minimal. `key` is a special property that is not rendered to HTML DOM. It can be anything from string to number and is only used to track a specific node. Typically this is id/guid related to the data you are rendering. Remember that `key` needs to be unique only across its siblings, not globally.
 
 ## Non keyed algorithm
 
@@ -94,6 +94,6 @@ class MyComponent extends Component {
 render(<MyComponent />, root);
 ```
 
-In the above example MyComponent returns div which has special attribute `hasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
+In the above example MyComponent returns div which has a special attribute `hasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
 This results in better runtime performance but childrenType cannot be changed from now on. JSX specific children values are `hasKeyedChildren` and `hasNonKeyedChildren`.
 When not using JSX, children properties can be defined using [inferno-vnode-flags](http://localhost:8080/docs/api/inferno-vnode-flags). See its documentation for more information.

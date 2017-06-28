@@ -1,12 +1,12 @@
 What is JSX?
 ---
-The following declaration:
+The following declaration style:
 ```javascript
 const element = <h1>Hello, Inferno!</h1>;
 ```
 is called JSX, and it is a syntax extension to JavaScript. Much like React, you can using JSX with Inferno to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.
 
-JSX produces Inferno "VNodes". Below, you can find the basics of JSX necessary to get you started.
+JSX produces Inferno `VNodes`. Below, you can find the basics of JSX necessary to get you started.
 
 ---
 
@@ -84,7 +84,7 @@ const element = (
 ```
 Caveat:
 Since JSX is more like JavaScript than HTML, InfernoDOM uses a camelCase property naming convention instead of HTML attribute names.
-For example, class becomes className in JSX, and tabindex becomes tabIndex.
+For example, the `class` attribute becomes `className` in JSX, and the `tabindex` attribute becomes `tabIndex`.
 
 ---
 
@@ -95,7 +95,7 @@ const title = response.potentiallyMaliciousInput;
 // This is safe:
 const element = <h1>{title}</h1>;
 ```
-By default, Inferno DOM escapes any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that's not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
+By default, InfernoDOM escapes any values embedded in JSX before rendering them. Thus it ensures that you can never inject anything that's not explicitly written in your application. Everything is converted to a string before being rendered. This helps prevent XSS (cross-site-scripting) attacks.
 
 ---
 
@@ -103,6 +103,7 @@ By default, Inferno DOM escapes any values embedded in JSX before rendering them
 Babel compiles JSX down to `Inferno.createVNode()` calls.
 
 These two examples are identical:
+
 ```javascript
 const element = (
   <h1 className="greeting">
@@ -110,11 +111,13 @@ const element = (
   </h1>
 );
 const element = Inferno.createVNode(
+  2,
   'h1',
   'greeting',
   'Hello, Inferno!'
 );
 ```
+
 `Inferno.createVNode()` performs a few checks to help you write bug-free code but essentially it creates an object like this:
 
 ```javascript
@@ -126,8 +129,9 @@ const element = {
     children: 'Hello Inferno!'
 };
 ```
+
 These objects constitute the "Inferno VirtualDOM". You can think of this as a lightweight descriptions of what you want to render. Inferno reads this and uses it to construct the DOM and keep it up to date.
 
 We will explore rendering Inferno VNodes to the DOM in the next section.
 
-We recommend searching for a "Babel" syntax scheme for your editor of choice so that both ES6 and JSX code is properly highlighted.
+We recommend searching for a "Babel" syntax scheme for your editor of choice so that both ES2015 and JSX code are properly highlighted.
