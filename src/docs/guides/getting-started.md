@@ -14,7 +14,7 @@ Inferno.render(
   document.getElementById("app")
 )
 ```
-Furthermore, Inferno also uses ES6 components like React:
+Furthermore, Inferno also uses ES2015 components like React:
 
 ```jsx
 import Inferno from 'inferno';

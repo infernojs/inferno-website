@@ -13,7 +13,7 @@ Inferno.render(<div />, root);
 Render a virtual node into the DOM in the supplied container given the supplied virtual DOM. If the virtual node was previously rendered
 into the container, this will perform an update on it and only mutate the DOM as necessary, to reflect the latest Inferno virtual node.
 
-Warning: If the container element is not empty before rendering, the content of the container will be overwritten on the initial render.
+**Warning:** If the container element is not empty before rendering, the content of the container will be overwritten on the initial render.
 
 ## `createRenderer`
 
@@ -71,7 +71,7 @@ class MyComponent extends Component {
 }
 ```
 
-This is the base class for Inferno Components when they're defined using ES6 classes.
+This is the base class for Inferno Components when they're defined using ES2015 classes.
 
 **Functional component:**
 
@@ -123,7 +123,7 @@ Inferno.cloneVNode(
 )
 ```
 
-Clone and return a new Inferno `VNode` using a `VNode` as the starting point. The resulting `VNode` will have the original `VNode`'s props with the new props merged in shallowly. New children will replace existing children. key and ref from the original `VNode` will be preserved.
+Clone and return a new Inferno `VNode` using a `VNode` as the starting point. The resulting `VNode` will have the original `VNode`'s props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original `VNode` will be preserved.
 
 `cloneVNode()` is almost equivalent to:
 ```jsx

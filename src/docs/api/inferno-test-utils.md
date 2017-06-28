@@ -1,10 +1,10 @@
 # Inferno Test Utils
 
-Suite of utilities for testing Inferno applications. Works harmoniously other test frameworks such as [Jest](https://facebook.github.io/jest/) and [Mocha](https://www.mochajs.org).
+Suite of utilities for testing Inferno applications. Works harmoniously with other test frameworks such as [Jest](https://facebook.github.io/jest/) and [Mocha](https://www.mochajs.org).
 
 **Installation**
 
-```
+```sh
 npm install inferno-test-utils --save-dev
 ```
 
@@ -12,7 +12,7 @@ npm install inferno-test-utils --save-dev
 
 ```js
 var InfernoTestUtils = require('inferno-test-utils') // ES5
-import InfernoTestUtils from 'inferno-test-utils'    // ES6
+import InfernoTestUtils from 'inferno-test-utils'    // ES2015
 ```
 
 ### `renderIntoDocument(vNodeTree)`
@@ -85,7 +85,7 @@ const result4 = scryRenderedDOMElementsWithClass(renderedTree, 'three'); // Empt
 
 ### `findRenderedDOMElementWithClass(renderedTree, classNames)`
 
-Returns a single DOM element with `classNames`. If more than one matches are found, throws an error.
+Returns a single DOM element with `classNames`. If more than one match is found, throws an error.
 
 `classNames` can be a space-separated string or an array of strings.
 
@@ -99,7 +99,7 @@ const vNodeTree = (
 const renderedTree = renderIntoDocument(vNodeTree);
 const result1 = findRenderedDOMElementWithClass(renderedTree, 'outer');
 const result2 = findRenderedDOMElementWithClass(renderedTree, 'inner one');
-// Will throw an error because more than 1 matches were found...
+// Will throw an error because more than 1 match is found...
 const result3 = findRenderedDOMElementWithClass(renderedTree, 'inner');
 ```
 
@@ -124,7 +124,7 @@ const result4 = scryRenderedVNodesWithType(renderedTree, 'span'); // Empty array
 
 ### `findRenderedDOMElementWithTag(renderedTree, tagName)`
 
-Returns a single DOM element with `tagName`. If more than one matches are found, throws an error.
+Returns a single DOM element with `tagName`. If more than one match is found, throws an error.
 
 ```js
 const vNodeTree = (
@@ -139,7 +139,7 @@ const vNodeTree = (
 );
 const renderedTree = renderIntoDocument(vNodeTree);
 const result1 = findRenderedDOMElementWithTag(renderedTree, 'h1');
-// Will throw an error because more than 1 matches were found...
+// Will throw an error because more than 1 match is found...
 const result2 = findRenderedDOMElementWithTag(renderedTree, 'p');
 ```
 
@@ -163,7 +163,7 @@ const result3 = scryRenderedVNodesWithType(renderedTree, 'p'); // Empty array
 
 ### `findRenderedVNodeWithType(renderedTree, type)`
 
-Returns a single rendered `VNode` instance with `type`. If more than one matches are found, throws an error.
+Returns a single rendered `VNode` instance with `type`. If more than one match is found, throws an error.
 
 ```js
 const vNodeTree = (
@@ -179,7 +179,7 @@ const vNodeTree = (
 const renderedTree = renderIntoDocument(vNodeTree);
 const result1 = findRenderedVNodeWithType(renderedTree, 'h1');
 const result2 = findRenderedVNodeWithType(renderedTree, SomeComponent);
-// Will throw an error because more than 1 matches were found...
+// Will throw an error because more than 1 match is found...
 const result3 = findRenderedVNodeWithType(renderedTree, 'p');
 const result4 = findRenderedVNodeWithType(renderedTree, AnotherComponent);
 ```
@@ -203,7 +203,7 @@ const result3 = scryVNodesWithType(vNodeTree, 'p'); // Empty array
 
 ### `findVNodeWithType(vNodeTree, type)`
 
-Returns a single `VNode` instance with `type`. If more than one matches are found, throws an error.
+Returns a single `VNode` instance with `type`. If more than one matches is found, throws an error.
 
 ```js
 const vNodeTree = (

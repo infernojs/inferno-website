@@ -16,7 +16,7 @@ See the [mobx](https://mobxjs.github.io/mobx/refguide/observer-component.html) d
 import { connect } from "inferno-mobx";
 
 
-// ---- ES6 syntax ----
+// ---- ES2015 syntax ----
 
 const TodoView = connect(class TodoView extends Component {
     render() {
@@ -26,7 +26,7 @@ const TodoView = connect(class TodoView extends Component {
 
 // ---- or even simpler with decorators
 
-@connect 
+@connect
 class TodoView extends Component {
     render() {
         return <div>{this.props.todo.title}</div>
@@ -83,7 +83,7 @@ Inferno.render(<Provider myStore1={ myStore1 } myStore2={ myStore2 }>
 </Provider>, document.getElementById('root'))
 ```
 
-You can later on access your store using `connect`
+You can then access your stores using `connect`
 
 ```javascript
 @connect(['myStore1', 'myStore2'])
@@ -94,7 +94,7 @@ class MyComponent extends Component {
 }
 ```
 
-By making your stores reactive using `observable` from mobx, you can have your components automatically update when your store content changes.
+By making your stores reactive using `observable` from mobx, you can have your components automatically update when your stores' content changes.
 
 ```javascript
 import { observable } from 'mobx'

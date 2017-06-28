@@ -20,7 +20,7 @@ Upon clicking the `<div>`, the `clickMe()` event will fire.
 Like React, Inferno also uses a light-weight synthetic event system in certain places (although both event systems differ massively).
 Inferno's event system provides highly efficient delegation and an event helper called linkEvent.
 
-One major difference between Inferno and React is that Inferno does not rename events or change how they work by default. Inferno only specifies that events should be camel cased, rather than lower case. Lower case events will bypass
+One major difference between Inferno and React is that Inferno does not rename events or change how they work by default. Inferno only specifies that events should be camelCase, rather than lower case. Lower case events will bypass
 Inferno's event system in favour of using the native event system supplied by the browser. For example, when detecting changes on an `<input>` element, in React you'd use `onChange`, with Inferno you'd use `onInput` instead (the
 native DOM event is `oninput`).
 
@@ -41,7 +41,7 @@ More events are expected to be supported in future versions. Hop on our communit
 
 ## `linkEvent`
 
-`linkEvent()` is a helper function that allows attachment of props/state/context or other data to events without needing to bind() them or use arrow functions/closures. This is extremely useful when dealing with events in functional components. linkEvent() offers better performance than binding an event in a class constructor and using arrow functions, so use it where possible. Below is an example:
+`linkEvent()` is a helper function that allows attachment of props/state/context or other data to events without needing to bind() them or use arrow functions/closures. This is extremely useful when dealing with events in functional components. `linkEvent()` offers better performance than binding an event in a class constructor and using arrow functions, so use it where possible. Below is an example:
 
 ```js
 import Inferno, { linkEvent } from 'inferno';

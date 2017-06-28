@@ -8,4 +8,4 @@ Don't forget to have a look at the [`inferno-typescript-example` repository](htt
 
 ## Why Typescript?
 
-Typescript has been a pleasure to use on the Inferno project. During development we found that it provided many benefits. According to core team developers, TypeScript saved the project from a lot of potentially difficult bugs. Its type safety, fast compiler and language features worked wonderfully to the Inferno team.
+Typescript has been a pleasure to use on the Inferno project. During development we found that it provided many benefits. According to core team developers, TypeScript saved the project from a lot of potentially difficult bugs. Its type safety, fast compiler and language features worked wonderfully for the Inferno team.

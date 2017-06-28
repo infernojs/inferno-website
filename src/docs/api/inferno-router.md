@@ -23,7 +23,7 @@ const routes = (
 
 ## `Router`
 
-The `Router` component creates a new routing structure for an application. The component accepts a history property which the router will push to when the route changes. The example above uses the `history` libraries `createBrowserHistory` method. RouterContext is used for server-side path routing.
+The `Router` component creates a new routing structure for an application. The component accepts a history property which the router will push to when the route changes. The example above uses the `history` library's `createBrowserHistory` method. RouterContext is used for server-side path routing.
 
 ## `Route`
 

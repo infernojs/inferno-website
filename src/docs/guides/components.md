@@ -23,13 +23,13 @@ function MyComponent(props) {
 }
 ```
 
-Functional components do not have state, instead they solely rely on `props` being pass into the component. Unlike React and
+Functional components do not have state, instead they rely solely on `props` being passed into the component. Unlike React and
 other UI libraries, Inferno provides lifecycle events for functional components.
 
 ## ES2015 Class Components
 
-Inferno offers ES2015 class components as a separate package called `inferno-component`, unlike other libraries like React. To install this functionality
-you can install via NPM or using the script from the CDN:
+Inferno offers ES2015 class components as a separate package called `inferno-component`, unlike other libraries like React. To enable this functionality
+you can either install via NPM or use the script from the CDN:
 
 *NPM:*
 ```sh
@@ -38,7 +38,7 @@ npm install --save inferno-component
 
 Note: `inferno-component` works exactly like React's [`React.Component`](https://facebook.github.io/react/docs/react-api.html#react.component) API works.
 
-To use `inferno-component`, very much like React, you create a `class` and extends `Component`:
+To use `inferno-component`, very much like React, you create a `class` and extend `Component`:
 
 ```jsx
 import Inferno from 'inferno';
@@ -56,8 +56,8 @@ Inferno.render(<MyComponent />, document.getElementById('app'));
 
 ## ES5 Class Components
 
-Inferno offers ES5 class components as a separate package called `inferno-create-class`, unlike other libraries like React. To install this functionality
-you can install via NPM or using the script from the CDN:
+Inferno offers ES5 class components as a separate package called `inferno-create-class`, unlike other libraries like React. To enable this functionality
+you can either install via NPM or use the script from the CDN:
 
 *NPM:*
 ```sh
@@ -75,12 +75,12 @@ Note: `inferno-create-class` works exactly like React's [`React.createClass()`](
 
 ### Functional Components
 
-To pass data to a child component you simply add an attribute to the child with the appropriate data. The constructor of the 
+To pass data to a child component you simply add an attribute to the child with the appropriate data. The constructor of the
 child component will then receive the props object containing the appropriate data.
 
 ```js
 export function App (props){
-  const obj = {value: 3} 
+  const obj = {value: 3}
   return <MySub title="my title" myObject={obj}></MySub>
 }
 function MySub(props) {
@@ -145,7 +145,7 @@ Below are all the different lifecycle event names that can be applied to functio
 		</tr>
 		<tr>
 			<td><code>onComponentShouldUpdate</code></td>
-			<td>a functional component has been triggered to updated</td>
+			<td>a functional component has been triggered to update</td>
 			<td><code>lastProps, nextProps</code></td>
 		</tr>
 		<tr>
@@ -155,7 +155,7 @@ Below are all the different lifecycle event names that can be applied to functio
 		</tr>
 		<tr>
 			<td><code>onComponentDidUpdate</code></td>
-			<td>a functional component has performed an updated</td>
+			<td>a functional component has performed an update</td>
 			<td><code>lastProps, nextProps</code></td>
 		</tr>
 		<tr>
@@ -187,7 +187,7 @@ Inferno.render(<FunctionalComponent onComponentDidMount={ mounted } />, document
 ### Class Components
 
 Like functional components, ES2015 class components have lifecycle events too. The work exactly like React's class
-components do. Below are a list of all the lifecycle events:
+components do. Below is a list of all the lifecycle events:
 
 <table>
 	<thead>
@@ -270,7 +270,7 @@ class AjaxComponent extends Component {
 
 ## Inject HTML Helper
 
-`dangerouslySetInnerHTML` is a replacement for using innerHTML. Setting HTML from code is risky because it's easy to inadvertently expose your users to a cross-site scripting (XSS) attack. You can set HTML directly from a component property, but you have to type out dangerouslySetInnerHTML and pass an object with a __html key, to remind yourself that it's dangerous.
+`dangerouslySetInnerHTML` is a replacement for using innerHTML. Setting HTML from code is risky because it's easy to inadvertently expose your users to a cross-site scripting (XSS) attack. You can set HTML directly from a component property, but you have to type out dangerouslySetInnerHTML and pass an object with a `__html` key, to remind yourself that it's dangerous.
 
 ```js
 function MyComponent() {
@@ -280,7 +280,7 @@ function MyComponent() {
 
 
 ## Incompose
-[Incompose](https://github.com/zanettin/incompose) is a Inferno utility belt for function components and higher-order components.
+[Incompose](https://github.com/zanettin/incompose) is an Inferno utility belt for functional components and higher-order components.
 Inspired by [recompose](https://github.com/acdlite/recompose) for React. Please check the [Github](https://github.com/zanettin/incompose) page for supported functions.
 
 #### Usage example
@@ -320,7 +320,7 @@ const Counter = (props) => (
 const withCounterState = withState('count', 'setCount', 1);
 
 /**
- * Should update prevents the component of re-render (shouldUpdate lifecycle hook).
+ * Should update lets you control the re-rendering of a component (shouldUpdate lifecycle hook).
  * You can compare current and next props and decide whether the component
  * should update or not. In this example, the counter just updates if
  * props.count is even.
@@ -331,7 +331,7 @@ const withUpdatePolicy = shouldUpdate((props, nextProps) => (
 
 /**
  * With compose all the extendend functions are composed BEFORE Counter
- * gets rendered. Please not that order matters.
+ * gets rendered. Please note that order matters.
  */
 export default compose(
   withCounterState,
