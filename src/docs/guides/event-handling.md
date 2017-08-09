@@ -11,11 +11,11 @@ function clickMe(event) {
 Then you render a VNode with this event passed as props:
 ```
 Inferno.render(
-  <div onClick={ clickMe } />,
+  <button onClick={ clickMe }> Click Here </button>,
   document.getElementById('app')
 );
 ```
-Upon clicking the `<div>`, the `clickMe()` event will fire.
+Upon clicking the `<button>`, the `clickMe()` event will fire.
 
 Like React, Inferno also uses a light-weight synthetic event system in certain places (although both event systems differ massively).
 Inferno's event system provides highly efficient delegation and an event helper called linkEvent.
