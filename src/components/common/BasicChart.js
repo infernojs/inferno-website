@@ -11,13 +11,13 @@ export default function BasicChart({ data, settings }) {
           color: '#3d464d',
           whiteSpace: 'nowrap',
           textAlign: 'right',
-          borderRight: '1px solid rgb(242, 63, 63)'
+          borderRight: '1px solid #adadad'
         },
         xAxis: {
           padding: '7.5px',
           textAlign: 'center',
-          borderTop: '1px solid #e41f1c',
-          color: '#e41f1c',
+          borderTop: '1px solid #adadad',
+          color: '#5b5b5b',
           textTransform: 'uppercase'
         },
         barContainer: {
@@ -27,20 +27,20 @@ export default function BasicChart({ data, settings }) {
           margin: '0px 12.5px 12.5px 12.5px',
           height: '30px',
           transition: 'width 250ms',
-          background: '#545454',
+          background: '#a0a0a0',
           display: 'block',
         },
         score: {
-          color: 'rgb(93, 93, 93)',
-          fontSize: '11px',
+          color: '#5d5d5d',
+          fontSize: '15px',
           position: 'relative',
           right: '-100%',
           marginLeft: '5px',
-          top: '24%'
+          top: '18%'
         },
         bottomCell: {
-          borderTop: '1px solid #e41f1c',
-          borderRight: '1px solid #e41f1c'
+          borderTop: '1px solid #adadad',
+          borderRight: '1px solid #adadad'
         },
         noData: {
           textAlign: 'center',

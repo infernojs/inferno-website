@@ -23,8 +23,8 @@ npm install inferno-router
 ## Components Setup (client and server-side)
 
 ```js
-import Inferno from 'inferno';
-import { Route, IndexRoute } from 'inferno-router';
+import Inferno from 'inferno'
+import { Route, IndexRoute } from 'inferno-router'
 
 function App({ children }) {
   // ...
@@ -55,33 +55,33 @@ const routes = (
     </Route>
     <Route path="*" component={ NoMatch }/>
   </Route>
-);
+)
 
-export default routes;
+export default routes
 ```
 
 ## Usage (client-side)
 
 ```js
-import Inferno from 'inferno';
-import { Router } from 'inferno-router';
-import createBrowserHistory from 'history/createBrowserHistory';
-import routes from './routes';
+import Inferno from 'inferno'
+import { Router } from 'inferno-router'
+import createBrowserHistory from 'history/createBrowserHistory'
+import routes from './routes'
 
-const browserHistory = createBrowserHistory();
+const browserHistory = createBrowserHistory()
 
 // Render HTML on the browser
-Inferno.render(<Router history={ browserHistory }>{routes}</Router>, document.getElementById('root'));
+Inferno.render(<Router history={ browserHistory }>{routes}</Router>, document.getElementById('root'))
 ```
 
 ## Server-side rendering (express)
 
 ```js
-import Inferno from 'inferno';
+import Inferno from 'inferno'
 import { renderToString } from 'inferno-server'
-import { RouterContext, match } from 'inferno-router';
-import express from 'express';
-import routes from './routes';
+import { RouterContext, match } from 'inferno-router'
+import express from 'express'
+import routes from './routes'
 
 function Html({ children }) {
   return (
@@ -93,31 +93,31 @@ function Html({ children }) {
         <div id="root">{children}</div>
       </body>
   </html>
-  );
+  )
 }
 
-const app = express();
+const app = express()
 
 app.use((req, res) => {
-  const renderProps = match(routes, req.originalUrl);
+  const renderProps = match(routes, req.originalUrl)
   if (renderProps.redirect) {
     return res.redirect(renderProps.redirect)
   }
   
-  const content = (<Html><RouterContext {...renderProps}/></Html>);
+  const content = (<Html><RouterContext {...renderProps}/></Html>)
 
-  res.send('<!DOCTYPE html>\n' + renderToString(content));
-});
+  res.send('<!DOCTYPE html>\n' + renderToString(content))
+})
 ```
 
 ## Server-side rendering (koa v2)
 
 ```js
-import Inferno from 'inferno';
+import Inferno from 'inferno'
 import { renderToString } from 'inferno-server'
-import { RouterContext, match } from 'inferno-router';
-import Koa from 'koa';
-import routes from './routes';
+import { RouterContext, match } from 'inferno-router'
+import Koa from 'koa'
+import routes from './routes'
 
 function Html({ children }) {
   return (
@@ -129,22 +129,22 @@ function Html({ children }) {
         <div id="root">{children}</div>
       </body>
   </html>
-  );
+  )
 }
 
 const app = new Koa()
 
 app.use(async(ctx, next) => { 
-  const renderProps = match(routes, ctx.url);
+  const renderProps = match(routes, ctx.url)
   if (renderProps.redirect) {
     return ctx.redirect(renderProps.redirect)
   }
   
-  const content = (<Html><RouterContext {...renderProps}/></Html>);
+  const content = (<Html><RouterContext {...renderProps}/></Html>)
   
-  ctx.body = '<!DOCTYPE html>\n' + renderToString(content);
-  await next();
-});
+  ctx.body = '<!DOCTYPE html>\n' + renderToString(content)
+  await next()
+})
 ```
 
 ## onEnter / onLeave hooks
@@ -153,9 +153,9 @@ In some cases, you may need to execute some logic before or after routing.
 You can easily do this by passing a `function` to the `Route` component via a prop, as shown below:
 
 ```js
-import Inferno from 'inferno';
-import { Router, IndexRoute } from 'inferno-router';
-import createBrowserHistory from 'history/createBrowserHistory';
+import Inferno from 'inferno'
+import { Router, IndexRoute } from 'inferno-router'
+import createBrowserHistory from 'history/createBrowserHistory'
 
 function Home({ params }) {
   // ...
@@ -163,7 +163,7 @@ function Home({ params }) {
 
 function authorizedOnly(props, router) {
   if (!props.loggedIn) {
-    router.push('/login');
+    router.push('/login')
   }
 }
 
@@ -177,7 +177,7 @@ Inferno.render((
                 onEnter={ authorizedOnly } 
                 onLeave={ sayGoodBye } />
   </Router>
-), container);
+), container)
 ```
 
 ## Redirect
@@ -196,20 +196,20 @@ When bundling your project with Webpack, by default a large bundle of JavaScript
 Webpack can automatically create bundles for each route if you use the `getComponent` property of a Route instead of the `component` property, and call it using `import()`. If you are using Typescript the `require.ensure()` syntax is needed, head to [Microsoft/Typescript#14495](https://github.com/Microsoft/TypeScript/issues/14495) for more information on the issue. Refer to the [Webpack Documentation](https://webpack.js.org/guides/code-splitting-async/) for more information on Code Splitting. The example below will create separate bundles for the root, "about", and wildcard routes.
 
 ```js
-import Inferno from 'inferno';
-import { Router, Route, IndexRoute } from 'inferno-router';
-import createBrowserHistory from 'history/createBrowserHistory';
+import Inferno from 'inferno'
+import { Router, Route, IndexRoute } from 'inferno-router'
+import createBrowserHistory from 'history/createBrowserHistory'
 
 const Home = (props, cb) =>
-  import(/* webpackChunkName: "custom-chunk-filename" */ '/your/webpack/path/to/the/Home/component').then(component => cb(null, component.default));
+  import(/* webpackChunkName: "custom-chunk-filename" */ '/your/webpack/path/to/the/Home/component').then(component => cb(null, component.default))
 const About = (props, cb) =>
-  import('/your/webpack/path/to/the/About/component').then(component => cb(null, component.default));
+  import('/your/webpack/path/to/the/About/component').then(component => cb(null, component.default))
 
 // Typescript syntax
 const NoMatch = (props, cb) =>
-  require.ensure([], require => cb(null, require('/your/webpack/path/to/the/NoMatch/component').default), 'custom-chunk-filename-2');
+  require.ensure([], require => cb(null, require('/your/webpack/path/to/the/NoMatch/component').default), 'custom-chunk-filename-2')
 
-const browserHistory = createBrowserHistory();
+const browserHistory = createBrowserHistory()
 
 Inferno.render((
   <Router history={ browserHistory }>
@@ -227,7 +227,7 @@ Inferno.render((
     />
     </Route>
   </Router>
-), document.getElementById('root'));
+), document.getElementById('root'))
 ```
 
 Your Webpack configuration's "output" rules also need to be updated so that the bundles all output to a different file, otherwise they'll all attempt to create a "bundle.js" file by default. For example:

@@ -1,6 +1,6 @@
 const CACHE_NAME = 'inferno-cache';
 // importScripts('serviceworker-cache-polyfill.js');
-
+/*
 self.addEventListener('install', e => {
     function onCacheOpen(cache) {
         console.debug('Service cache')
@@ -64,3 +64,4 @@ self.addEventListener('fetch', e => {
         })
     );
 });
+*/

@@ -21,7 +21,7 @@ export default class Benchmarks extends Component {
           link: 'http://stefankrause.net/js-frameworks-benchmark4/webdriver-ts/table.html',
           data: [
             { label: 'Vanilla JS', score: 1.0 },
-            { label: 'Inferno 1.0', bg: '#e41f1c', score: 1.04 },
+            { label: 'Inferno 1.0', bg: '#dc003b', score: 1.04 },
             { label: 'Angular 2', score: 1.42 },
             { label: 'Ember 2', score: 1.64 },
             { label: 'React 15.4', score: 1.39 },
@@ -34,7 +34,7 @@ export default class Benchmarks extends Component {
           description: 'The Virtual DOM Benchmark focuses on testing the children reconciliation algorithm used in various libraries. It is used by virtual DOM library authors to help optimize their algorithms. While not a perfect gauge of overall performance, it tests a key ingredient of popular Virtual DOM libraries.',
           link: 'https://vdom-benchmark.github.io/vdom-benchmark/',
           data: [
-            { label: 'Inferno JS', bg: '#e41f1c', score: 1 },
+            { label: 'Inferno JS', bg: '#dc003b', score: 1 },
             { label: 'React 15.4', score: 4.06 },
             { label: 'Mithril', score: 6.00 },
             { label: 'virtual-dom', score: 3.20 },
@@ -47,7 +47,7 @@ export default class Benchmarks extends Component {
           description: 'UI Benchmark is considered a more accurate test of overall UI performance in a library. The tests were run with Full Render Time enabled and 5 Iterations. Read UI Benchmark\'s notes for caveats and stipulations before drawing further conclusions.',
           link: 'https://localvoid.github.io/uibench/',
           data: [
-            { label: 'Inferno JS', bg: '#e41f1c', score: 1 },
+            { label: 'Inferno JS', bg: '#dc003b', score: 1 },
             { label: 'Vanilla JS', score: 2.13 },
             { label: 'React 15.4', score: 2.10 },
             { label: 'Preact', score: 3.04 },

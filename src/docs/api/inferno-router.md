@@ -1,84 +1,174 @@
-# Inferno Router API
+# Inferno Router
 
-The Router API is very basic and easy to use. The following is an example with the key routing components:
+Inferno Router is a port of [react-router 4](https://reacttraining.com/react-router/).  
+
+## Install
+
+```
+npm install inferno-router
+```
+
+## Features
+
+Same as react-router v4, except react-native support.
+
+See official react-router [documentation](https://reacttraining.com/react-router/native/guides/philosophy)
+
+
+## Usage (client-side)
 
 ```js
 import Inferno from 'inferno';
-import { Router, Route, IndexRoute } from 'inferno-router';
-import createBrowserHistory from 'history/createBrowserHistory';
+import { BrowserRouter, Route, Link } from 'inferno-router'
 
-const browserHistory = createBrowserHistory();
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+)
 
-const routes = (
-  <Router history={ browserHistory }>
-    <Route component={ App }>
-      <IndexRoute component={ Homepage }/>
-      <Route path="/about" component={ About }>
-        <Route path="/about/teammembers/:person" component={ TeamMember }/>
-      </Route>
-    </Route>
-  </Router>
-);
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+)
+
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+  </div>
+)
+
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>
+          Rendering with React
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>
+          Components
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>
+          Props v. State
+        </Link>
+      </li>
+    </ul>
+
+    <Route path={`${match.url}/:topicId`} component={Topic}/>
+    <Route exact path={match.url} render={() => (
+      <h3>Please select a topic.</h3>
+    )}/>
+  </div>
+)
+
+const MyWebsite = () => (
+  <BrowserRouter>
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/topics">Topics</Link></li>
+      </ul>
+
+      <hr/>
+
+      <Route exact path="/" component={Home}/>
+      <Route path="/about" component={About}/>
+      <Route path="/topics" component={Topics}/>
+    </div>
+  </BrowserRouter>
+)
+
+// Render HTML on the browser
+Inferno.render(MyWebsite, document.getElementById('root'));
 ```
 
-## `Router`
 
-The `Router` component creates a new routing structure for an application. The component accepts a history property which the router will push to when the route changes. The example above uses the `history` library's `createBrowserHistory` method. RouterContext is used for server-side path routing.
+## Usage (server) with express
 
-## `Route`
-
-The `Route` component creates a single route definition on the router. It accepts `path` and `component` as properties allowing you to bind URL locations to specific components in an app. Routes can be nested within each other to describe page hierarchy.
-
-## `IndexRoute`
-
-Specifies the root route or the `/` path within the application.
-
-## `Link`
-
-The `Link` component can be used to trigger changes in the router. Supply a `to` property as a path to the location you desire.
-
-## `IndexLink`
-
-A convenience component that automatically sets the component path to `/`.
-
-## Redirect
-
-Does a 302 redirect on the server side and a `history.replace` on the browser.
+First, let's create our component `Html.js` to render boilerplate HTML, header, body etc.
 
 ```js
-<Redirect from="/oldpath" to="/newpath"/>
-```
-
-## `match`
-
-Match is a convenience function that returns all routes that match a supplied URL. The first argument is a list of available routes and the second is the current URL.
-
-```js
-const renderProps = match(routes, req.originalUrl);
-if (renderProps.redirect) {
-    // handle redirect
+// Routes will be rendered into children
+export default function Html({ children }) {
+  return (
+    <html>
+      <head>
+        <title>My Application</title>
+      </head>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+  </html>
+  );
 }
 ```
-
-## `matchPath`
-
-Converts path to a regex, if a match is found then we extract params from it.
-
+And this will be our server-side code.
 ```js
-const matchBase = matchPath(isLast, location, pathToMatch);
+import Inferno from 'inferno';
+import { renderToString } from 'inferno-server'
+import { StaticRouter } from 'inferno-router';
+import express from 'express';
+import Html from './Html';
+
+const app = express();
+
+app.use((req, res) => {
+  const renderProps = match(routes, req.originalUrl);
+  
+  if (renderProps.redirect) {
+    return res.redirect(renderProps.redirect)
+  }
+    
+  const context = {}
+  const content = renderToString(
+    <StaticRouter location={ctx.url} context={context}>
+      <Html/>
+    </StaticRouter>
+  )
+
+  res.send('<!DOCTYPE html>\n' + renderToString(content));
+});
 ```
 
-## onEnter / onLeave hooks
-
-In some cases, you may need to execute some logic before or after routing.
-You can easily do this by passing a `function` to the `Route` component via a prop, as shown below:
+## Usage (server) with koa v2
 
 ```js
-Inferno.render((
-  <Router>
-    <IndexRoute component={ Home }
-                onEnter={ authorizedOnly }
-                onLeave={ sayGoodBye } />
-  </Router>
-), container);
+import Inferno from 'inferno';
+import { renderToString } from 'inferno-server'
+import { StaticRouter } from 'inferno-router';
+import Koa from 'koa';
+import Html from './Html';
+
+const app = new Koa()
+
+app.use(async(ctx, next) => { 
+
+  const context = {}
+  const content = renderToString(
+    <StaticRouter location={ctx.url} context={context}>
+      <Html/>
+    </StaticRouter>
+  )
+    
+  // This will contain the URL to redirect to if <Redirect> was used
+  if (context.url) {
+    return ctx.redirect(context.url)
+  }
+  
+  ctx.body = '<!DOCTYPE html>\n' + content;
+  await next();
+});
 ```
+
+
+## Differences with React-Router v4
+
+* No "official" react-native support.
+* There's no `inferno-router-dom`, all functionality is inside `inferno-router`

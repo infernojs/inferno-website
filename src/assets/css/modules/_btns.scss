@@ -4,10 +4,11 @@
     -moz-transition: all 250ms;
     transition: all 250ms;
     padding: 1em 3.5em;
-    border-radius: 2em;
+    border-radius: 0.3em;
     text-align: center;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 1.2rem;
+    font-weight: 500;
     border: 0;
     color: $white;
     background: $primary;

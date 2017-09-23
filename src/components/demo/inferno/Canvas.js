@@ -4,6 +4,7 @@ import perfMonitor from '../system/perfMonitor'
 import Emitter from '../system/Emitter'
 import { Field, Vector, remove } from '../system/utils'
 import { ParticleComponent } from './Elements'
+import isPassive from '../../utils/isPassive'
 
 const pool = []
 const field = new Field([0, 0], -30)
@@ -19,7 +20,7 @@ export default class Canvas extends Component {
     componentDidMount() {
         const canvas = document.getElementById('demo-canvas')
         if (canvas) {
-            canvas.addEventListener('mousemove', this.onMouseMove)
+            canvas.addEventListener('mousemove', this.onMouseMove, isPassive)
             perfMonitor.startFPSMonitor()
             perfMonitor.startMemMonitor()
             perfMonitor.initProfiler('update')
@@ -34,7 +35,7 @@ export default class Canvas extends Component {
 
     componentWillUnmount() {
         const canvas = document.getElementById('demo-canvas')
-        canvas.removeEventListener('mousemove', this.onMouseMove)
+        canvas.removeEventListener('mousemove', this.onMouseMove, isPassive)
     }
 
     onMouseMove = (e) => {

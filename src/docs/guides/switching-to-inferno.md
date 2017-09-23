@@ -99,20 +99,23 @@ First, install it: `npm install --save-dev aliasify`
 With the above Webpack or Browserify aliases in place, existing React modules should work nicely:
 
 ```js
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import ReactDOM from 'react-dom'
 
 class Foo extends React.Component {
-    propTypes = {
-        a: React.PropTypes.string.isRequired
-    };
-    render() {
-        let { a, b, children } = this.props;
-        return <div {...{a,b}}>{ children }</div>;
-    }
+  propTypes = {
+    a: React.PropTypes.string.isRequired
+  }
+  render() {
+    const { children, ...otherProps } = this.props
+    
+    return <div {...otherProps}>
+      {children}
+    </div>
+  }
 }
 
 ReactDOM.render((
     <Foo a="a">test</Foo>
-), document.getElementById('root'));
+), document.getElementById('root'))
 ```

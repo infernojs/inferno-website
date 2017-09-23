@@ -8,18 +8,18 @@ Functional components are pure functions that represent the "render" functions o
 
 *Using JSX:*
 ```js
-import Inferno from 'inferno';
+import Inferno from 'inferno'
 
 function MyComponent(props) {
-	return <div>I am a functional component</div>;
+  return <div>I am a functional component</div>
 }
 ```
 *Using createElement:*
 ```js
-import createElement from 'inferno-create-element';
+import createElement from 'inferno-create-element'
 
 function MyComponent(props) {
-	return createElement('div', null, 'I am a functional component');
+  return createElement('div', null, 'I am a functional component')
 }
 ```
 
@@ -41,17 +41,16 @@ Note: `inferno-component` works exactly like React's [`React.Component`](https:/
 To use `inferno-component`, very much like React, you create a `class` and extend `Component`:
 
 ```jsx
-import Inferno from 'inferno';
-import Component from 'inferno-component';
-
+import Inferno from 'inferno'
+import Component from 'inferno-component'
 
 class MyComponent extends Component {
-	render() {
-		return <div>Hello world</div>;
-	}
+  render() {
+    return <div>Hello world</div>
+  }
 }
 
-Inferno.render(<MyComponent />, document.getElementById('app'));
+Inferno.render(<MyComponent />, document.getElementById('app'))
 ```
 
 ## ES5 Class Components
@@ -80,11 +79,13 @@ child component will then receive the props object containing the appropriate da
 
 ```js
 export function App (props){
-  const obj = {value: 3}
-  return <MySub title="my title" myObject={obj}></MySub>
+  const obj = { 
+    value: 3 
+  }
+  return <MySub title="my title" myObject={obj}/>
 }
 function MySub(props) {
-	return <div>{ props.title } , { props.myObject.value }</div>;
+  return <div>{ props.title } , { props.myObject.value }</div>
 }
 ```
 
@@ -92,17 +93,19 @@ function MySub(props) {
 
 ```js
 export class App extends Component {
-  obj = {value: 3}
+  obj = { 
+    value: 3 
+  }
   render() {
     return (
         <MySub title="my title" myObject={this.obj}></MySub>
-    );
+    )
   }
 }
 
 class MySub extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
   render() {
     return (
@@ -110,7 +113,7 @@ class MySub extends Component {
         { this.props.title }
         { this.props.myObject.value }
       </div>
-    );
+    )
   }
 }
 ```
@@ -125,45 +128,45 @@ Lifecycle events for functional components get applied as if they were normal `p
 Below are all the different lifecycle event names that can be applied to functional components:
 
 <table>
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Triggered when</th>
-			<th>Arguments to callback</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>onComponentWillMount</code></td>
-			<td>a functional component is about to mount</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td><code>onComponentDidMount</code></td>
-			<td>a functional component has mounted successfully</td>
-			<td><code>domNode</code></td>
-		</tr>
-		<tr>
-			<td><code>onComponentShouldUpdate</code></td>
-			<td>a functional component has been triggered to update</td>
-			<td><code>lastProps, nextProps</code></td>
-		</tr>
-		<tr>
-			<td><code>onComponentWillUpdate</code></td>
-			<td>a functional component is about to perform an update</td>
-			<td><code>lastProps, nextProps</code></td>
-		</tr>
-		<tr>
-			<td><code>onComponentDidUpdate</code></td>
-			<td>a functional component has performed an update</td>
-			<td><code>lastProps, nextProps</code></td>
-		</tr>
-		<tr>
-			<td><code>onComponentWillUnmount</code></td>
-			<td>a functional component is about to be unmounted</td>
-			<td></td>
-		</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Triggered when</th>
+      <th>Arguments to callback</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>onComponentWillMount</code></td>
+      <td>a functional component is about to mount</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td><code>onComponentDidMount</code></td>
+      <td>a functional component has mounted successfully</td>
+      <td><code>domNode</code></td>
+    </tr>
+    <tr>
+      <td><code>onComponentShouldUpdate</code></td>
+      <td>a functional component has been triggered to update</td>
+      <td><code>lastProps, nextProps</code></td>
+    </tr>
+    <tr>
+      <td><code>onComponentWillUpdate</code></td>
+      <td>a functional component is about to perform an update</td>
+      <td><code>lastProps, nextProps</code></td>
+    </tr>
+    <tr>
+      <td><code>onComponentDidUpdate</code></td>
+      <td>a functional component has performed an update</td>
+      <td><code>lastProps, nextProps</code></td>
+    </tr>
+    <tr>
+      <td><code>onComponentWillUnmount</code></td>
+      <td>a functional component is about to be unmounted</td>
+      <td></td>
+    </tr>
+  </tbody>
 <table>
 
 If you were to use a functional component lifecycle event, please note that they do not work exactly as ES2015 lifecycle events do.
@@ -177,10 +180,10 @@ function mounted(domNode) {
 }
 
 function FunctionalComponent({ props }) {
-	return <div>Hello world</div>;
+  return <div>Hello world</div>
 }
 
-Inferno.render(<FunctionalComponent onComponentDidMount={ mounted } />, document.getElementById('app'));
+Inferno.render(<FunctionalComponent onComponentDidMount={ mounted } />, document.getElementById('app'))
 ```
 
 
@@ -190,80 +193,76 @@ Like functional components, ES2015 class components have lifecycle events too. T
 components do. Below is a list of all the lifecycle events:
 
 <table>
-	<thead>
-		<tr>
-			<th>Lifecycle method</th>
-			<th>When it gets called</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr>
-			<td><code>componentWillMount</code></td>
-			<td>before the component gets mounted to the DOM</td>
-		</tr>
-		<tr>
-			<td><code>componentDidMount</code></td>
-			<td>after the component gets mounted to the DOM</td>
-		</tr>
-		<tr>
-			<td><code>componentWillUnmount</code></td>
-			<td>prior to removal from the DOM</td>
-		</tr>
-		<tr>
-			<td><code>componentDidUnmount</code></td>
-			<td>after removal from the DOM</td>
-		</tr>
-		<tr>
-			<td><code>componentWillReceiveProps</code></td>
-			<td>before new props get accepted</td>
-		</tr>
-		<tr>
-			<td><code>shouldComponentUpdate</code></td>
-			<td>before <code>render()</code>. Return <code>false</code> to skip render</td>
-		</tr>
-		<tr>
-			<td><code>componentWillUpdate</code></td>
-			<td>before <code>render()</code></td>
-		</tr>
-		<tr>
-			<td><code>componentDidUpdate</code></td>
-			<td>after <code>render()</code></td>
-		</tr>
-	</tbody>
+  <thead>
+    <tr>
+      <th>Lifecycle method</th>
+      <th>When it gets called</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>componentWillMount</code></td>
+      <td>before the component gets mounted to the DOM</td>
+    </tr>
+    <tr>
+      <td><code>componentDidMount</code></td>
+      <td>after the component gets mounted to the DOM</td>
+    </tr>
+    <tr>
+      <td><code>componentWillUnmount</code></td>
+      <td>prior to removal from the DOM</td>
+    </tr>
+    <tr>
+      <td><code>componentDidUnmount</code></td>
+      <td>after removal from the DOM</td>
+    </tr>
+    <tr>
+      <td><code>componentWillReceiveProps</code></td>
+      <td>before new props get accepted</td>
+    </tr>
+    <tr>
+      <td><code>shouldComponentUpdate</code></td>
+      <td>before <code>render()</code>. Return <code>false</code> to skip render</td>
+    </tr>
+    <tr>
+      <td><code>componentWillUpdate</code></td>
+      <td>before <code>render()</code></td>
+    </tr>
+    <tr>
+      <td><code>componentDidUpdate</code></td>
+      <td>after <code>render()</code></td>
+    </tr>
+  </tbody>
 </table>
 
 The below is an example of using the `componentDidMount` lifecycle event to request AJAX data on a component:
 
 ```jsx
-import Inferno from 'inferno';
+import Inferno from 'inferno'
 import Component from 'inferno-component'
-import myAPI from './myAPI';
+import myAPI from './myAPI'
 
 class AjaxComponent extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			data: []
-		};
-	}
-	componentDidMount() {
-		myAPI.fetch('/item-names').then((data) => {
-			this.setState({
-				data
-			});
-		});
-	}
-	render() {
-		return (
-			<ul>
-				{
-					this.state.data.map(data =>
-						<li>{  data.name }</li>
-					)
-				}
-			</ul>
-		);
-	}
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: []
+    }
+  }
+  componentDidMount() {
+    myAPI.fetch('/item-names').then(data => {
+      this.setState({ data: data })
+    })
+  }
+  render() {
+    return (
+      <ul>
+        {this.state.data.map(data => (
+          <li>{data.name}</li>
+        )}
+      </ul>
+    )
+  }
 }
 ```
 
@@ -274,7 +273,7 @@ class AjaxComponent extends Component {
 
 ```js
 function MyComponent() {
-  return <div dangerouslySetInnerHTML={ { __html: 'Your content will go here' } } />;
+  return <div dangerouslySetInnerHTML={ { __html: 'Your content will go here' } } />
 }
 ```
 
@@ -285,24 +284,16 @@ Inspired by [recompose](https://github.com/acdlite/recompose) for React. Please 
 
 #### Usage example
 ```js
-import {
-  default as Inferno,
-  linkEvent
-} from 'inferno';
-
-import {
-  compose,
-  withState,
-  shouldUpdate
-} from 'incompose';
+import { Inferno, linkEvent } from 'inferno'
+import { compose, withState, shouldUpdate } from 'incompose'
 
 const inc = (props) => {
-  props.setCount(props.count += 1);
-};
+  props.setCount(props.count += 1)
+}
 
 const dec = (props) => {
-  props.setCount(props.count -= 1);
-};
+  props.setCount(props.count -= 1)
+}
 
 const Counter = (props) => (
   <div>
@@ -310,14 +301,14 @@ const Counter = (props) => (
     <button onClick={linkEvent(props, dec)}>-</button>
     <button onClick={linkEvent(props, inc)}>+</button>
   </div>
-);
+)
 
 /**
  * With state creates 2 new props on the component props
- * props.count		-	contains the value (1 is set as default value)
- * props.setCount	-	contains the setter function
+ * props.count    -  contains the value (1 is set as default value)
+ * props.setCount  -  contains the setter function
  */
-const withCounterState = withState('count', 'setCount', 1);
+const withCounterState = withState('count', 'setCount', 1)
 
 /**
  * Should update lets you control the re-rendering of a component (shouldUpdate lifecycle hook).
@@ -327,7 +318,7 @@ const withCounterState = withState('count', 'setCount', 1);
  */
 const withUpdatePolicy = shouldUpdate((props, nextProps) => (
   nextProps.count % 2 === 0
-));
+))
 
 /**
  * With compose all the extendend functions are composed BEFORE Counter
@@ -336,6 +327,6 @@ const withUpdatePolicy = shouldUpdate((props, nextProps) => (
 export default compose(
   withCounterState,
   withUpdatePolicy,
-)(Counter);
+)(Counter)
 ```
 
