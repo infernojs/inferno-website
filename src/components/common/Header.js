@@ -100,6 +100,7 @@ export default class Header extends Component {
                   <a target="_blank" rel="noopener" href="https://github.com/infernojs/inferno/issues" onClick={this.closeSidebar}>Contribute</a>
                   <a target="_blank" rel="noopener" href="https://medium.com/inferno-js" onClick={this.closeSidebar}>Blog</a>
                   <a target="_blank" rel="noopener" href="https://github.com/infernojs" onClick={this.closeSidebar}>Github</a>
+                  <a target="_blank" rel="noopener" href="https://inferno-slack.herokuapp.com" onClick={this.closeSidebar}>Slack</a>
                 </li>
               </li>
             </ul>

@@ -84,13 +84,13 @@ export default class Editor extends Component {
         return <div className="repl">
             <Scripts loaded={this.state.loaded}/>
             <div className="row">
-                <div className="xs12 sm6 p-0 repl-editor">
+                <div className="xs12 sm7 p-0 repl-editor">
                     {this.state.loaded || <Loading/>}
                     <textarea id="repl-editor"
                               className={this.state.loaded ? '' : 'hidden'}
                               value={children}/>
                 </div>
-                <div className="xs12 sm6 p-0 repl-output">
+                <div className="xs12 sm5 p-0 repl-output">
                     {this.state.vNodes}
                 </div>
             </div>

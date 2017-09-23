@@ -10,24 +10,26 @@ import { Link } from 'inferno-router'
 
 const codeSample = `
 class MyInfernoTest extends Component {
-    constructor(props, context) {
-        super(props, context);
-        this.state = {
-            time: null
-        };
-    }
-    componentDidMount() {
-        setInterval(() => {
-            this.setState({
-                time: (new Date()).toLocaleString()
-            });
-        }, 200);
-    }
-    render() {
-        return <h2>
-            Current time: <span>{this.state.time}</span>
-        </h2>
-    }
+  constructor(props, context) {
+    super(props, context);
+    this.state = {
+      time: null
+    };
+  }
+  componentDidMount() {
+    setInterval(() => {
+      this.setState({
+        time: (new Date()).toLocaleString()
+      });
+    }, 200);
+  }
+  render() {
+    return (
+      <h2>
+         Current time: <span>{this.state.time}</span>
+      </h2>
+    )
+  }
 }
 
 export default MyInfernoTest;

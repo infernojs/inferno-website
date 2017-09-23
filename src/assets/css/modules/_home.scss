@@ -253,8 +253,12 @@
             }
         }
         &.try {
-            padding: 2rem 1rem;
+            padding: 2rem 0;
             background: $bg;
+            .container {
+                padding: 0;
+            }
+
             .code {
                 background: $bg;
                 border-radius: 0.5rem;

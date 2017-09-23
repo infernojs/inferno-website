@@ -60,16 +60,6 @@ export default class Docs extends Component {
                     <MenuLink to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
                     <MenuLink to={'/docs/guides/switching-to-inferno'}>Switching to Inferno</MenuLink>
                 </ul>
-                <h3>API</h3>
-                <ul>
-                    <MenuLink to={'/docs/api/inferno'}>Inferno</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
-                    <MenuLink to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
-                </ul>
                 <h3>Advanced</h3>
                 <ul>
                     {/*<MenuLink to={'/docs/guides/what-is-virtual-dom'}>What is Virtual DOM?</MenuLink>*/}
@@ -83,11 +73,6 @@ export default class Docs extends Component {
                     <MenuLink to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
                     <MenuLink to={'/docs/guides/optimisations'}>Optimisations</MenuLink>
                     <MenuLink to={'/docs/guides/benefits/list-rendering'}>Lists & keys</MenuLink>
-                </ul>
-                <h3>Meta</h3>
-                <ul>
-                    {/*<MenuLink to={'/docs/guides/comparisons-with-other-frameworks'}>Comparisons with Other Frameworks</MenuLink>*/}
-                    <MenuLink to={'https://inferno-slack.herokuapp.com/'}>Join the Inferno Community</MenuLink>
                 </ul>
 			</aside>
 			<aside className="docs-content" id="markdown-root">
