@@ -52,6 +52,7 @@ export default class Docs extends Component {
 				<h3>Guides</h3>
                 <ul>
                     <MenuLink to={'/docs/guides/installation'}>Installation</MenuLink>
+                    <MenuLink to={'/docs/guides/using-cdn'}>Using CDN</MenuLink>
                     <MenuLink to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
                     <MenuLink to={'/docs/guides/components'}>Components</MenuLink>
                     <MenuLink to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
