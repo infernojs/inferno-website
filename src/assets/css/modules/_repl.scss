@@ -1,8 +1,34 @@
+.try {
+    padding: 2rem 0;
+    background: $bg;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 0;
+    }
+
+    .code {
+        background: $bg;
+        border-radius: 0.5rem;
+        padding: 15px;
+    }
+    @include media-query($on-small) {
+        padding: 2.5rem 0.75rem;
+        .container {
+            padding: 0rem 1rem 0rem 1rem;
+        }
+    }
+}
+
 .repl {
     .repl-editor {
-        position: relative;
-        border: 1px solid #ccc;
-        min-height: 6rem;
+        min-height: 10rem;
+        height: calc(100vh - 49px);
+        background: #eee;
+        z-index: 1;
     }
     .repl-output {
         position: relative;
@@ -58,7 +84,7 @@
 }
 
 .token.function, .cm-property {
-    color: #FFAD4C;
+    color: #ffffff;
 }
 
 .token.class-name, .cm-def, .cm-variable {
@@ -113,9 +139,10 @@
 }
 
 .cm-s-neo.CodeMirror {
-    background-color: #0d0e10;
+    background-color: $code-background;
     color: #c5c8c6;
     line-height: 1.4375;
+    height: 100%;
 }
 
 .cm-s-neo .cm-qualifier, .cm-s-neo {

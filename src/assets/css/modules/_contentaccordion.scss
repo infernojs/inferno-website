@@ -1,85 +1,85 @@
 @import "/variables";
 
 .content-accordion {
+  @include media-query($on-small) {
+    padding: 0px;
+  }
+  .options {
+    list-style: none;
+    padding: 1rem 0px;
+    margin-right: 15px;
+    border-right: 1px solid $grey;
+    margin-bottom: 0px;
     @include media-query($on-small) {
-        padding: 0px;
+      margin-right: 0px;
+      margin: 40px auto 0px auto;
     }
-    .options {
-        list-style: none;
-        padding: 1rem 0px;
-        margin-right: 15px;
-        border-right: 1px solid $grey;
-        margin-bottom: 0px;
-        @include media-query($on-small) {
-            margin-right: 0px;
-            margin: 40px auto 0px auto;
+    li {
+      display: flex;
+      align-items: center;
+      -webkit-transition: all .2s ease-in-out;
+      -o-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+      text-align: right;
+      cursor: pointer;
+      padding: 7.5px 10px 10px 0px;
+      &::before {
+        -webkit-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+        display: block;
+        content: ' ';
+        position: relative;
+        left: 100%;
+        top: 50%;
+        margin-top: 5px;
+        margin-left: 0px;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid $primary;
+        opacity: 0;
+        transform: rotate(90deg);
+      }
+      &.active {
+        &::before {
+          opacity: 1;
+          margin-left: -5px;
         }
-        li {
-            display: flex;
-            align-items: center;
-            -webkit-transition: all .2s ease-in-out;
-            -o-transition: all .2s ease-in-out;
-            transition: all .2s ease-in-out;
-            text-align: right;
-            cursor: pointer;
-            padding: 7.5px 10px 10px 0px;
-            &::before {
-                -webkit-transition: all .3s ease-in-out;
-                -o-transition: all .3s ease-in-out;
-                transition: all .3s ease-in-out;
-                display: block;
-                content: ' ';
-                position: relative;
-                left: 100%;
-                top: 50%;
-                margin-top: 5px;
-                margin-left: 0px;
-                width: 0;
-                height: 0;
-                border-left: 10px solid transparent;
-                border-right: 10px solid transparent;
-                border-top: 10px solid $primary;
-                opacity: 0;
-                transform: rotate(90deg);
-            }
-            &.active {
-                &::before {
-                    opacity: 1;
-                    margin-left: -5px;
-                }
-                color: $primary;
-            }
-            &:hover {
-                color: $primary;
-            }
-            @include media-query($on-small) {
-                &.active {
-                    background-color: $grey;
-                    color: black;
-                    border-top-left-radius: 7px;
-                    border-bottom-left-radius: 7px;
-                }
-            }
+        color: $primary;
+      }
+      &:hover {
+        color: $primary;
+      }
+      @include media-query($on-small) {
+        &.active {
+          background-color: $grey;
+          color: black;
+          border-top-left-radius: 7px;
+          border-bottom-left-radius: 7px;
         }
+      }
     }
-    .copy {
-        display: inline-block !important;
-        list-style: none;
-        margin: 1.5rem 0 0 1rem;
-        @include media-query($on-small) {
-            margin: $gutter * 2 1.25rem;
-            padding: 0px;
-        }
-        li {
-            min-width: 100%;
-            margin-bottom: 1.5rem;
-            &::before {
-                content: "•";
-                color: $primary;
-                position: absolute;
-                font-size: 1.5rem;
-                margin: -8px 0px 0px -17px;
-            }
-        }
+  }
+  .copy {
+    display: inline-block !important;
+    list-style: none;
+    margin: 1.5rem 0 0 1rem;
+    @include media-query($on-small) {
+      margin: $gutter * 2 1.25rem;
+      padding: 0px;
     }
+    li {
+      min-width: 100%;
+      margin-bottom: 1.5rem;
+      &::before {
+        content: "•";
+        color: $primary;
+        position: absolute;
+        font-size: 1.5rem;
+        margin: -8px 0px 0px -17px;
+      }
+    }
+  }
 }

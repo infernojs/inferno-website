@@ -1,9 +1,8 @@
-import { Link, Router } from 'inferno-router'
-
+import Inferno from 'inferno'
 import Component from 'inferno-component'
+import { Link } from 'inferno-router'
 import classnames from 'classnames'
 import IconMenu from '../icons/IconMenu'
-import Inferno from 'inferno'
 import InfernoLogo from '../icons/IconInferno'
 import isPassive from '../utils/isPassive'
 
@@ -13,8 +12,7 @@ export default class Header extends Component {
     super(props)
     this.state = {
       active: false,
-      isApiShown: false,
-      isAboutShown: false,
+      activeDropdown: null,
     }
   }
 
@@ -29,7 +27,10 @@ export default class Header extends Component {
   }
 
   closeSidebar = (e) => {
-    this.setState({ active: false, activeDropdown: false });
+    this.setState({
+      active: false,
+      activeDropdown: false
+    });
   }
 
   toggleSidebar = (e) => {
@@ -44,6 +45,7 @@ export default class Header extends Component {
   render() {
     const { activeDropdown } = this.state
     const { router } = this.context
+    const locationURL = router.location ? router.location.pathname : router.url
 
     const MenuLink = (props) => {
       // Hacky solution to highlight the correct menu item
@@ -68,7 +70,7 @@ export default class Header extends Component {
         <div className="row">
           <nav className={this.state.active ? 'open' : 'closed'}>
 
-            <Link to="/" className={classnames("branding", { show: router.url.length > 1 })}><InfernoLogo/> Inferno
+            <Link to="/" className={classnames("branding", { show: locationURL.length > 1 })}><InfernoLogo/> Inferno
               <small>v{Inferno.version}</small>
             </Link>
 
@@ -98,11 +100,11 @@ export default class Header extends Component {
                 <li className={classnames("dropdown-menu", { active: activeDropdown === 'about' })}>
                   <MenuLink to="/about">Inferno</MenuLink>
                   <a target="_blank" rel="noopener" href="https://github.com/infernojs/inferno/issues" onClick={this.closeSidebar}>Contribute</a>
-                  <a target="_blank" rel="noopener" href="https://medium.com/inferno-js" onClick={this.closeSidebar}>Blog</a>
                   <a target="_blank" rel="noopener" href="https://github.com/infernojs" onClick={this.closeSidebar}>Github</a>
                   <a target="_blank" rel="noopener" href="https://inferno-slack.herokuapp.com" onClick={this.closeSidebar}>Slack</a>
                 </li>
               </li>
+              <MenuLink to="/repl">REPL</MenuLink>
             </ul>
           </nav>
         </div>
