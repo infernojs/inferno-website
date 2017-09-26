@@ -37,10 +37,10 @@ app.use(markdown.routes())
 app.use(hooks.routes())
 
 // Serve static files
-config.static.forEach(staticRoute => {
-    logger('inferno:static')(staticRoute.path)
-    app.use(mount(staticRoute.url, convert(serve(staticRoute.path))))
-})
+for(const [k, v] of Object.entries(config.static)) {
+  logger('inferno:static')(v)
+  app.use(mount(k, serve(v, {index: false})))
+}
 
 // Serve service worker
 // app.use(serve(require('path').join(__dirname, '../assets/service')))

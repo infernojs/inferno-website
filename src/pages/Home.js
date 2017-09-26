@@ -14,6 +14,7 @@ export default class Home extends Component {
         <div className="logo xs12 sm3">
           <InfernoLogo/>
         </div>
+
         <div className="logo-text sm9">
           <h1>Inferno
             <small>v{Inferno.version}</small>

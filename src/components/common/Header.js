@@ -48,17 +48,9 @@ export default class Header extends Component {
     const locationURL = router.location ? router.location.pathname : router.url
 
     const MenuLink = (props) => {
-      // Hacky solution to highlight the correct menu item
-      let classNames = props.className ? props.className.split(' ') : ['menu-item']
-      if (router.url && (router.url === props.to || (router.url.includes('/docs/') && props.to.includes('/docs/'))
-      )) {
-        classNames.push('selected')
-      }
-      if (classNames.indexOf('branding') !== -1 && router.url !== '/') {
-        classNames.push('show');
-      }
+      const className = getMenuClassName(props, router)
       return <li>
-        <Link to={props.to} className={classNames.join(' ')} onClick={this.closeSidebar}>
+        <Link to={props.to} className={className} onClick={this.closeSidebar}>
           {props.children}
         </Link>
       </li>
@@ -102,6 +94,7 @@ export default class Header extends Component {
                   <a target="_blank" rel="noopener" href="https://github.com/infernojs/inferno/issues" onClick={this.closeSidebar}>Contribute</a>
                   <a target="_blank" rel="noopener" href="https://github.com/infernojs" onClick={this.closeSidebar}>Github</a>
                   <a target="_blank" rel="noopener" href="https://inferno-slack.herokuapp.com" onClick={this.closeSidebar}>Slack</a>
+                  <a target="_blank" rel="noopener" href="https://twitter.com/inferno_js" onClick={this.closeSidebar}>Twitter</a>
                 </li>
               </li>
               <MenuLink to="/repl">REPL</MenuLink>
@@ -112,4 +105,18 @@ export default class Header extends Component {
     </div>
     )
   }
+}
+
+function getMenuClassName(props, router) {
+  // Hacky solution to highlight the correct menu item
+  const classNames = props.className ? props.className.split(' ') : ['menu-item']
+  const isDocs = router.url && router.url.includes('/docs/') && props.to.includes('/docs/')
+
+  if (router.url && (router.url === props.to || isDocs)) {
+    classNames.push('selected')
+  }
+  if (classNames.indexOf('branding') !== -1 && router.url !== '/') {
+    classNames.push('show')
+  }
+  return classNames.join(' ')
 }

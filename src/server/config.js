@@ -12,22 +12,10 @@ module.exports = {
         certificate: join(__dirname, '../../fullchain.pem'),
         certificate_key: join(__dirname, '../../privkey.pem'),
     },
-    static: [
-        {
-            url: '/',
-            path: pubDir
-        },
-        {
-            url: '/build',
-            path: join(pubDir, 'build')
-        },
-        {
-            url: '/assets',
-            path: join(pubDir, 'assets')
-        },
-        {
-            url: '/static',
-            path: join(pubDir, 'docs')
-        }
-    ]
+    static: {
+      '/': pubDir,
+      '/build': join(pubDir, 'build'),
+      '/assets': join(pubDir, 'assets'),
+      '/static': join(pubDir, 'docs')
+    }
 }

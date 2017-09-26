@@ -1,5 +1,4 @@
 footer {
-  background: $footer;
   .foot .row {
     justify-content: space-between;
     align-items: center;
@@ -36,21 +35,23 @@ footer {
   .supporters {
     padding: 1rem;
     background-color: white;
+    border-top: 1px solid $footer;
     a {
       display: flex;
       align-items: center;
       justify-content: center;
       border-right: 1px solid $grey;
-      padding: 0px;
+      padding: 0;
+
       &:last-child {
         border-right: none;
       }
       svg,
       img {
         display: block;
-        flex: 0 0 50%;
-        max-width: 50%;
-        width: 50%;
+        flex: 0 0 70%;
+        max-width: 70%;
+        width: 70%;
       }
       &.fill svg {
         fill: $footer;
@@ -61,7 +62,7 @@ footer {
     }
     @include media-query($on-medium) {
       a {
-        border-right: 0px;
+        border-right: 0;
         min-height: 4rem;
         &:nth-child(odd) {
           border-right: 1px solid rgba(255, 255, 255, 0.2);
@@ -74,10 +75,9 @@ footer {
     }
     @include media-query($on-small) {
       a {
-        border-right: 0px;
+        border-right: 0;
         padding: 1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        flex: 0 0 100%;
         max-width: 100%;
         &:last-child {
           border-bottom: none;
@@ -86,6 +86,16 @@ footer {
           border-right: none;
         }
       }
+    }
+  }
+  .license {
+    color: $footer;
+    border-top: 1px solid $footer;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    padding: 1rem;
+    a {
+      color: $footer;
     }
   }
 }

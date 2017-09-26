@@ -1,6 +1,6 @@
 import Inferno from 'inferno'
-import Header from '../../components/common/Header'
-import Footer from '../../components/common/Footer'
+import Header from './common/Header'
+import Footer from './common/Footer'
 
 export default function(props) {
   return (

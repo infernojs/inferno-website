@@ -36,12 +36,6 @@ export default function Footer(props, { router }) {
           <a target="_blank" rel="noopener" href="https://twitter.com/inferno_js"><IconTwitter/></a>
           <a target="_blank" rel="noopener" href="https://inferno-slack.herokuapp.com/"><IconSlack/></a>
         </div>
-        <div className="mit">
-          <a target="_blank" rel="noopener" href="https://opensource.org/licenses/MIT">Project licensed under MIT.</a>
-          <div className="built">
-            Website built with Inferno {Inferno.version} using <a target="_blank" rel="noopener" href="https://github.com/infernojs/create-inferno-app">create-inferno-app</a>
-          </div>
-        </div>
         <div className="contributors">
           <a target="_blank" rel="noopener" href="https://github.com/infernojs/inferno/graphs/contributors" className="contributors">
             <IconContributors/> Contributors
@@ -52,19 +46,25 @@ export default function Footer(props, { router }) {
     <div className="supporters">
       <div className="container">
         <div className="row">
-          <a target="_blank" rel="noopener" href="https://www.digitalocean.com/" className="lg3 xs6 fill">
+          <a target="_blank" rel="noopener" href="https://www.digitalocean.com/" className="lg3 xs6 sm3 fill">
             <LogoDO/>
           </a>
-          <a target="_blank" rel="noopener" href="http://info.saucelabs.com/" className="lg3 xs6">
+          <a target="_blank" rel="noopener" href="http://info.saucelabs.com/" className="lg3 xs6 sm3">
             <LogoSauceLabs/>
           </a>
-          <a target="_blank" rel="noopener" href="https://www.browserstack.com/" className="lg3 xs6 fill">
+          <a target="_blank" rel="noopener" href="https://www.browserstack.com/" className="lg3 xs6 sm3 fill">
             <LogoBrowserstack/>
           </a>
-          <a target="_blank" rel="noopener" href="http://thegrid.io" className="lg3 xs6">
+          <a target="_blank" rel="noopener" href="http://thegrid.io" className="lg3 xs6 sm3">
             <LogoTheGrid/>
           </a>
         </div>
+      </div>
+    </div>
+    <div className="container text-center license">
+      <a target="_blank" rel="noopener" href="https://opensource.org/licenses/MIT">Project licensed under MIT.</a>
+      <div className="built">
+        Website built with Inferno {Inferno.version} using <a target="_blank" rel="noopener" href="https://github.com/infernojs/create-inferno-app">create-inferno-app</a>
       </div>
     </div>
     <script dangerouslySetInnerHTML={GACode()} defer/>
