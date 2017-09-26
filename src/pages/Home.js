@@ -12,7 +12,7 @@ export default class Home extends Component {
     return <div className="home">
       <div className="hero-banner row">
         <div className="logo xs12 sm3">
-          <InfernoLogo/>
+                <InfernoLogo/>
         </div>
 
         <div className="logo-text sm9">
@@ -32,9 +32,8 @@ export default class Home extends Component {
       <section className="benchmarks container">
         <h3>
           <IconBenchmark/>
-          Our Benchmarks
+          <Link to="/benchmarks">See Our Benchmarks</Link>
         </h3>
-        <Benchmarks/>
       </section>
       <section className="compare-react container">
         <h3>Inferno is different, yet familiar</h3>

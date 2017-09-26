@@ -22,7 +22,6 @@ const GACode = () => {
 
 export default function Footer(props, { router }) {
 
-  console.warn(router.location.pathname)
   const hideFooter = (router.url === '/repl')
   if (hideFooter) {
     return null

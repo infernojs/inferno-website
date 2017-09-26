@@ -3,6 +3,7 @@ import { IndexRoute, Route } from 'inferno-router'
 import Layout from './components/Layout'
 import NotFound from './components/NotFound'
 import Home from './pages/Home'
+import Benchmarks from './pages/Benchmarks'
 import DemoInferno from './components/demo/Demo.Inferno'
 //import DemoReact from './components/Demo/Demo.React'
 import Docs from './pages/Docs'
@@ -30,6 +31,7 @@ export default (
     <IndexRoute component={Home}/>
     <Route path="/demo" component={ DemoInferno }/>
     <Route path="/demo/react" component={ReactDemo}/>
+    <Route path="/benchmarks" component={Benchmarks}/>
     <Route path="/docs/:path*" component={Docs}/>
     <Route path="/docs" component={Docs}/>
     <Route path="/about" component={About}/>

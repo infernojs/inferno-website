@@ -1,6 +1,6 @@
 import Inferno, { linkEvent } from 'inferno';
 import Component from 'inferno-component';
-import BasicChart from '../common/BasicChart'
+import BasicChart from '../components/common/BasicChart'
 
 const setCurrent = ({ instance, index }, e) => {
   e.stopPropagation();
@@ -60,7 +60,8 @@ export default class Benchmarks extends Component {
   }
   render() {
     return (
-      <div>
+      <section className="container page row">
+        <div className="benchmarks">
         <ul className="options">
           {
             this.state.list.map((item, index) => {
@@ -74,22 +75,23 @@ export default class Benchmarks extends Component {
         </ul>
         <div className="row charts">
           <div className="lg5 copy">
-              <div className="center">
-                  <p>{ this.state.list[this.state.current].description }</p>
-                  {
-                    this.state.list[this.state.current].link ?
-                      <a target="_blank"
-                        rel="noopener"
-                        className="button not-pad lg5 sm xs10"
-                        href={ this.state.list[this.state.current].link }>View the benchmark</a> : ''
-                  }
-              </div>
+            <div className="center">
+              <p>{ this.state.list[this.state.current].description }</p>
+              {
+                this.state.list[this.state.current].link ?
+                  <a target="_blank"
+                     rel="noopener"
+                     className="button not-pad lg5 sm xs10"
+                     href={ this.state.list[this.state.current].link }>View the benchmark</a> : ''
+              }
+            </div>
           </div>
           <div className="lg7 visual">
-              <BasicChart data={ this.state.list[this.state.current].data } />
+            <BasicChart data={ this.state.list[this.state.current].data } />
           </div>
         </div>
       </div>
+      </section>
     )
   }
 }
