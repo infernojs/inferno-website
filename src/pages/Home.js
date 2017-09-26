@@ -1,9 +1,8 @@
-import Benchmarks from '../components/home/Benchmarks'
+import Inferno from 'inferno'
 import Component from 'inferno-component'
 import ContentAccordion from '../components/common/ContentAccordion'
 import Features from '../components/home/Features'
 import IconBenchmark from '../components/icons/IconBenchmark'
-import Inferno from 'inferno'
 import InfernoLogo from '../components/icons/IconInferno'
 import { Link } from 'inferno-router'
 
