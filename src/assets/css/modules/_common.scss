@@ -4,11 +4,15 @@
 @import "/utilities";
 
 /* Performance optimized box-sizing */
-html, body, div, article, section, main, footer, header, form, fieldset, legend,
+html, body, div, article, blockquote, section, main, footer, header, form, fieldset, legend,
 pre, code, p, a, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, textarea, svg,
 input[type="email"], input[type="number"], input[type="password"],
 input[type="tel"], input[type="text"], input[type="url"], button, .button, .border-box {
   box-sizing: border-box;
+}
+
+blockquote {
+  margin: 0 0 1rem;
 }
 
 .container {

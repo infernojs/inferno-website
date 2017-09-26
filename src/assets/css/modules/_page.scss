@@ -27,12 +27,16 @@
       font-size: 13px;
     }
     blockquote {
-      border-radius: 0.5rem;
+      border-radius: .5rem;
       font-size: 1.75rem;
+      font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif;
       width: 100%;
-      margin: 2rem auto 2rem auto;
+      margin: 2rem auto;
       font-style: italic;
-      padding: 2.5rem 5rem 2.5rem 8rem;
+      padding: 2.5rem 2rem 2.5rem 4rem;
+
+
+
       @include media-query($on-small) {
         width: 85%;
         margin: 1rem auto 1rem auto;
@@ -43,7 +47,7 @@
         @include media-query($on-small) {
           font-size: 1rem;
         }
-        color: lighten($black, 20%);
+        color: lighten($black, 50%);
         display: block;
         font-size: 1.25rem;
       }
