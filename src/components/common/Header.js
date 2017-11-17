@@ -96,7 +96,6 @@ function getMenuClassName(props, url) {
     if (url.includes('/docs/guides') && props.to.includes('/docs/guides') ||
       (url.includes('/docs/api') && props.to.includes('/docs/api'))) {
       classNames.push('selected')
-      console.warn(props.to)
       return classNames.join(' ')
     }
   }
