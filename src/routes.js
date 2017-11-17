@@ -2,14 +2,14 @@ import Inferno from 'inferno'
 import { IndexRoute, Route } from 'inferno-router'
 import Layout from './components/Layout'
 import NotFound from './components/NotFound'
-import Home from './pages/Home'
-import Benchmarks from './pages/Benchmarks'
+import Home from './components/Home'
+import Benchmarks from './components/Benchmarks'
 import DemoInferno from './components/demo/Demo.Inferno'
 //import DemoReact from './components/Demo/Demo.React'
-import Docs from './pages/Docs'
-import About from './pages/About'
-import REPL from './pages/REPL'
-import Contribute from './pages/Contribute'
+import Docs from './components/Docs'
+import About from './components/About'
+import REPL from './components/REPL'
+import Contribute from './components/Contribute'
 
 function ReactDemo() {
   return <div>
@@ -19,7 +19,7 @@ function ReactDemo() {
 }
 
 function Wrap(props) {
-  return props.children;
+  return props.children
 }
 
 /**
@@ -29,7 +29,7 @@ function Wrap(props) {
 export default (
   <Route component={Layout}>
     <IndexRoute component={Home}/>
-    <Route path="/demo" component={ DemoInferno }/>
+    <Route path="/demo" component={DemoInferno}/>
     <Route path="/demo/react" component={ReactDemo}/>
     <Route path="/benchmarks" component={Benchmarks}/>
     <Route path="/docs/:path*" component={Docs}/>

@@ -16,8 +16,8 @@ export default class Demo extends Component {
     this.state = {
       paused: true,
       round: false,
-      lifetime: 60,
-      emissionRate: 3
+      lifetime: 150,
+      emissionRate: 1
     }
   }
 
@@ -30,8 +30,8 @@ export default class Demo extends Component {
   }
 
   setPause = (e) => {
-    e.stopPropagation();
-    this.setState({ paused: !this.state.paused });
+    e.stopPropagation()
+    this.setState({ paused: !this.state.paused })
   }
   setEmission = (e) => this.setState({ emissionRate: e.target.value | 0 })
   setLifetime = (e) => this.setState({ lifetime: e.target.value | 0 })

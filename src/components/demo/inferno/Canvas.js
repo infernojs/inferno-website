@@ -27,13 +27,25 @@ export default class Canvas extends Component {
   }
 
   componentDidMount() {
-    const canvas = document.getElementById('demo-canvas')
-    if (canvas) {
-      canvas.addEventListener('mousemove', this.onMouseMove, isPassive)
-      perfMonitor.startFPSMonitor()
-      //perfMonitor.startMemMonitor()
-      perfMonitor.initProfiler('update')
-    }
+
+    // this.tmpCanvas = document.createElement('canvas')
+    // this.tmpCtx = this.tmpCanvas.getContext('2d')
+    // this.tmpCtx.beginPath()
+    // this.tmpCtx.arc(50, 50, 25, 0, 2 * Math.PI)
+    // this.tmpCtx.fillStyle = 'rgb(255, 220, 30)'
+    // this.tmpCtx.fill()
+    // this.tmpCtx.closePath()
+
+    this.canvas.addEventListener('mousemove', this.onMouseMove, isPassive)
+    this.canvas.width = 400
+    this.canvas.height = 400
+    this.canvas.style.backgroundColor = 'rgb(0, 0, 0)'
+
+    this.ctx = this.canvas.getContext('2d')
+
+    perfMonitor.startFPSMonitor()
+    //perfMonitor.startMemMonitor()
+    perfMonitor.initProfiler('update')
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,8 +55,7 @@ export default class Canvas extends Component {
   }
 
   componentWillUnmount() {
-    const canvas = document.getElementById('demo-canvas')
-    canvas.removeEventListener('mousemove', this.onMouseMove, isPassive)
+    this.canvas.removeEventListener('mousemove', this.onMouseMove, isPassive)
   }
 
   shouldComponentUpdate(nextProps) {
@@ -54,13 +65,22 @@ export default class Canvas extends Component {
   onMouseMove = (e) => {
     field.position[0] = e.offsetX
     field.position[1] = e.offsetY
-
     this.setState({
       mouse: [
         e.offsetX,
         e.offsetY
       ]
     })
+  }
+
+  drawParticle(x, y, size, color, opacity) {
+    //this.ctx.drawImage(this.tmpCanvas, x, y, size*5, size*5)
+
+    this.ctx.beginPath()
+    this.ctx.globalAlpha = opacity
+    this.ctx.arc(x, y, size, 0, 2 * Math.PI)
+    this.ctx.fillStyle = color
+    this.ctx.fill()
   }
 
   update = () => {
@@ -72,32 +92,28 @@ export default class Canvas extends Component {
       particles.push(Emitter.emit(lifetime))
     }
 
+    this.ctx.clearRect(0, 0, 400, 400)
+
     // Update
-    for (let i in particles) {
+    for (var i in particles) {
       let p = particles[i]
+      let life = 1 - (p.lifetime / p.lifetimeMax)
+
       p.lifetime += 1
 
       // If we're out of bounds, drop this particle and move on to the next
-      if ((p.lifetime / p.lifetimeMax) > 0.6) {
-        remove(particles, p)
+      if (life < 0.1) {
+        //remove(particles, p)
         continue
       }
 
-      Vector.submitToFields(p, field);
+      Vector.submitToFields(p, field)
       Vector.update(p)
+
+      // Draw
+      const colors = getColors(1 - life)
+      this.drawParticle(p.position[0] | 0, p.position[1] | 0, 5, `rgb(${colors.join(',')})`, life)
     }
-
-    //if (++this.i % 2 === 0) {
-      this.setState({
-        particles
-      })
-    //}
-
-    // this.setState(state => {
-    //   return {
-    //     particles
-    //   }
-    // })
 
     window.requestAnimationFrame(this.loop)
   }
@@ -105,35 +121,47 @@ export default class Canvas extends Component {
   loop = () => {
     if (!this.props.paused) {
       perfMonitor.startProfile('update')
-      this.update()
+      this.update(this.ctx)
       perfMonitor.endProfile('update')
     }
+
+    setInterval(() => {
+      const { particles } = this.state
+      for (var i in particles) {
+        let p = particles[i]
+        let life = 1 - (p.lifetime / p.lifetimeMax)
+        if (life < 0.1) {
+          remove(particles, p)
+        }
+      }
+    }, 2000)
   }
 
   render() {
     const { particles } = this.state
     return <div>
       <ParticleCounter count={particles.length}/>
-      <ParticleWrapper items={particles} round={this.props.round}/>
+      <canvas ref={c => this.canvas = c}/>
+      {/*<ParticleWrapper items={particles} round={this.props.round}/>*/}
     </div>
   }
 }
 
-function ParticleWrapper({ items, round }) {
-  return <div id="demo-canvas" style={window.demo}>
-    {items.map((data, i) => {
-      const colors = getColors(data.lifetime / data.lifetimeMax)
-      const style = {
-        backgroundColor: `rgb(${colors.join(',')})`,
-        height: (colors[0] * 0.05) | 0,
-        width: (colors[0] * 0.05) | 0,
-        top: data.position[1] | 0,
-        left: data.position[0] | 0
-      }
-      return <div key={i} className={'particle' + (round ? ' round' : '')} style={style}/>
-    })}
-  </div>
-}
+// function ParticleWrapper({ items, round }) {
+//   return <div id="demo-canvas" style={window.demo}>
+//     {items.map((data, i) => {
+//       const colors = getColors(data.lifetime / data.lifetimeMax)
+//       const style = {
+//         backgroundColor: `rgb(${colors.join(',')})`,
+//         height: (colors[0] * 0.05) | 0,
+//         width: (colors[0] * 0.05) | 0,
+//         top: data.position[1] | 0,
+//         left: data.position[0] | 0
+//       }
+//       return <div key={i} className={'particle' + (round ? ' round' : '')} style={style}/>
+//     })}
+//   </div>
+// }
 
 class ParticleCounter extends Component {
   shouldComponentUpdate(nextProps) {

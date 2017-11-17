@@ -1,0 +1,235 @@
+.docs {
+  flex-wrap: nowrap;
+  flex-direction: row;
+
+  @media (max-width: $size-sm) {
+    flex-wrap: wrap;
+  }
+
+  aside.docs-menu {
+    padding: 2rem 1rem;
+    min-width: 10rem;
+
+    @media (max-width: $size-sm) {
+      flex-wrap: wrap;
+      padding: $gutter;
+      width: 100%;
+    }
+    .nav {
+      margin-left: 0;
+      a {
+        padding: 0;
+      }
+    }
+
+    li {
+      a {
+        transition: all .2s ease-out;
+        color: $black;
+        &:hover,
+        &.selected {
+          color: $primary;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+  aside.docs-content {
+    @media (max-width: $size-sm) {
+      width: 100%;
+      flex-wrap: wrap;
+      max-width: 100%;
+      padding: $gutter;
+      border: 0;
+    }
+    border-left: 1px solid $grey;
+    padding: 1.75rem 0 1.75rem 2.25rem;
+    p {
+      code {
+        color: #000;
+      }
+    }
+    hr {
+      border: 1px solid $grey;
+      background: none;
+    }
+    h1 {
+      border-bottom: 1px solid $grey;
+      line-height: 4rem;
+      margin-bottom: 1rem;
+      font-size: 2.2rem;
+      font-weight: 500;
+    }
+    h2 {
+      font-weight: normal;
+      font-size: 1.5rem;
+      color: $black;
+      padding-top: 1rem;
+      margin-bottom: 1rem;
+      code {
+        color: $black;
+        background: $bg;
+        font-weight: bold;
+        border: none;
+        padding: 0.25rem;
+        font-size: 1.4rem;
+        border-radius: 5px;
+      }
+    }
+    h3 {
+      font-weight: normal;
+      font-size: 1.3rem;
+      color: $secondary;
+      margin-top: 30px;
+      code {
+        color: #000;
+        background: $bg;
+        font-weight: bold;
+        border: none;
+        padding: 0.25rem;
+        font-size: 1.2rem;
+        border-radius: 5px;
+      }
+    }
+    h4 {
+      margin-top: 40px;
+      color: $primary;
+    }
+    pre {
+      background: $code-background;
+      border: none;
+      padding: 1rem;
+      border-radius: 3px;
+      margin-bottom: 0.75rem;
+      code {
+        color: #fff;
+        background: inherit;
+        border: none;
+        padding: 0;
+        @media (max-width: $size-sm) {
+          font-size: .70rem;
+        }
+
+      }
+      code.language-jsx {
+        .token.tag {
+          color: #ffad55;
+        }
+      }
+    }
+    code {
+      background-color: rgba(0, 0, 0, 0.04);
+      border: none;
+      padding-top: 0.2em;
+      padding-bottom: 0.2em;
+      border-radius: 5px;
+    }
+    a {
+      -webkit-transition: all .2s ease-out;
+      -o-transition: all .2s ease-out;
+      transition: all .2s ease-out;
+      color: $primary;
+      line-height: 1.6rem;
+      margin-bottom: 0.6rem;
+      border-bottom: 1px solid transparent;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover {
+        border-bottom-color: $grey;
+      }
+    }
+    table {
+      display: block;
+      width: 100%;
+      overflow: auto;
+      margin-bottom: 16px;
+      margin-top: 10px;
+
+      tr {
+        background-color: #fff;
+        border-top: 1px solid #ccc;
+      }
+      th {
+        padding: 6px 13px;
+        border: 1px solid #ddd;
+        font-weight: bold;
+      }
+      td {
+        padding: 6px 13px;
+        border: 1px solid #ddd;
+      }
+      tr:nth-child(2n) {
+        background-color: #f8f8f8;
+      }
+    }
+  }
+}
+
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+code[class*="language-"],
+pre[class*="language-"] {
+  color: black;
+  background: none;
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+@media print {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    text-shadow: none;
+  }
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+  background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: .1em;
+  border-radius: .3em;
+  white-space: normal;
+}
+
+.namespace {
+  opacity: .7;
+}

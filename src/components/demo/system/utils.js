@@ -12,7 +12,7 @@ export function getColors(t) {
 
 export function remove(arr, value) {
   if (arr.indexOf(value) !== -1) {
-    arr.splice(arr.indexOf(value), 1);
+    arr.splice(arr.indexOf(value), 1)
   }
 }
 
@@ -20,12 +20,12 @@ export class Vector {
 
   // Gets the length of the vector
   static getMagnitude([x, y]) {
-    return Math.sqrt(x * x + y * y);
+    return Math.sqrt(x * x + y * y)
   }
 
   // Gets the angle accounting for the quadrant we're in
   static getAngle([x, y]) {
-    return Math.atan2(y, x);
+    return Math.atan2(y, x)
   }
 
   // Allows us to get a new vector from angle and magnitude
@@ -33,7 +33,7 @@ export class Vector {
     return [
       magnitude * Math.cos(angle),
       magnitude * Math.sin(angle)
-    ];
+    ]
   }
 
   static add(vector1, vector2) {
@@ -55,7 +55,7 @@ export class Vector {
     const force = field.mass / Math.pow(vectorX * vectorX + vectorY * vectorY, 1.5)
 
     // Randomly move left or right
-    const noise = (Math.random() * 2 - 1) / 10
+    const noise = (Math.random() * 2 - 1) / 3
 
     // add to the total acceleration the force adjusted by distance
     let gravityX = vectorX * force + noise
@@ -71,8 +71,7 @@ export class Vector {
 
 export class Field {
   constructor(point, mass) {
-    this.position = point;
-    this.mass = mass || 100;
-    this.className = mass < 0 ? 'minus' : 'plus';
+    this.position = point
+    this.mass = mass || 100
   }
 }

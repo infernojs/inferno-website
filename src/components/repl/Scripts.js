@@ -2,8 +2,8 @@ import Inferno from 'inferno'
 import Component from 'inferno-component'
 
 if (process.env.BROWSER) {
-  window.Inferno = Inferno;
-  window.Component = Component;
+  window.Inferno = Inferno
+  window.Component = Component
 }
 
 export default class Scripts extends Component {
@@ -36,37 +36,33 @@ export default class Scripts extends Component {
 
   render({ loaded }, { scripts }) {
 
-
     return (
-    <div>
-      <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.css" rel="stylesheet"/>
+      <div>
+        <link href="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.css" rel="stylesheet"/>
 
-      <ScriptLoader
-      condition={!window.compiler}
-      src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.19.0/babel.min.js"/>
+        <ScriptLoader
+          condition={!window.compiler}
+          src="//cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.19.0/babel.min.js"/>
 
-      <ScriptLoader
-      condition={!window.editor}
-      src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"/>
+        <ScriptLoader
+          condition={!window.editor}
+          src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/codemirror.min.js"/>
 
-      <ScriptLoader
-      condition={window.editor && loaded}
-      onload={() => this.setLoaded('javascript')}
-      src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.min.js"/>
+        <ScriptLoader
+          condition={window.editor && loaded}
+          onload={() => this.setLoaded('javascript')}
+          src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/javascript/javascript.min.js"/>
 
-      <ScriptLoader
-      condition={window.editor && loaded}
-      onload={() => this.setLoaded('xml')}
-      src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/xml/xml.min.js"/>
+        <ScriptLoader
+          condition={window.editor && loaded}
+          onload={() => this.setLoaded('xml')}
+          src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/xml/xml.min.js"/>
 
-      <ScriptLoader
-      condition={window.editor
-      && loaded
-      && scripts.includes('javascript')
-      && scripts.includes('xml')}
-      onload={() => onFinishedLoading()}
-      src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/jsx/jsx.min.js"/>
-    </div>
+        <ScriptLoader
+          condition={window.editor && loaded && scripts.includes('javascript') && scripts.includes('xml')}
+          onload={() => onFinishedLoading()}
+          src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/jsx/jsx.min.js"/>
+      </div>
     )
   }
 }

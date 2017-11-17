@@ -30,92 +30,81 @@ export default class Header extends Component {
     this.setState({
       active: false,
       activeDropdown: false
-    });
+    })
   }
 
   toggleSidebar = (e) => {
-    this.setState({ active: !this.state.active });
+    this.setState({ active: !this.state.active })
   }
 
   openDropdown = (activeDropdown) => (e) => {
     e.preventDefault()
-    this.setState({ activeDropdown });
+    this.setState({ activeDropdown })
   }
 
   render() {
-    const { activeDropdown } = this.state
     const { router } = this.context
     const locationURL = router.location ? router.location.pathname : router.url
 
     const MenuLink = (props) => {
-      const className = getMenuClassName(props, router)
-      return <li>
-        <Link to={props.to} className={className} onClick={this.closeSidebar}>
+      const className = getMenuClassName(props, router.url)
+      if (props.to.startsWith('http')) {
+        return (
+          <a href={props.to} target="_blank" rel="noopener noreferrer" className={className}>
+            {props.children}
+          </a>
+        )
+      }
+      return (
+        <Link to={props.to} className={className}>
           {props.children}
         </Link>
-      </li>
+      )
     }
 
     return (
-    <div className="menu">
-      <div className="container">
-        <div className="row">
-          <nav className={this.state.active ? 'open' : 'closed'}>
-
-            <Link to="/" className={classnames("branding", { show: locationURL.length > 1 })}><InfernoLogo/> Inferno
-              <small>v{Inferno.version}</small>
+      <header className="header">
+        <div className="navbar">
+          <section className="navbar-brand">
+            <Link to="/" className={classnames("branding", { show: locationURL.length > 1 })}>
+              <InfernoLogo/>
+              <span className="hide-sm">
+                Inferno
+                <small className="hide-md">v{Inferno.version}</small>
+              </span>
             </Link>
-
-            <ul className="dropdown">
-              <MenuLink to="/">Home</MenuLink>
-              <MenuLink to="/docs/guides/installation">Docs</MenuLink>
-
-              <li className="button-dropdown">
-                <a className="dropdown-toggle" onClick={this.openDropdown('api')}>
-                  API
-                </a>
-                <li className={classnames("dropdown-menu", { active: activeDropdown === 'api' })}>
-                  <Link to={'/docs/api/inferno'}>Inferno</Link>
-                  <Link to={'/docs/api/inferno-server'}>Inferno-server</Link>
-                  <Link to={'/docs/api/inferno-mobx'}>Inferno-mobx</Link>
-                  <Link to={'/docs/api/inferno-redux'}>Inferno-redux</Link>
-                  <Link to={'/docs/api/inferno-router'}>Inferno-router</Link>
-                  <Link to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</Link>
-                  <Link to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</Link>
-                </li>
-              </li>
-
-              <li className="button-dropdown">
-                <a className="dropdown-toggle" onClick={this.openDropdown('about')}>
-                  About
-                </a>
-                <li className={classnames("dropdown-menu", { active: activeDropdown === 'about' })}>
-                  <MenuLink to="/about">Inferno</MenuLink>
-                  <a target="_blank" rel="noopener" href="https://github.com/infernojs/inferno/issues" onClick={this.closeSidebar}>Contribute</a>
-                  <a target="_blank" rel="noopener" href="https://github.com/infernojs" onClick={this.closeSidebar}>Github</a>
-                  <a target="_blank" rel="noopener" href="https://inferno-slack.herokuapp.com" onClick={this.closeSidebar}>Slack</a>
-                  <a target="_blank" rel="noopener" href="https://twitter.com/inferno_js" onClick={this.closeSidebar}>Twitter</a>
-                </li>
-              </li>
-              <MenuLink to="/repl">REPL</MenuLink>
-            </ul>
-          </nav>
+          </section>
+          <section className="navbar-section">
+            <MenuLink to="/">Home</MenuLink>
+            <MenuLink to="/docs/guides/installation">Quick Start</MenuLink>
+            <MenuLink to="/docs/api/inferno">API</MenuLink>
+            <MenuLink to="https://github.com/infernojs">Github</MenuLink>
+            <MenuLink to="https://inferno-slack.herokuapp.com">Slack</MenuLink>
+            {/*<MenuLink to="/repl">REPL</MenuLink>*/}
+          </section>
         </div>
-      </div>
-    </div>
+      </header>
     )
   }
 }
 
-function getMenuClassName(props, router) {
+function getMenuClassName(props, url) {
   // Hacky solution to highlight the correct menu item
   const classNames = props.className ? props.className.split(' ') : ['menu-item']
-  const isDocs = router.url && router.url.includes('/docs/') && props.to.includes('/docs/')
 
-  if (router.url && (router.url === props.to || isDocs)) {
+  if (props.to.split('/').length > 2) {
+    if (url.includes('/docs/guides') && props.to.includes('/docs/guides') ||
+      (url.includes('/docs/api') && props.to.includes('/docs/api'))) {
+      classNames.push('selected')
+      console.warn(props.to)
+      return classNames.join(' ')
+    }
+  }
+
+  if (url && (url === props.to)) {
     classNames.push('selected')
   }
-  if (classNames.indexOf('branding') !== -1 && router.url !== '/') {
+  if (classNames.indexOf('branding') !== -1 && url !== '/') {
     classNames.push('show')
   }
   return classNames.join(' ')

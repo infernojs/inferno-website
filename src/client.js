@@ -3,22 +3,22 @@
 import 'isomorphic-fetch'
 import '../core/polyfills'
 import '../core/logger'
-import './assets/css/index.scss'
+import './assets/styles/index.scss'
 import Inferno from 'inferno'
-import createBrowserHistory from 'history/createBrowserHistory';
+import createBrowserHistory from 'history/createBrowserHistory'
 import App from './components/App'
 
 if (module.hot) {
-    require('inferno-devtools');
+  require('inferno-devtools')
 }
 
 // We render our react app into this element
 const root = document.getElementById('root')
-const history = createBrowserHistory();
+const history = createBrowserHistory()
 
 history.listen((location, action) => {
-  window.ga('send', 'pageview', location.pathname);
-});
+  window.ga('send', 'pageview', location.pathname)
+})
 
 /**
  * Render our component according to our routes
@@ -27,25 +27,25 @@ Inferno.render(<App history={history}/>, root)
 
 // cache all assets if browser supports serviceworker
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
-    const sw = navigator.serviceWorker
+  const sw = navigator.serviceWorker
 
-	sw.register('/offline.js').then(function () {
-        console.debug('ServiceWorker: registered')
-    }).catch(function(err) {
-        console.error('ServiceWorker:', err)
-    })
+  sw.register('/offline.js').then(function() {
+    console.debug('ServiceWorker: registered')
+  }).catch(function(err) {
+    console.error('ServiceWorker:', err)
+  })
 
-    /*sw.register('/sw.js').then(function() {
-        console.debug('CDN Worker: registered')
-    }).catch(function(err) {
-        console.error('ServiceWorker:', err)
-    })*/
+  /*sw.register('/sw.js').then(function() {
+      console.debug('CDN Worker: registered')
+  }).catch(function(err) {
+      console.error('ServiceWorker:', err)
+  })*/
 
-    sw.ready.then(function(registration) {
-        console.debug('Worker: ready')
-    })
+  sw.ready.then(function(registration) {
+    console.debug('Worker: ready')
+  })
 }
 
 if (module.hot) {
-    module.hot.accept()
+  module.hot.accept()
 }

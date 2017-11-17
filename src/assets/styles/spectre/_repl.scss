@@ -1,0 +1,184 @@
+.try {
+  padding: 2rem 0;
+  background: $bg;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .code {
+    background: $bg;
+    border-radius: 0.5rem;
+    padding: 15px;
+  }
+  @media (max-width: $size-sm) {
+    padding: 2.5rem 0.75rem;
+    .container {
+      padding: 0 1rem 0 1rem;
+    }
+  }
+}
+
+.repl {
+  .repl-editor {
+    min-height: 10rem;
+    height: calc(100vh - 49px);
+    background: #eee;
+    z-index: 1;
+  }
+  .repl-output {
+    position: relative;
+    background: #fff;
+    padding: 1rem !important;
+    min-height: 6rem;
+  }
+  .hidden {
+    visibility: hidden;
+  }
+  button {
+    display: block;
+    margin: 1rem auto;
+  }
+  .CodeMirror {
+    font-size: 0.85rem;
+    pre {
+      @media (max-width: $size-sm) {
+        font-size: 13px;
+      }
+    }
+  }
+  .CodeMirror-selected {
+    background: #333333 !important;
+  }
+}
+
+.cm-comment,
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #7c7f86;
+}
+
+.token.punctuation {
+  color: #999;
+}
+
+.token.property,
+.token.boolean,
+.token.constant,
+.token.symbol,
+.token.deleted {
+  color: #905;
+}
+
+.token.number, .cm-atom, .cm-number {
+  color: #690;
+}
+
+.cm-node, .cm-tag {
+  color: #ff7371;
+}
+
+.token.function, .cm-property {
+  color: #ffffff;
+}
+
+.token.class-name, .cm-def, .cm-variable {
+  color: #ff7371;
+}
+
+.token.selector,
+.token.attr-name,
+.token.char,
+.token.builtin,
+.token.inserted {
+  color: #690;
+}
+
+.token.script {
+  color: #999;
+}
+
+.token.string,
+.cm-string,
+.token.atrule,
+.token.attr-value {
+  color: #A7BD21;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+  color: #C5C8C6;
+}
+
+.token.keyword, .cm-keyword {
+  color: #ffad55;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+  color: #e90;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.entity {
+  cursor: help;
+}
+
+.cm-s-neo.CodeMirror {
+  background-color: $code-background;
+  color: #c5c8c6;
+  line-height: 1.4375;
+  height: 100%;
+}
+
+.cm-s-neo .cm-qualifier, .cm-s-neo {
+  color: #047d65;
+}
+
+.cm-s-neo pre {
+  padding: 0;
+}
+
+.cm-s-neo .CodeMirror-gutters {
+  border: none;
+  border-right: 10px solid transparent;
+  background-color: transparent;
+}
+
+.cm-s-neo .CodeMirror-linenumber {
+  padding: 0;
+  color: #334a70;
+}
+
+.cm-s-neo .CodeMirror-guttermarker {
+  color: #1d75b3;
+}
+
+.cm-s-neo .CodeMirror-guttermarker-subtle {
+  color: #e0e2e5;
+}
+
+.cm-s-neo .CodeMirror-cursor {
+  width: auto;
+  border: 0;
+  background: rgba(155, 157, 162, .37);
+  z-index: 1;
+}

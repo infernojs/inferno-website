@@ -1,59 +1,59 @@
 .try {
-    padding: 2rem 0;
+  padding: 2rem 0;
+  background: $bg;
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 0;
+  }
+
+  .code {
     background: $bg;
-
-    h1 {
-        font-size: 2rem;
-    }
-
+    border-radius: 0.5rem;
+    padding: 15px;
+  }
+  @include media-query($on-small) {
+    padding: 2.5rem 0.75rem;
     .container {
-        padding: 0;
+      padding: 0rem 1rem 0rem 1rem;
     }
-
-    .code {
-        background: $bg;
-        border-radius: 0.5rem;
-        padding: 15px;
-    }
-    @include media-query($on-small) {
-        padding: 2.5rem 0.75rem;
-        .container {
-            padding: 0rem 1rem 0rem 1rem;
-        }
-    }
+  }
 }
 
 .repl {
-    .repl-editor {
-        min-height: 10rem;
-        height: calc(100vh - 49px);
-        background: #eee;
-        z-index: 1;
+  .repl-editor {
+    min-height: 10rem;
+    height: calc(100vh - 49px);
+    background: #eee;
+    z-index: 1;
+  }
+  .repl-output {
+    position: relative;
+    background: #fff;
+    padding: 1rem !important;
+    min-height: 6rem;
+  }
+  .hidden {
+    visibility: hidden;
+  }
+  button {
+    display: block;
+    margin: 1rem auto;
+  }
+  .CodeMirror {
+    font-size: 0.85rem;
+    pre {
+      @include media-query($on-small) {
+        font-size: 13px;
+      }
     }
-    .repl-output {
-        position: relative;
-        background: #fff;
-        padding: 1rem !important;
-        min-height: 6rem;
-    }
-    .hidden {
-        visibility: hidden;
-    }
-    button {
-        display: block;
-        margin: 1rem auto;
-    }
-    .CodeMirror {
-        font-size: 0.85rem;
-        pre {
-            @include media-query($on-small) {
-                font-size: 13px;
-            }
-        }
-    }
-    .CodeMirror-selected {
-        background: #333333 !important;
-    }
+  }
+  .CodeMirror-selected {
+    background: #333333 !important;
+  }
 }
 
 .cm-comment,
@@ -61,11 +61,11 @@
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #7c7f86;
+  color: #7c7f86;
 }
 
 .token.punctuation {
-    color: #999;
+  color: #999;
 }
 
 .token.property,
@@ -73,22 +73,23 @@
 .token.constant,
 .token.symbol,
 .token.deleted {
-    color: #905;
+  color: #905;
 }
 
 .token.number, .cm-atom, .cm-number {
-    color: #690;
+  color: #690;
 }
+
 .token.tag, .cm-node, .cm-tag {
-    color: #ff7371;
+  color: #ff7371;
 }
 
 .token.function, .cm-property {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .token.class-name, .cm-def, .cm-variable {
-    color: #ff7371;
+  color: #ff7371;
 }
 
 .token.selector,
@@ -96,7 +97,7 @@
 .token.char,
 .token.builtin,
 .token.inserted {
-    color: #690;
+  color: #690;
 }
 
 .token.script {
@@ -107,7 +108,7 @@
 .cm-string,
 .token.atrule,
 .token.attr-value {
-    color: #A7BD21;
+  color: #A7BD21;
 }
 
 .token.operator,
@@ -115,68 +116,72 @@
 .token.url,
 .language-css .token.string,
 .style .token.string {
-    color: #C5C8C6;
+  color: #C5C8C6;
 }
 
+code.language-jsx {
+  color: #ffad55;
+}
 .token.keyword, .cm-keyword {
-    color: #FFE169;
+  color: #ffad55;
 }
 
 .token.regex,
 .token.important,
 .token.variable {
-    color: #e90;
+  color: #e90;
 }
 
 .token.important,
 .token.bold {
-    font-weight: bold;
+  font-weight: bold;
 }
+
 .token.italic {
-    font-style: italic;
+  font-style: italic;
 }
 
 .token.entity {
-    cursor: help;
+  cursor: help;
 }
 
 .cm-s-neo.CodeMirror {
-    background-color: $code-background;
-    color: #c5c8c6;
-    line-height: 1.4375;
-    height: 100%;
+  background-color: $code-background;
+  color: #c5c8c6;
+  line-height: 1.4375;
+  height: 100%;
 }
 
 .cm-s-neo .cm-qualifier, .cm-s-neo {
-    color: #047d65;
+  color: #047d65;
 }
 
 .cm-s-neo pre {
-    padding: 0;
+  padding: 0;
 }
 
 .cm-s-neo .CodeMirror-gutters {
-    border: none;
-    border-right: 10px solid transparent;
-    background-color: transparent;
+  border: none;
+  border-right: 10px solid transparent;
+  background-color: transparent;
 }
 
 .cm-s-neo .CodeMirror-linenumber {
-    padding: 0;
-    color: #334a70;
+  padding: 0;
+  color: #334a70;
 }
 
 .cm-s-neo .CodeMirror-guttermarker {
-    color: #1d75b3;
+  color: #1d75b3;
 }
 
 .cm-s-neo .CodeMirror-guttermarker-subtle {
-    color: #e0e2e5;
+  color: #e0e2e5;
 }
 
 .cm-s-neo .CodeMirror-cursor {
-    width: auto;
-    border: 0;
-    background: rgba(155, 157, 162, .37);
-    z-index: 1;
+  width: auto;
+  border: 0;
+  background: rgba(155, 157, 162, .37);
+  z-index: 1;
 }

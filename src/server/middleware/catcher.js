@@ -6,13 +6,13 @@ import logger from 'debug'
  * @returns {function}
  */
 export default async function(ctx, next) {
-    try {
-        await next()
-    } catch(error) {
-        logger('inferno:error')(error)
+  try {
+    await next()
+  } catch(error) {
+    logger('inferno:error')(error)
 
-        if (process.env.DEV) {
-            return ctx.throw(400, error.toString())
-        }
+    if (process.env.DEV) {
+      return ctx.throw(400, error.toString())
     }
+  }
 }

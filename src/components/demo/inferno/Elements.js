@@ -9,11 +9,11 @@ export class Controller extends Component {
 
     return (
       <div className="demo-setting">
-        <Slider step={1} min={1} max={5} text="Emission Rate"
+        <Slider step={1} min={1} max={30} text="Emission Rate"
                 label={emissionRate} defaultValue={emissionRate}
                 onChange={setEmission}/>
 
-        <Slider step={10} min={10} max={100} text="Lifetime"
+        <Slider step={10} min={10} max={200} text="Lifetime"
                 label={lifetime} defaultValue={lifetime}
                 onChange={setLifetime}/>
         <div className="demo-slider">

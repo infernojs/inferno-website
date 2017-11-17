@@ -25,11 +25,11 @@ const options = {
 
 export default class Editor extends Component {
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
 
     this.state = {
       loaded: false
-    };
+    }
   }
 
   componentDidMount() {
@@ -71,7 +71,7 @@ export default class Editor extends Component {
 
   render({ children, loaded }) {
     if (!loaded) {
-      return null;
+      return null
     }
 
     return <div className="repl">
@@ -93,7 +93,6 @@ export default class Editor extends Component {
   }
 }
 
-
 function compile(jsxCode) {
   try {
     const { code } = window.compiler.transform(jsxCode, options)
@@ -112,10 +111,12 @@ function debounce(callback, timeout, aggressive) {
   let timer = null
   let latestParameter
   let latestThis
+
   function later() {
     timer = null
     callback.call(latestThis, latestParameter)
   }
+
   return function debounced(parameter) {
     latestParameter = parameter
     latestThis = this

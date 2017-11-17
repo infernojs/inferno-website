@@ -13,6 +13,7 @@ try {
     }
   })
   window.addEventListener("test", null, opts)
-} catch (e) {}
+} catch(e) {
+}
 
 export default supportsPassive ? { passive: true } : false

@@ -29,13 +29,11 @@
     blockquote {
       border-radius: .5rem;
       font-size: 1.75rem;
-      font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif;
+      font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif;
       width: 100%;
       margin: 2rem auto;
       font-style: italic;
       padding: 2.5rem 2rem 2.5rem 4rem;
-
-
 
       @include media-query($on-small) {
         width: 85%;

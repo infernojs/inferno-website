@@ -6,7 +6,7 @@ export default function(props) {
   return (
     <div>
       <Header/>
-      <main>
+      <main className="container">
         {props.children}
       </main>
       <Footer/>

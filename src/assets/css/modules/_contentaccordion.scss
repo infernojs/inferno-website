@@ -1,7 +1,7 @@
 @import "/variables";
 
 .content-accordion {
-  @include media-query($on-small) {
+  @media (max-width: $size-sm) {
     padding: 0px;
   }
   .options {
@@ -10,7 +10,7 @@
     margin-right: 15px;
     border-right: 1px solid $grey;
     margin-bottom: 0px;
-    @include media-query($on-small) {
+    @media (max-width: $size-sm) {
       margin-right: 0px;
       margin: 40px auto 0px auto;
     }
@@ -52,7 +52,7 @@
       &:hover {
         color: $primary;
       }
-      @include media-query($on-small) {
+      @media (max-width: $size-sm) {
         &.active {
           background-color: $grey;
           color: black;
@@ -66,7 +66,7 @@
     display: inline-block !important;
     list-style: none;
     margin: 1.5rem 0 0 1rem;
-    @include media-query($on-small) {
+    @media (max-width: $size-sm) {
       margin: $gutter * 2 1.25rem;
       padding: 0px;
     }

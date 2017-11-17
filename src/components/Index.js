@@ -33,9 +33,9 @@ export default function({ hostname, config, children }) {
     <link href={`${bundleURL}/build/bundle.css`} rel="stylesheet" defer="defer"/>
   </head>
   <body>
-    <div id="root">{children && children}</div>
-    <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer="defer"></script>
-    <script src={`${bundleURL}/build/bundle.js`} async="async"/>
+  <div id="root">{children && children}</div>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer="defer"></script>
+  <script src={`${bundleURL}/build/bundle.js`} async="async"/>
   </body>
   </html>
 }

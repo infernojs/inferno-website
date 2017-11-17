@@ -1,0 +1,113 @@
+.navbar-section {
+  a {
+    font-size: 0.9rem;
+    color: $primary;
+  }
+}
+
+.hero-banner {
+  @media (max-width: $size-sm) {
+    padding: 30px;
+  }
+  .inferno-logo {
+    display: block;
+    max-width: 150px;
+    margin-left: auto;
+    @media (max-width: $size-sm) {
+      margin: 0 auto;
+    }
+  }
+  h1 {
+    font-weight: normal;
+    font-size: 3rem;
+    text-align: left;
+    margin: 0;
+    small {
+      font-size: 0.75rem;
+      display: inline-block;
+      margin-left: 5px;
+    }
+  }
+  h2 {
+    font-size: 1.2rem;
+    @media (max-width: $size-sm) {
+      font-size: 1rem;
+    }
+    font-weight: 200;
+    margin: 0 0 1rem;
+  }
+  @media (max-width: $size-sm) {
+    h1, h2 {
+      text-align: center;
+      margin: 0;
+    }
+  }
+  .buttons {
+    margin-top: 27.5px;
+    color: #fff;
+    .button {
+      padding: 0.6em 2em;
+      font-size: 1rem;
+      border: 2px solid $primary;
+      &:hover {
+        color: $primary;
+        background: transparent;
+      }
+    }
+    .button.second {
+      color: #fff;
+      text-decoration: none;
+      background: #000;
+      border: 2px solid #000;
+      &:hover {
+        color: #1c1e23;
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+
+.button,
+.button:visited {
+  -webkit-transition: all 250ms;
+  -moz-transition: all 250ms;
+  transition: all 250ms;
+  padding: 1em 3.5em;
+  border-radius: 0.3em;
+  text-align: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border: 0;
+  color: #fff;
+  background: $primary;
+  margin-right: 1rem;
+  text-decoration: none !important;
+  &.not-pad {
+    padding: 1em .5em;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+    text-decoration: none;
+  }
+  @media (max-width: $size-sm) {
+    display: block;
+    margin: 25px auto;
+  }
+}
+
+.differences {
+  .differences-item {
+    list-style: none;
+    &::before {
+      color: $primary;
+      content: "\2022";
+      font-size: 1.8em;
+      padding-right: 0.3rem;
+      position: relative;
+      top: 3px;
+    }
+  }
+}
