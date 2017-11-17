@@ -4,29 +4,29 @@
  * @returns {Function}
  */
 export default (hostname, token) => {
-    return function(url, body, postForm = false) {
-        const requestOptions = {
-            credentials: 'include',
-            headers: {}
-        }
-        if (body && postForm) {
-            let formData = new FormData()
-            Object.keys(body).forEach(field => {
-                formData.append(field, body[field])
-            })
-            requestOptions.method = 'POST'
-            requestOptions.body = formData
-        } else if (body) {
-            requestOptions.method = 'POST'
-            requestOptions.body = JSON.stringify(body)
-            requestOptions.headers = {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }
-
-        return fetch(createURL(hostname, url), requestOptions).then(handleResponse)
+  return function(url, body, postForm = false) {
+    const requestOptions = {
+      credentials: 'include',
+      headers: {}
     }
+    if (body && postForm) {
+      let formData = new FormData()
+      Object.keys(body).forEach(field => {
+        formData.append(field, body[field])
+      })
+      requestOptions.method = 'POST'
+      requestOptions.body = formData
+    } else if (body) {
+      requestOptions.method = 'POST'
+      requestOptions.body = JSON.stringify(body)
+      requestOptions.headers = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }
+
+    return fetch(createURL(hostname, url), requestOptions).then(handleResponse)
+  }
 }
 
 /**
@@ -36,11 +36,11 @@ export default (hostname, token) => {
  * @private
  */
 function createURL(hostname, path) {
-    if (process.env.BROWSER) {
-        return '/' + path.trimLeft('/')
-    } else {
-        return `http://${hostname}/` + path.trimLeft('/')
-    }
+  if (process.env.BROWSER) {
+    return '/' + path.trimLeft('/')
+  } else {
+    return `http://${hostname}/` + path.trimLeft('/')
+  }
 }
 
 /**
@@ -50,19 +50,19 @@ function createURL(hostname, path) {
  * @private
  */
 function handleResponse(resp) {
-    const redirect = resp.headers.get('Location')
-    if (redirect) {
-        if (process.env.BROWSER) {
-            window.location.replace(redirect)
-        }
-        return Promise.reject({ redirect })
+  const redirect = resp.headers.get('Location')
+  if (redirect) {
+    if (process.env.BROWSER) {
+      window.location.replace(redirect)
     }
+    return Promise.reject({ redirect })
+  }
 
-    const contentType = resp.headers && resp.headers.get('Content-Type')
-    const isJSON = contentType && contentType.includes('json')
-    const response = resp[isJSON ? 'json' : 'text']()
+  const contentType = resp.headers && resp.headers.get('Content-Type')
+  const isJSON = contentType && contentType.includes('json')
+  const response = resp[isJSON ? 'json' : 'text']()
 
-    return resp.ok ? response : response.then(err => {
-        throw err
-    });
+  return resp.ok ? response : response.then(err => {
+    throw err
+  })
 }

@@ -92,7 +92,7 @@ function getMenuClassName(props, url) {
   // Hacky solution to highlight the correct menu item
   const classNames = props.className ? props.className.split(' ') : ['menu-item']
 
-  if (props.to.split('/').length > 2) {
+  if (url && props.to.split('/').length > 2) {
     if (url.includes('/docs/guides') && props.to.includes('/docs/guides') ||
       (url.includes('/docs/api') && props.to.includes('/docs/api'))) {
       classNames.push('selected')

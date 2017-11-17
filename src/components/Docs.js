@@ -36,7 +36,8 @@ export default class Docs extends Component {
   }
 
   render() {
-    const { router } = this.context
+    const { params } = this.props
+    console.warn(params)
 
     const navigationAPI = (
       <ul className="nav">
@@ -94,7 +95,7 @@ export default class Docs extends Component {
       <section className="columns docs row">
         <aside className="docs-menu">
           {
-            router.url.includes('/docs/api/')
+            params && params.path.includes('api/')
             ? navigationAPI
             : navigationGuides
           }
