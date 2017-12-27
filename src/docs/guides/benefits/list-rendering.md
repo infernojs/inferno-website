@@ -67,19 +67,19 @@ JSX Plugin will by default add childrenTypes based on the nested elements and ge
 Since version 1.0.0 Inferno has added support to specify children type at the root node level. This is very useful when children are built dynamically and no other compile time information is available.
 
 ```javascript
-import {render} from 'inferno';
-import Component from 'inferno-component';
+import {render} from 'inferno'
+import Component from 'inferno-component'
 
 const root = document.getElementById('root')
 
 class MyComponent extends Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
 
   buildItems() {
     /* Items built using some logic */
-    return [<div key="2">2</div>, <span key="#3">three</span>];
+    return [<div key="2">2</div>, <span key="#3">three</span>]
   }
 
   render() {
@@ -91,7 +91,7 @@ class MyComponent extends Component {
   }
 }
 
-render(<MyComponent />, root);
+render(<MyComponent />, root)
 ```
 
 In the above example MyComponent returns div which has a special attribute `hasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.

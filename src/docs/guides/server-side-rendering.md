@@ -3,7 +3,6 @@
 Inferno's `inferno-server` package supplies a server utility to render virtual DOM nodes into markup to be sent from a server.
 
 
-
 ```
 renderToString(infernoComponent)
 renderToStaticMarkup(infernoComponent)
@@ -12,8 +11,8 @@ renderToStaticMarkup(infernoComponent)
 ## Full Example
 
 ```jsx
-import Inferno from 'inferno';
-import InfernoServer from 'inferno-server';
+import Inferno from 'inferno'
+import InfernoServer from 'inferno-server'
 
 const App = function({ color = 'red', name }) {
   return (
@@ -25,11 +24,11 @@ const App = function({ color = 'red', name }) {
 }
 
 InfernoServer.renderToString(<App color="blue" name="world">)
-// "<div style="color: blue;">Hello<span>World</span></div>"
+// "<div style="color: blue">Hello<span>World</span></div>"
 ```
 
 Output:
 
 ```jsx
-<div style="color: blue;">Hello<span>World</span></div>
+<div style="color: blue">Hello<span>World</span></div>
 ```

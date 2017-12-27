@@ -4,7 +4,7 @@ To create events with Inferno, you pass a relevant event name to the props of yo
 
 ```jsx
 function clickMe(event) {
-  console.log('Clicked !', event);
+  console.log('Clicked !', event)
 }
 ```
 
@@ -13,7 +13,7 @@ Then you render a VNode with this event passed as props:
 Inferno.render(
   <button onClick={ clickMe }> Click Here </button>,
   document.getElementById('app')
-);
+)
 ```
 Upon clicking the `<button>`, the `clickMe()` event will fire.
 
@@ -44,30 +44,30 @@ More events are expected to be supported in future versions. Hop on our communit
 `linkEvent()` is a helper function that allows attachment of props/state/context or other data to events without needing to bind() them or use arrow functions/closures. This is extremely useful when dealing with events in functional components. `linkEvent()` offers better performance than binding an event in a class constructor and using arrow functions, so use it where possible. Below is an example:
 
 ```js
-import Inferno, { linkEvent } from 'inferno';
+import Inferno, { linkEvent } from 'inferno'
 
 function handleClick(props, event) {
-    props.validateValue(event.target.value);
+  props.validateValue(event.target.value)
 }
 
 function MyComponent(props) {
-    return <div><input type="text" onClick={ linkEvent(props, handleClick) } /><div>;
+  return <div><input type="text" onClick={ linkEvent(props, handleClick) }/><div>
 }
 ```
 
 This is an example of using it with ES2015 classes:
 
 ```js
-import Inferno, { linkEvent } from 'inferno';
-import Component from 'inferno-component';
+import Inferno, { linkEvent } from 'inferno'
+import Component from 'inferno-component'
 
 function handleClick(instance, event) {
-    instance.setState({ data: event.target.value });
+  instance.setState({ data: event.target.value })
 }
 
 class MyComponent extends Component {
-    render () {
-        return <div><input type="text" onClick={ linkEvent(this, handleClick) } /><div>;
-    }
+  render () {
+    return <div><input type="text" onClick={ linkEvent(this, handleClick) }/><div>
+  }
 }
 ```

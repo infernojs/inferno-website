@@ -27,9 +27,9 @@ const app = new Koa()
 app.use(favicon(config.http.favicon))
 app.use(compress())
 app.use(convert(bodyParser({
-    formLimit: '200kb',
-    jsonLimit: '200kb',
-    bufferLimit: '4mb'
+  formLimit: '200kb',
+  jsonLimit: '200kb',
+  bufferLimit: '4mb'
 })))
 
 app.use(catcher)
@@ -37,10 +37,10 @@ app.use(markdown.routes())
 app.use(hooks.routes())
 
 // Serve static files
-config.static.forEach(staticRoute => {
-    logger('inferno:static')(staticRoute.path)
-    app.use(mount(staticRoute.url, convert(serve(staticRoute.path))))
-})
+for (const [k, v] of Object.entries(config.static)) {
+  logger('inferno:static')(v)
+  app.use(mount(k, serve(v, { index: false })))
+}
 
 // Serve service worker
 // app.use(serve(require('path').join(__dirname, '../assets/service')))
@@ -50,10 +50,10 @@ app.use(serve(require('path').join(__dirname, '../../public/assets/service')))
 app.use(render)
 
 //if (process.env.DEV) {
-    // Without HTTP2 support
-    app.listen(config.http.port, function() {
-        logger('inferno:start')('Listening on port ' + config.http.port)
-    })
+// Without HTTP2 support
+app.listen(config.http.port, function() {
+  logger('inferno:start')('Listening on port ' + config.http.port)
+})
 // } else {
 //     // With HTTP2 support
 //     const server = http2.createServer({

@@ -8,14 +8,14 @@ In essence NO_OP provides same functionality as `onComponentShouldUpdate` (Funct
 The main difference is that NO_OP can be used inside the component. It makes a strong combination together with functional Component, when the functional Component itself can determine its need to update.
 
 ```jsx
-import {NO_OP} from 'inferno';
+import {NO_OP} from 'inferno'
 
 function StaticComponent(props) {
-    if (condition) {
-        return NO_OP;
-    }
+  if (condition) {
+    return NO_OP
+  }
 
-    return <div>I am a Static Component<div>;
+  return <div>I am a Static Component<div>
 }
 ```
 
@@ -50,14 +50,14 @@ Never hoist nodes and move them around by reference without cloning them. You ca
 
 JSX:
 ```jsx
-import {NO_OP} from 'inferno';
+import {NO_OP} from 'inferno'
 
 function StaticComponent(props) {
-    if (condition) {
-        return NO_OP;
-    }
+  if (condition) {
+    return NO_OP
+  }
 
-    return <div noNormalize>I am not normalized<div>;
+  return <div noNormalize>I am not normalized<div>
 }
 ```
 

@@ -1,0 +1,118 @@
+.benchmarks {
+  padding: 40px;
+  @media (max-width: $size-sm) {
+    padding: 35px $gutter;
+  }
+  svg {
+    width: auto;
+    display: block;
+    margin: 0px auto 5px auto;
+  }
+  svg.graph {
+    width: 391px;
+    height: 270px;
+    display: block;
+    margin: 0px auto 5px auto;
+    @media (max-width: $size-sm) {
+      width: 100%;
+    }
+  }
+  ul {
+    max-width: 1100px;
+    list-style: none;
+    padding: 0px;
+    display: flex;
+    flex-flow: row;
+    justify-content: space-between;
+    margin: 40px auto 40px auto;
+    overflow: auto;
+    @media (max-width: $size-sm) {
+      margin: 40px auto 0px auto;
+    }
+    li {
+      -webkit-transition: all .2s ease-in-out;
+      -o-transition: all .2s ease-in-out;
+      transition: all .2s ease-in-out;
+      flex: 1 1 auto;
+      max-width: 100%;
+      cursor: pointer;
+      text-align: center;
+      border-top: 3px solid $grey;
+      span {
+        padding: 15px;
+        font-weight: 500;
+        @media (max-width: $size-sm) {
+          padding: 15px 0 0 0;
+          font-size: .75rem;
+        }
+        display: block;
+      }
+      &::before {
+        -webkit-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+        display: block;
+        content: ' ';
+        position: relative;
+        left: 50%;
+        top: -5px;
+        margin-left: -5px;
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid $primary;
+        opacity: 0;
+      }
+      &:hover {
+        color: $primary;
+      }
+      &.active {
+        border-top: 3px solid $primary;
+        color: $primary;
+        &::before {
+          opacity: 1;
+          top: 0px;
+        }
+      }
+    }
+  }
+  .charts {
+    max-width: 95%;
+    margin: 0px auto;
+    @media (max-width: $size-sm) {
+      flex-direction: column-reverse;
+      max-width: 100%;
+      .visual,
+      .copy {
+        padding: 0px;
+      }
+    }
+    .visual {
+      overflow-x: hidden;
+      table {
+        margin: 0px auto;
+        width: 75%;
+        @media (max-width: $size-sm) {
+          margin-top: 50px;
+          width: 100%;
+        }
+      }
+    }
+  }
+  h3 {
+    margin: 0 !important;
+    a {
+      color: $primary;
+      text-decoration: none;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .button {
+    margin: 50px auto;
+    max-width: 15rem;
+    display: block;
+  }
+}

@@ -1,0 +1,96 @@
+$topnav-height: 2.8rem;
+$sidebar-width: 50%;
+$color-red: #d80d0d;
+$color-red-brighter: #ff2f33;
+
+.header {
+  color: #000;
+  background: #fff;
+  box-shadow: 2px -2px 6px 1px #000;
+
+  .menu-item,
+  .menu-item:visited {
+    color: $color-red;
+    font-size: 0.7rem;
+    font-weight: 500;
+    line-height: 3.4em;
+    padding: 0 1rem;
+    cursor: pointer;
+
+    @media (max-width: $size-sm) {
+      line-height: 3em;
+      text-align: left;
+      margin-left: 0;
+    }
+    &:hover,
+    &.selected {
+      text-decoration: underline;
+      /*border-bottom: 3px solid #d80d0d;*/
+
+      @media (max-width: $size-sm) {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.branding {
+  @media (max-width: $size-sm) {
+    display: none;
+  }
+  transition: all .2s ease-in;
+  display: flex;
+  align-items: center;
+  padding-left: 15px;
+  font-weight: normal;
+  color: $color-red;
+  text-decoration: none;
+  font-size: 1.25rem;
+  margin: 0;
+  opacity: 0;
+  visibility: hidden;
+  &:hover, &:hover span {
+    color: $color-red-brighter;
+    text-decoration: none;
+  }
+
+  svg {
+    height: 42.5px;
+    margin-right: 7.5px;
+  }
+  small {
+    font-size: .65rem;
+    height: 10px;
+    margin-left: 4px;
+    color: #fff;
+  }
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  .inferno-logo {
+    path {
+      fill: #505050 !important;
+    }
+    path:first-child {
+      fill: #E41F1C !important;
+    }
+  }
+}
+
+.hamburger {
+  fill: #fff;
+  cursor: pointer;
+  z-index: 10;
+  display: none;
+  @media (max-width: $size-sm) {
+    display: block;
+  }
+}
+
+@keyframes dropdownAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%) rotateX(-45deg);
+  }
+}

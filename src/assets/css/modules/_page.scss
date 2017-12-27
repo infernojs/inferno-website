@@ -1,116 +1,119 @@
 .page {
-    padding: $gutter;
+  padding: $gutter;
+  @include media-query($on-small) {
+    padding: 0px;
+    padding-top: $gutter;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+    display: block;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $grey;
+  }
+  h2 {
+    margin-top: 1.5rem;
+    display: block;
+    width: 100%;
+    color: $primary;
+  }
+
+  .inner {
+    max-width: 80%;
+    margin: 0px auto;
+    font-size: 1rem;
     @include media-query($on-small) {
-        padding: 0px;
-        padding-top: $gutter;
+      font-size: 13px;
     }
-    .inner {
-        max-width: 80%;
-        margin: 0px auto;
-        font-size: 1rem;
+    blockquote {
+      border-radius: .5rem;
+      font-size: 1.75rem;
+      font-family: Source Sans Pro, Helvetica Neue, Arial, sans-serif;
+      width: 100%;
+      margin: 2rem auto;
+      font-style: italic;
+      padding: 2.5rem 2rem 2.5rem 4rem;
+
+      @include media-query($on-small) {
+        width: 85%;
+        margin: 1rem auto 1rem auto;
+        padding: 1rem;
+        font-size: 16px;
+      }
+      small {
         @include media-query($on-small) {
-            font-size: 13px;
+          font-size: 1rem;
         }
-        blockquote {
-            border-radius: 0.5rem;
-            font-size: 1.75rem;
-            width: 100%;
-            margin: 2rem auto 2rem auto;
-            font-style: italic;
-            padding: 2.5rem 5rem 2.5rem 8rem;
-            @include media-query($on-small) {
-                width: 85%;
-                margin: 1rem auto 1rem auto;
-                padding: 1rem;
-                font-size: 16px;
-            }
-            small {
-                @include media-query($on-small) {
-                    font-size: 1rem;
-                }
-                color: lighten($black, 20%);
-                display: block;
-                font-size: 1.25rem;
-            }
-            &:before {
-                color: lighten($black, 20%);
-                font-style: none !important;
-                content: open-quote;
-                font-size: 4em;
-                line-height: 0.1em;
-                margin: 35px 0px 0px -65px;
-                vertical-align: -0.4em;
-                position: absolute;
-                @include media-query($on-small) {
-                    margin: 35px 0px 0px -45px;
-                }
-            }
+        color: lighten($black, 50%);
+        display: block;
+        font-size: 1.25rem;
+      }
+      &:before {
+        color: lighten($black, 20%);
+        content: open-quote;
+        font-size: 4em;
+        line-height: 0.1em;
+        margin: 35px 0px 0px -65px;
+        vertical-align: -0.4em;
+        position: absolute;
+        @include media-query($on-small) {
+          margin: 35px 0px 0px -45px;
         }
-        h1 {
-            margin-bottom: 1rem;
-            display: block;
-            width: 100%;
-            padding-bottom: 10px;
-            border-bottom: 1px solid $grey;
-        }
-        h2 {
-            margin-top: 1.5rem;
-            display: block;
-            width: 100%;
-            color: $primary;
-        }
-        .list {
-            list-style: none;
-            margin-top: 0.85rem;
-            padding: 0px;
-            li {
-                -webkit-transition: all .2s ease-in-out;
-                -o-transition: all .2s ease-in-out;
-                transition: all .2s ease-in-out;
-                min-width: 100%;
-                border-bottom: 1px solid $grey;
-                padding: 0.75rem 0rem 0.75rem 3rem;
-                a {
-                    color: #444;
-                    width: 100%;
-                    display: block;
-                    cursor: pointer;
-                }
-                &::before {
-                    content: "•";
-                    color: $primary;
-                    position: absolute;
-                    font-size: 1.5rem;
-                    margin: -8px 0px 0px -17px;
-                }
-                &:hover {
-                    background-color: $grey;
-                }
-                @include media-query($on-small) {
-                    min-width: 100%;
-                    width: 100%;
-                    border-right: 0px;
-                }
-            }
-            &.columns {
-                li {
-                    padding: 0.5rem 3rem 0.5rem 3rem;
-                    min-width: 33%;
-                    border-right: 1px solid $grey;
-                    display: inline-block;
-                    &:nth-child(3n) {
-                        border-right: 0px;
-                    }
-                    @include media-query($on-small) {
-                        min-width: 100%;
-                        border-right: 0px;
-                    }
-                    @include media-query($on-medium) {
-                        min-width: 50%;
-                        border-right: 0px;
-                    }
-                }
-            }
-        }
+      }
     }
+    .list {
+      list-style: none;
+      margin-top: 0.85rem;
+      padding: 0px;
+      li {
+        -webkit-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+        min-width: 100%;
+        border-bottom: 1px solid $grey;
+        padding: 0.75rem 0rem 0.75rem 3rem;
+        a {
+          color: #444;
+          width: 100%;
+          display: block;
+          cursor: pointer;
+        }
+        &::before {
+          content: "•";
+          color: $primary;
+          position: absolute;
+          font-size: 1.5rem;
+          margin: -8px 0px 0px -17px;
+        }
+        &:hover {
+          background-color: $grey;
+        }
+        @include media-query($on-small) {
+          min-width: 100%;
+          width: 100%;
+          border-right: 0px;
+        }
+      }
+      &.columns {
+        li {
+          padding: 0.5rem 3rem 0.5rem 3rem;
+          min-width: 33%;
+          border-right: 1px solid $grey;
+          display: inline-block;
+          &:nth-child(3n) {
+            border-right: 0px;
+          }
+          @include media-query($on-small) {
+            min-width: 100%;
+            border-right: 0px;
+          }
+          @include media-query($on-medium) {
+            min-width: 50%;
+            border-right: 0px;
+          }
+        }
+      }
+    }
+  }
 }
