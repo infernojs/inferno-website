@@ -4,16 +4,16 @@
  * your code to handle this scenario intelligently.
  */
 
-var supportsPassive = false
+var supportsPassive = false;
 try {
   /* eslint-disable no-empty */
   var opts = Object.defineProperty({}, 'passive', {
     get: function() {
-      supportsPassive = true
+      supportsPassive = true;
     }
-  })
-  window.addEventListener("test", null, opts)
+  });
+  window.addEventListener("test", null, opts);
 } catch(e) {
 }
 
-export default supportsPassive ? { passive: true } : false
+export default supportsPassive ? { passive: true } : false;

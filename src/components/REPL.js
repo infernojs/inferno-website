@@ -1,6 +1,5 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
-import Editor from './repl/Editor'
+import {Component} from 'inferno';
+import Editor from './repl/Editor';
 
 const codeSample = `
 export default class MyInfernoTimer extends Component {
@@ -25,23 +24,23 @@ export default class MyInfernoTimer extends Component {
     )
   }
 }
-`
+`;
 
 export default class REPL extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       loaded: false
-    }
+    };
   }
 
   componentDidMount() {
-    this.setState({ loaded: true })
+    this.setState({ loaded: true });
   }
 
   render() {
     return <Editor loaded={this.state.loaded}>
       {codeSample}
-    </Editor>
+    </Editor>;
   }
 }

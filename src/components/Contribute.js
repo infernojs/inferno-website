@@ -1,6 +1,5 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
-import { Link } from 'inferno-router'
+import {Component} from 'inferno';
+import {Link} from 'inferno-router';
 
 export default class Contribute extends Component {
 
@@ -12,6 +11,6 @@ export default class Contribute extends Component {
       <h1>Contribute</h1>
 
       <Link to="/">Go to Homepage</Link>
-    </div>
+    </div>;
   }
 }

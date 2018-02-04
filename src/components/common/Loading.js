@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-
 export default function Loading() {
   // Loading animation...
   return <main className="spinner-wrapper">
@@ -17,5 +15,5 @@ export default function Loading() {
               r="30">
       </circle>
     </svg>
-  </main>
+  </main>;
 }

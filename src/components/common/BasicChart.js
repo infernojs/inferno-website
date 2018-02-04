@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-
 export default function BasicChart({ data, settings }) {
   // Define theme styles
   const theme = Object.assign({
@@ -49,9 +47,9 @@ export default function BasicChart({ data, settings }) {
     labels: {
       xAxis: 'Time'
     }
-  }, settings)
+  }, settings);
 
-  const maxValue = Math.max(...data.map(row => row.score))
+  const maxValue = Math.max(...data.map(row => row.score));
 
   return (
     <table className="inferno-basic-chart" style={theme.styles.table}>
@@ -69,7 +67,7 @@ export default function BasicChart({ data, settings }) {
               </div>
             </td>
           </tr>
-        )
+        );
       })}
       {!data.length ? <tr>
         <td style={theme.styles.yAxis}>&nbsp;</td>
@@ -81,5 +79,5 @@ export default function BasicChart({ data, settings }) {
       </tr>
       </tbody>
     </table>
-  )
+  );
 }

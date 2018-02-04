@@ -1,5 +1,4 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
+import {Component} from 'inferno';
 
 export default class About extends Component {
   render() {
@@ -56,9 +55,9 @@ export default class About extends Component {
           month and 300k downloads from the CDN. Inferno is actively being vetted or already
           in production by these companies:
           <ul className="list columns">
-            <li><a target="_blank" rel="noopener" href="http://www.thegrid.io">The Grid</a></li>
-            <li><a target="_blank" rel="noopener" href="http://www.evite.com">Evite.com</a></li>
-            <li><a target="_blank" rel="noopener" href="http://www.globo.com">Globo.com (Brazil)</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="http://www.thegrid.io">The Grid</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="http://www.evite.com">Evite.com</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="http://www.globo.com">Globo.com (Brazil)</a></li>
           </ul>
           If your company/project is actively using Inferno, we'd love to know about it!
         </p>
@@ -68,14 +67,14 @@ export default class About extends Component {
           contribute by writing new articles about the library or the community surrounding it.
           Here's a collection of some articles published to date:
           <ul className="list">
-            <li><a target="_blank" rel="noopener"
+            <li><a target="_blank" rel="noopener noreferrer"
                    href="https://auth0.com/blog/learn-about-inferno-js-build-and-authenticate-an-app/?utm_source=twitter&utm_medium=sc&utm_campaign=inferno">Learn
               About Inferno JS: Build and Authenticate an App</a></li>
-            <li><a target="_blank" rel="noopener" href="https://news.ycombinator.com/item?id=11837082">Hacker News</a></li>
-            <li><a target="_blank" rel="noopener" href="http://survivejs.com/blog/inferno-interview/">Inferno - Blazing fast, React-like UI library - Interview
+            <li><a target="_blank" rel="noopener noreferrer" href="https://news.ycombinator.com/item?id=11837082">Hacker News</a></li>
+            <li><a target="_blank" rel="noopener noreferrer" href="http://survivejs.com/blog/inferno-interview/">Inferno - Blazing fast, React-like UI library - Interview
               with Dominic Gannaway</a></li>
-            <li><a target="_blank" rel="noopener" href="http://www.stefankrause.net/wp/?p=316">JS web frameworks benchmark – Round 4</a></li>
-            <li><a target="_blank" rel="noopener"
+            <li><a target="_blank" rel="noopener noreferrer" href="http://www.stefankrause.net/wp/?p=316">JS web frameworks benchmark – Round 4</a></li>
+            <li><a target="_blank" rel="noopener noreferrer"
                    href="https://medium.com/javascript-inside/introduction-to-functional-front-ends-with-inferno-a188454c3e19#.dg7uhrnoc">Introduction To
               Functional Front-Ends With Inferno</a></li>
           </ul>
@@ -89,6 +88,6 @@ export default class About extends Component {
           perform far better than other libraries/frameworks.
         </p>
       </div>
-    </section>
+    </section>;
   }
 }

@@ -1,15 +1,14 @@
-import Inferno, { linkEvent } from 'inferno'
-import Component from 'inferno-component'
+import {Component, linkEvent} from 'inferno';
 
 const setCurrent = ({ instance, index }, e) => {
-  e.stopPropagation()
-  instance.setState({ current: index })
-  ga('send', 'event', 'Differences', instance.state.list[instance.state.current].name)
-}
+  e.stopPropagation();
+  instance.setState({ current: index });
+  ga('send', 'event', 'Differences', instance.state.list[instance.state.current].name);
+};
 
 export default class ContentAccordion extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       current: 0,
       list: [
@@ -36,7 +35,7 @@ export default class ContentAccordion extends Component {
           ]
         }
       ]
-    }
+    };
   }
 
   render() {
@@ -51,15 +50,15 @@ export default class ContentAccordion extends Component {
               }, setCurrent)}>
                 {item.name}
               </a>
-            </li>
+            </li>;
           })}
         </ul>
         <ul>
           {this.state.list[this.state.current].description.map((item) => {
-            return <li className="differences-item">{item}</li>
+            return <li className="differences-item">{item}</li>;
           })}
         </ul>
       </div>
-    )
+    );
   }
 }

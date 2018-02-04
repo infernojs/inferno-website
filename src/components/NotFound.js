@@ -1,5 +1,4 @@
-import Inferno from 'inferno'
-import { Link } from 'inferno-router'
+import {Link} from 'inferno-router';
 
 export default function() {
   return (
@@ -8,5 +7,5 @@ export default function() {
 
       <Link to="/">Go to Homepage</Link>
     </div>
-  )
+  );
 }

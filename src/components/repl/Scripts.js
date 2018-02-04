@@ -1,16 +1,15 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
+import {Component} from 'inferno';
 
 if (process.env.BROWSER) {
-  window.Inferno = Inferno
-  window.Component = Component
+  window.Inferno = Inferno;
+  window.Component = Component;
 }
 
 export default class Scripts extends Component {
 
   state = {
     scripts: []
-  }
+  };
 
   componentDidMount() {
 
@@ -18,21 +17,21 @@ export default class Scripts extends Component {
     let intval = setInterval(() => {
       if (window.Babel && !window.compiler) {
         require.ensure([], function(require) {
-          window.compiler = window.Babel
-          window.compiler.registerPlugin('babel-plugin-inferno', require('babel-plugin-inferno'))
-        })
-        clearInterval(intval)
+          window.compiler = window.Babel;
+          window.compiler.registerPlugin('babel-plugin-inferno', require('babel-plugin-inferno'));
+        });
+        clearInterval(intval);
       }
-    }, 50)
+    }, 50);
   }
 
   setLoaded = (name) => {
     this.setState(state => {
       return {
         scripts: state.scripts.concat(name)
-      }
-    })
-  }
+      };
+    });
+  };
 
   render({ loaded }, { scripts }) {
 
@@ -63,19 +62,19 @@ export default class Scripts extends Component {
           onload={() => onFinishedLoading()}
           src="//cdnjs.cloudflare.com/ajax/libs/codemirror/5.30.0/mode/jsx/jsx.min.js"/>
       </div>
-    )
+    );
   }
 }
 
 function ScriptLoader({ condition, src, onload }) {
   const noop = () => {
-  }
+  };
   if (condition) {
-    return <script src={src} onLoad={onload || noop}/>
+    return <script src={src} onLoad={onload || noop}/>;
   }
-  return null
+  return null;
 }
 
 function onFinishedLoading() {
-  window.editor.setOption('mode', 'jsx')
+  window.editor.setOption('mode', 'jsx');
 }

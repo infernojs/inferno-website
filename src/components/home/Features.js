@@ -1,5 +1,4 @@
-import Inferno from 'inferno'
-import { Link } from 'inferno-router'
+import {Link} from 'inferno-router';
 // import IconArchitecture from '../icons/IconArchitecture'
 // import IconCompatible from '../icons/IconCompatible'
 // import IconIsomorphic from '../icons/IconIsomorphic'
@@ -28,5 +27,5 @@ export default function() {
         </div>
       </div>
     </div>
-  )
+  );
 }

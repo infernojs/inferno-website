@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-
 export default () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 59 59">
     <g fill="none">
@@ -14,4 +12,4 @@ export default () => (
       <path d="M10.3 29.5L15.4 29.5C15.4 25.6 17 22.1 19.5 19.5L15.9 15.9C12.4 19.4 10.3 24.2 10.3 29.5L10.3 29.5Z" fill="#D1D1D1"/>
     </g>
   </svg>
-)
+);

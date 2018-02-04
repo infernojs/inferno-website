@@ -56,7 +56,7 @@
 	"prefer-template": 0,
 	"quote-props": 0,
 	"quotes": 0,
-	"semi": [1, "never"],
+	"semi": [2, "always"],
 	"space-before-function-paren": 0,
 	"spaced-comment": 0,
 	"vars-on-top": 0

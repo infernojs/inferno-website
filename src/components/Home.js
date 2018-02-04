@@ -1,10 +1,8 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
-import ContentAccordion from './common/ContentAccordion'
-import Features from './home/Features'
-import IconBenchmark from './icons/IconBenchmark'
-import InfernoLogo from './icons/IconInferno'
-import { Link } from 'inferno-router'
+import {Component} from 'inferno';
+import ContentAccordion from './common/ContentAccordion';
+import Features from './home/Features';
+import InfernoLogo from './icons/IconInferno';
+import {Link} from 'inferno-router';
 
 export default class Home extends Component {
   render() {
@@ -55,6 +53,6 @@ export default class Home extends Component {
           <ContentAccordion/>
         </section>
       </div>
-    )
+    );
   }
 }

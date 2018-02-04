@@ -1,43 +1,42 @@
-import Component from 'inferno-component'
-import Inferno from 'inferno'
-import { Link } from 'inferno-router'
+import {Component} from 'inferno';
+import {Link} from 'inferno-router';
 
 export default class Docs extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       markdown: null,
       prevURL: null
-    }
+    };
   }
 
   componentWillReceiveProps({ params }) {
-    this.loadDocument(params.path)
+    this.loadDocument(params.path);
   }
 
   componentDidMount() {
-    const { params } = this.props
-    this.loadDocument(params.path || '/guides/installation')
+    const { params } = this.props;
+    this.loadDocument(params.path || '/guides/installation');
   }
 
   loadDocument = (to, changeRoute) => {
-    const { router } = this.context
-    const path = '/' + to.replace('/docs/', '')
+    const { router } = this.context;
+    const path = '/' + to.replace('/docs/', '');
 
     if (changeRoute) {
-      return router.push(to)
+      return router.push(to);
     }
 
     fetch(`/api/markdown?file=${path}`)
       .then(response => response.json())
       .then(response => {
-        this.setState({ markdown: response })
-      })
-  }
+        this.setState({ markdown: response });
+      });
+  };
 
   render() {
-    const { params } = this.props
-    console.warn(params)
+    const { params } = this.props;
+    console.warn(params);
 
     const navigationAPI = (
       <ul className="nav">
@@ -54,7 +53,7 @@ export default class Docs extends Component {
           </ul>
         </li>
       </ul>
-    )
+    );
 
     const navigationGuides = (
       <ul className="nav">
@@ -89,7 +88,7 @@ export default class Docs extends Component {
           </ul>
         </li>
       </ul>
-    )
+    );
 
     return (
       <section className="columns docs row">
@@ -104,17 +103,17 @@ export default class Docs extends Component {
           {this.state.markdown}
         </aside>
       </section>
-    )
+    );
   }
 }
 
 const MenuLink = ({ to, children }) => {
   if (to.indexOf('http') === 0) {
-    return <li><a target="_blank" rel="noopener" href={to}>{children}</a></li>
+    return <li><a target="_blank" rel="noopener" href={to}>{children}</a></li>;
   }
   return <li>
     <Link className="nav-item" activeClassName="selected" to={to}>
       {children}
     </Link>
-  </li>
-}
+  </li>;
+};

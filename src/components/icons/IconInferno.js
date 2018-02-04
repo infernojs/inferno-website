@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-
 export default ({ width, height, showName = false }) => {
   return (
     <svg version="1.0"
@@ -19,5 +17,5 @@ export default ({ width, height, showName = false }) => {
         {showName && <InfernoText/>}
       </g>
     </svg>
-  )
-}
+  );
+};

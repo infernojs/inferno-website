@@ -8,17 +8,17 @@ export default (hostname, token) => {
     const requestOptions = {
       credentials: 'include',
       headers: {}
-    }
+    };
     if (body && postForm) {
-      let formData = new FormData()
+      let formData = new FormData();
       Object.keys(body).forEach(field => {
         formData.append(field, body[field])
-      })
-      requestOptions.method = 'POST'
+      });
+      requestOptions.method = 'POST';
       requestOptions.body = formData
     } else if (body) {
-      requestOptions.method = 'POST'
-      requestOptions.body = JSON.stringify(body)
+      requestOptions.method = 'POST';
+      requestOptions.body = JSON.stringify(body);
       requestOptions.headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -50,7 +50,7 @@ function createURL(hostname, path) {
  * @private
  */
 function handleResponse(resp) {
-  const redirect = resp.headers.get('Location')
+  const redirect = resp.headers.get('Location');
   if (redirect) {
     if (process.env.BROWSER) {
       window.location.replace(redirect)
@@ -58,9 +58,9 @@ function handleResponse(resp) {
     return Promise.reject({ redirect })
   }
 
-  const contentType = resp.headers && resp.headers.get('Content-Type')
-  const isJSON = contentType && contentType.includes('json')
-  const response = resp[isJSON ? 'json' : 'text']()
+  const contentType = resp.headers && resp.headers.get('Content-Type');
+  const isJSON = contentType && contentType.includes('json');
+  const response = resp[isJSON ? 'json' : 'text']();
 
   return resp.ok ? response : response.then(err => {
     throw err

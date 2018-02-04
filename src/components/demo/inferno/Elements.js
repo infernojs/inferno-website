@@ -1,11 +1,10 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
+import {Component} from 'inferno';
 
 export class Controller extends Component {
   render() {
     const {
       setRounded, setEmission, setLifetime, emissionRate, lifetime, round
-    } = this.props
+    } = this.props;
 
     return (
       <div className="demo-setting">
@@ -23,7 +22,7 @@ export class Controller extends Component {
           </label>
         </div>
       </div>
-    )
+    );
   }
 }
 
@@ -38,5 +37,5 @@ export function Slider({ step, min, max, text, label, defaultValue, onChange }) 
                onChange={onChange}/>
       </div>
     </div>
-  )
+  );
 }

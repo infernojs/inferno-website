@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-
 export default function Loading() {
   // Loading animation...
   return <svg
@@ -15,5 +13,5 @@ export default function Loading() {
             cy="33"
             r="30">
     </circle>
-  </svg>
+  </svg>;
 }

@@ -1,7 +1,6 @@
-import Inferno from 'inferno'
-import Component from 'inferno-component'
-import Scripts from './Scripts'
-import Loading from './Loading'
+import {Component} from 'inferno';
+import Scripts from './Scripts';
+import Loading from './Loading';
 
 const options = {
   plugins: [
@@ -21,57 +20,57 @@ const options = {
     "transform-object-rest-spread",
     "babel-plugin-inferno"
   ]
-}
+};
 
 export default class Editor extends Component {
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
 
     this.state = {
       loaded: false
-    }
+    };
   }
 
   componentDidMount() {
     // Execute code when CodeMirror is available
     let intval = setInterval(() => {
       if (window.CodeMirror && window.compiler) {
-        this.setState({ loaded: true })
-        this.initEditor()
+        this.setState({ loaded: true });
+        this.initEditor();
         setTimeout(() => {
-          this.executeCode()
-        }, 100)
-        clearInterval(intval)
+          this.executeCode();
+        }, 100);
+        clearInterval(intval);
       }
-    }, 50)
+    }, 50);
   }
 
   initEditor = () => {
-    const textArea = document.getElementById('repl-editor')
+    const textArea = document.getElementById('repl-editor');
     window.editor = new CodeMirror.fromTextArea(textArea, {
       theme: "neo",
       lineNumbers: true,
       styleActiveLine: true
-    })
+    });
     window.editor.on('changes', debounce(() => {
-      this.executeCode()
-    }, 500))
-  }
+      this.executeCode();
+    }, 500));
+  };
 
   executeCode = () => {
-    const vNodes = compile(window.editor.doc.getValue())
-    this.setState({ vNodes })
-  }
+    const vNodes = compile(window.editor.doc.getValue());
+    this.setState({ vNodes });
+  };
 
   handleChange = (e) => {
-    if (e) e.preventDefault()
-    console.warn('eee')
-    console.warn('eee')
-  }
+    if (e) e.preventDefault();
+    console.warn('eee');
+    console.warn('eee');
+  };
 
   render({ children, loaded }) {
     if (!loaded) {
-      return null
+      return null;
     }
 
     return <div className="repl">
@@ -89,40 +88,40 @@ export default class Editor extends Component {
         </div>
       </div>
       <button className="button not-pad lg3 sm xs10" onClick={this.executeCode}>Run Example Code</button>
-    </div>
+    </div>;
   }
 }
 
 function compile(jsxCode) {
   try {
-    const { code } = window.compiler.transform(jsxCode, options)
-    const ExportedComponent = eval(code) //.replace(/"use strict";/g, '')
+    const { code } = window.compiler.transform(jsxCode, options);
+    const ExportedComponent = eval(code); //.replace(/"use strict";/g, '')
     if (typeof ExportedComponent !== 'function') {
-      console.error('You must export at least one component')
+      console.error('You must export at least one component');
     }
-    const infernoResult = <ExportedComponent/>
-    return infernoResult
+    const infernoResult = <ExportedComponent/>;
+    return infernoResult;
   } catch(ex) {
-    return <p>Compiler Error: {ex.message}</p>
+    return <p>Compiler Error: {ex.message}</p>;
   }
 }
 
 function debounce(callback, timeout, aggressive) {
-  let timer = null
-  let latestParameter
-  let latestThis
+  let timer = null;
+  let latestParameter;
+  let latestThis;
 
   function later() {
-    timer = null
-    callback.call(latestThis, latestParameter)
+    timer = null;
+    callback.call(latestThis, latestParameter);
   }
 
   return function debounced(parameter) {
-    latestParameter = parameter
-    latestThis = this
+    latestParameter = parameter;
+    latestThis = this;
     if (!aggressive || timer === null) {
-      clearTimeout(timer)
-      timer = setTimeout(later, timeout)
+      clearTimeout(timer);
+      timer = setTimeout(later, timeout);
     }
-  }
+  };
 }

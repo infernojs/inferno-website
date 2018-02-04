@@ -1,6 +1,5 @@
-import Inferno from 'inferno'
-import Header from './common/Header'
-import Footer from './common/Footer'
+import Header from './common/Header';
+import Footer from './common/Footer';
 
 export default function(props) {
   return (
@@ -11,5 +10,5 @@ export default function(props) {
       </main>
       <Footer/>
     </div>
-  )
+  );
 }

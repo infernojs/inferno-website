@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-
 export default () => {
   return (
     <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 604 129">
@@ -48,5 +46,5 @@ export default () => {
         </g>
       </g>
     </svg>
-  )
-}
+  );
+};

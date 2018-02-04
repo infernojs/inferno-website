@@ -1,4 +1,4 @@
-const CACHE_NAME = 'inferno-cache'
+const CACHE_NAME = 'inferno-cache';
 // importScripts('serviceworker-cache-polyfill.js');
 /*
 self.addEventListener('install', e => {

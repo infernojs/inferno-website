@@ -1,9 +1,9 @@
-const path = require('path')
-const logger = require('debug')
-const webpack = require('webpack')
-const WebpackDevServer = require('webpack-dev-server')
-const config = require('./webpack.base.js')
-const { http } = require('../../src/server/config')
+const path = require('path');
+const logger = require('debug');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const config = require('./webpack.base.js');
+const { http } = require('../../src/server/config');
 
 // Merge with base configuration
 //-------------------------------
@@ -24,7 +24,7 @@ Object.assign(config, {
     libraryTarget: 'var',
     pathinfo: true
   }
-})
+});
 
 // Plugins
 //-------------------------------
@@ -40,12 +40,12 @@ config.plugins = config.plugins.concat([
   new webpack.WatchIgnorePlugin([
     path.join(__dirname, '../../build')
   ])
-])
+]);
 
 // Run DEV server for hot-reloading
 //---------------------------------
-const compiler = webpack(config)
-const port = http.port + 2
+const compiler = webpack(config);
+const port = http.port + 2;
 
 new WebpackDevServer(compiler, {
   publicPath: config.output.publicPath,
@@ -70,7 +70,7 @@ new WebpackDevServer(compiler, {
     chunkModules: false
   }
 }).listen(port, 'localhost', function(err) {
-  if (err) return logger('webpack:error', err)
+  if (err) return logger('webpack:error', err);
 
   logger('webpack:compiler')('Running on port ' + port)
-})
+});

@@ -1,6 +1,6 @@
-const { join } = require('path')
+const { join } = require('path');
 
-const pubDir = join(__dirname, '../../public')
+const pubDir = join(__dirname, '../../public');
 
 module.exports = {
   http: {
@@ -18,4 +18,4 @@ module.exports = {
     '/assets': join(pubDir, 'assets'),
     '/static': join(pubDir, 'docs')
   }
-}
+};

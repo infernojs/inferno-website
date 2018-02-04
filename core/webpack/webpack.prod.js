@@ -1,8 +1,8 @@
-const logger = require('debug')
-const { join } = require('path')
-const webpack = require('webpack')
-const config = require('./webpack.base.js')
-const SWPrecache = require('sw-precache-webpack-plugin')
+const logger = require('debug');
+const { join } = require('path');
+const webpack = require('webpack');
+const config = require('./webpack.base.js');
+const SWPrecache = require('sw-precache-webpack-plugin');
 
 // Merge with base configuration
 //-------------------------------
@@ -19,7 +19,7 @@ Object.assign(config, {
   output: {
     publicPath: '/build/'
   }
-})
+});
 
 // Production plugins for old browsers
 //------------------------------------
@@ -38,14 +38,14 @@ config.module.loaders.forEach(loader => {
       "transform-es2015-template-literals"
     )
   }
-})
+});
 
-logger('server:webpack')('Environment: Production')
+logger('server:webpack')('Environment: Production');
 
 // Save files to disk
 //-------------------------------
-const pubDir = join(__dirname, '..', '..', 'public')
-config.output.path = join(pubDir, 'build')
+const pubDir = join(__dirname, '..', '..', 'public');
+config.output.path = join(pubDir, 'build');
 config.plugins.push(
   new webpack.optimize.OccurrenceOrderPlugin(),
   new webpack.optimize.UglifyJsPlugin({
@@ -78,7 +78,7 @@ config.plugins.push(
       }
     ]
   })
-)
+);
 
 // Plugins
 //-------------------------------
@@ -88,7 +88,7 @@ config.plugins = config.plugins.concat([
     'BROWSER': true,
     'NODE_ENV': JSON.stringify('production')
   }),
-])
+]);
 
 
 // Sanity checks
@@ -99,9 +99,9 @@ if (config.devtool === 'eval') {
 
 // Compile everything for PROD
 //-------------------------------
-const compiler = webpack(config)
+const compiler = webpack(config);
 compiler.run(function(err, stats) {
-  if (err) throw err
+  if (err) throw err;
 
   // Output stats
   console.log(stats.toString({
@@ -111,7 +111,7 @@ compiler.run(function(err, stats) {
     version: false,
     children: false,
     chunkModules: false
-  }))
+  }));
 
   // Write a stats.json for the webpack bundle visualizer
   //writeWebpackStats(stats)
@@ -120,7 +120,7 @@ compiler.run(function(err, stats) {
     logger('webpack:error')(stats.compilation.errors.toString())
   }
   logger('webpack:compiler')('Finished compiling')
-})
+});
 
 /**
  * Writes a stats.json for the webpack bundle visualizer
@@ -128,8 +128,8 @@ compiler.run(function(err, stats) {
  * @param stats
  */
 function writeWebpackStats(stats) {
-  const { resolve } = require('path')
-  const location = resolve(config.output.path, 'stats.json')
-  require('fs').writeFileSync(location, JSON.stringify(stats.toJson()))
+  const { resolve } = require('path');
+  const location = resolve(config.output.path, 'stats.json');
+  require('fs').writeFileSync(location, JSON.stringify(stats.toJson()));
   logger('webpack:compiler')(`Wrote stats.json to ${location}`)
 }

@@ -1,16 +1,15 @@
-import Inferno, { linkEvent } from 'inferno'
-import Component from 'inferno-component'
-import BasicChart from './common/BasicChart'
+import {Component, linkEvent} from 'inferno';
+import BasicChart from './common/BasicChart';
 
 const setCurrent = ({ instance, index }, e) => {
-  e.stopPropagation()
-  instance.setState({ current: index })
-  ga('send', 'event', 'Benchmark', instance.state.list[instance.state.current].name)
-}
+  e.stopPropagation();
+  instance.setState({ current: index });
+  ga('send', 'event', 'Benchmark', instance.state.list[instance.state.current].name);
+};
 
 export default class Benchmarks extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       current: 0,
       list: [
@@ -110,7 +109,7 @@ export default class Benchmarks extends Component {
           ]
         }
       ]
-    }
+    };
   }
 
   render() {
@@ -126,7 +125,7 @@ export default class Benchmarks extends Component {
                 }, setCurrent)}
                 className={this.state.current === index ? 'active' : ''}>
                 <span>{item.name}</span>
-              </li>
+              </li>;
             })}
           </ul>
           <div className="row charts">
@@ -145,6 +144,6 @@ export default class Benchmarks extends Component {
           </div>
         </div>
       </section>
-    )
+    );
   }
 }

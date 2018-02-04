@@ -1,4 +1,4 @@
-import logger from 'debug'
+import logger from 'debug';
 
 /**
  * Middleware for catching errors thrown in routes
@@ -7,12 +7,12 @@ import logger from 'debug'
  */
 export default async function(ctx, next) {
   try {
-    await next()
+    await next();
   } catch(error) {
-    logger('inferno:error')(error)
+    logger('inferno:error')(error);
 
     if (process.env.DEV) {
-      return ctx.throw(400, error.toString())
+      return ctx.throw(400, error.toString());
     }
   }
 }

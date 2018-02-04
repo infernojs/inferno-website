@@ -1,13 +1,13 @@
-const { join } = require('path')
-const Copy = require('copy-webpack-plugin')
-const Clean = require('clean-webpack-plugin')
-const ExtractCSS = require('extract-text-webpack-plugin')
+const { join } = require('path');
+const Copy = require('copy-webpack-plugin');
+const Clean = require('clean-webpack-plugin');
+const ExtractCSS = require('extract-text-webpack-plugin');
 
-const root = join(__dirname, '..', '..')
-const pubDir = join(root, 'public')
-const srcDir = join(root, 'src')
+const root = join(__dirname, '..', '..');
+const pubDir = join(root, 'public');
+const srcDir = join(root, 'src');
 
-const src = loc => join(srcDir, loc)
+const src = loc => join(srcDir, loc);
 
 module.exports = {
   entry: {},
@@ -109,4 +109,4 @@ module.exports = {
       allChunks: true
     })
   ]
-}
+};

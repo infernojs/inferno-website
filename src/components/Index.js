@@ -1,11 +1,9 @@
-import Inferno from 'inferno'
-
 /**
  * This component is rendered on the server side
  */
 export default function({ hostname, config, children }) {
-  const serverURL = `//${hostname}`
-  const bundleURL = process.env.DEV ? `${serverURL}:${config.http.port + 2}` : ''
+  const serverURL = `//${hostname}`;
+  const bundleURL = process.env.DEV ? `${serverURL}:${config.http.port + 2}` : '';
 
   return <html>
   <head>
@@ -37,5 +35,5 @@ export default function({ hostname, config, children }) {
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer="defer"></script>
   <script src={`${bundleURL}/build/bundle.js`} async="async"/>
   </body>
-  </html>
+  </html>;
 }

@@ -1,5 +1,3 @@
-import Inferno from 'inferno'
-
 export default () => (
   <svg className="hamburger" width="44px" height="44px" viewBox="0 0 44 44" preserveAspectRatio="none">
     <path
@@ -9,4 +7,4 @@ export default () => (
     <path
       d="m 31.002119,28.016 c 0,0.819 -0.665,1.484 -1.484,1.484 l -15.032,0 c -0.819,0 -1.484,-0.665 -1.484,-1.484 l 0,0 c 0,-0.82 0.665,-1.484 1.484,-1.484 l 15.031,0 c 0.82,-0.001 1.485,0.664 1.485,1.484 l 0,0 z"/>
   </svg>
-)
+);

@@ -1,8 +1,8 @@
-import Inferno from 'inferno'
-import LogoDO from '../logos/LogoDO'
-import LogoSauceLabs from '../logos/LogoSauceLabs'
-import LogoBrowserstack from '../logos/LogoBrowserstack'
-import LogoTheGrid from '../logos/LogoTheGrid'
+import Inferno from 'inferno';
+import LogoDO from '../logos/LogoDO';
+import LogoSauceLabs from '../logos/LogoSauceLabs';
+import LogoBrowserstack from '../logos/LogoBrowserstack';
+import LogoTheGrid from '../logos/LogoTheGrid';
 
 const GACode = () => {
   return {
@@ -14,14 +14,14 @@ const GACode = () => {
 
     ga('create', 'UA-89701958-1', 'auto');
     ga('send', 'pageview');`
-  }
-}
+  };
+};
 
 export default function Footer(props, { router }) {
 
-  const hideFooter = (router.url === '/repl')
+  const hideFooter = (router.url === '/repl');
   if (hideFooter) {
-    return null
+    return null;
   }
 
   return (
@@ -47,7 +47,7 @@ export default function Footer(props, { router }) {
       </div>
       <script dangerouslySetInnerHTML={GACode()} defer/>
     </footer>
-  )
+  );
 }
 
 const FooterItem = ({ href, className, LogoComponent }) => (
@@ -56,4 +56,4 @@ const FooterItem = ({ href, className, LogoComponent }) => (
       <LogoComponent/>
     </a>
   </div>
-)
+);
