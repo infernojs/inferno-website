@@ -1,10 +1,10 @@
-import {Component} from 'inferno';
-import {Link} from 'inferno-router';
+import {Component, version} from 'inferno';
+import {Link, withRouter} from 'inferno-router';
 import classnames from 'classnames';
-import InfernoLogo from '../icons/IconInferno';
+import {IconInferno} from '../icons/IconInferno';
 import isPassive from '../utils/isPassive';
 
-export default class Header extends Component {
+class Header extends Component {
 
   constructor(props) {
     super(props);
@@ -41,11 +41,11 @@ export default class Header extends Component {
   };
 
   render() {
-    const { router } = this.context;
-    const locationURL = router.location ? router.location.pathname : router.url;
+    const { location, match } = this.props;
+    const locationURL = location.pathname;
 
     const MenuLink = (props) => {
-      const className = getMenuClassName(props, router.url);
+      const className = getMenuClassName(props, match.url);
       if (props.to.startsWith('http')) {
         return (
           <a href={props.to} target="_blank" rel="noopener noreferrer" className={className}>
@@ -65,10 +65,10 @@ export default class Header extends Component {
         <div className="navbar">
           <section className="navbar-brand">
             <Link to="/" className={classnames("branding", { show: locationURL.length > 1 })}>
-              <InfernoLogo/>
+              <IconInferno/>
               <span className="hide-sm">
                 Inferno
-                <small className="hide-md">v{Inferno.version}</small>
+                <small className="hide-md">v{version}</small>
               </span>
             </Link>
           </section>
@@ -85,6 +85,8 @@ export default class Header extends Component {
     );
   }
 }
+
+export default withRouter(Header);
 
 function getMenuClassName(props, url) {
   // Hacky solution to highlight the correct menu item

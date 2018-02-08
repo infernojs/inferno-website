@@ -1,11 +1,11 @@
-import {Component} from 'inferno';
+import * as Inferno from 'inferno';
 
 if (process.env.BROWSER) {
   window.Inferno = Inferno;
-  window.Component = Component;
+  window.Component = Inferno.Component;
 }
 
-export default class Scripts extends Component {
+export default class Scripts extends Inferno.Component {
 
   state = {
     scripts: []

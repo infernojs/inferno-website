@@ -36,7 +36,7 @@ config.module.loaders.forEach(loader => {
       "transform-es2015-shorthand-properties",
       "transform-es2015-spread",
       "transform-es2015-template-literals"
-    )
+    );
   }
 });
 
@@ -94,7 +94,7 @@ config.plugins = config.plugins.concat([
 // Sanity checks
 //-------------------------------
 if (config.devtool === 'eval') {
-  throw new Error('Using "eval" source-maps may break the build')
+  throw new Error('Using "eval" source-maps may break the build');
 }
 
 // Compile everything for PROD
@@ -117,9 +117,9 @@ compiler.run(function(err, stats) {
   //writeWebpackStats(stats)
 
   if (stats.hasErrors()) {
-    logger('webpack:error')(stats.compilation.errors.toString())
+    logger('webpack:error')(stats.compilation.errors.toString());
   }
-  logger('webpack:compiler')('Finished compiling')
+  logger('webpack:compiler')('Finished compiling');
 });
 
 /**
@@ -131,5 +131,5 @@ function writeWebpackStats(stats) {
   const { resolve } = require('path');
   const location = resolve(config.output.path, 'stats.json');
   require('fs').writeFileSync(location, JSON.stringify(stats.toJson()));
-  logger('webpack:compiler')(`Wrote stats.json to ${location}`)
+  logger('webpack:compiler')(`Wrote stats.json to ${location}`);
 }

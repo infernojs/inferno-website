@@ -30,13 +30,13 @@ module.exports = {
           cacheDirectory: false,
           presets: [],
           plugins: [
-            "add-module-exports",
-            "transform-es2015-modules-commonjs",
-            "transform-es2015-destructuring",
+            ["babel-plugin-inferno", {"imports": true}],
+
             "transform-object-rest-spread",
+            //"transform-es2015-modules-commonjs",
+            "transform-es2015-destructuring",
             "transform-decorators-legacy",
             "transform-class-properties",
-            "inferno",
             ["fast-async"]
           ]
         }
@@ -91,6 +91,7 @@ module.exports = {
   },
 
   resolve: {
+    mainFields: ['dev:module', 'browser', 'module', 'main'],
     alias: {
       'core': join(__dirname, '../')
     }

@@ -1,4 +1,4 @@
-import { Route } from 'inferno-router';
+import {Route, Switch} from 'inferno-router';
 import Layout from './components/Layout';
 import NotFound from './components/NotFound';
 import Home from './components/Home';
@@ -21,16 +21,18 @@ function ReactDemo() {
  */
 //<Route path="/demo" component={ DemoInferno }/>
 export default (
-  <Route component={Layout}>
-    <Route component={Home}/>
-    <Route path="/demo" component={DemoInferno}/>
-    <Route path="/demo/react" component={ReactDemo}/>
-    <Route path="/benchmarks" component={Benchmarks}/>
-    <Route path="/docs/:path*" component={Docs}/>
-    <Route path="/docs" component={Docs}/>
-    <Route path="/about" component={About}/>
-    <Route path="/repl" component={REPL}/>
-    <Route path="/contribute" component={Contribute}/>
-    <Route path="*" component={NotFound}/>
-  </Route>
+  <Layout>
+    <Switch>
+      <Route path="/" component={Home} exact/>
+      <Route path="/demo" component={DemoInferno} exact/>
+      <Route path="/demo/react" component={ReactDemo} exact/>
+      <Route path="/benchmarks" component={Benchmarks} exact/>
+      <Route path="/docs/:path*" component={Docs}/>
+      <Route path="/docs" component={Docs} exact/>
+      <Route path="/about" component={About} exact/>
+      <Route path="/repl" component={REPL} exact/>
+      <Route path="/contribute" component={Contribute} exact/>
+      <Route path="*" component={NotFound}/>
+    </Switch>
+  </Layout>
 );

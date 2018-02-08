@@ -1,4 +1,4 @@
-import Inferno from 'inferno';
+import * as Inferno from 'inferno';
 import LogoDO from '../logos/LogoDO';
 import LogoSauceLabs from '../logos/LogoSauceLabs';
 import LogoBrowserstack from '../logos/LogoBrowserstack';

@@ -4,9 +4,9 @@ import 'isomorphic-fetch';
 import '../core/polyfills';
 import '../core/logger';
 import './assets/styles/index.scss';
-import Inferno from 'inferno';
+import {render} from 'inferno';
 import createBrowserHistory from 'history/createBrowserHistory';
-import App from './components/App';
+import {App} from './components/App';
 
 if (module.hot) {
   require('inferno-devtools');
@@ -23,7 +23,7 @@ history.listen((location, action) => {
 /**
  * Render our component according to our routes
  */
-Inferno.render(<App history={history}/>, root);
+render(<App history={history}/>, root);
 
 // cache all assets if browser supports serviceworker
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {

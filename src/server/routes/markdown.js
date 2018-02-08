@@ -1,6 +1,6 @@
 import CommonMark from 'commonmark';
-import Inferno from 'inferno';
-import createElement from 'inferno-create-element';
+import {version} from 'inferno';
+import {createElement} from 'inferno-create-element';
 import fs from 'fs';
 import path from 'path';
 import Prism from 'prismjs';
@@ -33,7 +33,7 @@ async function parseMarkDown(file) {
       const parser = new CommonMark.Parser();
       const renderer = new InfernoRenderer();
       const input = '# This is a header\n\nAnd this is a paragraph';
-      data = data.replace(/\[version\]/g, Inferno.version);
+      data = data.replace(/\[version\]/g, version);
       const ast = parser.parse(data);
       const MarkdownResult = renderer.render(ast);
 

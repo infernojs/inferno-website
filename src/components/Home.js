@@ -1,7 +1,7 @@
-import {Component} from 'inferno';
+import {Component, version} from 'inferno';
 import ContentAccordion from './common/ContentAccordion';
 import Features from './home/Features';
-import InfernoLogo from './icons/IconInferno';
+import {IconInferno} from './icons/IconInferno';
 import {Link} from 'inferno-router';
 
 export default class Home extends Component {
@@ -15,13 +15,13 @@ export default class Home extends Component {
           <div className="columns hero-banner">
             <div className="column col-4 col-sm-12 col-ml-auto">
               <div className="logo">
-                <InfernoLogo/>
+                <IconInferno/>
               </div>
             </div>
             <div className="column col-8 col-sm-12 col-mr-auto">
               <div className="logo-text">
                 <h1>Inferno
-                  <small>v{Inferno.version}</small>
+                  <small>v{version}</small>
                 </h1>
                 <h2>An extremely fast React-like JavaScript library for building modern user interfaces in only 9 kb gzip.</h2>
                 <div className="buttons">

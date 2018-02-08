@@ -10,13 +10,13 @@ export default class Docs extends Component {
     };
   }
 
-  componentWillReceiveProps({ params }) {
-    this.loadDocument(params.path);
+  componentWillReceiveProps({ match }) {
+    this.loadDocument(match.params.path);
   }
 
   componentDidMount() {
-    const { params } = this.props;
-    this.loadDocument(params.path || '/guides/installation');
+    const { match } = this.props;
+    this.loadDocument(match.params.path || 'guides/installation');
   }
 
   loadDocument = (to, changeRoute) => {
@@ -24,7 +24,7 @@ export default class Docs extends Component {
     const path = '/' + to.replace('/docs/', '');
 
     if (changeRoute) {
-      return router.push(to);
+      return router.history.push(to);
     }
 
     fetch(`/api/markdown?file=${path}`)
@@ -35,8 +35,7 @@ export default class Docs extends Component {
   };
 
   render() {
-    const { params } = this.props;
-    console.warn(params);
+    const { match } = this.props;
 
     const navigationAPI = (
       <ul className="nav">
@@ -94,7 +93,7 @@ export default class Docs extends Component {
       <section className="columns docs row">
         <aside className="docs-menu">
           {
-            params && params.path.includes('api/')
+            match && match.url.includes('api/')
             ? navigationAPI
             : navigationGuides
           }
