@@ -4,6 +4,22 @@ import classnames from 'classnames';
 import {IconInferno} from '../icons/IconInferno';
 import isPassive from '../utils/isPassive';
 
+const MenuLink = (props) => {
+  const className = getMenuClassName(props, props.match.url);
+  if (props.to.startsWith('http')) {
+    return (
+      <a href={props.to} target="_blank" rel="noopener noreferrer" className={className}>
+        {props.children}
+      </a>
+    );
+  }
+  return (
+    <Link to={props.to} className={className}>
+      {props.children}
+    </Link>
+  );
+};
+
 class Header extends Component {
 
   constructor(props) {
@@ -24,7 +40,7 @@ class Header extends Component {
     main.removeEventListener('click', this.closeSidebar, isPassive);
   }
 
-  closeSidebar = (e) => {
+  closeSidebar = () => {
     this.setState({
       active: false,
       activeDropdown: false
@@ -44,22 +60,6 @@ class Header extends Component {
     const { location, match } = this.props;
     const locationURL = location.pathname;
 
-    const MenuLink = (props) => {
-      const className = getMenuClassName(props, match.url);
-      if (props.to.startsWith('http')) {
-        return (
-          <a href={props.to} target="_blank" rel="noopener noreferrer" className={className}>
-            {props.children}
-          </a>
-        );
-      }
-      return (
-        <Link to={props.to} className={className}>
-          {props.children}
-        </Link>
-      );
-    };
-
     return (
       <header className="header">
         <div className="navbar">
@@ -73,12 +73,11 @@ class Header extends Component {
             </Link>
           </section>
           <section className="navbar-section">
-            <MenuLink to="/">Home</MenuLink>
-            <MenuLink to="/docs/guides/installation">Quick Start</MenuLink>
-            <MenuLink to="/docs/api/inferno">API</MenuLink>
-            <MenuLink to="https://github.com/infernojs">Github</MenuLink>
-            <MenuLink to="https://inferno-slack.herokuapp.com">Slack</MenuLink>
-            {/*<MenuLink to="/repl">REPL</MenuLink>*/}
+            <MenuLink match={match} to="/">Home</MenuLink>
+            <MenuLink match={match} to="/docs/guides/installation">Quick Start</MenuLink>
+            <MenuLink match={match} to="/docs/api/inferno">API</MenuLink>
+            <MenuLink match={match} to="https://github.com/infernojs">Github</MenuLink>
+            <MenuLink match={match} to="https://inferno-slack.herokuapp.com">Slack</MenuLink>
           </section>
         </div>
       </header>

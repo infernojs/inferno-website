@@ -6,6 +6,7 @@
 }
 
 html {
+  overflow-y: scroll;
   box-sizing: border-box;
   font-size: $html-font-size;
   line-height: $html-line-height;
@@ -37,4 +38,8 @@ a {
     color: $link-color-dark;
     text-decoration: underline;
   }
+}
+
+svg {
+  shape-rendering: geometricprecision;
 }

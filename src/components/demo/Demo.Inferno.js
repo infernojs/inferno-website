@@ -43,7 +43,6 @@ export default class Demo extends Component {
       <button onClick={this.setPause}>
         {paused ? 'Resume' : 'Pause'}
       </button>
-
       <Controller
         setRounded={this.setRounded}
         setLifetime={this.setLifetime}
@@ -52,7 +51,6 @@ export default class Demo extends Component {
         lifetime={lifetime}
         round={round}
       />
-
       <Canvas
         round={round}
         paused={paused}

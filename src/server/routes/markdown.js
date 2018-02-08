@@ -171,6 +171,7 @@ function isGrandChildOfList(node) {
 
 function addChild(node, child) {
   let parent = node;
+
   do {
     parent = parent.parent;
   } while (!parent.react);

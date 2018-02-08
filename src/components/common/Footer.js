@@ -1,4 +1,4 @@
-import * as Inferno from 'inferno';
+import {createTextVNode, version} from 'inferno';
 import LogoDO from '../logos/LogoDO';
 import LogoSauceLabs from '../logos/LogoSauceLabs';
 import LogoBrowserstack from '../logos/LogoBrowserstack';
@@ -41,9 +41,12 @@ export default function Footer(props, { router }) {
         <a target="_blank" rel="noopener noreferrer" href="https://opensource.org/licenses/MIT">
           Project licensed under MIT.
         </a>
-        <div className="built">
-          Website built with Inferno {Inferno.version} using <a target="_blank" rel="noopener noreferrer" href="https://github.com/infernojs/create-inferno-app">create-inferno-app</a>
-        </div>
+        <div className="built" $HasNonKeyedChildren>{
+          [
+            createTextVNode(`Website built with Inferno ${version} using `),
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/infernojs/create-inferno-app">create-inferno-app</a>
+          ]
+        }</div>
       </div>
       <script dangerouslySetInnerHTML={GACode()} defer/>
     </footer>
