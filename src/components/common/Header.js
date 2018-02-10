@@ -77,6 +77,7 @@ class Header extends Component {
             <MenuLink match={match} to="/docs/guides/installation">Quick Start</MenuLink>
             <MenuLink match={match} to="/docs/api/inferno">API</MenuLink>
             <MenuLink match={match} to="https://github.com/infernojs">Github</MenuLink>
+            <MenuLink match={match} to="https://opencollective.com/inferno">Open collective</MenuLink>
             <MenuLink match={match} to="https://inferno-slack.herokuapp.com">Slack</MenuLink>
           </section>
         </div>

@@ -2,6 +2,7 @@ import {Component, createTextVNode, version} from 'inferno';
 import ContentAccordion from './common/ContentAccordion';
 import Features from './home/Features';
 import {IconInferno} from './icons/IconInferno';
+import {Community} from './common/Community';
 import {Link} from 'inferno-router';
 
 export default class Home extends Component {
@@ -53,6 +54,11 @@ export default class Home extends Component {
           </h3>
           <ContentAccordion/>
         </section>
+
+        <div className="hide-xs" style={{ marginBottom: '6rem' }}/>
+        <div className="show-xs" style={{ marginBottom: '3rem' }}/>
+
+        <Community/>
       </div>
     );
   }
