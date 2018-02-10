@@ -63,6 +63,7 @@
     "inferno-devtools": "4.0.0-21",
     "inferno-router": "4.0.0-21",
     "inferno-server": "4.0.0-21",
+    "inferno-vnode-flags": "4.0.0-21",
     "isomorphic-fetch": "2.2.1",
     "json-loader": "0.5.7",
     "jwt-simple": "^0.5.1",

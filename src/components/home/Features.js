@@ -1,10 +1,4 @@
 import {Link} from 'inferno-router';
-// import IconArchitecture from '../icons/IconArchitecture'
-// import IconCompatible from '../icons/IconCompatible'
-// import IconIsomorphic from '../icons/IconIsomorphic'
-// import IconModular from '../icons/IconModular'
-// import IconSize from '../icons/IconSize'
-// import IconSpeed from '../icons/IconSpeed'
 
 export default function() {
   return (

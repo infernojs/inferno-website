@@ -1,4 +1,4 @@
-import {Component, version} from 'inferno';
+import {Component, version, createTextVNode} from 'inferno';
 import {Link, withRouter} from 'inferno-router';
 import classnames from 'classnames';
 import {IconInferno} from '../icons/IconInferno';
@@ -68,7 +68,7 @@ class Header extends Component {
               <IconInferno/>
               <span className="hide-sm">
                 Inferno
-                <small className="hide-md">v{version}</small>
+                <small className="hide-md" $HasVNodeChildren>{createTextVNode(`v${version}`)}</small>
               </span>
             </Link>
           </section>

@@ -1,8 +1,9 @@
-import {Component, version} from 'inferno';
+import {Component, createTextVNode, version} from 'inferno';
 import ContentAccordion from './common/ContentAccordion';
 import Features from './home/Features';
 import {IconInferno} from './icons/IconInferno';
 import {Link} from 'inferno-router';
+import {LatestRelease} from "./home/LatestRelease";
 
 export default class Home extends Component {
   render() {
@@ -20,8 +21,9 @@ export default class Home extends Component {
             </div>
             <div className="column col-8 col-sm-12 col-mr-auto">
               <div className="logo-text">
-                <h1>Inferno
-                  <small>v{version}</small>
+                <h1>
+                  Inferno
+                  <small $HasVNodeChildren>{createTextVNode(`v${version}`)}</small>
                 </h1>
                 <h2>An extremely fast React-like JavaScript library for building modern user interfaces in only 9 kb gzip.</h2>
                 <div className="buttons">

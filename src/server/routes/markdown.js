@@ -8,6 +8,15 @@ import router from 'koa-router';
 import xssFilters from 'xss-filters';
 
 export default router()
+  .get('/release', async(ctx, next) => {
+    const { file } = ctx.query;
+
+    if (file.includes('..')) {
+      return ctx.body = <p>Cannot access this path</p>;
+    }
+
+    ctx.body = await parseMarkDown(file);
+  })
   .get('/api/markdown', async(ctx, next) => {
     const { file } = ctx.query;
 
@@ -108,7 +117,7 @@ let defaultRenderers = {
       dangerouslySetInnerHTML: {
         __html: html
       }
-    }, props.literal);
+    });
 
     return createElement('pre', getCoreProps(props), code);
   },
