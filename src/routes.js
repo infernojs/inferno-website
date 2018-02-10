@@ -16,23 +16,29 @@ function ReactDemo() {
   </div>;
 }
 
+const AppRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    <Layout {...props}>
+      <Component {...props} />
+    </Layout>
+  )} />
+)
+
 /**
  * Routes are defined here.
  */
 //<Route path="/demo" component={ DemoInferno }/>
 export default (
-  <Layout>
     <Switch>
-      <Route path="/" component={Home} exact/>
-      <Route path="/demo" component={DemoInferno} exact/>
-      <Route path="/demo/react" component={ReactDemo} exact/>
-      <Route path="/benchmarks" component={Benchmarks} exact/>
-      <Route path="/docs/:path*" component={Docs}/>
-      <Route path="/docs" component={Docs} exact/>
-      <Route path="/about" component={About} exact/>
-      <Route path="/repl" component={REPL} exact/>
-      <Route path="/contribute" component={Contribute} exact/>
-      <Route path="*" component={NotFound}/>
+      <AppRoute path="/" component={Home} exact/>
+      <AppRoute path="/demo" component={DemoInferno} exact/>
+      <AppRoute path="/demo/react" component={ReactDemo} exact/>
+      <AppRoute path="/benchmarks" component={Benchmarks} exact/>
+      <AppRoute path="/docs/:path*" component={Docs}/>
+      <AppRoute path="/docs" component={Docs} exact/>
+      <AppRoute path="/about" component={About} exact/>
+      <AppRoute path="/repl" component={REPL} exact/>
+      <AppRoute path="/contribute" component={Contribute} exact/>
+      <AppRoute path="*" component={NotFound}/>
     </Switch>
-  </Layout>
 );
