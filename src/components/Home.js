@@ -3,7 +3,6 @@ import ContentAccordion from './common/ContentAccordion';
 import Features from './home/Features';
 import {IconInferno} from './icons/IconInferno';
 import {Link} from 'inferno-router';
-import {LatestRelease} from "./home/LatestRelease";
 
 export default class Home extends Component {
   render() {
@@ -25,7 +24,7 @@ export default class Home extends Component {
                   Inferno
                   <small $HasVNodeChildren>{createTextVNode(`v${version}`)}</small>
                 </h1>
-                <h2>An extremely fast React-like JavaScript library for building modern user interfaces in only 9 kb gzip.</h2>
+                <h2>Inferno is an insanely fast, React-like library for building high-performance user interfaces on both the client and server.</h2>
                 <div className="buttons">
                   <Link className="button" to="/docs/guides/installation">Get Started</Link>
                   <a className="button second"

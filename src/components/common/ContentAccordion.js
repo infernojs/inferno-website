@@ -15,7 +15,7 @@ export default class ContentAccordion extends Component {
         {
           name: 'Differences from React',
           description: [
-            "Inferno is much smaller in size, 9kb vs 45kb gzip.",
+            "Inferno is much smaller in size, ~8kb vs 45kb gzip.",
             "Inferno is considerably faster than React. This doesn't apply to only benchmarks, but real-world applications that companies have converted to Inferno from React.",
             "Inferno doesn't have a fully synthetic event system like React does, instead opting to only delegate certain events (such as onClick).",
             "Inferno doesn't support React Native. Inferno was only designed for the browser/server with the DOM in mind.",
@@ -27,7 +27,7 @@ export default class ContentAccordion extends Component {
         {
           name: 'Differences from Preact',
           description: [
-            "Inferno is larger in size, 9kb vs 3kb gzip.",
+            "Inferno is larger in size, ~8kb vs 3kb gzip.",
             "Inferno has a partial synthetic event system, resulting in better performance via delegation of certain events.",
             "Inferno is much faster than Preact in rendering, updating and removing elements from the DOM.",
             "Inferno fully supports controlled components for input/select/textarea elements. This prevents lots of edgecases where the virtual DOM is not the source of truth (it should always be). Preact pushes the source of truth to the DOM itself.",

@@ -120,9 +120,7 @@ Now you can use `Promise` without importing!
 Brunch plugins can fall into three broad categories (one plugin can belong to several at the same time!):
 
 * *Compilers.* These are responsible for compiling your source files into something a browser would understand. For example, a CoffeeScript (to JS) compiler; or a Stylus (to CSS) compiler.
-
-* *Linters.* These allow to prevent certain kinds of mistakes, or enforce a particular coding style, at the build time.
-
+* *Linters.* These try to prevent certain kinds of mistakes, or enforce a particular coding style, during the build time.
 * *Optimizers.* As the name implies, they optimize compiled JS or CSS files. Examples of optimizers include: a JavaScript uglifier; a CSS prefixer and minifier.
 
 You can browse some of the community-supported plugins in the [Brunch plugins section](http://brunch.io/plugins).

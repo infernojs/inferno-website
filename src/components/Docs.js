@@ -61,10 +61,11 @@ export default class Docs extends Component {
           <ul className="nav">
             <MenuLink to={'/docs/guides/installation'}>Installation</MenuLink>
             <MenuLink to={'/docs/guides/using-cdn'}>Using CDN</MenuLink>
+            <MenuLink to={'https://jsfiddle.net/wt5vL603/'}>JS Fiddle</MenuLink>
             <MenuLink to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
             <MenuLink to={'/docs/guides/components'}>Components</MenuLink>
+            <MenuLink to={'/docs/guides/utilities'}>Utilities</MenuLink>
             <MenuLink to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
-            {/*<MenuLink to={'/docs/guides/project-layout'}>Project Layout</MenuLink>*/}
             <MenuLink to={'/docs/guides/forms'}>Forms</MenuLink>
             <MenuLink to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
             <MenuLink to={'/docs/guides/switching-to-inferno'}>Switching to Inferno</MenuLink>
@@ -82,7 +83,7 @@ export default class Docs extends Component {
             <MenuLink to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
             {/*<MenuLink to={'/docs/guides/testing'}>Testing</MenuLink>*/}
             <MenuLink to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
-            <MenuLink to={'/docs/guides/optimisations'}>Optimisations</MenuLink>
+            <MenuLink to={'/docs/guides/optimizations'}>Optimizations</MenuLink>
             <MenuLink to={'/docs/guides/benefits/list-rendering'}>Lists & keys</MenuLink>
           </ul>
         </li>

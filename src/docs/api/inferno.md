@@ -1,68 +1,67 @@
 # Inferno API
 
-## `render`
+### `render` (package: `inferno`)
 
 ```javascript
-import Inferno from 'inferno';
+import { render } from 'inferno';
 
-const root = document.getElementById('root')
-
-Inferno.render(<div />, root);
+render(<div />, document.getElementById("app"));
 ```
 
 Render a virtual node into the DOM in the supplied container given the supplied virtual DOM. If the virtual node was previously rendered
 into the container, this will perform an update on it and only mutate the DOM as necessary, to reflect the latest Inferno virtual node.
 
-**Warning:** If the container element is not empty before rendering, the content of the container will be overwritten on the initial render.
+Warning: If the container element is not empty before rendering, the content of the container will be overwritten on the initial render.
 
-## `createRenderer`
+### `createRenderer` (package: `inferno`)
 
-`createRenderer` allows for functional composition when rendering content to the DOM. Example:
+`createRenderer` creates an alternative render function with a signature matching that of the first argument passed to a reduce/scan function. This allows for easier integration with reactive programming libraries, like [RxJS](https://github.com/ReactiveX/rxjs) and [Most](https://github.com/cujojs/most).
 
 ```javascript
-import Inferno from 'inferno';
+import { createRenderer } from 'inferno';
 import { scan, map } from 'most';
 
-...
-const model$ = scan(update, 0, actions$);
-const vNodes$ = map(view(actions$), model$);
-const renderer = Inferno.createRenderer();
-const runApp = () => scan(renderer, container, vNodes$).drain();
+const renderer = createRenderer();
 
-runApp();
+
+// NOTE: vNodes$ represents a stream of virtual DOM node updates
+scan(renderer, document.getElementById("app"), vNodes$);
 ```
 
-## `createElement`
+See [inferno-most-fp-demo](https://github.com/joshburgess/inferno-most-fp-demo) for an example of how to build an app architecture around this.
+
+### `createElement` (package: `inferno-create-element`)
 
 Creates an Inferno VNode using a similar API to that found with React's `createElement()`
 
 ```javascript
-import Component from 'inferno-component';
-import createElement from 'inferno-create-element';
-
-const root = document.getElementById('root')
+import { Component, render } from 'inferno';
+import { createElement } from 'inferno-create-element';
 
 class BasicComponent extends Component {
-    render() {
-        return createElement('div', {
-               className: 'basic'
-           },
-           createElement('span', {
-               className: this.props.name
-           }, 'The title is ', this.props.title)
-       )
-    }
+  render() {
+    return createElement('div', {
+        className: 'basic'
+      },
+      createElement('span', {
+        className: this.props.name
+      }, 'The title is ', this.props.title)
+    )
+  }
 }
 
-Inferno.render(createElement(BasicComponent, { title: 'abc' }), root);
+render(
+  createElement(BasicComponent, { title: 'abc' }),
+  document.getElementById("app")
+);
 ```
 
-## `Component`
+### `Component` (package: `inferno`)
 
 **Class component:**
 
 ```javascript
-import Component from 'inferno-component';
+import { Component } from 'inferno';
 
 class MyComponent extends Component {
   render() {
@@ -71,51 +70,146 @@ class MyComponent extends Component {
 }
 ```
 
-This is the base class for Inferno Components when they're defined using ES2015 classes.
+This is the base class for Inferno Components when they're defined using ES6 classes.
 
 **Functional component:**
 
 ```javascript
-import Inferno from 'inferno';
-
 const MyComponent = ({ name, age }) => (
   <span>My name is: { name } and my age is: {age}</span>
 );
 ```
 
+Another way of using defaultHooks.
+```javascript
+export function Static() {
+    return <div>1</div>;
+}
+
+Static.defaultHooks = {
+    onComponentShouldUpdate() {
+        return false;
+    }
+};
+```
+
 Functional components are first-class functions where their first argument is the `props` passed through from their parent.
 
-## `createVNode`
+### `createVNode` (package: `inferno`)
 ```js
 Inferno.createVNode(
   flags,
   type,
-  className,
+  [className],
   [...children],
+  [childFlags],
   [props],
   [key],
-  [ref],
-  [isNormalized]
+  [ref]
 )
 ```
 
-Create a new Inferno `VNode` using `createVNode()`. A `VNode` is a virtual DOM object that is used to
-describe a single element of the UI. Typically `createElement()` (package: `inferno-create-element`), `h()` (package: `inferno-hyperscript`) or JSX are used to create
-`VNode`s for Inferno, but under the hood they all use `createVNode()`. Below is an example of using
-of `createVNode` usage:
+createVNode is used to create html element's virtual node object. Typically `createElement()` (package: `inferno-create-element`), `h()` (package: `inferno-hyperscript`) or JSX are used to create
+`VNode`s for Inferno, but under the hood they all use `createVNode()`. Below is an example of `createVNode` usage:
 
 ```javascript
-import Inferno from 'inferno';
+import { VNodeFlags, ChildFlags } from 'inferno-vnode-flags';
+import { createVNode, createTextVNode, render } from 'inferno';
 
-const vNode = Inferno.createVNode(2, 'div', 'example', 'Hello world!');
+const vNode = createVNode(VNodeFlags.HtmlElement, 'div', 'example', createTextVNode('Hello world!'), ChildFlags.HasVNodeChildren);
 
-Inferno.render(vNode, container);
+// <div class="example">Hello world!</div>
+
+render(vNode, container);
 ```
 
-The first argument for `createVNode()` is a value from [`VNodeFlags`](https://github.com/trueadm/inferno/tree/master/packages/inferno-vnode-flags), this is a numerical value that tells Inferno what the VNode describes on the page.
+`createVNode` arguments explained:
 
-## `cloneVNode`
+`flags`: (number) is a value from [`VNodeFlags`](https://github.com/infernojs/inferno/tree/master/packages/inferno-vnode-flags), this is a numerical value that tells Inferno what the VNode describes on the page.
+
+`type`: (string) is tagName for element for example 'div'
+
+`className`: (string) is the class attribute ( it is separated from props because it is the most commonly used property )
+
+`children`: (vNode[]|vNode) is one or array of vNodes to be added as children for this vNode
+
+`childFlags`: (number) is a value from [`ChildFlags`](https://github.com/infernojs/inferno/tree/master/packages/inferno-vnode-flags), this tells inferno shape of the children so normalization process can be skipped.
+
+`props`: (Object) is object containing all other properties. fe: `{onClick: method, 'data-attribute': 'Hello Community!}`
+
+`key`: (string|number) unique key within this vNodes siblings to identify it during keyed algorithm.
+
+`ref`: (function) callback which is called when DOM node is added/removed from DOM.
+
+
+### `createComponentVNode` (package: 'inferno')
 ```js
+Inferno.createComponentVNode(
+  flags,
+  type,
+  [props],
+  [key],
+  [ref]
+)
+```
+
+createComponentVNode is used for creating vNode for Class/Functional Component.
+
+Example:
+```javascript
+import { VNodeFlags, ChildFlags } from 'inferno-vnode-flags';
+import { createVNode, createTextVNode, createComponentVNode, render } from 'inferno';
+
+function MyComponent(props, context) {
+  return createVNode(VNodeFlags.HtmlElement, 'div', 'example', createTextVNode(props.greeting), ChildFlags.HasVNodeChildren);
+}
+
+const vNode = createComponentVNode(VNodeFlags.ComponentFunction, MyComponent, {
+  greeting: 'Hello Community!'
+}, null, {
+  onComponentDidMount() {
+    console.log("example of did mount hook!")
+  }
+})
+
+// <div class="example">Hello Community!</div>
+
+render(vNode, container);
+```
+
+
+`createComponentVNode` arguments explained:
+
+`flags`: (number) is a value from [`VNodeFlags`](https://github.com/infernojs/inferno/tree/master/packages/inferno-vnode-flags), this is a numerical value that tells Inferno what the VNode describes on the page.
+
+`type`: (Function/Class) is the class or function prototype for Component
+
+`props`: (Object) properties passed to Component, can be anything
+
+`key`: (string|number) unique key within this vNodes siblings to identify it during keyed algorithm.
+
+`ref`: (Function|Object) this property is object for Functional Components defining all its lifecycle methods. For class Components this is function callback for ref.
+
+
+
+### `createTextVNode` (package: 'inferno')
+
+createTextVNode is used for creating vNode for text nodes.
+
+`createTextVNode` arguments explained:
+text: (string) is a value for text node to be created.
+key: (string|number) unique key within this vNodes siblings to identify it during keyed algorithm.
+
+```js
+Inferno.createTextVNode(
+  text,
+  key
+)
+```
+
+
+### `cloneVNode` (package: `inferno`)
+```javascript
 Inferno.cloneVNode(
   vNode,
   [props],
@@ -123,7 +217,7 @@ Inferno.cloneVNode(
 )
 ```
 
-Clone and return a new Inferno `VNode` using a `VNode` as the starting point. The resulting `VNode` will have the original `VNode`'s props with the new props merged in shallowly. New children will replace existing children. `key` and `ref` from the original `VNode` will be preserved.
+Clone and return a new Inferno `VNode` using a `VNode` as the starting point. The resulting `VNode` will have the original `VNode`'s props with the new props merged in shallowly. New children will replace existing children. key and ref from the original `VNode` will be preserved.
 
 `cloneVNode()` is almost equivalent to:
 ```jsx
@@ -133,82 +227,78 @@ Clone and return a new Inferno `VNode` using a `VNode` as the starting point. Th
 An example of using `cloneVNode`:
 
 ```javascript
-import Inferno from 'inferno';
+import { cloneVNode, createVNode, render } from 'inferno';
+import { VNodeFlags } from 'inferno-vnode-flags';
 
-const vNode = Inferno.createVNode(2, 'div', 'example', 'Hello world!');
-const newVNode = Inferno.cloneVNode(vNode, { id: 'new' }); // we are adding an id prop to the VNode
+const vNode = createVNode(VNodeFlags.HtmlElement, 'div', 'example', 'Hello world!');
+const newVNode = cloneVNode(vNode, { id: 'new' }); // we are adding an id prop to the VNode
 
-Inferno.render(newVNode, container);
+render(newVNode, container);
 ```
 
 If you're using JSX:
 
 ```jsx
-import Inferno from 'inferno';
+import { render, cloneVNode } from 'inferno';
 
 const vNode = <div className="example">Hello world</div>;
-const newVNode = Inferno.cloneVNode(vNode, { id: 'new' }); // we are adding an id prop to the VNode
+const newVNode = cloneVNode(vNode, { id: 'new' }); // we are adding an id prop to the VNode
 
-Inferno.render(newVNode, container);
+render(newVNode, container);
 ```
 
-## `findDOMNode`
+### `createPortal` (package: 'inferno')
 
-Once enabled via `options.findDOMNodeEnabled()` at the start of an application, `findDOMNode()` is enabled.
+HTML:
+```html
+<div id="root"></div>
+<div id="outside"></div>
+```
 
-Note: we recommend using a `ref` callback on a component to find its instance, rather than using `findDOMNode()`. `findDOMNode()` cannot be used on functional components and it introduces a significant performance impact.
-
-If a component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
-In most cases, you can attach a ref to the DOM node and avoid using `findDOMNode()` at all. When render returns null or false, `findDOMNode()` returns null.
-
-## `linkEvent`
-
-`linkEvent()` is a helper function that allows attachment of `props`/`state`/`context` or other data to events without needing to `bind()` them or use arrow functions/closures. This is extremely useful when dealing with events in functional components. Below is an example:
-
+Javascript:
 ```jsx
-import Inferno, { linkEvent } from 'inferno';
+const { render, Component, version, createPortal } from 'inferno';
 
-function handleClick(props, event) {
-	props.validateValue(event.target.value);
+function Outsider(props) {
+	return <div>{`Hello ${props.name}!`}</div>;
 }
 
-function MyComponent(props) {
-	return <div><input type="text" onClick={ linkEvent(props, handleClick) } /><div>;
+const outsideDiv = document.getElementById('outside');
+const rootDiv = document.getElementById('root');
+
+function App() {
+	return (
+  	    <div>
+    	    Main view
+            ...
+            {createPortal(<Outsider name="Inferno" />, outsideDiv)}
+        </div>
+    );
 }
+
+
+// render an instance of Clock into <body>:
+render(<App />, rootDiv);
 ```
 
-This is an example of using it with ES2015 classes:
+Results into:
+```html
+<div id="root">
+    <div>Main view ...</div>
+</div>
+<div id="outside">
+    <div>Hello Inferno!</div>
+</div>
+```
+Cool huh? Updates (props/context) will flow into "Outsider" component from the App component the same way as any other Component.
+For inspiration on how to use it click [here](https://hackernoon.com/using-a-react-16-portal-to-do-something-cool-2a2d627b0202)!
 
+### `hydrate` (package: `inferno`)
 
-```jsx
-import Inferno, { linkEvent } from 'inferno';
-import Component from 'inferno-component';
+```javascript
+import { hydrate } from 'inferno';
 
-function handleClick(instance, event) {
-	instance.setState({ data: event.target.value });
-}
-
-class MyComponent extends Component {
-	render () {
-		return <div><input type="text" onClick={ linkEvent(this, handleClick) } /><div>;
-	}
-}
+hydrate(<div />, document.getElementById("app"));
 ```
 
-`linkEvent()` offers better performance than binding an event in a class constructor and using arrow functions, so use it where possible.
-
-# Inferno Options
-
-You can set default options for Inferno using `Inferno.options`. Below are the following options:
-
-### - `findDOMNodeEnabled`
-
-***Default: `false`***
-
-This enables `findDOMNode()`. We strongly recommend against using this API as it introduces a significant impact to performance. In the future this API command will be removed, along with `findDOMNode()`;
-
-### - `recyclingEnabled`
-
-***Default: `true`***
-
-This enables DOM node recycling within Inferno, so that DOM nodes are re-used upon disposal. It can have significant performance benefits, but may also cause side-effects with custom elements.
+Same as `render()`, but is used to hydrate a container whose HTML contents were rendered by `inferno-server`. Inferno will attempt to attach event listeners to the existing markup.

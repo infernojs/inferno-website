@@ -10,7 +10,7 @@ Inferno VNodes are `inferno-hyperscript` and `inferno-create-element`. They are 
 ### Usage
 
 ```javascript
-var h = require('inferno-hyperscript')
+import { h } from 'inferno-hyperscript';
 
 module.exports = function ExampleComponent(props) {
   return h('.example', [
@@ -21,7 +21,7 @@ module.exports = function ExampleComponent(props) {
       props.whom,
       '!'
     ])
-  ])
+  ]);
 }
 ```
 
@@ -47,20 +47,20 @@ Alternatively to JSX, you may also create VDOM elements using the `createElement
 Returns an Inferno VNode from calling the method directly.
 
 ```js
-import Component from 'inferno-component'
-import createElement from 'inferno-create-element'
+import { Component, render } from 'inferno';
+import { createElement} from 'inferno-create-element';
 
 class BasicComponent extends Component {
   render() {
     const children = createElement('span', { 
       className: this.props.name 
-    }, 'The title is ', this.props.title)
+    }, 'The title is ', this.props.title);
     
     return createElement('div', {
       className: 'basic'
-    }, children)
+    }, children);
   }
 }
 
-Inferno.render(createElement(BasicComponent, { title: 'abc' }), document.getElementById('root'))
+render(createElement(BasicComponent, { title: 'abc' }), document.getElementById('root'));
 ```

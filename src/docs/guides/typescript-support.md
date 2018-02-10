@@ -4,7 +4,7 @@ The Inferno project and all its modules are written in TypeScript 2. The typings
 
 ## Example Repository
 
-Don't forget to have a look at the [`inferno-typescript-example` repository](https://github.com/infernojs/inferno-typescript-example) which lays out structure of a sample component. The example uses Webpack for compiling your distribution files and a sample `tsconfig` file.
+Don't forget to have a look at the [`inferno-typescript-example` repository](https://github.com/infernojs/inferno-typescript-example) which lays out the structure of a sample component. The example uses Webpack for compiling your distribution files and a sample `tsconfig` file.
 
 ## Why Typescript?
 

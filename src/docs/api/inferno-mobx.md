@@ -60,12 +60,13 @@ const MyComponent = connect(['storeName'], props => <div>{props.storeName.data}<
 The easiest way to use the `Provider` is to add it before everything else. This way all your children can potentially have access to the stores.
 
 ```javascript
-import { Provider } from 'inferno-mobx'
+import { render } from 'inferno';
+import { Provider } from 'inferno-mobx';
 
-let myStore = { whatever: 'some data'}
+let myStore = { whatever: 'some data'};
 
 
-Inferno.render(<Provider myStore={ myStore }>
+render(<Provider myStore={ myStore }>
     <Router>
         <IndexRoute component={ MyComponent } />
     </Router>
@@ -75,12 +76,14 @@ Inferno.render(<Provider myStore={ myStore }>
 You can add more than one store (it is also recommended to do so to separate your logic), each prop added to `Provider` defines a store.
 
 ```javascript
-let myStore1 = 'hello'
-let myStore2 = 'world'
+import { Component } from 'inferno';
 
-Inferno.render(<Provider myStore1={ myStore1 } myStore2={ myStore2 }>
+let myStore1 = 'hello';
+let myStore2 = 'world';
+
+render(<Provider myStore1={ myStore1 } myStore2={ myStore2 }>
     <MyComponent/>
-</Provider>, document.getElementById('root'))
+</Provider>, document.getElementById('root'));
 ```
 
 You can then access your stores using `connect`
@@ -97,10 +100,10 @@ class MyComponent extends Component {
 By making your stores reactive using `observable` from mobx, you can have your components automatically update when your stores' content changes.
 
 ```javascript
-import { observable } from 'mobx'
+import { observable } from 'mobx';
 
-let myStore1 = observable({ someKey: 'someValue' })
-let myStore2 = observable(['some', 'array'])
+let myStore1 = observable({ someKey: 'someValue' });
+let myStore2 = observable(['some', 'array']);
 ```
 
 For more information on how to use `mobx observables`,  visit [mobx](https://github.com/mobxjs/mobx)
@@ -110,9 +113,8 @@ For more information on how to use `mobx observables`,  visit [mobx](https://git
 
 ```javascript
 // MyComponent.js
-import Inferno from 'inferno'
-import Component from 'inferno-component'
-import { connect } from 'inferno-mobx'
+import { Component } from 'inferno';
+import { connect } from 'inferno-mobx';
 
 @connect(['englishStore', 'frenchStore'])
 class MyComponent extends Component {
@@ -131,20 +133,20 @@ Just make sure that you provided your stores using the `Provider`. Ex:
 
 ```javascript
 // index.js
-import Inferno from 'inferno'
-import { Provider } from 'inferno-mobx'
-import { observable } from 'mobx'
-import MyComponent from './MyComponent'
+import { render } from 'inferno';
+import { Provider } from 'inferno-mobx';
+import { observable } from 'mobx';
+import MyComponent from './MyComponent';
 
 const englishStore = observable({
     title: 'Hello World'
-})
+});
 
 const frenchStore = observable({
     title: 'Bonjour tout le monde'
-})
+});
 
-Inferno.render(<Provider englishStore={ englishStore } frenchStore={ frenchStore }>
+render(<Provider englishStore={ englishStore } frenchStore={ frenchStore }>
     <MyComponent/>
-</Provider>, document.getElementById('root'))
+</Provider>, document.getElementById('root'));
 ```

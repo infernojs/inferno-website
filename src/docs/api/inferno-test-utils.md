@@ -1,21 +1,42 @@
-# Inferno Test Utils
+# Inferno test utils
 
-Suite of utilities for testing Inferno applications. Works harmoniously with other test frameworks such as [Jest](https://facebook.github.io/jest/) and [Mocha](https://www.mochajs.org).
+> Suite of utilities for testing Inferno applications
 
-**Installation**
+## Install
 
-```sh
+```
+npm install inferno --save
 npm install inferno-test-utils --save-dev
 ```
 
-**Importing**
+## Contents
 
-```js
-var InfernoTestUtils = require('inferno-test-utils') // ES5
-import InfernoTestUtils from 'inferno-test-utils'    // ES2015
-```
+* [`findAllInRenderedTree`](#findallinrenderedtreerenderedtree-predicate)
+* [`findAllInVNodeTree`](#findallinvnodetreevnodetree-predicate)
+* [`scryRenderedDOMElementsWithClass`](#scryrendereddomelementswithclassrenderedtree-classnames)
+* [`findRenderedDOMElementWithClass`](#findrendereddomelementwithclassrenderedtree-classnames)
+* [`scryRenderedDOMElementsWithTag`](#scryrendereddomelementswithtagrenderedtree-tagname)
+* [`findRenderedDOMElementWithTag`](#findrendereddomelementwithtagrenderedtree-tagname)
+* [`scryRenderedVNodesWithType`](#scryrenderedvnodeswithtyperenderedtree-type)
+* [`findRenderedVNodeWithType`](#findrenderedvnodewithtyperenderedtree-type)
+* [`scryVNodesWithType`](#scryvnodeswithtypevnodetree-type)
+* [`findVNodeWithType`](#findvnodewithtypevnodetree-type)
+* [`isVNode`](#isvnodeinstance)
+* [`isVNodeOfType`](#isvnodeoftypeinstance-type)
+* [`isDOMVNode`](#isdomvnodeinstance)
+* [`isDOMVNodeOfType`](#isdomvnodeoftypeinstance-type)
+* [`isFunctionalVNode`](#isfunctionalvnodeinstance)
+* [`isFunctionalVNodeOfType`](#isfunctionalvnodeoftypeinstance-type)
+* [`isClassVNode`](#isclassvnodeinstance)
+* [`isClassVNodeOfType`](#isclassvnodeoftypeinstance-type)
+* [`isDOMElement`](#isdomelementinstance)
+* [`isDOMElementOfType`](#isdomelementoftypeinstance-type)
+* [`isRenderedClassComponent`](#isrenderedclasscomponentinstance)
+* [`isRenderedClassComponentOfType`](#isrenderedclasscomponentoftypeinstance-type)
 
-### `renderIntoDocument(vNodeTree)`
+## Usage
+
+### `render(vNodeTree, DOM)`
 
 Renders `vNodeTree` into a detached DOM element in the document and returns a rendered `VNode` tree.
 
@@ -27,14 +48,14 @@ const vNodeTree = (
     <SomeComponent className="inner"/>
   </div>
 );
-const renderedTree = renderIntoDocument(vNodeTree);
+const renderedTree = render(vNodeTree, DOM);
 ```
 
 ### `findAllInRenderedTree(renderedTree, predicate)`
 
 Calls `predicate` with each `VNode` instance in `renderedTree`.
 
-Returns an array of `VNode` instances where `predicate` returns `true`.
+Returns an array of `VNodes` where `predicate` returns `true`.
 
 ```js
 const vNodeTree = (
@@ -42,7 +63,7 @@ const vNodeTree = (
     <SomeComponent className="inner"/>
   </div>
 );
-const renderedTree = renderIntoDocument(vNodeTree);
+const renderedTree = render(vNodeTree, DOM);
 const predicate = (vNode) => vNode.type === SomeComponent;
 const result = findAllInRenderedTree(renderedTree, predicate);
 ```
@@ -51,7 +72,7 @@ const result = findAllInRenderedTree(renderedTree, predicate);
 
 Calls `predicate` with each `VNode` instance in `vNodeTree`.
 
-Returns an array of `VNode` instances where `predicate` returns `true`.
+Returns an array of `VNodes` where `predicate` returns `true`.
 
 ```js
 const vNodeTree = (
@@ -76,7 +97,7 @@ const vNodeTree = (
     <SomeComponent className="inner two"/>
   </div>
 );
-const renderedTree = renderIntoDocument(vNodeTree);
+const renderedTree = render(vNodeTree, DOM);
 const result1 = scryRenderedDOMElementsWithClass(renderedTree, 'inner');
 const result2 = scryRenderedDOMElementsWithClass(renderedTree, 'inner one');
 const result3 = scryRenderedDOMElementsWithClass(renderedTree, ['inner', 'two']);
@@ -85,7 +106,7 @@ const result4 = scryRenderedDOMElementsWithClass(renderedTree, 'three'); // Empt
 
 ### `findRenderedDOMElementWithClass(renderedTree, classNames)`
 
-Returns a single DOM element with `classNames`. If more than one match is found, throws an error.
+Returns a single DOM element with `classNames`. If more than one matches are found, throws an error.
 
 `classNames` can be a space-separated string or an array of strings.
 
@@ -96,11 +117,11 @@ const vNodeTree = (
     <SomeComponent className="inner two"/>
   </div>
 );
-const renderedTree = renderIntoDocument(vNodeTree);
-const result1 = findRenderedDOMElementWithClass(renderedTree, 'outer');
-const result2 = findRenderedDOMElementWithClass(renderedTree, 'inner one');
-// Will throw an error because more than 1 match is found...
-const result3 = findRenderedDOMElementWithClass(renderedTree, 'inner');
+const renderedTree = render(vNodeTree, DOM);
+const result1 = scryRenderedDOMElementsWithClass(renderedTree, 'outer');
+const result2 = scryRenderedDOMElementsWithClass(renderedTree, 'inner one');
+// Will throw an error because more than 1 matches were found...
+const result3 = scryRenderedDOMElementsWithClass(renderedTree, 'inner');
 ```
 
 ### `scryRenderedDOMElementsWithTag(renderedTree, tagName)`
@@ -116,7 +137,7 @@ const vNodeTree = (
     <p>Paragraph Three</p>
   </div>
 );
-const renderedTree = renderIntoDocument(vNodeTree);
+const renderedTree = render(vNodeTree, DOM);
 const result1 = scryRenderedDOMElementsWithTag(renderedTree, 'h1');
 const result3 = scryRenderedDOMElementsWithTag(renderedTree, 'p');
 const result4 = scryRenderedVNodesWithType(renderedTree, 'span'); // Empty array
@@ -124,7 +145,7 @@ const result4 = scryRenderedVNodesWithType(renderedTree, 'span'); // Empty array
 
 ### `findRenderedDOMElementWithTag(renderedTree, tagName)`
 
-Returns a single DOM element with `tagName`. If more than one match is found, throws an error.
+Returns a single DOM element with `tagName`. If more than one matches are found, throws an error.
 
 ```js
 const vNodeTree = (
@@ -137,15 +158,15 @@ const vNodeTree = (
     </div>
   </div>
 );
-const renderedTree = renderIntoDocument(vNodeTree);
+const renderedTree = render(vNodeTree, DOM);
 const result1 = findRenderedDOMElementWithTag(renderedTree, 'h1');
-// Will throw an error because more than 1 match is found...
+// Will throw an error because more than 1 matches were found...
 const result2 = findRenderedDOMElementWithTag(renderedTree, 'p');
 ```
 
 ### `scryRenderedVNodesWithType(renderedTree, type)`
 
-Returns an array of rendered `VNode` instances with `type`.
+Returns an array of rendered `VNodes` with `type`.
 
 ```js
 const vNodeTree = (
@@ -155,7 +176,7 @@ const vNodeTree = (
     <SomeComponent/>
   </div>
 );
-const renderedTree = renderIntoDocument(vNodeTree);
+const renderedTree = render(vNodeTree, DOM);
 const result1 = scryRenderedVNodesWithType(renderedTree, 'h1');
 const result2 = scryRenderedVNodesWithType(renderedTree, SomeComponent);
 const result3 = scryRenderedVNodesWithType(renderedTree, 'p'); // Empty array
@@ -163,7 +184,7 @@ const result3 = scryRenderedVNodesWithType(renderedTree, 'p'); // Empty array
 
 ### `findRenderedVNodeWithType(renderedTree, type)`
 
-Returns a single rendered `VNode` instance with `type`. If more than one match is found, throws an error.
+Returns a single rendered `VNode` with `type`. If more than one matches are found, throws an error.
 
 ```js
 const vNodeTree = (
@@ -176,10 +197,10 @@ const vNodeTree = (
     <AnotherComponent/>
   </div>
 );
-const renderedTree = renderIntoDocument(vNodeTree);
+const renderedTree = render(vNodeTree, DOM);
 const result1 = findRenderedVNodeWithType(renderedTree, 'h1');
 const result2 = findRenderedVNodeWithType(renderedTree, SomeComponent);
-// Will throw an error because more than 1 match is found...
+// Will throw an error because more than 1 matches were found...
 const result3 = findRenderedVNodeWithType(renderedTree, 'p');
 const result4 = findRenderedVNodeWithType(renderedTree, AnotherComponent);
 ```
@@ -203,7 +224,7 @@ const result3 = scryVNodesWithType(vNodeTree, 'p'); // Empty array
 
 ### `findVNodeWithType(vNodeTree, type)`
 
-Returns a single `VNode` instance with `type`. If more than one matches is found, throws an error.
+Returns a single `VNode` instance with `type`. If more than one matches are found, throws an error.
 
 ```js
 const vNodeTree = (
@@ -217,8 +238,6 @@ const result1 = findVNodeWithType(vNodeTree, 'h1');
 // Will throw an error because more than 1 matches were found...
 const result2 = findVNodeWithType(vNodeTree, SomeComponent);
 ```
-
-## Type Checkers
 
 ### `isVNode(instance)`
 

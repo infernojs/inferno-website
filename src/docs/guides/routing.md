@@ -1,8 +1,6 @@
-# Routing
+# Inferno Router
 
-Inferno Router is a routing library for **Inferno**
-
-Usage of `inferno-router` is similar to that of [react-router](https://reacttraining.com/react-router/web/guides/quick-start).  
+Inferno Router is a routing library for [Inferno](https://github.com/infernojs/inferno). It is a port of [react-router 4](https://reacttraining.com/react-router/).
 
 ## Install
 
@@ -12,78 +10,93 @@ npm install inferno-router
 
 ## Features
 
-* Router / RouterContext
-* Route / IndexRoute
-* Link / IndexLink
-* Redirect / IndexRedirect
-* browserHistory / memoryHistory
-* onEnter / onLeave hooks
-* params / querystring parsing
+Same as react-router v4, except react-native support which we have tested at this point.
 
-## Components Setup (client and server-side)
+See official react-router [documentation](https://reacttraining.com/react-router/native/guides/philosophy)
 
-```js
-import Inferno from 'inferno'
-import { Route, IndexRoute } from 'inferno-router'
-
-function App({ children }) {
-  // ...
-}
-
-function NoMatch({ children }) {
-  // ...
-}
-
-function Home({ children }) {
-  // ...
-}
-
-// `children` in this case will be the `User` component
-function Users({ children, params }) {
-  return <div>{ children }</div>
-}
-
-function User({ params }) {
-  return <div>{ JSON.stringify(params) }</div>
-}
-
-const routes = (
-  <Route component={ App }>
-    <IndexRoute component={ Home }/>
-    <Route path="users" component={ Users }>
-      <Route path="/user/:username" component={ User }/>
-    </Route>
-    <Route path="*" component={ NoMatch }/>
-  </Route>
-)
-
-export default routes
-```
 
 ## Usage (client-side)
 
 ```js
-import Inferno from 'inferno'
-import { Router } from 'inferno-router'
-import createBrowserHistory from 'history/createBrowserHistory'
-import routes from './routes'
+import { render } from 'inferno';
+import { BrowserRouter, Route, Link } from 'inferno-router';
 
-const browserHistory = createBrowserHistory()
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
+
+const Topic = ({ match }) => (
+  <div>
+    <h3>{match.params.topicId}</h3>
+  </div>
+);
+
+const Topics = ({ match }) => (
+  <div>
+    <h2>Topics</h2>
+    <ul>
+      <li>
+        <Link to={`${match.url}/rendering`}>
+          Rendering with React
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/components`}>
+          Components
+        </Link>
+      </li>
+      <li>
+        <Link to={`${match.url}/props-v-state`}>
+          Props v. State
+        </Link>
+      </li>
+    </ul>
+
+    <Route path={`${match.url}/:topicId`} component={Topic}/>
+    <Route exact path={match.url} render={() => (
+      <h3>Please select a topic.</h3>
+    )}/>
+  </div>
+);
+
+const MyWebsite = () => (
+  <BrowserRouter>
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+        <li><Link to="/topics">Topics</Link></li>
+      </ul>
+
+      <hr/>
+
+      <Route exact path="/" component={Home}/>
+      <Route path="/about" component={About}/>
+      <Route path="/topics" component={Topics}/>
+    </div>
+  </BrowserRouter>
+);
 
 // Render HTML on the browser
-Inferno.render(<Router history={ browserHistory }>{routes}</Router>, document.getElementById('root'))
+render(MyWebsite, document.getElementById('root'));
 ```
 
-## Server-side rendering (express)
+
+## Usage (server) with express
+
+First, let's create our component to render boilerplate HTML, header, body etc.
 
 ```js
-import Inferno from 'inferno'
-import { renderToString } from 'inferno-server'
-import { RouterContext, match } from 'inferno-router'
-import express from 'express'
-import routes from './routes'
-
-function Html({ children }) {
+// Routes will be rendered into children
+export default function Html({ children }) {
   return (
     <html>
       <head>
@@ -92,156 +105,68 @@ function Html({ children }) {
       <body>
         <div id="root">{children}</div>
       </body>
-  </html>
-  )
+    </html>
+  );
 }
+```
 
-const app = express()
+```js
+import { renderToString } from 'inferno-server';
+import { StaticRouter } from 'inferno-router';
+import express from 'express';
+import Html from './Html';
+
+const app = express();
 
 app.use((req, res) => {
-  const renderProps = match(routes, req.originalUrl)
+  const renderProps = match(routes, req.originalUrl);
+
   if (renderProps.redirect) {
     return res.redirect(renderProps.redirect)
   }
-  
-  const content = (<Html><RouterContext {...renderProps}/></Html>)
 
-  res.send('<!DOCTYPE html>\n' + renderToString(content))
-})
+  const context = {};
+  const content = renderToString(
+    <StaticRouter location={ctx.url} context={context}>
+      <Html/>
+    </StaticRouter>
+  );
+
+  res.send('<!DOCTYPE html>\n' + renderToString(content));
+});
 ```
 
-## Server-side rendering (koa v2)
+## Usage (server) with koa v2
 
 ```js
-import Inferno from 'inferno'
-import { renderToString } from 'inferno-server'
-import { RouterContext, match } from 'inferno-router'
-import Koa from 'koa'
-import routes from './routes'
+import { renderToString } from 'inferno-server';
+import { StaticRouter } from 'inferno-router';
+import Koa from 'koa';
+import Html from './Html';
 
-function Html({ children }) {
-  return (
-    <html>
-      <head>
-        <title>My Application</title>
-      </head>
-      <body>
-        <div id="root">{children}</div>
-      </body>
-  </html>
-  )
-}
+const app = new Koa();
 
-const app = new Koa()
+app.use(async(ctx, next) => {
 
-app.use(async(ctx, next) => { 
-  const renderProps = match(routes, ctx.url)
-  if (renderProps.redirect) {
-    return ctx.redirect(renderProps.redirect)
+  const context = {};
+  const content = renderToString(
+    <StaticRouter location={ctx.url} context={context}>
+      <Html/>
+    </StaticRouter>
+  );
+
+  // This will contain the URL to redirect to if <Redirect> was used
+  if (context.url) {
+    return ctx.redirect(context.url)
   }
-  
-  const content = (<Html><RouterContext {...renderProps}/></Html>)
-  
-  ctx.body = '<!DOCTYPE html>\n' + renderToString(content)
-  await next()
-})
+
+  ctx.body = '<!DOCTYPE html>\n' + content;
+  await next();
+});
 ```
 
-## onEnter / onLeave hooks
 
-In some cases, you may need to execute some logic before or after routing.
-You can easily do this by passing a `function` to the `Route` component via a prop, as shown below:
+## Differences with React-Router v4
 
-```js
-import Inferno from 'inferno'
-import { Router, IndexRoute } from 'inferno-router'
-import createBrowserHistory from 'history/createBrowserHistory'
-
-function Home({ params }) {
-  // ...
-}
-
-function authorizedOnly(props, router) {
-  if (!props.loggedIn) {
-    router.push('/login')
-  }
-}
-
-function sayGoodBye(props, router) {
-  alert('Good bye!')
-}
-
-Inferno.render((
-  <Router history={ createBrowserHistory() }>
-    <IndexRoute component={ Home } 
-                onEnter={ authorizedOnly } 
-                onLeave={ sayGoodBye } />
-  </Router>
-), container)
-```
-
-## Redirect
-
-```js
-<Router history={ createBrowserHistory() }>
-  <Redirect from="/oldpath" to="/newpath"/>
-  <Route path="/newpath" component={ MyComponent }/>
-</Router>
-```
-
-## Code Splitting with Webpack
-
-When bundling your project with Webpack, by default a large bundle of JavaScript is created that contains all the code for your entire site or application. This can be an unnecessary amount of data for the browser to fetch and parse when some of that code is only used for certain Routes. 
-
-Webpack can automatically create bundles for each route if you use the `getComponent` property of a Route instead of the `component` property, and call it using `import()`. If you are using Typescript the `require.ensure()` syntax is needed, head to [Microsoft/Typescript#14495](https://github.com/Microsoft/TypeScript/issues/14495) for more information on the issue. Refer to the [Webpack Documentation](https://webpack.js.org/guides/code-splitting-async/) for more information on Code Splitting. The example below will create separate bundles for the root, "about", and wildcard routes.
-
-```js
-import Inferno from 'inferno'
-import { Router, Route, IndexRoute } from 'inferno-router'
-import createBrowserHistory from 'history/createBrowserHistory'
-
-const Home = (props, cb) =>
-  import(/* webpackChunkName: "custom-chunk-filename" */ '/your/webpack/path/to/the/Home/component').then(component => cb(null, component.default))
-const About = (props, cb) =>
-  import('/your/webpack/path/to/the/About/component').then(component => cb(null, component.default))
-
-// Typescript syntax
-const NoMatch = (props, cb) =>
-  require.ensure([], require => cb(null, require('/your/webpack/path/to/the/NoMatch/component').default), 'custom-chunk-filename-2')
-
-const browserHistory = createBrowserHistory()
-
-Inferno.render((
-  <Router history={ browserHistory }>
-    <Route component={ App }>
-    <IndexRoute
-      getComponent={Home}
-    />
-    <Route 
-      path="/about"
-      getComponent={About}
-     />
-    <Route 
-      path="*"
-      getComponent={NoMatch}
-    />
-    </Route>
-  </Router>
-), document.getElementById('root'))
-```
-
-Your Webpack configuration's "output" rules also need to be updated so that the bundles all output to a different file, otherwise they'll all attempt to create a "bundle.js" file by default. For example:
-
-```js
-  output: {
-    filename: '[name]-[hash].js',
-    chunkFilename: '[name]-[hash].js', // pass name of module as third argument to require.ensure for naming the chunk 
-    ...
-  },
-```
-For more information on Webpack code splitting, [visit its documentation.](https://webpack.js.org/guides/code-splitting/)
-
-## Notes
-
-* `<IndexRoute>` is the same as `<Route path="/">"`
-* `<IndexLink>` is the same as `<Link to="/">`
+* No "official" react-native support.
+* There's no `inferno-router-dom`, all functionality is inside `inferno-router`

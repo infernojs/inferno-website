@@ -1,12 +1,23 @@
 # Inferno Server API
 
+## Contents
+
+* renderToString
+* RenderQueueStream
+* RenderStream
+* renderToStaticMarkup
+* renderToString
+* streamAsStaticMarkup
+* streamAsString
+* streamQueueAsStaticMarkup
+* streamQueueAsString
+
 ## `renderToString`
 
 ```jsx
-import Inferno from 'inferno';
-import InfernoServer from 'inferno-server';
+import { renderToString } from 'inferno-server';
 
-InfernoServer.renderToString(<div />);
+renderToString(<div />);
 ```
 
 Render a HTML string, given the supplied virtual DOM. This should only be used on the server to generate a HTML string to send on request for faster page loads and improved SEO performance.
@@ -14,8 +25,7 @@ Render a HTML string, given the supplied virtual DOM. This should only be used o
 If `Inferno.render()` is called on a string sent using this method, then Inferno will only attach hooks to the DOM, increasing performance on the initial render.
 
 ```jsx
-import Inferno from 'inferno';
-import InfernoServer from 'inferno-server';
+import { renderToString } from 'inferno-server';
 
 const App = function({ color = 'red', name }) {
   return (
@@ -23,20 +33,19 @@ const App = function({ color = 'red', name }) {
       Hello
       <span>{name}</span>
     </div>
-  )
+  );
 }
 
-InfernoServer.renderToString(<App color="blue" name="world">)
+renderToString(<App color="blue" name="world">);
 // "<div style="color: blue;">Hello<span>World</span></div>"
 ```
 
 ## `renderToStaticMarkup`
 
 ```jsx
-import Inferno from 'inferno';
-import InfernoServer from 'inferno-server';
+import { renderToStaticMarkup } from 'inferno-server';
 
-InfernoServer.renderToStaticMarkup(<div />);
+renderToStaticMarkup(<div />);
 ```
 
 Much like `InfernoServer.renderToString()`, `renderToStaticMarkup` will return a HTML string from a supplied virtual DOM. However, this will not attach any of the Inferno DOM attributes which are used internally by Inferno. This is useful to improve performance as it can save a number of bytes on the page request.
@@ -48,8 +57,7 @@ Inferno 1.2.1 introduced an experimental stream renderer that supports async sta
 ## `streamQueueAsString`
 
 ```jsx
-import Inferno from 'inferno';
-import InfernoServer from 'inferno-server';
+import { streamQueueAsString } from 'inferno-server';
 
 const App = function({ color = 'red', name }) {
   return (
@@ -59,7 +67,7 @@ const App = function({ color = 'red', name }) {
     </div>
   )
 }
-InfernoServer.streamQueueAsString(App).pipe(res);
+streamQueueAsString(App).pipe(res);
 ```
 
 The following is an example of stateful component providing a Promise. The renderer will queue the promise and upon being resolved, stream its output to the client. Use `getInitialProps()` to denote an async action, which receives props and context as parameters. The object returned in the promise is merged into the props of the component.

@@ -1,10 +1,10 @@
 # Installation
 
-The best way to start to use Inferno is by using [Create Inferno App](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
+The best way to start using Inferno is by [Create Inferno App](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
 
 Alternatively, you can get started with Inferno using the [Inferno Boilerplate](https://github.com/infernojs/inferno-boilerplate) for a very simple setup.
 For a more advanced example demonstrating how Inferno might be used, we recommend trying
-out [Inferno Starter Project](https://github.com/nightwolfz/inferno-starter) by [nightwolfz](https://github.com/nightwolfz/).
+out the [Inferno Starter Project](https://github.com/nightwolfz/inferno-starter) by [nightwolfz](https://github.com/nightwolfz/).
 
 Our recommended approach to installing and using Inferno is via NPM. Alternatively, you can insert Inferno into your site via `<script>` resources
 [directly from the CDN](using-cdn).

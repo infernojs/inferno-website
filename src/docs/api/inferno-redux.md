@@ -9,15 +9,15 @@ The `Provider` component allows an application to connect to a Redux store.
 **Warning:** The `store` prop on a `Provider` should not be changed dynamically and doing so is not supported in `Inferno-redux`.
 
 ```jsx
-import Inferno from 'inferno'
-import { Provider } from 'inferno-redux'
-import { createStore } from 'redux'
+import { render } from 'inferno';
+import { Provider } from 'inferno-redux';
+import { createStore } from 'redux';
 
 // Component Declarations...
 
 const store = createStore(..reducers)
 
-Inferno.render(
+render(
   <Provider store={store}>
     <App />
   </Provider>,

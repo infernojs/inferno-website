@@ -23,24 +23,24 @@ We can combine the two by making the Inferno state be the "single source of trut
 For example, if we want to make the previous example log the name when it is submitted, we can write the form as a controlled component:
 
 ```jsx
-import Component from 'inferno-component'
+import { Component } from 'inferno';
 
 class NameForm extends Component {
   constructor(props) {
     super(props)
-    this.state = {value: ''}
+    this.state = {value: ''};
 
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value})
+    this.setState({value: event.target.value});
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value)
-    event.preventDefault()
+    alert('A name was submitted: ' + this.state.value);
+    event.preventDefault();
   }
 
   render() {
@@ -52,7 +52,7 @@ class NameForm extends Component {
         </label>
         <input type="submit" value="Submit" />
       </form>
-    )
+    );
   }
 }
 ```

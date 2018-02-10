@@ -61,14 +61,13 @@ Example3: NonKeyed complex changes
 In this example nonkeyed version will patch nodes in order and lose internal states.
 
 
-## JSX Compile time flags (new in 1.0.0)
+## JSX Compile time flags
 
-JSX Plugin will by default add childrenTypes based on the nested elements and generally does this well. However, when children are built dynamically, they are marked with unknownChildrenType which means Inferno will look up the children type runtime.
-Since version 1.0.0 Inferno has added support to specify children type at the root node level. This is very useful when children are built dynamically and no other compile time information is available.
+JSX Plugin will by default add childrenTypes based on the nested elements and generally does this well. However, when children are built dynamically, they are marked with unknown ChildrenType which means Inferno will look up the children type runtime.
+You can define children type at the root node level. This is very useful when children are built dynamically and no other compile time information is available. All the special flags are prefixed with `$` -sign and written in PascalCase so are easily recognized.
 
 ```javascript
-import {render} from 'inferno'
-import Component from 'inferno-component'
+import { Component, render } from 'inferno';
 
 const root = document.getElementById('root')
 
@@ -84,7 +83,7 @@ class MyComponent extends Component {
 
   render() {
     return (
-      <div hasKeyedChildren>
+      <div $HasKeyedChildren>
         {this.buildItems()}
       </div>
     )
@@ -94,6 +93,6 @@ class MyComponent extends Component {
 render(<MyComponent />, root)
 ```
 
-In the above example MyComponent returns div which has a special attribute `hasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
-This results in better runtime performance but childrenType cannot be changed from now on. JSX specific children values are `hasKeyedChildren` and `hasNonKeyedChildren`.
+In the above example MyComponent returns div which has a special attribute `$HasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
+This results in better runtime performance. If the shape of children needs to be changed runtime then there is special property called `$ChildFlag={exoression}`. JSX specific children values are `$HasKeyedChildren`, `$HasNonKeyedChildren` and `$HasVNodeChildren`.
 When not using JSX, children properties can be defined using [inferno-vnode-flags](http://localhost:8080/docs/api/inferno-vnode-flags). See its documentation for more information.
