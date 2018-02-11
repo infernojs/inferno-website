@@ -1,0 +1,28 @@
+/* colors */
+$black: #000;
+$white: #fff;
+$g1: #333;
+$g2: #555;
+$g3: #777;
+$bg: #f8f8f8;
+$primary: #dc0030;
+$secondary: #dc0030;
+$footer: #545454;
+$grey: #e0e0e0;
+$secondGrey: #d0d0d0;
+$tertiarygrey: #eae9e9;
+$code-background: #1f2736;
+
+/* animation */
+$offset: 187;
+$duration: 1.4s;
+
+/* media queries */
+$on-small: 620px;
+$on-medium: 700px;
+$on-large: 1200px;
+
+/* grid */
+$columns: 12;
+$grid: (xs: 0px, sm: 700px, lg: 1200px);
+$gutter: 15px;

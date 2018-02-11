@@ -1,0 +1,47 @@
+$columns: 12;
+$grid: ( xs: 0px, sm: 690px, lg: 990px);
+$gutter: 2rem;
+
+%column {
+    position: relative;
+    min-height: 1px;
+    width: 100%;
+    padding: 0 $gutter;
+}
+
+@each $breakpoint in map-keys($grid) {
+    @for $i from 1 through $columns {
+        .#{$breakpoint}#{$i} {
+            @extend %column;
+        }
+    }
+}
+
+@each $breakpoint in map-keys($grid) {
+    @for $i from 1 through $columns {
+        .#{$breakpoint}#{$i} {
+            @extend %column;
+        }
+    }
+    $width: map-get($grid, $breakpoint);
+    @media (min-width:$width) {
+        .#{$breakpoint} {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        @for $i from 1 through $columns {
+            .#{$breakpoint}#{$i} {
+                flex: 0 0 percentage($i/$columns);
+                max-width: percentage($i/$columns);
+            }
+        }
+    }
+}
+
+
+/* Media-queries */
+@mixin media-query($device) {
+    @media (max-width: $device) {
+        @content;
+    }
+};

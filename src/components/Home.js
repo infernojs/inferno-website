@@ -1,7 +1,7 @@
 import {Component, createTextVNode, version} from 'inferno';
 import ContentAccordion from './common/ContentAccordion';
 import Features from './home/Features';
-import {IconInferno} from './icons/IconInferno';
+import IconInferno from './icons/IconInferno';
 import {Community} from './common/Community';
 import {Link} from 'inferno-router';
 

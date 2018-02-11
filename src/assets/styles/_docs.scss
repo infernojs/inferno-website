@@ -43,6 +43,9 @@
       padding: $gutter;
       border: 0;
     }
+    @media (min-width: $size-sm) {
+      overflow-x: auto;
+    }
     border-left: 1px solid $grey;
     padding: 1.75rem 0 1.75rem 2.25rem;
     p {
@@ -102,6 +105,7 @@
       padding: 1rem;
       border-radius: 3px;
       margin-bottom: 0.75rem;
+      overflow-x: auto;
       code {
         color: #fff;
         background: inherit;
