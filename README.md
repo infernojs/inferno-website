@@ -26,3 +26,4 @@ For production:
 
 * [Inferno](https://github.com/trueadm/inferno) - What this website is all about
 * Project structure based on [Inferno-starter](https://github.com/nightwolfz/inferno-starter)
+* Typescript project setup with ts-transform-inferno can be found [here](https://github.com/deamme/ts-transform-inferno).

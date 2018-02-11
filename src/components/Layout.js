@@ -1,12 +1,12 @@
 import Header from './common/Header';
 import Footer from './common/Footer';
 
-export default function(props) {
+export default function({match, children}) {
   return (
     <div>
-      <Header/>
+      <Header match={match} />
       <main className="container">
-        {props.children}
+        {children}
       </main>
       <Footer/>
     </div>

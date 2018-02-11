@@ -42,13 +42,13 @@ export default class Docs extends Component {
         <li className="nav-item active">
           <h4>API</h4>
           <ul className="nav">
-            <MenuLink to={'/docs/api/inferno'}>Inferno</MenuLink>
-            <MenuLink to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
-            <MenuLink to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
-            <MenuLink to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
-            <MenuLink to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
-            <MenuLink to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
-            <MenuLink to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno'}>Inferno</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
           </ul>
         </li>
       </ul>
@@ -59,32 +59,32 @@ export default class Docs extends Component {
         <li className="nav-item active">
           <h4>Guides</h4>
           <ul className="nav">
-            <MenuLink to={'/docs/guides/installation'}>Installation</MenuLink>
-            <MenuLink to={'/docs/guides/using-cdn'}>Using CDN</MenuLink>
-            <MenuLink to={'https://jsfiddle.net/wt5vL603/'}>JS Fiddle</MenuLink>
-            <MenuLink to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
-            <MenuLink to={'/docs/guides/components'}>Components</MenuLink>
-            <MenuLink to={'/docs/guides/utilities'}>Utilities</MenuLink>
-            <MenuLink to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
-            <MenuLink to={'/docs/guides/forms'}>Forms</MenuLink>
-            <MenuLink to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
-            <MenuLink to={'/docs/guides/switching-to-inferno'}>Switching to Inferno</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/installation'}>Installation</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/using-cdn'}>Using CDN</MenuLink>
+            <MenuLink match={match} to={'https://jsfiddle.net/wt5vL603/'}>JS Fiddle</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/components'}>Components</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/utilities'}>Utilities</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/forms'}>Forms</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/switching-to-inferno'}>Switching to Inferno</MenuLink>
           </ul>
         </li>
         <li className="nav-item active">
           <h4>Advanced</h4>
           <ul className="nav">
-            {/*<MenuLink to={'/docs/guides/what-is-virtual-dom'}>What is Virtual DOM?</MenuLink>*/}
-            <MenuLink to={'/docs/guides/what-is-jsx'}>What is JSX?</MenuLink>
-            <MenuLink to={'/docs/guides/alternatives-to-jsx'}>Alternatives to JSX</MenuLink>
-            <MenuLink to={'/docs/guides/devtools'}>Dev Tools</MenuLink>
-            {/*<MenuLink to={'/docs/guides/state'}>State</MenuLink>*/}
-            <MenuLink to={'/docs/guides/routing'}>Routing</MenuLink>
-            <MenuLink to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
-            {/*<MenuLink to={'/docs/guides/testing'}>Testing</MenuLink>*/}
-            <MenuLink to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
-            <MenuLink to={'/docs/guides/optimizations'}>Optimizations</MenuLink>
-            <MenuLink to={'/docs/guides/benefits/list-rendering'}>Lists & keys</MenuLink>
+            {/*<MenuLink match={match} to={'/docs/guides/what-is-virtual-dom'}>What is Virtual DOM?</MenuLink>*/}
+            <MenuLink match={match} to={'/docs/guides/what-is-jsx'}>What is JSX?</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/alternatives-to-jsx'}>Alternatives to JSX</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/devtools'}>Dev Tools</MenuLink>
+            {/*<MenuLink match={match} to={'/docs/guides/state'}>State</MenuLink>*/}
+            <MenuLink match={match} to={'/docs/guides/routing'}>Routing</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
+            {/*<MenuLink match={match} to={'/docs/guides/testing'}>Testing</MenuLink>*/}
+            <MenuLink match={match} to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/optimizations'}>Optimizations</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/benefits/list-rendering'}>Lists & keys</MenuLink>
           </ul>
         </li>
       </ul>
@@ -107,12 +107,14 @@ export default class Docs extends Component {
   }
 }
 
-const MenuLink = ({ to, children }) => {
+const MenuLink = ({ match, to, children }) => {
   if (to.indexOf('http') === 0) {
     return <li><a target="_blank" rel="noopener" href={to}>{children}</a></li>;
   }
+
+  const className = match.url === to ? "nav-item selected" : "nav-item"
   return <li>
-    <Link className="nav-item" activeClassName="selected" to={to}>
+    <Link className={className} to={to}>
       {children}
     </Link>
   </li>;
