@@ -19,8 +19,7 @@ npm install --save inferno
 
 ### Support for ES2015 components:
 
-The core Inferno package does not support ES2015 class components, only functional components, out of the box. Including
-`inferno-component` will provide full ES2015 class support.
+The core Inferno package **supports** ES2015 class components natively since version 4 out of the box. If you are still running an older version you can use class components with the now deprecated `inferno-component` package. 
 
 ```sh
 npm install --save inferno-component
