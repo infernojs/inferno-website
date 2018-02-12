@@ -1,0 +1,110 @@
+$topnav-height: 2.8rem;
+$sidebar-width: 50%;
+.menu {
+  border-bottom: 1px solid $grey;
+  padding: 7.5px;
+  // Hamburger button
+  .branding {
+    @include media-query($on-small) {
+      width: 50%;
+    }
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+    font-weight: normal;
+    color: #3d464d;
+    text-decoration: none;
+    font-size: 1.25rem;
+    margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    svg {
+      height: 42.5px;
+      margin-right: 7.5px;
+    }
+    small {
+      font-size: 0.65rem;
+      height: 10px;
+      margin-left: 4px;
+      color: #888;
+    }
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  .hamburger {
+    fill: $primary;
+    cursor: pointer;
+    z-index: 10;
+    display: none;
+    @include media-query($on-small) {
+      display: block;
+    }
+  }
+  nav {
+    text-align: right;
+    padding-right: 0px;
+    @include media-query($on-small) {
+      display: flex;
+      flex-flow: column;
+      margin-top: calc(#{$topnav-height + 0.31rem});
+      background-color: $white;
+      border-left: 1px solid $grey;
+      width: $sidebar-width;
+      height: 100%;
+      padding: 1rem 0;
+      top: 0;
+      cursor: pointer;
+      position: fixed;
+      z-index: 10;
+      transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+      box-shadow: 0 5px 8px 4px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
+      margin: 0px;
+      border: 0px;
+      &.open {
+        right: 0;
+      }
+      &.closed {
+        right: -$sidebar-width * 2;
+        transition: all 0.5s ease-in-out;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+      }
+    }
+    a,
+    a:visited {
+      -webkit-transition: all 0.2s ease-in-out;
+      -o-transition: all 0.2s ease-in-out;
+      transition: all 0.2s ease-in-out;
+      color: #454a57;
+      text-align: left;
+      line-height: 3em;
+      margin-left: 1.25em;
+      padding-bottom: 3px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+      @include media-query($on-small) {
+        line-height: 3em;
+        text-align: left;
+        margin-left: 0em;
+        padding-left: 1.25em;
+      }
+      &:hover,
+      &.selected {
+        color: $primary;
+        text-decoration: none;
+        border-bottom: 3px solid $primary;
+        @include media-query($on-small) {
+          border-bottom: 0px;
+        }
+      }
+    }
+  }
+}

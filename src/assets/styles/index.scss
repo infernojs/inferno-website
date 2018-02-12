@@ -14,18 +14,21 @@
 // Layout
 @import "spectre/layout";
 @import "spectre/navbar";
-@import "spectre/menus";
+// @import "spectre/menus";
 @import "spectre/navs";
 @import "spectre/tabs";
 
 // Utility classes
 @import "spectre/tooltips";
 @import "spectre/utilities";
+@import "utils";
+@import "variables";
 
 // Inferno specific
+@import "common";
 @import "home";
 @import "benchmarks";
-@import "header";
+@import "menu";
 @import "docs";
 @import "footer";
 @import "markdown";
