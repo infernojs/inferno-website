@@ -10,8 +10,8 @@ Functional components are pure functions that represent the "render" functions o
 ```javascript
 import { render } from 'inferno';
 
-function MyComponent ({ name, age }) => (
-  <span>My name is: { name } and my age is: {age}</span>
+const MyComponent = ({ name, age }) => (
+  <span>My name is: {name} and my age is: {age}</span>
 );
 
 // usage
@@ -22,15 +22,15 @@ render(<MyComponent name="Inferno" age={2}/>, container);
 ```js
 import { createElement } from 'inferno-create-element';
 
-function MyComponent({ name, age ) {
-  return createElement('div', null, `My name is: { name } and my age is: {age}`)
+function MyComponent({ name, age }) {
+  return createElement('div', null, `My name is: {name} and my age is: {age}`)
 }
 
 // usage
 render(createElement(MyComponent, {
-    name: 'Inferno',
-    age: 2
-}, container);
+  name: 'Inferno',
+  age: 2
+}), container);
 ```
 
 Functional components do not have state, instead they rely solely on `props` being passed into the component. Unlike React and
