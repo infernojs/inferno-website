@@ -1,11 +1,15 @@
-# Utilities
+# Community Libraries
+
+There is a growing list of native Inferno libraries available. Some of them can be found in this list.
 
 - [Incompose](#incompose)
 - [inferno-animation](#inferno-animation)
 - [inferno-bootstrap](#inferno-bootstrap)
 - [inferno-popper](#inferno-popper)
 
-## <a name="incompose"></a>Incompose
+Many React libraries can be used with Inferno by including `inferno-compat`. If you maintain an Inferno-library, please feel free to submit a pull request so it can be included in this list.
+
+## Incompose<a name="incompose" />
 [Incompose](https://github.com/zanettin/incompose) is an Inferno utility belt for functional components and higher-order components.
 Inspired by [recompose](https://github.com/acdlite/recompose) for React. Please check the [Github](https://github.com/zanettin/incompose) page for supported functions.
 
@@ -57,12 +61,12 @@ export default compose(
 )(Counter);
 ```
 
-## <a name="inferno-bootstrap"></a>inferno-bootstrap
+## inferno-bootstrap<a name="inferno-bootstrap" />
 Inferno components for Bootstrap 4. Ported from Reactstrap with some modifications.
 
-View component docs at https://jhsware.github.io/inferno-bootstrap-docs/
+View component docs [https://jhsware.github.io/inferno-bootstrap-docs/]()
 
-Repos: https://github.com/jhsware/inferno-bootstrap
+Github repos: [https://github.com/jhsware/inferno-bootstrap]()
 
 ### Installation
 ```
@@ -83,7 +87,7 @@ import { Card, CardImg, CardBody, CardLink, CardSubtitle, CardText, CardTitle, B
 </Card>
 ```
 
-## <a name="inferno-animation"></a>inferno-animation
+## inferno-animation<a name="inferno-animation" />
 Library to animate Inferno components on mount and dismount. Also supports cross-fade, where height and/or
 width animates from source size to target size.
 
@@ -98,7 +102,7 @@ Currently tested on (polyfills from https://polyfill.io):
 - IE10/IE11 on Windows 7
 - Edge on Windows 10
 
-Repos: https://github.com/jhsware/inferno-animation
+Repos: [https://github.com/jhsware/inferno-animation]()
 
 ### Installation
 ```
@@ -114,10 +118,10 @@ import { Animated } from 'inferno-animation'
 </Animated>
 ```
 
-## <a name="inferno-popper"></a>inferno-popper
+## inferno-popper<a name="inferno-popper" />
 Inferno wrapper around [PopperJS](https://github.com/FezVrasta/popper.js/) ported from [react-popper](https://github.com/souporserious/react-popper).
 
-Repos: https://github.com/jhsware/inferno-popper
+Repos: [https://github.com/jhsware/inferno-popper]()
 
 ### Installation
 ```
