@@ -1,9 +1,9 @@
 # Utilities
 
-- (Incompose)[#incompose]
-- (inferno-animation)[#inferno-animation]
-- (inferno-bootstrap)[#inferno-bootstrap]
-- (inferno-popper)[#inferno-popper]
+- [Incompose](#incompose)
+- [inferno-animation](#inferno-animation)
+- [inferno-bootstrap](#inferno-bootstrap)
+- [inferno-popper](#inferno-popper)
 
 ## <a name="incompose"></a>Incompose
 [Incompose](https://github.com/zanettin/incompose) is an Inferno utility belt for functional components and higher-order components.
