@@ -10,7 +10,7 @@
 Inspired by [recompose](https://github.com/acdlite/recompose) for React. Please check the [Github](https://github.com/zanettin/incompose) page for supported functions.
 
 #### Usage example
-```js
+```jsx
 import { Inferno, linkEvent } from 'inferno';
 import { compose, withState, shouldUpdate } from 'incompose';
 
@@ -70,7 +70,7 @@ $ npm install --save-prod inferno-bootstrap bootstrap@4
 ```
 
 ### Example
-```JavaScript
+```jsx
 import { Card, CardImg, CardBody, CardLink, CardSubtitle, CardText, CardTitle, Button } from 'inferno-bootstrap'
 
 <Card>
@@ -106,7 +106,7 @@ $ npm install --save-prod inferno-animation
 ```
 
 ### Example
-```JavaScript
+```jsx
 import { Animated } from 'inferno-animation'
 
 <Animated key={...} prefix="PageAnimation">
@@ -125,7 +125,7 @@ $ npm install --save-prod inferno-popper
 ```
 
 ### Example
-```js
+```jsx
 import { Manager, Target, Popper, Arrow } from 'inferno-popper'
 
 const PopperExample = () => (
