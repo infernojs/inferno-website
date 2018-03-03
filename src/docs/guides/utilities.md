@@ -1,6 +1,11 @@
 # Utilities
 
-## Incompose
+- (Incompose)[#incompose]
+- (inferno-animation)[#inferno-animation]
+- (inferno-bootstrap)[#inferno-bootstrap]
+- (inferno-popper)[#inferno-popper]
+
+## <a name="incompose"></a>Incompose
 [Incompose](https://github.com/zanettin/incompose) is an Inferno utility belt for functional components and higher-order components.
 Inspired by [recompose](https://github.com/acdlite/recompose) for React. Please check the [Github](https://github.com/zanettin/incompose) page for supported functions.
 
@@ -52,3 +57,90 @@ export default compose(
 )(Counter);
 ```
 
+## <a name="inferno-bootstrap"></a>inferno-bootstrap
+Inferno components for Bootstrap 4. Ported from Reactstrap with some modifications.
+
+View component docs at https://jhsware.github.io/inferno-bootstrap-docs/
+
+Repos: https://github.com/jhsware/inferno-bootstrap
+
+### Installation
+```
+$ npm install --save-prod inferno-bootstrap bootstrap@4
+```
+
+### Example
+```JavaScript
+import { Card, CardImg, CardBody, CardLink, CardSubtitle, CardText, CardTitle, Button } from 'inferno-bootstrap'
+
+<Card>
+  <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
+  <CardBody>
+    <CardTitle>Card title</CardTitle>
+    <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
+    <Button>Button</Button>
+  </CardBody>
+</Card>
+```
+
+## <a name="inferno-animation"></a>inferno-animation
+Library to animate Inferno components on mount and dismount. Also supports cross-fade, where height and/or
+width animates from source size to target size.
+
+This lib allows you to animate all css-properties including width and height using css-animations.
+Timeouts are automatically calculated based on the provided CSS rules.
+
+You can animate your components by adding the animation helpers to `componentDidMount` and `componentWillUnmoun` 
+or by wrapping your component in the `<Animated />` component.
+
+Currently tested on (polyfills from https://polyfill.io):
+- Chrome/FF/Safari (latest) on macOS 10.12 (Sierra)
+- IE10/IE11 on Windows 7
+- Edge on Windows 10
+
+Repos: https://github.com/jhsware/inferno-animation
+
+### Installation
+```
+$ npm install --save-prod inferno-animation
+```
+
+### Example
+```JavaScript
+import { Animated } from 'inferno-animation'
+
+<Animated key={...} prefix="PageAnimation">
+  <MyListItem />
+</Animated>
+```
+
+## <a name="inferno-popper"></a>inferno-popper
+Inferno wrapper around [PopperJS](https://github.com/FezVrasta/popper.js/) ported from [react-popper](https://github.com/souporserious/react-popper).
+
+Repos: https://github.com/jhsware/inferno-popper
+
+### Installation
+```
+$ npm install --save-prod inferno-popper
+```
+
+### Example
+```js
+import { Manager, Target, Popper, Arrow } from 'inferno-popper'
+
+const PopperExample = () => (
+  <Manager>
+    <Target style={{ width: 120, height: 120, background: '#b4da55' }}>
+      Target Box
+    </Target>
+    <Popper placement="left" className="popper">
+      Left Content
+      <Arrow className="popper__arrow"/>
+    </Popper>
+    <Popper placement="right" className="popper">
+      Right Content
+      <Arrow className="popper__arrow"/>
+    </Popper>
+  </Manager>
+)
+```
