@@ -64,7 +64,7 @@ export default class Docs extends Component {
             <MenuLink match={match} to={'https://jsfiddle.net/wt5vL603/'}>JS Fiddle</MenuLink>
             <MenuLink match={match} to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
             <MenuLink match={match} to={'/docs/guides/components'}>Components</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/utilities'}>Utilities</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/libraries'}>Community Libraries</MenuLink>
             <MenuLink match={match} to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
             <MenuLink match={match} to={'/docs/guides/forms'}>Forms</MenuLink>
             <MenuLink match={match} to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
@@ -112,7 +112,7 @@ const MenuLink = ({ match, to, children }) => {
     return <li><a target="_blank" rel="noopener" href={to}>{children}</a></li>;
   }
 
-  const className = match.url === to ? "nav-item selected" : "nav-item"
+  const className = match.url === to ? "nav-item selected" : "nav-item";
   return <li>
     <Link className={className} to={to}>
       {children}
