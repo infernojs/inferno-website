@@ -17,14 +17,6 @@ The core Inferno package contains almost everything you need to get going and wo
 npm install --save inferno
 ```
 
-### Support for ES2015 components:
-
-The core Inferno package **supports** ES2015 class components natively since version 4 out of the box. If you are still running an older version you can use class components with the now deprecated `inferno-component` package. 
-
-```sh
-npm install --save inferno-component
-```
-
 ### Compatibility with existing React apps
 
 Inferno can support most React apps by using a compatibility layer that sits between React and Inferno. There is a cost in performance doing
