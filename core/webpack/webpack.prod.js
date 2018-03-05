@@ -23,7 +23,7 @@ Object.assign(config, {
 
 // Production plugins for old browsers
 //------------------------------------
-config.module.loaders.forEach(loader => {
+config.module.rules.forEach(loader => {
   if (loader.loader === 'babel-loader') {
     loader.query.plugins.push(
       "transform-es2015-arrow-functions",

@@ -1,6 +1,13 @@
 # Installation
 
 The best way to start using Inferno is by [Create Inferno App](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
+Just run following command (requires npm v5.2+)
+
+```sh
+npx create-inferno-app my-app
+cd my-app
+npm start
+```
 
 Alternatively, you can get started with Inferno using the [Inferno Boilerplate](https://github.com/infernojs/inferno-boilerplate) for a very simple setup.
 For a more advanced example demonstrating how Inferno might be used, we recommend trying
