@@ -131,7 +131,7 @@ let defaultRenderers = {
     return createElement('a', {
       href: props.href,
       title: props.title,
-      target: '_blank',
+      target: (props.href.startsWith('#') ? undefined : '_blank'),
       rel: 'noopener',
       literal: props.literal
     }, props.children);
