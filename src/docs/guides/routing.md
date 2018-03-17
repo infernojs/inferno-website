@@ -21,15 +21,31 @@ See official react-router [documentation](https://reacttraining.com/react-router
 import { render } from 'inferno';
 import { BrowserRouter, Route, Switch, Link } from 'inferno-router';
 
+const Links = () => (
+  <ul>
+    <li>
+      <Link to="/">Home</Link>
+    </li>
+    <li>
+      <Link to="/about">About</Link>
+    </li>
+    <li>
+      <Link to="/topics">Topics</Link>
+    </li>
+  </ul>
+);
+
 const Home = () => (
   <div>
     <h2>Home</h2>
+    <Links />
   </div>
 );
 
 const About = () => (
   <div>
     <h2>About</h2>
+    <Links />
   </div>
 );
 
@@ -42,51 +58,41 @@ const Topic = ({ match }) => (
 const Topics = ({ match }) => (
   <div>
     <h2>Topics</h2>
+    <Links />
     <ul>
       <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
-        </Link>
+        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
       </li>
       <li>
-        <Link to={`${match.url}/components`}>
-          Components
-        </Link>
+        <Link to={`${match.url}/components`}>Components</Link>
       </li>
       <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
-        </Link>
+        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
       </li>
     </ul>
 
-    <Route path={`${match.url}/:topicId`} component={Topic}/>
-    <Route exact path={match.url} render={() => (
-      <h3>Please select a topic.</h3>
-    )}/>
+    <Route path={`${match.url}/:topicId`} component={Topic} />
+    <Route
+      exact
+      path={match.url}
+      render={() => <h3>Please select a topic.</h3>}
+    />
   </div>
 );
 
 const MyWebsite = () => (
-  <div>
-    <ul>
-      <li><Link to="/">Home</Link></li>
-      <li><Link to="/about">About</Link></li>
-      <li><Link to="/topics">Topics</Link></li>
-    </ul>
-    <hr/>  
-    <BrowserRouter>
-      <Switch>
-        <Route exact path="/" component={Home}/>
-        <Route path="/about" component={About}/>
-        <Route path="/topics" component={Topics}/>
-      <Switch>
-    </BrowserRouter>
-  </div>  
+  <BrowserRouter>
+    <Switch>
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/topics" component={Topics} />
+    </Switch>
+  </BrowserRouter>
 );
 
 // Render HTML on the browser
-render(MyWebsite, document.getElementById('root'));
+render(<MyWebsite />, document.getElementById("app"));
+
 ```
 
 
