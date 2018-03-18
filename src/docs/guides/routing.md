@@ -19,7 +19,7 @@ See official react-router [documentation](https://reacttraining.com/react-router
 
 ```js
 import { render } from 'inferno';
-import { BrowserRouter, Route, Link } from 'inferno-router';
+import { BrowserRouter, Route, Switch, Link } from 'inferno-router';
 
 const Home = () => (
   <div>
@@ -44,26 +44,22 @@ const Topics = ({ match }) => (
     <h2>Topics</h2>
     <ul>
       <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
-        </Link>
+        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
       </li>
       <li>
-        <Link to={`${match.url}/components`}>
-          Components
-        </Link>
+        <Link to={`${match.url}/components`}>Components</Link>
       </li>
       <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
-        </Link>
+        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
       </li>
     </ul>
 
-    <Route path={`${match.url}/:topicId`} component={Topic}/>
-    <Route exact path={match.url} render={() => (
-      <h3>Please select a topic.</h3>
-    )}/>
+    <Route path={`${match.url}/:topicId`} component={Topic} />
+    <Route
+      exact
+      path={match.url}
+      render={() => <h3>Please select a topic.</h3>}
+    />
   </div>
 );
 
@@ -75,18 +71,19 @@ const MyWebsite = () => (
         <li><Link to="/about">About</Link></li>
         <li><Link to="/topics">Topics</Link></li>
       </ul>
-
-      <hr/>
-
-      <Route exact path="/" component={Home}/>
-      <Route path="/about" component={About}/>
-      <Route path="/topics" component={Topics}/>
+      <hr />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />
+      </Switch>
     </div>
   </BrowserRouter>
 );
 
 // Render HTML on the browser
-render(MyWebsite, document.getElementById('root'));
+render(<MyWebsite />, document.getElementById("app"));
+
 ```
 
 
