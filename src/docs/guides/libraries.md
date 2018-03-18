@@ -9,9 +9,12 @@ There is a growing list of native Inferno libraries available. Some of them can 
 
 Many React libraries can be used with Inferno by including `inferno-compat`. If you maintain an Inferno-library, please feel free to submit a pull request so it can be included in this list.
 
-## Incompose<a name="incompose" />
+<a name="incompose"></a>
+## Incompose
 [Incompose](https://github.com/zanettin/incompose) is an Inferno utility belt for functional components and higher-order components.
-Inspired by [recompose](https://github.com/acdlite/recompose) for React. Please check the [Github](https://github.com/zanettin/incompose) page for supported functions.
+Inspired by [recompose](https://github.com/acdlite/recompose) for React. Please check the Github-repos for supported functions.
+
+Github repos: [https://github.com/zanettin/incompose](https://github.com/zanettin/incompose)
 
 #### Usage example
 ```jsx
@@ -61,12 +64,13 @@ export default compose(
 )(Counter);
 ```
 
-## inferno-bootstrap<a name="inferno-bootstrap" />
+<a name="inferno-bootstrap"></a>
+## inferno-bootstrap
 Inferno components for Bootstrap 4. Ported from Reactstrap with some modifications.
 
-View component docs [https://jhsware.github.io/inferno-bootstrap-docs/]()
+View component docs [https://jhsware.github.io/inferno-bootstrap-docs/](https://jhsware.github.io/inferno-bootstrap-docs/)
 
-Github repos: [https://github.com/jhsware/inferno-bootstrap]()
+Github repos: [https://github.com/jhsware/inferno-bootstrap](https://github.com/jhsware/inferno-bootstrap)
 
 ### Installation
 ```
@@ -87,7 +91,8 @@ import { Card, CardImg, CardBody, CardLink, CardSubtitle, CardText, CardTitle, B
 </Card>
 ```
 
-## inferno-animation<a name="inferno-animation" />
+<a name="inferno-animation"></a>
+## inferno-animation
 Library to animate Inferno components on mount and dismount. Also supports cross-fade, where height and/or
 width animates from source size to target size.
 
@@ -102,7 +107,7 @@ Currently tested on (polyfills from https://polyfill.io):
 - IE10/IE11 on Windows 7
 - Edge on Windows 10
 
-Repos: [https://github.com/jhsware/inferno-animation]()
+Repos: [https://github.com/jhsware/inferno-animation](https://github.com/jhsware/inferno-animation)
 
 ### Installation
 ```
@@ -118,10 +123,11 @@ import { Animated } from 'inferno-animation'
 </Animated>
 ```
 
-## inferno-popper<a name="inferno-popper" />
+<a name="inferno-popper"></a>
+## inferno-popper
 Inferno wrapper around [PopperJS](https://github.com/FezVrasta/popper.js/) ported from [react-popper](https://github.com/souporserious/react-popper).
 
-Repos: [https://github.com/jhsware/inferno-popper]()
+Repos: [https://github.com/jhsware/inferno-popper](https://github.com/jhsware/inferno-popper)
 
 ### Installation
 ```
