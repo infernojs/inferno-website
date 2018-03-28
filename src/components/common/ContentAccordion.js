@@ -15,7 +15,7 @@ export default class ContentAccordion extends Component {
         {
           name: 'Differences from React',
           description: [
-            "Inferno is much smaller in size, ~8kb vs 45kb gzip.",
+            "Inferno is much smaller in size, ~8kb vs ~30kb gzip.",
             "Inferno is considerably faster than React. This doesn't apply to only benchmarks, but real-world applications that companies have converted to Inferno from React.",
             "Inferno doesn't have a fully synthetic event system like React does, instead opting to only delegate certain events (such as onClick).",
             "Inferno doesn't support React Native. Inferno was only designed for the browser/server with the DOM in mind.",
