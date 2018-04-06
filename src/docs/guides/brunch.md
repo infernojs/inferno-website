@@ -93,19 +93,12 @@ module.exports = {
   npm: {
     globals: {
       Inferno: 'inferno',
-      Component: 'inferno-component',
       Promise: 'bluebird' // Added bluebird
     }
   },
   files: {
     javascripts: { joinTo: 'app.js' },
     stylesheets: { joinTo: 'app.css' }
-  },
-  plugins: {
-    babel: {
-      presets: ['es2015'],
-      plugins: ['inferno']
-    }
   },
   modules: {
     autoRequire: { 'app.js': ['initialize'] }
@@ -140,8 +133,7 @@ module.exports = {
   npm: {
     globals: {
       Inferno: 'inferno',
-      Component: 'inferno-component',
-      Promise: 'bluebird' // Added bluebird
+      Promise: 'bluebird'
     }
   },
   files: {
@@ -149,10 +141,6 @@ module.exports = {
     stylesheets: { joinTo: 'app.css' }
   },
   plugins: {
-    babel: {
-      presets: ['es2015'],
-      plugins: ['inferno']
-    },
     sass: {
       precision: 8 // Added precision for arithmetic operations
     }
