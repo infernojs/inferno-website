@@ -49,7 +49,7 @@ When defining children flags children is/are:
 - `ChildFlags.HasKeyedChildren` (JSX **$HasKeyedChildren**) is Array of vNodes keyed (no nesting, no holes)
 
 Also when children shape if pre-defined make sure that:
-- `HasKeyedChildren` and `HasNonKeyedChildren` bits are set as needed (this depends on user land implementation see [Lists & keys](http://localhost:8080/docs/guides/benefits/list-rendering) for more information)
+- `HasKeyedChildren` and `HasNonKeyedChildren` bits are set as needed (this depends on user land implementation see [Lists & keys](/docs/guides/benefits/list-rendering) for more information)
 - Children shape must always match children when shape is defined, if children shape is dynamic you can simply switch the bit on/off. Or in JSX use `$ChildFlag={expression}` to set the bit.
 - Children structure must always be single level array or single vNode
 

@@ -95,4 +95,4 @@ render(<MyComponent />, root)
 
 In the above example MyComponent returns div which has a special attribute `$HasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
 This results in better runtime performance. If the shape of children needs to be changed runtime then there is special property called `$ChildFlag={exoression}`. JSX specific children values are `$HasKeyedChildren`, `$HasNonKeyedChildren` and `$HasVNodeChildren`.
-When not using JSX, children properties can be defined using [inferno-vnode-flags](http://localhost:8080/docs/api/inferno-vnode-flags). See its documentation for more information.
+When not using JSX, children properties can be defined using [inferno-vnode-flags](/docs/api/inferno-vnode-flags). See its documentation for more information.
