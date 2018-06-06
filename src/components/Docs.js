@@ -81,6 +81,7 @@ export default class Docs extends Component {
             {/*<MenuLink match={match} to={'/docs/guides/state'}>State</MenuLink>*/}
             <MenuLink match={match} to={'/docs/guides/routing'}>Routing</MenuLink>
             <MenuLink match={match} to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/isomorphic'}>Isomorphic</MenuLink>
             {/*<MenuLink match={match} to={'/docs/guides/testing'}>Testing</MenuLink>*/}
             <MenuLink match={match} to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
             <MenuLink match={match} to={'/docs/guides/optimizations'}>Optimizations</MenuLink>
