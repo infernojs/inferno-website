@@ -115,21 +115,18 @@ import Html from './Html';
 
 const app = express();
 
-app.use((req, res) => {
-  const renderProps = match(routes, req.originalUrl);
-
-  if (renderProps.redirect) {
-    return res.redirect(renderProps.redirect)
-  }
-
-  const context = {};
+app.use((req, res, next) => {
+  let context = {};
   const content = renderToString(
-    <StaticRouter location={ctx.url} context={context}>
+    <StaticRouter location={req.url} context={context}>
       <Html/>
     </StaticRouter>
   );
-
+  if(context.url){
+    return res.redirect(context.url);
+  }
   res.send('<!DOCTYPE html>\n' + renderToString(content));
+  next();
 });
 ```
 
