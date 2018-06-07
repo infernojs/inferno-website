@@ -1,15 +1,15 @@
 # Isomorphic applications
 At the moment we are seeing a popularity of single-page applications. They're good in many ways:
- - Quick start, easy to setup.
- - Rich functionality. We can include absolutely anything there — pictures, images, we can even put video inside the bundle.
-- It is easy to improve quickly — we will not have to worry about any optimization, everything works fine.
+- Quick start
+- Rich functionality. We can include absolutely anything there — pictures, videos in bundle
+- Bundles are automatically optimized
 - Responsive UI — we have everything loaded in bundle.
-- It's all very convenient to cache. When we uploaded times some bundle, he has been always stored in the cache in the browser and next time we quickly loaded.
+- Caching and offline work
 
 However, in practice we can face a lot of problems:
 - Poor SEO
 - Bad performance when the application becomes large
-- Inevitably some bits of application logic or view logic end up duplicated between client and server, often in different languages.
+- Inevitably some bits of application logic or view logic end up duplicated between client and server, often in different languages
 ### The solution is isomorphic application
 What is Isomorphic applications?
 > By ismorphic we mean that any given line of code (with notable exceptions) can execute both on the client and server.<br>
@@ -27,7 +27,7 @@ This means that it is enough to send only the part of HTML code that is necessar
 Following tools we will use to build application:
 ### Installing dependencies
 Make new empty directory `mkdir my-app && cd my-app`.
- 1. Run `npm init -y` to create new node project.
+ 1. Run `npm init -y` to create new node project
  2. Install inferno packages `npm i -S inferno inferno-server`
  3. [Express](http://expressjs.com) — fast, flexible web server `npm i -S express`
  4. [FuseBox](https://fuse-box.org/) — blazing fast bundler/module loader `npm i -D fuse-box`
@@ -207,6 +207,6 @@ export default class App extends Component<IProps, IState> {
 ```
 Well done! Last step: add a script in **package.json**
  `"dev": "node -r ts-node/register --inspect fuse.ts dev"`
- Try it! Run `npm run dev` and go to `http://localhost:3001`
+ Try it! Run `npm run dev` and go to http://localhost:3001
  
- [More complex examples](https://github.com/guuibayer/awesome-inferno#boilerplates)
+[More complex examples](https://github.com/guuibayer/awesome-inferno#boilerplates)
