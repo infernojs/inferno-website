@@ -94,7 +94,7 @@ Sparky.task("server", () => {
          });
       });
 });
-Sparky.task("dev", ["&clean", "&config", "&client", "&server"], () => {
+Sparky.task("dev", ["clean", "config", "client", "server"], () => {
    fuse.run();
 });
 
