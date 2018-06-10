@@ -11,8 +11,8 @@ However, in practice we can face a lot of problems:
 - Bad performance when the application becomes large
 - Inevitably some bits of application logic or view logic end up duplicated between client and server, often in different languages
 ### The solution is isomorphic application
-What is Isomorphic applications?
-> By ismorphic we mean that any given line of code (with notable exceptions) can execute both on the client and server.<br>
+What is Isomorphic application?
+> By isomorphic we mean that any given line of code (with notable exceptions) can execute both on the client and server.<br>
 Charlie Robbins
 18 Oct 2011
 
@@ -90,7 +90,6 @@ Sparky.task("server", () => {
       .instructions("> [server/index.tsx]")
       .completed(proc => {
          proc.require({
-            // tslint:disable-next-line:no-shadowed-variable
             close: ({ FuseBox }) => FuseBox.import(FuseBox.mainFile).shutdown()
          });
       });
@@ -101,7 +100,7 @@ Sparky.task("dev", ["&clean", "&config", "&client", "&server"], () => {
 
 ```
 ### Project structure
- There are diffrent ways to structure your project, the easiest one is: 
+ There are different ways to structure your project, the easiest one is: 
 ```
 |-- fuse.ts
 |-- package.json
