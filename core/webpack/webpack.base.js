@@ -91,7 +91,7 @@ module.exports = {
   },
 
   resolve: {
-    mainFields: ['dev:module', 'browser', 'module', 'main'],
+    mainFields: ['module', 'browser', 'module', 'main'],
     alias: {
       'core': join(__dirname, '../')
     }
