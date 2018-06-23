@@ -159,7 +159,7 @@ const PopperExample = () => (
 <a name="inferno-context-api-store"></a>
 ## inferno-context-api-store
 
-Seemless, light weight, state management library that comes with asynchronous support out of the box. Inspired by Redux and Vuex. Built on top of [inferno-create-context](https://github.com/kurdin/create-inferno-context).
+Seemless, lightweight, state management library that comes with asynchronous support out of the box. Inspired by Redux and Vuex. Built on top of [inferno-create-context](https://github.com/kurdin/create-inferno-context).
 
 The file size is roughly 5.1kb transpiled, not minified.
 
@@ -167,7 +167,7 @@ Read the docs at https://github.com/aprilmintacpineda/inferno-context-api-store.
 
 ### Usage
 
-Usage is the same as with redux. Except I used React's new Context API in version 16.3.0. I also simplified some stuff. If you've used Redux and Vuex in the pass, everything here will be familiar to you.
+Usage is the same as with redux. Except I used React's new Context API in version 16.3.0. I also simplified store creation, action definition, and async action handing. If you've used Redux and Vuex in the past, everything here will be familiar to you.
 
 ### Install
 
