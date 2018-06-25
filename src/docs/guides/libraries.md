@@ -266,10 +266,8 @@ class Home extends Component {
 
 Todos.propTypes = {
   authUser: PropTypes.object.isRequired,
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  updateTodoDone: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
-  addTodo: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 export default connect(store => ({
