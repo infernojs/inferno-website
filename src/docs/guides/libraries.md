@@ -159,60 +159,62 @@ const PopperExample = () => (
 <a name="inferno-context-api-store"></a>
 ## inferno-context-api-store
 
-Seemless, lightweight, state management library that comes with asynchronous support out of the box. Inspired by Redux and Vuex. Built on top of [inferno-create-context](https://github.com/kurdin/create-inferno-context).
+Seemless, lightweight, state management library that supports async actions and state persisting out of the box. Inspired by Redux and Vuex. Built on top of [inferno-create-context](https://github.com/kurdin/create-inferno-context).
 
-The file size is roughly 5.1kb transpiled, not minified.
+The file size is 6.8kb transpiled. Not minified. Not compressed. Not uglified.
 
-Read the docs at https://github.com/aprilmintacpineda/inferno-context-api-store.
+- [Read the docs](https://github.com/aprilmintacpineda/inferno-context-api-store)
+- [See online demo](https://aprilmintacpineda.github.io/inferno-context-api-store/#/)
 
-### Usage
+### Guide
 
-Usage is the same as with redux. Except I used React's new Context API in version 16.3.0. I also simplified store creation, action definition, and async action handing. If you've used Redux and Vuex in the past, everything here will be familiar to you.
-
-### Install
+##### Install
 
 ```
-npm install --save
+npm install inferno-context-api-store --save
 ```
 
-### Working example
+##### The store
 
-https://aprilmintacpineda.github.io/inferno-context-api-store/#/
+The store is simply an object that contains your global states.
 
-### Example code
+```js
+export default {
+  authUser: null,
+  todos: [],
+  // other initial states that you need
+};
+```
 
-**Provider**
+##### Set up the Provider
+
+The Provider should be the top level of your app. It's the component that manages the store.
+
+- `@prop {Object} store` - the store that contains all your states.
+- **_Optional_**: `@prop {Object} persist` - if you want to persist the store.
+- `@prop {Object} persist.storage` - The storage to use to persist the states. E.g. `window.localStorage`.
+- `@prop {Function} persist.statesToPersist` - a function that will be invoked when rehydrating the store. The function will receive the `savedState` as it's only parameter. This is either an empty object, when the storage is empty, or the last store that was saved in the storage. The `Provider` will automatically update the `persisted states` every time you call the `updateStore` method on your action handlers. It should return an object of the states that you want to rehydrate.
 
 ```jsx
 import { render, Component } from 'inferno';
-import { HashRouter, Route, Link, Switch } from 'inferno-router';
 import Provider from 'inferno-context-api-store';
 
 import routes from './routes';
-
 import store from './store';
 
 class App extends Component {
   render () {
     return (
-      <Provider store={store}>
-        <HashRouter>
-          <div>
-            <ul>
-              <li>
-                <Link to="/todos">Todos</Link>
-              </li>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-            </ul>
-            <Switch>
-              {
-                routes.map((route, i) => <Route key={i} {...route} />)
-              }
-            </Switch>
-          </div>
-        </HashRouter>
+      <Provider
+        store={store}
+        persist={{
+          storage: window.localStorage,
+          statesToPersist = (states) => ({
+            // I want to persist the authUser so I need to rehydrate it.
+            authUser: { ...states.authUser }
+          })
+        }} >
+        <TheRestOfTheApp />
       </Provider>
     );
   }
@@ -224,7 +226,12 @@ render(
 );
 ```
 
-**Connect**
+##### Connecting a component to the store and adding actions to update the store's state.
+
+`connect` is an HOC that passes the state and actions to the wrapped component's props.
+
+- `@param {Function} mapStateToProps` - a function that will be invoked and will receive the store's updated states. It should return an object which will be spread out as props to the component.
+- `@param {Object} actions` - an object that contains methods which will be spread out as props to the component. When you call these actions, they will receive an object as the first parameter. This object has a method called `updateStore` which is what you will invoke in the action body when you want to update the store's state. When you invoke the `updateStore`, you should give it an object as it's only parameter, this object is the state that you want to update. It also has a property called `state` which is the store's updated state as of that moment.
 
 ```jsx
 import { Component } from 'inferno';
@@ -233,104 +240,66 @@ import { connect } from 'inferno-context-api-store';
 
 /**
  * in this example, all the action handlers are in the
- * ../store/index.js but it does matter where you store them,
- * they are just functions that when executed gains access to the
- * store.
+ * ../store/index.js but it doesn't matter where you store them.
+ * there's nothing special about them, they are just actions that you
+ * invoke when you want/need to.
  */
-import { updateTodoDone, deleteTodo, addTodo } from '../store';
+import { logout } from '../store';
 
-class Todos extends Component {
-  state = {
-    newTodoValue: ''
-  }
-
-  handleNewTodoSubmit = (e) => {
-    e.preventDefault();
-
-    return this.props.addTodo(this.state.newTodoValue, () => this.setState({
-      newTodoValue: ''
-    }));
-  }
-
-  addTodoForm = () => {
-    return (
-      <form onSubmit={this.handleNewTodoSubmit}>
-        <input
-          type="text"
-          value={this.state.newTodoValue}
-          onInput={e => this.setState({
-            newTodoValue: e.target.value
-          })}
-        />
-        <input type="submit" value="Add todo" />
-      </form>
-    );
+class Home extends Component {
+  componentDidMount () {
+    // ..some other codes
+    this.props.login(userData, userToken, serverMessage);
   }
 
   render () {
-    if (!this.props.todos.length) {
-      return (
-        <div>
-          {this.addTodoForm()}
-          <h1>Hi {this.props.userState.username}, your todo list is empty.</h1>
-        </div>
-      );
-    }
+    // This will contain the authUser, logout function, and login function.
+    console.log(this.props);
 
     return (
       <div>
-        {this.addTodoForm()}
-        <h1>Hi {this.props.userState.username}, {'here\'s your todo list'}.</h1>
-        {
-          this.props.todos.map((todo, i) =>
-            <div key={i} style={{ marginBottom: '10px' }}>
-              <span
-                style={{ cursor: 'pointer', userSelect: 'none', backgroundColor: 'red', color: 'white', marginRight: '2px', borderRadius: '2px', padding: '1px' }}
-                onClick={() => this.props.deleteTodo(todo.value, i)}>x</span>
-              <label style={{ cursor: 'pointer', userSelect: 'none' }}>
-                <input
-                  type="checkbox"
-                  checked={todo.isDone}
-                  onChange={e => this.props.updateTodoDone(e.target.checked, todo.value, i)}
-                />
-                {
-                  todo.isDone?
-                    <span style={{ color: 'red', textDecoration: 'line-through' }}>
-                      <span style={{ color: 'gray' }}>{todo.value}</span>
-                    </span>
-                  : <span>{todo.value}</span>
-                }
-              </label>
-            </div>
-          )
-        }
+        <p>Hello world!</p>
       </div>
     );
   }
 }
 
 Todos.propTypes = {
-  userState: PropTypes.object.isRequired,
-  todos: PropTypes.arrayOf(PropTypes.object).isRequired,
-  updateTodoDone: PropTypes.func.isRequired,
-  deleteTodo: PropTypes.func.isRequired,
-  addTodo: PropTypes.func.isRequired
+  authUser: PropTypes.object.isRequired,
+  logout: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired
 };
 
 export default connect(store => ({
-  userState: store.userState,
-  todos: store.todos
+  authUser: store.authUser
 }), {
-  updateTodoDone,
-  deleteTodo,
-  addTodo,
-  // you could also add something else here
-  anotherAction (store) {
+  logout,
+  /*
+   * You could even add your functions in here if you like.
+   * It will receive an object as a first parameter, and the parameters
+   * you gave it when you invoked it will be given as the second parameter, third parameter, and on
+   * depending on how many parameter you gave it.
+   */
+  login (store, userData, userToken, serverMessage) {
     /**
-     * if your action handler does not call store.updateState();
-     * nothing will happen to the state
+     * if your action handler does not call store.updateState()
+     * the state will not be updated
      */
-    console.log(store);
+    store.updateStore({
+      userAuth: { ...userData },
+      userToken,
+      serverMessage
+    });
   }
 })(Todos);
+```
+
+`mapStateToProps` and `actions` are both optional, that means if you simply want to pass in `actions` but not `states` to your component you can use `connect` like this:
+
+```js
+export default connect(null, {
+  myAction (store) {
+    // do something amazing
+  }
+})(MyComponent);
 ```
