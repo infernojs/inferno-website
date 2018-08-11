@@ -7,30 +7,34 @@ There is a growing list of native Inferno libraries available. Some of them can 
 - [inferno-bootstrap](#inferno-bootstrap)
 - [inferno-popper](#inferno-popper)
 - [inferno-context-api-store](#inferno-context-api-store)
+- [inferno-carousel](#inferno-carousel)
 
 Many React libraries can be used with Inferno by including `inferno-compat`. If you maintain an Inferno-library, please feel free to submit a pull request so it can be included in this list.
 
 <a name="incompose"></a>
+
 ## Incompose
+
 [Incompose](https://github.com/zanettin/incompose) is an Inferno utility belt for functional components and higher-order components.
 Inspired by [recompose](https://github.com/acdlite/recompose) for React. Please check the Github-repos for supported functions.
 
 Github repos: [https://github.com/zanettin/incompose](https://github.com/zanettin/incompose)
 
 #### Usage example
+
 ```jsx
-import { Inferno, linkEvent } from 'inferno';
-import { compose, withState, shouldUpdate } from 'incompose';
+import { Inferno, linkEvent } from "inferno";
+import { compose, withState, shouldUpdate } from "incompose";
 
-const inc = (props) => {
-  props.setCount(props.count += 1)
+const inc = props => {
+  props.setCount((props.count += 1));
 };
 
-const dec = (props) => {
-  props.setCount(props.count -= 1)
+const dec = props => {
+  props.setCount((props.count -= 1));
 };
 
-const Counter = (props) => (
+const Counter = props => (
   <div>
     <h1>count : {props.count}</h1>
     <button onClick={linkEvent(props, dec)}>-</button>
@@ -43,7 +47,7 @@ const Counter = (props) => (
  * props.count    -  contains the value (1 is set as default value)
  * props.setCount  -  contains the setter function
  */
-const withCounterState = withState('count', 'setCount', 1);
+const withCounterState = withState("count", "setCount", 1);
 
 /**
  * Should update lets you control the re-rendering of a component (shouldUpdate lifecycle hook).
@@ -51,9 +55,9 @@ const withCounterState = withState('count', 'setCount', 1);
  * should update or not. In this example, the counter just updates if
  * props.count is even.
  */
-const withUpdatePolicy = shouldUpdate((props, nextProps) => (
-  nextProps.count % 2 === 0
-));
+const withUpdatePolicy = shouldUpdate(
+  (props, nextProps) => nextProps.count % 2 === 0
+);
 
 /**
  * With compose all the extendend functions are composed BEFORE Counter
@@ -61,12 +65,14 @@ const withUpdatePolicy = shouldUpdate((props, nextProps) => (
  */
 export default compose(
   withCounterState,
-  withUpdatePolicy,
+  withUpdatePolicy
 )(Counter);
 ```
 
 <a name="inferno-bootstrap"></a>
+
 ## inferno-bootstrap
+
 Inferno components for Bootstrap 4. Ported from Reactstrap with some modifications.
 
 View component docs [https://jhsware.github.io/inferno-bootstrap-docs/](https://jhsware.github.io/inferno-bootstrap-docs/)
@@ -74,11 +80,13 @@ View component docs [https://jhsware.github.io/inferno-bootstrap-docs/](https://
 Github repos: [https://github.com/jhsware/inferno-bootstrap](https://github.com/jhsware/inferno-bootstrap)
 
 ### Installation
+
 ```
 $ npm install --save-prod inferno-bootstrap bootstrap@4
 ```
 
 ### Example
+
 ```jsx
 import { Card, CardImg, CardBody, CardLink, CardSubtitle, CardText, CardTitle, Button } from 'inferno-bootstrap'
 
@@ -93,7 +101,9 @@ import { Card, CardImg, CardBody, CardLink, CardSubtitle, CardText, CardTitle, B
 ```
 
 <a name="inferno-animation"></a>
+
 ## inferno-animation
+
 Library to animate Inferno components on mount and dismount. Also supports cross-fade, where height and/or
 width animates from source size to target size.
 
@@ -104,6 +114,7 @@ You can animate your components by adding the animation helpers to `componentDid
 or by wrapping your component in the `<Animated />` component.
 
 Currently tested on (polyfills from https://polyfill.io):
+
 - Chrome/FF/Safari (latest) on macOS 10.12 (Sierra)
 - IE10/IE11 on Windows 7
 - Edge on Windows 10
@@ -111,11 +122,13 @@ Currently tested on (polyfills from https://polyfill.io):
 Repos: [https://github.com/jhsware/inferno-animation](https://github.com/jhsware/inferno-animation)
 
 ### Installation
+
 ```
 $ npm install --save-prod inferno-animation
 ```
 
 ### Example
+
 ```jsx
 import { Animated } from 'inferno-animation'
 
@@ -125,38 +138,43 @@ import { Animated } from 'inferno-animation'
 ```
 
 <a name="inferno-popper"></a>
+
 ## inferno-popper
+
 Inferno wrapper around [PopperJS](https://github.com/FezVrasta/popper.js/) ported from [react-popper](https://github.com/souporserious/react-popper).
 
 Repos: [https://github.com/jhsware/inferno-popper](https://github.com/jhsware/inferno-popper)
 
 ### Installation
+
 ```
 $ npm install --save-prod inferno-popper
 ```
 
 ### Example
+
 ```jsx
-import { Manager, Target, Popper, Arrow } from 'inferno-popper'
+import { Manager, Target, Popper, Arrow } from "inferno-popper";
 
 const PopperExample = () => (
   <Manager>
-    <Target style={{ width: 120, height: 120, background: '#b4da55' }}>
+    <Target style={{ width: 120, height: 120, background: "#b4da55" }}>
       Target Box
     </Target>
     <Popper placement="left" className="popper">
       Left Content
-      <Arrow className="popper__arrow"/>
+      <Arrow className="popper__arrow" />
     </Popper>
     <Popper placement="right" className="popper">
       Right Content
-      <Arrow className="popper__arrow"/>
+      <Arrow className="popper__arrow" />
     </Popper>
   </Manager>
-)
+);
 ```
 
 <a name="inferno-context-api-store"></a>
+
 ## inferno-context-api-store
 
 Seemless, lightweight, state management library that supports async actions and state persisting out of the box. Inspired by Redux and Vuex. Built on top of [inferno-create-context](https://github.com/kurdin/create-inferno-context).
@@ -181,7 +199,7 @@ The store is simply an object that contains your global states.
 ```js
 export default {
   authUser: null,
-  todos: [],
+  todos: []
   // other initial states that you need
 };
 ```
@@ -234,9 +252,9 @@ render(
 - `@param {Object} actions` - an object that contains methods which will be spread out as props to the component. When you call these actions, they will receive an object as the first parameter. This object has a method called `updateStore` which is what you will invoke in the action body when you want to update the store's state. When you invoke the `updateStore`, you should give it an object as it's only parameter, this object is the state that you want to update. It also has a property called `state` which is the store's updated state as of that moment.
 
 ```jsx
-import { Component } from 'inferno';
-import PropTypes from 'prop-types';
-import { connect } from 'inferno-context-api-store';
+import { Component } from "inferno";
+import PropTypes from "prop-types";
+import { connect } from "inferno-context-api-store";
 
 /**
  * in this example, all the action handlers are in the
@@ -244,15 +262,15 @@ import { connect } from 'inferno-context-api-store';
  * there's nothing special about them, they are just actions that you
  * invoke when you want/need to.
  */
-import { logout } from '../store';
+import { logout } from "../store";
 
 class Home extends Component {
-  componentDidMount () {
+  componentDidMount() {
     // ..some other codes
     this.props.login(userData, userToken, serverMessage);
   }
 
-  render () {
+  render() {
     // This will contain the authUser, logout function, and login function.
     console.log(this.props);
 
@@ -270,36 +288,76 @@ Todos.propTypes = {
   login: PropTypes.func.isRequired
 };
 
-export default connect(store => ({
-  authUser: store.authUser
-}), {
-  logout,
-  /*
+export default connect(
+  store => ({
+    authUser: store.authUser
+  }),
+  {
+    logout,
+    /*
    * You could even add your functions in here if you like.
    * It will receive an object as a first parameter, and the parameters
    * you gave it when you invoked it will be given as the second parameter, third parameter, and on
    * depending on how many parameter you gave it.
    */
-  login (store, userData, userToken, serverMessage) {
-    /**
-     * if your action handler does not call store.updateState()
-     * the state will not be updated
-     */
-    store.updateStore({
-      userAuth: { ...userData },
-      userToken,
-      serverMessage
-    });
+    login(store, userData, userToken, serverMessage) {
+      /**
+       * if your action handler does not call store.updateState()
+       * the state will not be updated
+       */
+      store.updateStore({
+        userAuth: { ...userData },
+        userToken,
+        serverMessage
+      });
+    }
   }
-})(Todos);
+)(Todos);
 ```
 
 `mapStateToProps` and `actions` are both optional, that means if you simply want to pass in `actions` but not `states` to your component you can use `connect` like this:
 
 ```js
-export default connect(null, {
-  myAction (store) {
-    // do something amazing
+export default connect(
+  null,
+  {
+    myAction(store) {
+      // do something amazing
+    }
   }
-})(MyComponent);
+)(MyComponent);
 ```
+
+<a name="inferno-carousel"></a>
+
+## inferno-carousel
+
+Carousel component for infernojs.
+
+See [Demo](https://aprilmintacpineda.github.io/inferno-carousel/).
+
+## install
+
+```sh
+npm i -s inferno-carousel
+```
+
+## Usage
+
+```jsx
+import InfernoCarousel from "inferno-carousel";
+```
+
+Then:
+
+```jsx
+<InfernoCarousel>
+  <img src="path-to-image" />
+  <img src="path-to-image" />
+  <img src="path-to-image" />
+  <img src="path-to-image" />
+  <img src="path-to-image" />
+</InfernoCarousel>
+```
+
+You can also specify a `className` for the container of the carousel by providing a `className` prop to it.
