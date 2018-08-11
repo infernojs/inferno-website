@@ -336,13 +336,13 @@ Carousel component for infernojs.
 
 See [Demo](https://aprilmintacpineda.github.io/inferno-carousel/).
 
-## install
+#### install
 
 ```sh
 npm i -s inferno-carousel
 ```
 
-## Usage
+#### Usage
 
 ```jsx
 import InfernoCarousel from "inferno-carousel";
