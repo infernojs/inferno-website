@@ -203,7 +203,7 @@ class AjaxComponent extends Component {
       <ul>
         {this.state.data.map(data => (
           <li>{data.name}</li>
-        )}
+        ))}
       </ul>
     )
   }
