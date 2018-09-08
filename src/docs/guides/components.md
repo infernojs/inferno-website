@@ -162,10 +162,6 @@ components do. Below is a list of all the lifecycle events:
       <td>prior to removal from the DOM</td>
     </tr>
     <tr>
-      <td><code>componentDidUnmount</code></td>
-      <td>after removal from the DOM</td>
-    </tr>
-    <tr>
       <td><code>componentWillReceiveProps</code></td>
       <td>before new props get accepted</td>
     </tr>

@@ -181,16 +181,10 @@ Seemless, lightweight, state management library that supports async actions and 
 
 The file size is 6.8kb transpiled. Not minified. Not compressed. Not uglified.
 
-- [Read the docs](https://github.com/aprilmintacpineda/inferno-context-api-store)
 - [See online demo](https://aprilmintacpineda.github.io/inferno-context-api-store/#/)
+- [See docs at GitHub](https://github.com/aprilmintacpineda/inferno-context-api-store)
 
-### Guide
-
-##### Install
-
-```
-npm install inferno-context-api-store --save
-```
+### Usage
 
 ##### The store
 
@@ -207,11 +201,6 @@ export default {
 ##### Set up the Provider
 
 The Provider should be the top level of your app. It's the component that manages the store.
-
-- `@prop {Object} store` - the store that contains all your states.
-- **_Optional_**: `@prop {Object} persist` - if you want to persist the store.
-- `@prop {Object} persist.storage` - The storage to use to persist the states. E.g. `window.localStorage`.
-- `@prop {Function} persist.statesToPersist` - a function that will be invoked when rehydrating the store. The function will receive the `savedState` as it's only parameter. This is either an empty object, when the storage is empty, or the last store that was saved in the storage. The `Provider` will automatically update the `persisted states` every time you call the `updateStore` method on your action handlers. It should return an object of the states that you want to rehydrate.
 
 ```jsx
 import { render, Component } from 'inferno';
@@ -244,12 +233,9 @@ render(
 );
 ```
 
-##### Connecting a component to the store and adding actions to update the store's state.
+##### Connecting a component to the store and adding actions to update the store's state
 
 `connect` is an HOC that passes the state and actions to the wrapped component's props.
-
-- `@param {Function} mapStateToProps` - a function that will be invoked and will receive the store's updated states. It should return an object which will be spread out as props to the component.
-- `@param {Object} actions` - an object that contains methods which will be spread out as props to the component. When you call these actions, they will receive an object as the first parameter. This object has a method called `updateStore` which is what you will invoke in the action body when you want to update the store's state. When you invoke the `updateStore`, you should give it an object as it's only parameter, this object is the state that you want to update. It also has a property called `state` which is the store's updated state as of that moment.
 
 ```jsx
 import { Component } from "inferno";
@@ -334,13 +320,8 @@ export default connect(
 
 Carousel component for infernojs.
 
-See [Demo](https://aprilmintacpineda.github.io/inferno-carousel/).
-
-#### install
-
-```sh
-npm i -s inferno-carousel
-```
+- [See demo](https://aprilmintacpineda.github.io/inferno-carousel/).
+- [See docs at GitHub](https://github.com/aprilmintacpineda/inferno-carousel).
 
 #### Usage
 
@@ -359,5 +340,3 @@ Then:
   <img src="path-to-image" />
 </InfernoCarousel>
 ```
-
-You can also specify a `className` for the container of the carousel by providing a `className` prop to it.
