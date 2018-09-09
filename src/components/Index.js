@@ -31,7 +31,7 @@ export default function({ hostname, config, children }) {
     <link href={`${bundleURL}/build/bundle.css`} rel="stylesheet" defer/>
   </head>
   <body>
-  <div id="root">{children && children}</div>
+  <div id="root">{children}</div>
   <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer></script>
   <script src={`${bundleURL}/build/bundle.js`} async="async"/>
   </body>
