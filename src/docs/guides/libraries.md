@@ -371,13 +371,13 @@ Carousel component for InfernoJS.
 - [See demo](https://aprilmintacpineda.github.io/inferno-carousel/).
 - [See docs at GitHub](https://github.com/aprilmintacpineda/inferno-carousel).
 
-## install
+### install
 
 ```sh
 npm i -s inferno-carousel js-carousel
 ```
 
-## Usage
+### Usage
 
 On your main entry file:
 

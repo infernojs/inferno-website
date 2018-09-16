@@ -1,8 +1,3 @@
-// For IE 11
-if (process.env.NODE_ENV !== 'development' && typeof Promise === 'undefined') {
-  global.Promise = require('promise-polyfill')
-}
-
 /**
  * Here we add a few ES6 polyfills since we dont want to include whole of babel-polyfill
  */
