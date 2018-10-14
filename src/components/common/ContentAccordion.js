@@ -15,23 +15,21 @@ export default class ContentAccordion extends Component {
         {
           name: 'Differences from React',
           description: [
-            "Inferno is much smaller in size, ~8kb vs ~30kb gzip.",
-            "Inferno is considerably faster than React. This doesn't apply to only benchmarks, but real-world applications that companies have converted to Inferno from React.",
-            "Inferno doesn't have a fully synthetic event system like React does, instead opting to only delegate certain events (such as onClick).",
+            "Inferno doesn't have a fully synthetic event system like React does. Inferno has a partially synthetic event system, instead opting to only delegate certain events (such as `onClick`).",
             "Inferno doesn't support React Native. Inferno was only designed for the browser/server with the DOM in mind.",
-            "Inferno doesn't support string refs – although this can be enabled using inferno-compat. We don't recommend using them, they are the source of many memory leaks and performance issues in real-world apps.",
-            "Inferno provides lifecycle events on stateless components. This is a major win for people who prefer lightweight components rather than ES2015 classes.",
-            "Inferno is able to use the React Dev Tools extensions for Chrome/Firefox/etc to provide the same level of debugging experience to users of Inferno via `inferno-devtools`"
+            "Inferno doesn't support legecacy string refs, use `createRef` or callback `ref` API",
+            "Inferno provides lifecycle events on functional components. This is a major win for people who prefer lightweight components rather than ES2015 classes.",
+            "Inferno is able to use the React Dev Tools extensions for Chrome/Firefox/etc to provide the same level of debugging experience to the Inferno user via `inferno-devtools`.",
+            "Inferno styles are set using CSS property names [background-color: blue] rather than [backgroundColor: blue]. camelCase styles are supported through inferno-compat package."
           ]
         },
         {
           name: 'Differences from Preact',
           description: [
-            "Inferno is larger in size, ~8kb vs 3kb gzip.",
             "Inferno has a partial synthetic event system, resulting in better performance via delegation of certain events.",
             "Inferno is much faster than Preact in rendering, updating and removing elements from the DOM.",
-            "Inferno fully supports controlled components for input/select/textarea elements. This prevents lots of edgecases where the virtual DOM is not the source of truth (it should always be). Preact pushes the source of truth to the DOM itself.",
-            "Inferno provides lifecycle events on stateless components. This is a major win for people who prefer lightweight components rather than ES2015 classes.",
+            "Inferno fully supports controlled components for `input`/`select`/`textarea` elements. This prevents lots of edgecases where the virtual DOM is not the source of truth (it should always be). Preact pushes the source of truth to the DOM itself",
+            "Inferno provides lifecycle events on functional components. This is a major win for people who prefer lightweight components rather than ES2015 classes.",
           ]
         }
       ]

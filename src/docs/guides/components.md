@@ -142,42 +142,65 @@ Like functional components, ES2015 class components have lifecycle events too. T
 components do. Below is a list of all the lifecycle events:
 
 <table>
-  <thead>
-    <tr>
-      <th>Lifecycle method</th>
-      <th>When it gets called</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>componentWillMount</code></td>
-      <td>before the component gets mounted to the DOM</td>
-    </tr>
-    <tr>
-      <td><code>componentDidMount</code></td>
-      <td>after the component gets mounted to the DOM</td>
-    </tr>
-    <tr>
-      <td><code>componentWillUnmount</code></td>
-      <td>prior to removal from the DOM</td>
-    </tr>
-    <tr>
-      <td><code>componentWillReceiveProps</code></td>
-      <td>before new props get accepted</td>
-    </tr>
-    <tr>
-      <td><code>shouldComponentUpdate</code></td>
-      <td>before <code>render()</code>. Return <code>false</code> to skip render</td>
-    </tr>
-    <tr>
-      <td><code>componentWillUpdate</code></td>
-      <td>before <code>render()</code></td>
-    </tr>
-    <tr>
-      <td><code>componentDidUpdate</code></td>
-      <td>after <code>render()</code></td>
-    </tr>
-  </tbody>
+   <thead>
+      <tr>
+         <th>Name</th>
+         <th>Triggered when</th>
+         <th>Arguments to callback</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td><code>componentDidMount</code></td>
+         <td>component has been mounted succesfully</td>
+         <td></td>
+      </tr>
+      <tr>
+         <td><code>componentWillMount</code></td>
+         <td>component is about to mount</td>
+         <td></td>
+      </tr>
+      <tr>
+         <td><code>componentWillReceiveProps</code></td>
+         <td>before render when component updates</td>
+         <td><code>nextProps, context</code></td>
+      </tr>
+      <tr>
+         <td><code>shouldComponentUpdate</code></td>
+         <td>component has been triggered to update, return false to skip render</td>
+         <td><code>nextProps, nextState</code></td>
+      </tr>
+      <tr>
+         <td><code>componentWillUpdate</code></td>
+         <td>component is about to perform an update</td>
+         <td><code>nextProps, nextState, context</code></td>
+      </tr>
+      <tr>
+         <td><code>componentDidUpdate</code></td>
+         <td>component has performed an update</td>
+         <td><code>lastProps, lastState, snapshot</code></td>
+      </tr>
+      <tr>
+         <td><code>componentWillUnmount</code></td>
+         <td>component is about to be unmounted</td>
+         <td></td>
+      </tr>
+      <tr>
+         <td><code>getChildContext</code></td>
+         <td>before render method, return value object is combined to sub tree context</td>
+         <td></td>
+      </tr>
+      <tr>
+         <td><code>getSnapshotBeforeUpdate</code></td>
+         <td>before component updates, return value is sent to componentDidUpdate as 3rd parameter</td>
+         <td><code>lastProps, lastState</code></td>
+      </tr>
+      <tr>
+         <td><code>static getDerivedStateFromProps</code></td>
+         <td>before render method</td>
+         <td><code>nextProps, state</code></td>
+      </tr>
+   </tbody>
 </table>
 
 The below is an example of using the `componentDidMount` lifecycle event to request AJAX data on a component:

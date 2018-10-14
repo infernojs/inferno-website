@@ -293,12 +293,146 @@ Results into:
 Cool huh? Updates (props/context) will flow into "Outsider" component from the App component the same way as any other Component.
 For inspiration on how to use it click [here](https://hackernoon.com/using-a-react-16-portal-to-do-something-cool-2a2d627b0202)!
 
-### `hydrate` (package: `inferno`)
+
+### `createRef` (package: `inferno`)
+
+createRef API provides shorter syntax than callback ref when timing of element is not needed.
+
+```jsx
+import { Component, render, createRef } from 'inferno';
+
+class Foobar extends Component {
+  constructor(props) {
+    super(props);
+
+    // Store reference somewhere
+    this.element = createRef(); // Returns object {current: null}
+  }
+
+  render() {
+    return (
+      <div>
+        <span id="span" ref={this.element}>
+          Ok
+        </span>
+      </div>
+    );
+  }
+}
+
+render(<Foobar />, container);
+```
+
+
+### `createFragment` (package: `inferno`)
+
+createFragment is the native way to createFragment vNode. `createFragment(children: any, childFlags: ChildFlags, key?: string | number | null)`
+
+`createFragment` arguments explained:
+
+`children`: (Array) Content of fragment vNode, typically array of VNodes
+
+`childFlags`: (number) is a value from [`ChildFlags`](https://github.com/infernojs/inferno/tree/master/packages/inferno-vnode-flags), this tells inferno shape of the children so normalization process can be skipped.
+
+`key`: (string|number) unique key within this vNodes siblings to identify it during keyed algorithm.
+
+
+Alternative ways to create fragment vNode are:
+
+- Using JSX `<> ... </>`, `<Fragment> .... </Fragment>` or `<Inferno.Fragment> ... </Inferno.Fragment>`
+- Using createElement API `createElement(Inferno.Fragment, {key: 'test'}, ...children)`
+- Using hyperscript API `h(Inferno.Fragment, {key: 'test'}, children)`
+
+
+In the below example both fragments are identical except they have different key
+```jsx
+import { Fragment, render, createFragment } from 'inferno';
+import { ChildFlags } from 'inferno-vnode-flags';
+
+function Foobar() {
+    return (
+      <div $HasKeyedChildren>
+        {createFragment(
+            [<div>Ok</div>, <span>1</span>],
+            ChildFlags.HasNonKeyedChildren,
+            'key1'
+        )}
+        <Fragment key="key2">
+          <div>Ok</div>
+          <span>1</span>
+        </Fragment>
+      </div>
+    );
+}
+
+render(<Foobar />, container);
+```
+
+
+### `forwardRef` (package: `inferno`)
+
+forwardRef is a new mechanism to "forward" ref inside a functional Component.
+It can be useful if you have simple functional Components and you want to create reference to a specific element inside it.
+
+```jsx
+import { forwardRef, Component, render } from 'inferno';
+
+const FancyButton = forwardRef((props, ref) => (
+  <button ref={ref} className="FancyButton">
+    {props.children}
+  </button>
+));
+
+class Hello extends Component {
+  render() {
+    return (
+      <FancyButton
+        ref={btn => {
+          if (btn) {
+            // btn variable is the button rendered from FancyButton
+          }
+        }}
+      >
+        Click me!
+      </FancyButton>
+    );
+  }
+}
+
+render(<Hello />, container);
+```
+
+### `hydrate` (package: `inferno-hydrate`)
 
 ```javascript
-import { hydrate } from 'inferno';
+import { hydrate } from 'inferno-hydrate';
 
 hydrate(<div />, document.getElementById("app"));
 ```
 
 Same as `render()`, but is used to hydrate a container whose HTML contents were rendered by `inferno-server`. Inferno will attempt to attach event listeners to the existing markup.
+
+### `options.componentComparator` ( package `inferno`) DEV only
+
+This option can be used during **development** to create custom component comparator method.
+This option will be called on every Component update.
+It gets two parameters: lastVNode and nextVNode. When it returns `true` lastVNode will be replaced with nextVNode.
+If anything else than `true` is returned it falls to normal behavior.
+
+```javascript
+import {options} from 'inferno';
+
+options.componentComparator = function (lastVNode, nextVNode) {
+    /* custom logic */
+    return true; // Replaces lastVNode with nextVNode
+}
+```
+
+### `findDOMNode` (package: `inferno-extras`)
+This feature has been moved from inferno to inferno-compat in v6. No options are needed anymore.
+
+Note: we recommend using a `ref` callback on a component to find its instance, rather than using `findDOMNode()`. `findDOMNode()` cannot be used on functional components.
+
+If a component has been mounted into the DOM, this returns the corresponding native browser DOM element. This method is useful for reading values out of the DOM, such as form field values and performing DOM measurements.
+In most cases, you can attach a ref to the DOM node and avoid using `findDOMNode()` at all. When render returns null or false, `findDOMNode()` returns null.
+If Component has rendered fragment it returns the first element.
