@@ -3,7 +3,7 @@
  * @param state
  * @returns {Function}
  */
-export default (hostname, token) => {
+export default (hostname) => {
   return function(url, body, postForm = false) {
     const requestOptions = {
       credentials: 'include',
@@ -12,22 +12,22 @@ export default (hostname, token) => {
     if (body && postForm) {
       let formData = new FormData();
       Object.keys(body).forEach(field => {
-        formData.append(field, body[field])
+        formData.append(field, body[field]);
       });
       requestOptions.method = 'POST';
-      requestOptions.body = formData
+      requestOptions.body = formData;
     } else if (body) {
       requestOptions.method = 'POST';
       requestOptions.body = JSON.stringify(body);
       requestOptions.headers = {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
-      }
+      };
     }
 
-    return fetch(createURL(hostname, url), requestOptions).then(handleResponse)
-  }
-}
+    return fetch(createURL(hostname, url), requestOptions).then(handleResponse);
+  };
+};
 
 /**
  * Prepend host of API server
@@ -37,9 +37,9 @@ export default (hostname, token) => {
  */
 function createURL(hostname, path) {
   if (process.env.BROWSER) {
-    return '/' + path.trimLeft('/')
+    return '/' + path.trimLeft('/');
   } else {
-    return `http://${hostname}/` + path.trimLeft('/')
+    return `http://${hostname}/` + path.trimLeft('/');
   }
 }
 
@@ -53,9 +53,9 @@ function handleResponse(resp) {
   const redirect = resp.headers.get('Location');
   if (redirect) {
     if (process.env.BROWSER) {
-      window.location.replace(redirect)
+      window.location.replace(redirect);
     }
-    return Promise.reject({ redirect })
+    return Promise.reject({ redirect });
   }
 
   const contentType = resp.headers && resp.headers.get('Content-Type');
@@ -63,6 +63,6 @@ function handleResponse(resp) {
   const response = resp[isJSON ? 'json' : 'text']();
 
   return resp.ok ? response : response.then(err => {
-    throw err
-  })
+    throw err;
+  });
 }

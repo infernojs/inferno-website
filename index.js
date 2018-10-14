@@ -8,5 +8,5 @@ global.window = global.window || {};
 /**
  * Bootstrap our server
  */
-require('babel-register');
+require("@babel/register");
 require('./src/server/server');

@@ -110,7 +110,7 @@ export default class Docs extends Component {
 
 const MenuLink = ({ match, to, children }) => {
   if (to.indexOf('http') === 0) {
-    return <li><a target="_blank" rel="noopener" href={to}>{children}</a></li>;
+    return <li><a target="_blank" rel="noopener noreferrer" href={to}>{children}</a></li>;
   }
 
   const className = match.url === to ? "nav-item selected" : "nav-item";

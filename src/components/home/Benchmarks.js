@@ -91,7 +91,7 @@ export default class Benchmarks extends Component {
               {this.state.list[this.state.current].link ? (
                 <a
                   target="_blank"
-                  rel="noopener"
+                  rel="noopener noreferrer"
                   className="button not-pad lg5 sm xs10"
                   href={this.state.list[this.state.current].link}
                 >

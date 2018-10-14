@@ -9,9 +9,7 @@ export default class Home extends Component {
   render() {
     return (
       <div className="home container grid-lg">
-
-        <div className="hide-sm" style={{ marginBottom: '4rem' }}/>
-
+        <div className="hide-sm" style={{ 'margin-bottom': '4rem' }}/>
         <div className="center">
           <div className="columns hero-banner">
             <div className="column col-4 col-sm-12 col-ml-auto">
@@ -38,15 +36,15 @@ export default class Home extends Component {
           </div>
         </div>
 
-        <div className="hide-xs" style={{ marginBottom: '6rem' }}/>
-        <div className="show-xs" style={{ marginBottom: '3rem' }}/>
+        <div className="hide-xs" style={{ 'margin-bottom': '6rem' }}/>
+        <div className="show-xs" style={{ 'margin-bottom': '3rem' }}/>
 
         <section className="features">
           <Features/>
         </section>
 
-        <div className="hide-xs" style={{ marginBottom: '6rem' }}/>
-        <div className="show-xs" style={{ marginBottom: '3rem' }}/>
+        <div className="hide-xs" style={{ 'margin-bottom': '6rem' }}/>
+        <div className="show-xs" style={{ 'margin-bottom': '3rem' }}/>
 
         <section>
           <h3 className="text-center" style={{ color: '#b9b9b9', marginBottom: '2rem' }}>
@@ -55,8 +53,8 @@ export default class Home extends Component {
           <ContentAccordion/>
         </section>
 
-        <div className="hide-xs" style={{ marginBottom: '6rem' }}/>
-        <div className="show-xs" style={{ marginBottom: '3rem' }}/>
+        <div className="hide-xs" style={{ 'margin-bottom': '6rem' }}/>
+        <div className="show-xs" style={{ 'margin-bottom': '3rem' }}/>
 
         <Community/>
       </div>

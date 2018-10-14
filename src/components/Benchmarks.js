@@ -137,7 +137,7 @@ export default class Benchmarks extends Component {
               <div className="center">
                 <p>{this.state.list[this.state.current].description}</p>
                 {this.state.list[this.state.current].link ? <a target="_blank"
-                                                               rel="noopener"
+                                                               rel="noopener noreferrer"
                                                                className="button not-pad lg5 sm xs10"
                                                                href={this.state.list[this.state.current].link}>View the benchmark</a> : ''}
               </div>

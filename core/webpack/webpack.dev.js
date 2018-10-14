@@ -72,5 +72,5 @@ new WebpackDevServer(compiler, {
 }).listen(port, 'localhost', function(err) {
   if (err) return logger('webpack:error', err);
 
-  logger('webpack:compiler')('Running on port ' + port)
+  logger('webpack:compiler')('Running on port ' + port);
 });

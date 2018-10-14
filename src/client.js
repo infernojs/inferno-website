@@ -4,26 +4,22 @@ import 'isomorphic-fetch';
 import '../core/polyfills';
 import '../core/logger';
 import './assets/styles/index.scss';
-import {render} from 'inferno';
+import {hydrate} from 'inferno-hydrate';
 import createBrowserHistory from 'history/createBrowserHistory';
 import {App} from './components/App';
-
-if (module.hot) {
-  require('inferno-devtools');
-}
 
 // We render our react app into this element
 const root = document.getElementById('root');
 const history = createBrowserHistory();
 
-history.listen((location, action) => {
+history.listen((location) => {
   window.ga('send', 'pageview', location.pathname);
 });
 
 /**
  * Render our component according to our routes
  */
-render(<App history={history}/>, root);
+hydrate(<App history={history}/>, root);
 
 // cache all assets if browser supports serviceworker
 if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
@@ -41,7 +37,7 @@ if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
       console.error('ServiceWorker:', err)
   })*/
 
-  sw.ready.then(function(registration) {
+  sw.ready.then(function() {
     console.debug('Worker: ready');
   });
 }

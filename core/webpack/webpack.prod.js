@@ -7,6 +7,7 @@ const SWPrecache = require('sw-precache-webpack-plugin');
 // Merge with base configuration
 //-------------------------------
 Object.assign(config, {
+  mode: 'production',
   cache: false,
   devtool: 'source-map',
   entry: {
@@ -21,25 +22,6 @@ Object.assign(config, {
   }
 });
 
-// Production plugins for old browsers
-//------------------------------------
-config.module.rules.forEach(loader => {
-  if (loader.loader === 'babel-loader') {
-    loader.query.plugins.push(
-      "transform-es2015-arrow-functions",
-      "transform-es2015-block-scoped-functions",
-      "transform-es2015-block-scoping",
-      "transform-es2015-classes",
-      "transform-es2015-computed-properties",
-      "transform-es2015-literals",
-      "transform-es2015-parameters",
-      "transform-es2015-shorthand-properties",
-      "transform-es2015-spread",
-      "transform-es2015-template-literals"
-    );
-  }
-});
-
 logger('server:webpack')('Environment: Production');
 
 // Save files to disk
@@ -48,15 +30,6 @@ const pubDir = join(__dirname, '..', '..', 'public');
 config.output.path = join(pubDir, 'build');
 config.plugins.push(
   new webpack.optimize.OccurrenceOrderPlugin(),
-  new webpack.optimize.UglifyJsPlugin({
-    compressor: {
-      screw_ie8: true,
-      warnings: false
-    },
-    output: {
-      comments: false
-    }
-  }),
   new SWPrecache({
     cacheId: 'infernojs-site',
     staticFileGlobs: ['public/**'],

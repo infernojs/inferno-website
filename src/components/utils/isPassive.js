@@ -9,7 +9,7 @@ try {
   /* eslint-disable no-empty */
   var opts = Object.defineProperty({}, 'passive', {
     get: function() {
-      supportsPassive = true;
+      return supportsPassive = true;
     }
   });
   window.addEventListener("test", null, opts);

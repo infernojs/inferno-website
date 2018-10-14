@@ -7,7 +7,7 @@ export class LatestRelease extends Component {
 
     this.state = {
       release: null
-    }
+    };
   }
 
   componentWillMount() {
@@ -31,6 +31,6 @@ export class LatestRelease extends Component {
         <span className="release" $HasVNodeChildren>{createTextVNode(new Date(release.published_at).toLocaleString())}</span>
 
       </section>
-    )
+    );
   }
 }

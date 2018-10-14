@@ -1,6 +1,5 @@
 import {Component, version, createTextVNode} from 'inferno';
 import {Link, withRouter} from 'inferno-router';
-import classnames from 'classnames';
 import IconMenu from '../icons/IconMenu';
 import InfernoLogo from '../icons/IconInferno';
 import isPassive from '../utils/isPassive';
@@ -90,7 +89,7 @@ export default withRouter(Header);
 
 function getMenuClassName(props, url) {
   // Hacky solution to highlight the correct menu item
-  const classNames = props.className ? props.className.split(' ') : []
+  const classNames = props.className ? props.className.split(' ') : [];
 
   if (url && props.to.split('/').length > 2) {
     if (url.includes('/docs/guides') && props.to.includes('/docs/guides') ||
