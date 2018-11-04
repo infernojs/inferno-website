@@ -6,7 +6,7 @@ There is a growing list of native Inferno libraries available. Some of them can 
 - [inferno-animation](#inferno-animation)
 - [inferno-bootstrap](#inferno-bootstrap)
 - [inferno-popper](#inferno-popper)
-- [inferno-context-api-store](#inferno-context-api-store)
+- [inferno-fluxible](#inferno-fluxible)
 - [inferno-carousel](#inferno-carousel)
 
 Many React libraries can be used with Inferno by including `inferno-compat`. If you maintain an Inferno-library, please feel free to submit a pull request so it can be included in this list.
@@ -173,166 +173,228 @@ const PopperExample = () => (
 );
 ```
 
-<a name="inferno-context-api-store"></a>
+<a name="inferno-fluxible"></a>
 
-## inferno-context-api-store
+## inferno-fluxible
 
-Seemless, lightweight, state management library that supports async actions and state persisting out of the box. Inspired by Redux and Vuex. Built on top of [inferno-create-context](https://github.com/kurdin/create-inferno-context).
+A minimalist approach to state management. Smaller, faster, better. A small state management system that supports the idea of asynchronous actions and state persistence out of the box.
 
-The file size is 6.8kb transpiled. Not minified. Not compressed. Not uglified.
+- [See online demo](https://aprilmintacpineda.github.io/inferno-fluxible/)
+- [See docs at GitHub](https://github.com/aprilmintacpineda/inferno-fluxible)
+- [See guides at GitHub](https://github.com/aprilmintacpineda/inferno-fluxible#guide)
 
-- [See online demo](https://aprilmintacpineda.github.io/inferno-context-api-store/#/)
-- [See docs at GitHub](https://github.com/aprilmintacpineda/inferno-context-api-store)
+inferno-fluxible was previously `inferno-context-api-store`. Please read [migrating from inferno-context-api-store instructions](https://github.com/aprilmintacpineda/inferno-fluxible#migrating-from-inferno-context-api-store) on the [docs](https://github.com/aprilmintacpineda/inferno-fluxible).
 
-### Usage
+### Install
 
-##### The store
+`npm i -s inferno-fluxible fluxible-js redefine-statics-js`
 
-The store is simply an object that contains your global states.
+### Initialize store
+
+```jsx
+import { initializeStore } from 'fluxible-js';
+
+initializeStore({
+  initialStore: {
+    user: {
+      name: 'Test User'
+    },
+    state: 'value',
+    anotherState: {
+      count: 1
+    },
+    oneMoreState: false
+  }
+});
+
+// rest of the app.
+```
+
+instead of rendering a Provider on top of your app. What you do is before you render your app, you have to call `initializeStore` function.
+
+`initializeStore` function expects an object as the only parameter, the object have a required property called `initialStore` which would be used as the initial value of the store.
+
+There's also the optional property called `persist` which should also be an object containing two required properties:
+
+- `storage` which should be a reference to the storage that would be used to save the store. It must have `getItem` and `setItem` methods. Both methods should be synchronous. Example would be `window.localStorage`. The call to `setItem` is deferred by 200ms, this is to minimize and to improve performance.
+- `restore` which should be a function that is synchronous. Restore will be called upon initialization and will receive the `savedStore` as the its only argument. The `savedStore` would be an object containing the states that were previously saved to the storage. It should return an object which would be the states that you want to restore.
+
+Persist feature would only save keys that were returned by `config.persist.restore`. That means, other states that you did not return in that method wouldn't be saved.
+
+##### Example
 
 ```js
-export default {
-  authUser: null,
-  todos: []
-  // other initial states that you need
-};
+import { initializeStore } from 'fluxible-js';
+
+initializeStore({
+  initialStore: {
+    user: null,
+    someOtherState: 'value',
+    anotherState: {
+      value: 'value'
+    }
+  },
+  persist: {
+    storage: window.localStorage,
+    restore: savedStore => ({
+      user: savedStore.user || null
+    })
+  }
+});
 ```
 
-##### Set up the Provider
+In the case above, only `user` would be saved and the rest wouldn't be saved.
 
-The Provider should be the top level of your app. It's the component that manages the store.
-
-```jsx
-import { render, Component } from 'inferno';
-import Provider from 'inferno-context-api-store';
-
-import routes from './routes';
-import store from './store';
-
-class App extends Component {
-  render () {
-    return (
-      <Provider
-        store={store}
-        persist={{
-          storage: window.localStorage,
-          statesToPersist = (states) => ({
-            // I want to persist the authUser so I need to rehydrate it.
-            authUser: { ...states.authUser }
-          })
-        }} >
-        <TheRestOfTheApp />
-      </Provider>
-    );
-  }
-}
-
-render(
-  <App />,
-  document.querySelector('#app')
-);
-```
-
-##### Connecting a component to the store and adding actions to update the store's state
-
-`connect` is an HOC that passes the state and actions to the wrapped component's props.
+### Connect your components to the store
 
 ```jsx
-import { Component } from "inferno";
-import PropTypes from "prop-types";
-import { connect } from "inferno-context-api-store";
+import { connect } from 'inferno-fluxible';
 
-/**
- * in this example, all the action handlers are in the
- * ../store/index.js but it doesn't matter where you store them.
- * there's nothing special about them, they are just actions that you
- * invoke when you want/need to.
- */
-import { logout } from "../store";
-
-class Home extends Component {
-  componentDidMount() {
-    // ..some other codes
-    this.props.login(userData, userToken, serverMessage);
-  }
+class MyComponent extends Component {
+  handleClick = () => {
+    this.props.updateAnotherState({
+      count: this.props.anotherState.count + 1
+    });
+  };
 
   render() {
-    // This will contain the authUser, logout function, and login function.
-    console.log(this.props);
-
     return (
       <div>
-        <p>Hello world!</p>
+        <p>{this.props.user.name}</p>
+        <button onClick={this.handleClick}>Click me</button>
       </div>
     );
   }
 }
 
-Todos.propTypes = {
-  authUser: PropTypes.object.isRequired,
-  logout: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+    anotherState: state.anotherState
+  };
+}
+
+const mutations = {
+  updateAnotherState(store, anotherState) {
+    function callback() {
+      console.log('called back');
+    }
+
+    // callback is optional
+    store.updateStore({ anotherState }, callback);
+  }
 };
 
 export default connect(
-  store => ({
-    authUser: store.authUser
-  }),
-  {
-    logout,
-    /*
-   * You could even add your functions in here if you like.
-   * It will receive an object as a first parameter, and the parameters
-   * you gave it when you invoked it will be given as the second parameter, third parameter, and on
-   * depending on how many parameter you gave it.
-   */
-    login(store, userData, userToken, serverMessage) {
-      /**
-       * if your action handler does not call store.updateState()
-       * the state will not be updated
-       */
-      store.updateStore({
-        userAuth: { ...userData },
-        userToken,
-        serverMessage
-      });
-    }
-  }
-)(Todos);
-```
-
-`mapStateToProps` and `actions` are both optional, that means if you simply want to pass in `actions` but not `states` to your component you can use `connect` like this:
-
-```js
-export default connect(
-  null,
-  {
-    myAction(store) {
-      // do something amazing
-    }
-  }
+  mapStateToProps,
+  mutations
 )(MyComponent);
 ```
 
-<a name="inferno-carousel"></a>
+`mapStateToProps` should be a function that should return the state that you want to be accessible in the connected component. `mutations` should be an object that has methods in it. The methods would be the ones you can call to update a specific part of the store.
+
+Both `mapStateToProps`, `mutations` are optional. That mean you can specify `mutations` but not `mapStateToProps` like so:
+
+```jsx
+export default connect(
+  undefined,
+  mutations
+)(MyComponent);
+```
+
+Vice versa with `mapStateToProps` like so:
+
+```jsx
+export default connect(mapStateToProps)(MyComponent);
+```
+
+### Mutations
+
+When you call a mutation, you can provide arguments. Except you have to keep in mind that the first parameter that your function would receive is the object called `store`. The `store` has `getStore` and `updateStore` methods.
+
+##### `store.getStore`
+
+Method which you can call anytime to get the latest `store` at that point of call.
+
+##### `store.updateStore`
+
+Method which you can call anytime to update a specific part of the `store`. It expects an object as the first parameter, the object should contain the states that you want to update.
+
+```jsx
+const mutations = {
+  updateAnotherState(store, anotherState) {
+    store.updateStore({ anotherState });
+  }
+};
+```
+
+In the example code above, when you call `this.props.updateAnotherState`, it would only update `anotherState` key of the store, the rest would remains as they were before the update. The method also expects a function as an optional second parameter that would be called **after** the update but **before** persist (if you use persist).
+
+### getStore module
+
+The `getStore` module is a function that you can call anytime to get the latest store at that point of call.
+
+```jsx
+import { getStore } from 'fluxible-js';
+
+function notConnectedToStoreFunc() {
+  const store = getStore();
+  console.log(store);
+  // rest of the code
+}
+```
+
+### dispatch module
+
+The `dispatch` module is a function that you can use to dispatch actions outside a connected component. It expects a callback function as the first parameter, and other parameters would be passed to the callback function as succeeding arguments.
+
+```jsx
+import { dispatch } from 'inferno-fluxible';
+
+function notConnectedToStoreFunc() {
+  dispatch(
+    (store, param1, param2) => {
+      store.updateStore({
+        state: 'value'
+      });
+    },
+    'value1',
+    'value2'
+  );
+}
+```
 
 ## inferno-carousel
 
-Carousel component for infernojs.
+Carousel component for InfernoJS.
 
 - [See demo](https://aprilmintacpineda.github.io/inferno-carousel/).
 - [See docs at GitHub](https://github.com/aprilmintacpineda/inferno-carousel).
 
-#### Usage
+### install
+
+```sh
+npm i -s inferno-carousel js-carousel
+```
+
+### Usage
+
+On your main entry file:
 
 ```jsx
-import InfernoCarousel from "inferno-carousel";
+import 'js-carousel';
+```
+
+Then, whenever you want to use the component.
+
+```jsx
+import InfernoCarousel from 'inferno-carousel';
 ```
 
 Then:
 
 ```jsx
-<InfernoCarousel>
+<InfernoCarousel animationSpeed={500} itemDuration={5000}>
   <img src="path-to-image" />
   <img src="path-to-image" />
   <img src="path-to-image" />
@@ -340,3 +402,8 @@ Then:
   <img src="path-to-image" />
 </InfernoCarousel>
 ```
+
+You can also specify a `className` for the container of the carousel by providing a `className` prop to it.
+
+- `animationSpeed` is the speed (in terms of milliseconds) of the transition animation.
+- `itemDuration` is the amount of time (in terms of milliseconds) it has to wait before transitioning to the next item.
