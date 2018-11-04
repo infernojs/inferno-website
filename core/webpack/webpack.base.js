@@ -29,7 +29,17 @@ module.exports = {
                 query: {
                     babelrc: false,
                     cacheDirectory: false,
-                    presets: [],
+                    presets: [
+                      [
+                        "@babel/env",
+                        {
+                          "targets": {
+                            "browsers": [ ">0.25%", "ie >= 11"]
+                          },
+                          "loose": true
+                        }
+                      ]
+                    ],
                     plugins: [
                         [
                             "babel-plugin-inferno",

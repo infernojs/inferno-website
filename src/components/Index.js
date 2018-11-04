@@ -18,7 +18,7 @@ export default function({ hostname, config, children }) {
     <meta property="og:type" content="website"/>
     <meta property="og:title" content="Inferno"/>
     <meta property="og:description" content="An extremely fast React-like javascript library for building modern user interfaces."/>
-    <meta property="og:url" content={serverURL}/>
+    <meta property="og:url" content="https://www.infernojs.org/"/>
     <meta property="og:site_name" content="Inferno.js"/>
     <meta property="og:image" content="/assets/share.png"/>
     <meta name="twitter:card" content="summary_large_image"/>
@@ -28,11 +28,11 @@ export default function({ hostname, config, children }) {
     <meta name="twitter:image" content="/assets/share.png"/>
     <meta name="twitter:creator" content="@InfernoJS"/>
     <link rel="manifest" href="/assets/manifest.json"/>
-    <link href={`${bundleURL}/build/bundle.css`} rel="stylesheet" defer/>
+    <link href={`${bundleURL}/build/bundle.css`} rel="stylesheet"/>
   </head>
   <body>
-  <div id="root">{children}</div>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js" defer></script>
+  <div id="root" $HasVNodeChildren>{children}</div>
+  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"/>
   <script src={`${bundleURL}/build/bundle.js`} async="async"/>
   </body>
   </html>;

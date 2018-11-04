@@ -9,7 +9,7 @@ const { http } = require('../../src/server/config');
 //-------------------------------
 Object.assign(config, {
   cache: true,
-  devtool: 'source-map', // eval eval-cheap-module-source-map source-map
+  devtool: false, // eval eval-cheap-module-source-map source-map
   entry: {
     bundle: [
       `webpack-dev-server/client?http://localhost:${http.port + 2}`,

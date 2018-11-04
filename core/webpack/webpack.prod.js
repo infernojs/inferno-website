@@ -9,7 +9,7 @@ const SWPrecache = require('sw-precache-webpack-plugin');
 Object.assign(config, {
   mode: 'production',
   cache: false,
-  devtool: 'source-map',
+  devtool: false,
   entry: {
     bundle: [
       join(__dirname, '../../core/polyfills.js'),
@@ -94,15 +94,3 @@ compiler.run(function(err, stats) {
   }
   logger('webpack:compiler')('Finished compiling');
 });
-
-/**
- * Writes a stats.json for the webpack bundle visualizer
- * URL: https://chrisbateman.github.io/webpack-visualizer/
- * @param stats
- */
-function writeWebpackStats(stats) {
-  const { resolve } = require('path');
-  const location = resolve(config.output.path, 'stats.json');
-  require('fs').writeFileSync(location, JSON.stringify(stats.toJson()));
-  logger('webpack:compiler')(`Wrote stats.json to ${location}`);
-}

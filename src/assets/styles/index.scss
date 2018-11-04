@@ -1,35 +1,34 @@
 // Variables and mixins
-@import "spectre/variables";
-@import "spectre/mixins";
+@import "spectre/_variables.scss";
+@import "spectre/_mixins.scss";
 /*! Spectre.css v#{$version} | MIT License | github.com/picturepan2/spectre */
 // Reset and dependencies
-@import "spectre/normalize";
-@import "spectre/base";
+@import "spectre/_normalize.scss";
+@import "spectre/_base.scss";
 
 // Elements
-@import "spectre/typography";
-@import "spectre/tables";
-@import "spectre/buttons";
+@import "spectre/_typography.scss";
+@import "spectre/_tables.scss";
+@import "spectre/_buttons.scss";
 
 // Layout
-@import "spectre/layout";
-@import "spectre/navbar";
+@import "spectre/_layout.scss";
+@import "spectre/_navbar.scss";
 // @import "spectre/menus";
-@import "spectre/navs";
-@import "spectre/tabs";
+@import "spectre/_navs.scss";
+@import "spectre/_tabs.scss";
 
 // Utility classes
-@import "spectre/tooltips";
-@import "spectre/utilities";
-@import "utils";
-@import "variables";
+@import "spectre/_tooltips.scss";
+@import "spectre/_utilities.scss";
+@import "_utils.scss";
+@import "_variables.scss";
 
 // Inferno specific
-@import "common";
-@import "home";
-@import "benchmarks";
-@import "menu";
-@import "docs";
-@import "footer";
-@import "markdown";
-@import "spectre/repl";
+@import "_common.scss";
+@import "_home.scss";
+@import "_benchmarks.scss";
+@import "_menu.scss";
+@import "_docs.scss";
+@import "_footer.scss";
+@import "_markdown.scss";

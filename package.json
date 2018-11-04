@@ -37,7 +37,7 @@
     "clean-webpack-plugin": "^0.1.19",
     "commonmark": "^0.28.1",
     "copy-webpack-plugin": "^4.6.0",
-    "css-loader": "1.0.1",
+    "css-loader": "^1.0.1",
     "debug": "^4.1.0",
     "eslint-plugin-inferno": "7.11.0",
     "fast-async": "^7.0.6",

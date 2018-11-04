@@ -4,7 +4,7 @@
       "@babel/env",
       {
         "targets": {
-          "ie": "10"
+          "browsers": [ ">0.25%", "ie >= 11"]
         },
         "loose": true
       }
