@@ -44,7 +44,8 @@ module.exports = {
                         [
                             "babel-plugin-inferno",
                             {
-                                "imports": true
+                                "imports": true,
+                                "defineAllArguments": true
                             }
                         ],
                         "@babel/plugin-proposal-class-properties",
