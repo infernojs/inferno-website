@@ -2,6 +2,7 @@ const {join} = require('path');
 const Copy = require('copy-webpack-plugin');
 const Clean = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 
 const root = join(__dirname, '..', '..');
 const pubDir = join(root, 'public');
@@ -120,6 +121,16 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename: 'bundle.css',
             allChunks: true
-        })
+        }),
+        new OptimizeCssnanoPlugin({
+            sourceMap: false,
+            cssnanoOptions: {
+                preset: ['default', {
+                    discardComments: {
+                        removeAll: true,
+                    },
+                }],
+            },
+        }),
     ]
 };
