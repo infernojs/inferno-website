@@ -123,7 +123,8 @@ Sparky.task("dev", ["clean", "config", "client", "server"], () => {
 ```
 Let's fill **client/index.tsx** with following code:
 ```jsx
-import { Component, hydrate } from "inferno";
+import { Component } from "inferno";
+import { hydrate } from "inferno-hydrate";
 import App from "./components/App";
 const wrapper = (
       <App />
