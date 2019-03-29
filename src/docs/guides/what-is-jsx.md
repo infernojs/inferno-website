@@ -4,7 +4,7 @@ The following declaration style:
 ```javascript
 const element = <h1>Hello, Inferno!</h1>
 ```
-is called JSX, and it is a syntax extension to JavaScript. Much like React, you can using JSX with Inferno to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.
+is called JSX, and it is a syntax extension to JavaScript. Much like React, you can use JSX with Inferno to describe what the UI should look like. JSX may remind you of a template language, but it comes with the full power of JavaScript.
 
 JSX produces Inferno `VNodes`. Below, you can find the basics of JSX necessary to get you started.
 
