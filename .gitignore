@@ -5,6 +5,7 @@ build/
 data/
 uploads/
 stats.json
+dist/
 
 # Other
 INFERNOJS_SECRET
