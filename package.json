@@ -1,7 +1,7 @@
 {
   "name": "inferno-website",
   "version": "1.0.0",
-  "description": "The offical website for Inferno - a JavaScript library for creating UIs on the web",
+  "description": "The official website for Inferno - a JavaScript library for creating UIs on the web",
   "main": "webpack.config.babel.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development nodemon index.js",
