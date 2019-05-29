@@ -13,14 +13,30 @@
 For development:
 
     npm run dev
+    open http://localhost:8082
 
-For production:
+For dev prod:
 
     npm run prod
+
+## Deploying
+
+Build:
     
+    npm run build
+
+Start:
+
+    npm run start
+    open http://localhost:8050
+    
+Deploy:
+
+    now
+
 ## Requirements
 
-    Node 6+
+    Node 8+
 
 ## Useful links
 
