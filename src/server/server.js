@@ -71,12 +71,12 @@ app.use(render);
  * could also check with process.env.DEV
  */
 if (process.env.IS_NOW === undefined) {
-  console.log('NOT on NOW')
+  logger('inferno:server')('NOT on now');
   app.listen(config.http.port, function() {
     logger('inferno:start')('Listening on port ' + config.http.port);
   });
 } else {
-  console.log('IS on NOW')
+  logger('inferno:server')('IS on now');
 }
 
 export default app.callback()
