@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node dist/server/server.js",
     "dev": "cross-env NODE_ENV=development nodemon index.js",
     "prod": "cross-env NODE_ENV=production node index.js",
-    "build": "cross-env NODE_ENV=production node core/compile.js && mkdir -p dist && cp -r src/* dist && NODE_ENV=development BABEL_ENV=development npx babel src --out-dir dist",
+    "build": "cross-env NODE_ENV=production node core/compile.js && rm -fr dist && mkdir -p dist && cp -r src/* dist && NODE_ENV=development BABEL_ENV=development npx babel src --out-dir dist",
     "now-build": "npm run build",
     "lint": "eslint src"
   },
