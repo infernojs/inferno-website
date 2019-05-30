@@ -34,6 +34,11 @@ Deploy:
 
     now
 
+1. we run `npm run build`
+2. this creates the `dist` directory (_and so that we can copy things from `src`, and `public`, those sub directories_)
+3. we copy the code, and run babel on `src` => `dist/src` (_this is done also when we run `now-build` using [zeit now static build](https://zeit.co/docs/v2/deployments/official-builders/static-build-now-static-build#configuring-the-build-output-directory), configured in the [now.json](./now.json)_
+4. `dist/src/server.js` is run with node
+
 ## Requirements
 
     Node 8+
