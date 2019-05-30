@@ -7,6 +7,10 @@ import Prism from 'prismjs';
 import router from 'koa-router';
 import xssFilters from 'xss-filters';
 
+const prodDocsPath = '../../../../public/docs';
+const devDocsPath = '../../docs';
+const docsPath = process.env.NODE_ENV === 'development' ? devDocsPath : prodDocsPath;
+
 export default router()
   .get('/release', async(ctx, next) => {
     const { file } = ctx.query;
@@ -29,7 +33,7 @@ export default router()
 
 async function parseMarkDown(file) {
   return new Promise((resolve) => {
-    const location = path.join(__dirname, `../../docs/${file}.md`);
+    const location = path.join(__dirname, `${docsPath}/${file}.md`);
     fs.readFile(location, 'utf-8', async(err, data) => {
       if (err) {
         if (process.env.DEV) {
