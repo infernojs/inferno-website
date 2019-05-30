@@ -5,7 +5,6 @@ require('./core/compile');
 
 global.window = global.window || {};
 
-require('./start')
 /**
  * Bootstrap our server
  * 
