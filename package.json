@@ -87,6 +87,7 @@
     "cross-env": "5.2.0",
     "eslint": "^5.16.0",
     "nodemon": "1.19.1",
-    "webpack-dev-server": "^3"
+    "webpack-dev-server": "^3",
+    "prettier": "1.17.1"
   }
 }
