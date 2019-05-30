@@ -79,4 +79,4 @@ if (process.env.IS_NOW === undefined) {
   console.log('IS on NOW')
 }
 
-module.exports = app.callback()
+export default app.callback()
