@@ -30,7 +30,7 @@
         &:hover,
         &.selected {
           color: $primary;
-          font-weight: 600;
+          text-decoration: underline;
         }
       }
     }
