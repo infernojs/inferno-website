@@ -1,3 +1,6 @@
+/**
+ * @file @example http://localhost:8080/api/markdown?file=/guides/event-handling
+ */
 import CommonMark from 'commonmark';
 import {version} from 'inferno';
 import {createElement} from 'inferno-create-element';
@@ -7,9 +10,27 @@ import Prism from 'prismjs';
 import router from 'koa-router';
 import xssFilters from 'xss-filters';
 
-const prodDocsPath = '../../../../public/docs';
+/**
+ * @todo this issue is just here because we don't know the exact path the output on the host 
+ *       but we can fix this later, currently it lazily checks to find which path has the files
+ * @todo we could also solve this with a build script........
+ */
+const publicDocsPath = `/public/docs`;
+const upOne = '../';
+const upTwo = '../../';
+const upThree = '../../../';
+const upFour = '../../../../';
 const devDocsPath = '../../docs';
-const docsPath = process.env.NODE_ENV === 'development' ? devDocsPath : prodDocsPath;
+let foundPath
+const pathsToTry = [
+  `${upOne}`,
+  `${upTwo}`,
+  `${upThree}`,
+  `${upFour}`,
+  process.cwd(),
+]
+.map(basePath => path.join(__dirname, basePath, publicDocsPath))
+.concat(process.env.NODE_ENV === 'development' ? [path.resolve(__dirname, devDocsPath)] : []);
 
 export default router()
   .get('/release', async(ctx, next) => {
@@ -31,11 +52,42 @@ export default router()
     ctx.body = await parseMarkDown(file);
   });
 
+function findPathForFile(file) {
+  let absPathToFile;
+
+  if (!foundPath) {
+    for (let index = 0; index < pathsToTry.length; index++) {
+      const absPath = pathsToTry[index]
+      const absPathToFileAttempt = path.resolve(absPath, `./${file}.md`);
+
+      try {
+        console.debug(`[findPathForFile] checking ${absPathToFileAttempt}`);
+        if (fs.existsSync(absPathToFileAttempt)) {
+          foundPath = absPath;
+          console.debug(`[findPathForFile] FOUND at ${index}`);
+          break;
+        }
+      } catch (readExistsException) {
+        console.error({readExistsException});
+      }
+    }
+  }
+
+  absPathToFile = path.resolve(foundPath, `./${file}.md`);
+
+  return absPathToFile
+}
+
+/**
+ * @todo can use promisify...
+ */
 async function parseMarkDown(file) {
   return new Promise((resolve) => {
-    const location = path.join(__dirname, `${docsPath}/${file}.md`);
-    fs.readFile(location, 'utf-8', async(err, data) => {
+    const absPathToFile = findPathForFile(file)
+
+    fs.readFile(absPathToFile, 'utf-8', async(err, data) => {
       if (err) {
+        console.error(err)
         if (process.env.DEV) {
           console.warn(`No document found at: "/docs${file}.md"`);
           return resolve(<p>No document found at: <b>/docs{file}</b></p>);
@@ -45,7 +97,6 @@ async function parseMarkDown(file) {
 
       const parser = new CommonMark.Parser();
       const renderer = new InfernoRenderer();
-      const input = '# This is a header\n\nAnd this is a paragraph';
       data = data.replace(/\[version\]/g, version);
       const ast = parser.parse(data);
       const MarkdownResult = renderer.render(ast);
