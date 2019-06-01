@@ -13,7 +13,10 @@
 For development:
 
     npm run dev
+    # webpack
     open http://localhost:8082
+    # server
+    open http://localhost:8080
 
 For dev prod:
 
@@ -48,3 +51,9 @@ Deploy:
 * [Inferno](https://github.com/trueadm/inferno) - What this website is all about
 * Project structure based on [Inferno-starter](https://github.com/nightwolfz/inferno-starter)
 * Typescript project setup with ts-transform-inferno can be found [here](https://github.com/deamme/ts-transform-inferno).
+
+
+## TODO
+- [ ] should not transpile the server in the same way
+- [ ] can use ts + babel...
+- [ ] precompile the markdown
