@@ -7,7 +7,7 @@
     "start": "cross-env NODE_ENV=production node index.js",
     "dev": "cross-env NODE_ENV=development nodemon dev.js",
     "prod": "cross-env NODE_ENV=production node dev.js",
-    "build": "cross-env NODE_ENV=production node core/compile.js && rm -fr dist && mkdir -p dist && mkdir -p dist/src && mkdir -p dist/public && mkdir -p dist/assets && mkdir -p dist/core && cp -r public/* dist/public && cp -r core/* dist/core && NODE_ENV=development BABEL_ENV=development npx babel src --out-dir dist/src",
+    "build": "cross-env NODE_ENV=production node core/compile.js && rm -fr dist && mkdir -p dist && mkdir -p dist/src && mkdir -p dist/public && mkdir -p dist/assets && mkdir -p dist/core && cp -r public/* dist/public && cp -r src/* dist/src && cp -r core/* dist/core && NODE_ENV=development BABEL_ENV=development npx babel src --out-dir dist/src",
     "now-build": "npm run build",
     "lint": "eslint src"
   },
