@@ -1,0 +1,92 @@
+{
+    "version": 2,
+    "name": "infernojs",
+    "env": {
+      "IS_NOW": "true"
+    },
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@now/static-build",
+        "config": {
+          "maxLambdaSize": "50mb"
+        }
+      },
+      {
+        "src": "index.js",
+        "use": "@now/node",
+        "config": {
+          "maxLambdaSize": "50mb"
+        }
+      }
+    ],
+    "routes": [ 
+      {
+        "src": "/manifest.json",
+        "dest": "/public/assets/manifest.json",
+        "headers": {
+          "cache-control": "max-age=43200, s-maxage=43200"
+        }
+      },
+      {
+        "src": "/robots.txt",
+        "dest": "/public/assets/robots.txt",
+        "headers": {
+          "cache-control": "max-age=43200, s-maxage=43200"
+        }
+      },
+      {
+        "src": "/favicon.ico",
+        "dest": "/public/assets/favicon.ico",
+        "headers": {
+          "cache-control": "max-age=43200, s-maxage=43200"
+        }
+      },
+      {
+        "src": "/favicon.png",
+        "dest": "/public/assets/favicon.png",
+        "headers": {
+          "cache-control": "max-age=43200, s-maxage=43200"
+        }
+      },
+      {
+        "src": "^/service-worker.js$",
+        "dest": "/public/offline.js",
+        "headers": {
+          "cache-control": "public, max-age=43200, immutable",
+          "Service-Worker-Allowed": "/"
+        }
+      },
+
+      {
+        "src": "/assets/(.*)",
+        "dest": "/public/assets/$1",
+        "headers": {
+          "cache-control": "max-age=43200, s-maxage=43200"
+        }
+      },
+      {
+        "src": "/build/(.*)",
+        "dest": "/public/build/$1",
+        "headers": {
+          "cache-control": "max-age=43200, s-maxage=43200"
+        }
+      },
+
+      {
+        "src": "/public/(.*)",
+        "dest": "/public/$1",
+        "headers": {
+          "cache-control": "max-age=43200, s-maxage=43200"
+        }
+      },
+     
+      {
+        "src": "/(.*)",
+        "dest": "/index.js",
+        "headers": {
+          "cache-control": "max-age=43200, s-maxage=43200"
+        }
+      }
+    ]
+  }

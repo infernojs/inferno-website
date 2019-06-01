@@ -25,15 +25,15 @@ const AppRoute = ({ component: Component, ...rest }) => (
 /**
  * Routes are defined here.
  */
-//<Route path="/demo" component={ DemoInferno }/>
+// <Route path="/demo" component={ DemoInferno }/>
 export default (
-    <Switch>
-      <AppRoute path="/" component={Home} exact/>
-      <AppRoute path="/benchmarks" component={Benchmarks} exact/>
-      <AppRoute path="/docs/:path*" component={Docs}/>
-      <AppRoute path="/docs" component={Docs} exact/>
-      <AppRoute path="/about" component={About} exact/>
-      <AppRoute path="/contribute" component={Contribute} exact/>
-      <AppRoute path="*" component={NotFound}/>
-    </Switch>
+  <Switch>
+    <AppRoute path="/" component={Home} exact/>
+    <AppRoute path="/benchmarks" component={Benchmarks} exact/>
+    <AppRoute path="/docs/:path*" component={Docs}/>
+    <AppRoute path="/docs" component={Docs} exact/>
+    <AppRoute path="/about" component={About} exact/>
+    <AppRoute path="/contribute" component={Contribute} exact/>
+    <AppRoute path="*" component={NotFound}/>
+  </Switch>
 );

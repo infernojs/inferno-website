@@ -1,4 +1,4 @@
-import "regenerator-runtime/runtime";
+import 'regenerator-runtime/runtime';
 import {renderToString} from 'inferno-server';
 import {StaticRouter} from 'inferno-router';
 import config from '../config';
@@ -7,7 +7,6 @@ import routes from '../../routes';
 
 // Server-side render
 export default async(ctx, next) => {
-
   const context = {};
   const content = renderToString(
     <StaticRouter location={ctx.url} context={context}>

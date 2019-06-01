@@ -5,7 +5,7 @@ import '../core/polyfills';
 import '../core/logger';
 import './assets/styles/index.scss';
 import {hydrate} from 'inferno-hydrate';
-import createBrowserHistory from 'history/createBrowserHistory';
+import {createBrowserHistory} from 'history';
 import {App} from './components/App';
 
 // We render our react app into this element
