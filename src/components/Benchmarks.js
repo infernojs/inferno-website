@@ -21,32 +21,32 @@ export default class Benchmarks extends Component {
           data: [
             {
               label: 'Vanilla JS',
-              score: 1.03
+              score: 1.0
             },
             {
-              label: 'Inferno 4.0.6',
+              label: 'Inferno 7.1.2',
               bg: '#dc0030',
-              score: 1.05
-            },
-            {
-              label: 'Vue 2.5.3',
-              score: 1.31
+              score: 1.14
             },
             {
               label: 'Preact 8.2.6',
-              score: 1.34
+              score: 1.48
             },
             {
-              label: 'Angular 5.2.2',
-              score: 1.50
+              label: 'Vue 2.6.2',
+              score: 1.72
             },
             {
-              label: 'React 16.1.0',
-              score: 1.53
+              label: 'React 16.8.3',
+              score: 1.75
             },
             {
-              label: 'Ember 3.0.0',
-              score: 2.05
+              label: 'Angular 7.1.4',
+              score: 1.77
+            },
+            {
+              label: 'Ember 3.9.1',
+              score: 2.52
             }
           ]
         },
