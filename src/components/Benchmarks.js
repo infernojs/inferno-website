@@ -17,7 +17,7 @@ export default class Benchmarks extends Component {
           id: 'frameworks',
           name: 'JS Frameworks',
           description: 'The JS web frameworks benchmark is a simple benchmark, comparing various typical app operations for several JavaScript frameworks. The benchmarks creates a large table with randomized entries and measures the time for various operations.',
-          link: 'https://rawgit.com/krausest/js-framework-benchmark/master/webdriver-ts-results/table.html',
+          link: 'https://vdom-benchmark.github.io/vdom-benchmark/',
           data: [
             {
               label: 'Vanilla JS',
