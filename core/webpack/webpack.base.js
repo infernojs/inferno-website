@@ -1,6 +1,6 @@
 const {join} = require('path');
 const Copy = require('copy-webpack-plugin');
-const Clean = require('clean-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
 
@@ -111,7 +111,7 @@ module.exports = {
     },
 
     plugins: [
-        new Clean({
+        new CleanWebpackPlugin({
             cleanOnceBeforeBuildPatterns: ['build', 'public'],
             root: root
         }),
