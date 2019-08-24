@@ -1,26 +1,6 @@
 # Optimizations
 This section provides information about Inferno specific optimizations.
 
-## Inferno.NO_OP
-`Inferno.NO_OP` is constant string that can be used to optimise the rendering process. NO_OP tells renderer to produce the same result as the previous render.
-
-In essence NO_OP provides the same functionality as `onComponentShouldUpdate` (Functional) or `shouldComponentUpdate` (ES2015).
-The main difference is that NO_OP can be used inside the component. It makes a strong combination together with functional Component, when the functional Component itself can determine its need to update.
-
-```jsx
-import { NO_OP } from 'inferno';
-
-function StaticComponent(props) {
-  if (condition) {
-    return NO_OP
-  }
-
-  return <div>I am a Static Component<div>
-}
-```
-
-In the above example, when `condition` is true, `StaticComponent` will produce the same output as the last time.
-
 ## Normalization
 Inferno normalises all virtualNodes when created using `createElement` or `hyperscript` API ( due to their isomorphic nature )
 or when JSX plugin is not able to resolve children shape compile time. Normalization process can also be forced by setting
@@ -79,7 +59,7 @@ function StaticComponent(props) {
 
 Examples on how to use these optimizations can be found in:
 
-[DBMonster benchmark](https://github.com/infernojs/inferno/blob/master/benchmarks/dbmonster/app.js)
+[DBMonster benchmark](https://github.com/infernojs/inferno/blob/master/docs/dbmonster/app.js)
 
-[UIBench benchmark](https://github.com/infernojs/inferno/blob/master/benchmarks/uibench/app.js)
+[UIBench benchmark](https://github.com/infernojs/inferno/blob/master/docs/uibench/app.js)
 
