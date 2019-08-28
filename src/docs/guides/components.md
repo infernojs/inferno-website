@@ -20,10 +20,11 @@ render(<MyComponent name="Inferno" age={2}/>, container);
 
 *Using createElement:*
 ```js
+import { render } from 'inferno';
 import { createElement } from 'inferno-create-element';
 
 function MyComponent({ name, age }) {
-  return createElement('div', null, `My name is: {name} and my age is: {age}`)
+  return createElement('span', null, `My name is: {name} and my age is: {age}`)
 }
 
 // usage
