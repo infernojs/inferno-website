@@ -79,4 +79,4 @@ if (process.env.IS_NOW === undefined) {
   logger('inferno:server')('IS on now');
 }
 
-export default app.callback()
+export default app.callback();
