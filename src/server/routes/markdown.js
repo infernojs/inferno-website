@@ -21,7 +21,7 @@ const upTwo = '../../';
 const upThree = '../../../';
 const upFour = '../../../../';
 const devDocsPath = '../../docs';
-let foundPath
+let foundPath;
 const pathsToTry = [
   `${upOne}`,
   `${upTwo}`,
@@ -57,7 +57,7 @@ function findPathForFile(file) {
 
   if (!foundPath) {
     for (let index = 0; index < pathsToTry.length; index++) {
-      const absPath = pathsToTry[index]
+      const absPath = pathsToTry[index];
       const absPathToFileAttempt = path.resolve(absPath, `./${file}.md`);
 
       try {
@@ -75,7 +75,7 @@ function findPathForFile(file) {
 
   absPathToFile = path.resolve(foundPath, `./${file}.md`);
 
-  return absPathToFile
+  return absPathToFile;
 }
 
 /**
@@ -83,11 +83,11 @@ function findPathForFile(file) {
  */
 async function parseMarkDown(file) {
   return new Promise((resolve) => {
-    const absPathToFile = findPathForFile(file)
+    const absPathToFile = findPathForFile(file);
 
     fs.readFile(absPathToFile, 'utf-8', async(err, data) => {
       if (err) {
-        console.error(err)
+        console.error(err);
         if (process.env.DEV) {
           console.warn(`No document found at: "/docs${file}.md"`);
           return resolve(<p>No document found at: <b>/docs{file}</b></p>);
@@ -556,7 +556,7 @@ function isPlainObject(o) {
   if (isObjectObject(prot) === false) return false;
 
   // If constructor does not have an Object-specific method
-  if (prot.hasOwnProperty('isPrototypeOf') === false) {
+  if (Object.prototype.hasOwnProperty.call(prot, 'isPrototypeOf') === false) {
     return false;
   }
 
