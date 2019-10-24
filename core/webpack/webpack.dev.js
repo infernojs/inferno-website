@@ -16,8 +16,7 @@ Object.assign(config, {
       'webpack/hot/only-dev-server',
       path.join(__dirname, '../../core/polyfills.js'),
       path.join(__dirname, '../../src/client.js')
-    ],
-    react: path.join(__dirname, '../../src/components/demo/Demo.React.js')
+    ]
   },
   output: {
     publicPath: `http://localhost:${http.port + 2}/build/`,
