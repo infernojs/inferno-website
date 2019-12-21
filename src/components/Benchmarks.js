@@ -51,6 +51,64 @@ export default class Benchmarks extends Component {
           ]
         },
         {
+          id: 'marko-color-picker-node',
+          name: 'Color Picker run in Node.js',
+          description: 'This simple benchmark was created by Marko.js to compare server-side rendering performance of various frameworks.',
+          link: 'https://github.com/marko-js/isomorphic-ui-benchmarks',
+          data: [
+            {
+              label: 'Inferno 7.3.2',
+              bg: '#dc0030',
+              score: 21453
+            },
+            {
+              label: 'Marko.js 4.18.16',
+              score: 24540
+            },
+            {
+              label: 'Preact',
+              score: 4587
+            },
+            {
+              label: 'React 16.10.2',
+              score: 4300
+            },
+            {
+              label: 'Vue 2.6.10',
+              score: 9120
+            }
+          ]
+        },
+        {
+          id: 'marko-color-picker-chrome',
+          name: 'Color Picker run in Chrome',
+          description: 'This simple benchmark was created by Marko.js to compare client-side rendering performance of various frameworks.',
+          link: 'https://github.com/marko-js/isomorphic-ui-benchmarks',
+          data: [
+            {
+              label: 'Inferno 7.3.2',
+              bg: '#dc0030',
+              score: 17078
+            },
+            {
+              label: 'Marko.js 4.18.16',
+              score: 6008
+            },
+            {
+              label: 'Preact',
+              score: 6435
+            },
+            {
+              label: 'React 16.10.2',
+              score: 7358
+            },
+            {
+              label: 'Vue 2.6.10',
+              score: 4291
+            }
+          ]
+        },
+        {
           id: 'vdom',
           name: 'Virtual DOM',
           description: 'The Virtual DOM Benchmark focuses on testing the children reconciliation algorithm used in various libraries. It is used by virtual DOM library authors to help optimize their algorithms. While not a perfect gauge of overall performance, it tests a key ingredient of popular Virtual DOM libraries.',
