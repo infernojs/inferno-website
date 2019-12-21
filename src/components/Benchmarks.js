@@ -14,6 +14,64 @@ export default class Benchmarks extends Component {
       current: 0,
       list: [
         {
+          id: 'marko-color-picker-chrome',
+          name: 'Color Picker (Chrome)',
+          description: 'This simple benchmark was created by Marko.js to compare client-side rendering performance of various frameworks – numbers show ops/sec, higher is better.',
+          link: 'https://github.com/marko-js/isomorphic-ui-benchmarks',
+          data: [
+            {
+              label: 'Inferno 7.3.2',
+              bg: '#dc0030',
+              score: 17078
+            },
+            {
+              label: 'Marko.js 4.18.16',
+              score: 6008
+            },
+            {
+              label: 'Preact 10.0.1',
+              score: 6435
+            },
+            {
+              label: 'React 16.10.2',
+              score: 7358
+            },
+            {
+              label: 'Vue 2.6.10',
+              score: 4291
+            }
+          ]
+        },
+        {
+          id: 'marko-color-picker-node',
+          name: 'Color Picker (Server)',
+          description: 'This simple benchmark was created by Marko.js to compare server-side rendering performance of various frameworks – numbers show ops/sec, higher is better.',
+          link: 'https://github.com/marko-js/isomorphic-ui-benchmarks',
+          data: [
+            {
+              label: 'Inferno 7.3.2',
+              bg: '#dc0030',
+              score: 21453
+            },
+            {
+              label: 'Marko.js 4.18.16',
+              score: 24540
+            },
+            {
+              label: 'Preact 10.0.1',
+              score: 4587
+            },
+            {
+              label: 'React 16.10.2',
+              score: 4300
+            },
+            {
+              label: 'Vue 2.6.10',
+              score: 9120
+            }
+          ]
+        },
+        {
           id: 'frameworks',
           name: 'JS Framework',
           description: 'The js-framework-benchmark is a simple benchmark, comparing various typical app operations for several JavaScript frameworks. The benchmarks creates a large table with randomized entries and measures the time for various operations – lower is better.',
@@ -52,64 +110,6 @@ export default class Benchmarks extends Component {
             {
               label: 'Marko.js 4.12.3',
               score: 1.50
-            }
-          ]
-        },
-        {
-          id: 'marko-color-picker-node',
-          name: 'Color Picker (Server)',
-          description: 'This simple benchmark was created by Marko.js to compare server-side rendering performance of various frameworks – numbers show ops/sec, higher is better.',
-          link: 'https://github.com/marko-js/isomorphic-ui-benchmarks',
-          data: [
-            {
-              label: 'Inferno 7.3.2',
-              bg: '#dc0030',
-              score: 21453
-            },
-            {
-              label: 'Marko.js 4.18.16',
-              score: 24540
-            },
-            {
-              label: 'Preact 10.0.1',
-              score: 4587
-            },
-            {
-              label: 'React 16.10.2',
-              score: 4300
-            },
-            {
-              label: 'Vue 2.6.10',
-              score: 9120
-            }
-          ]
-        },
-        {
-          id: 'marko-color-picker-chrome',
-          name: 'Color Picker (Chrome)',
-          description: 'This simple benchmark was created by Marko.js to compare client-side rendering performance of various frameworks – numbers show ops/sec, higher is better.',
-          link: 'https://github.com/marko-js/isomorphic-ui-benchmarks',
-          data: [
-            {
-              label: 'Inferno 7.3.2',
-              bg: '#dc0030',
-              score: 17078
-            },
-            {
-              label: 'Marko.js 4.18.16',
-              score: 6008
-            },
-            {
-              label: 'Preact 10.0.1',
-              score: 6435
-            },
-            {
-              label: 'React 16.10.2',
-              score: 7358
-            },
-            {
-              label: 'Vue 2.6.10',
-              score: 4291
             }
           ]
         },
