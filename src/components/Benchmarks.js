@@ -109,35 +109,6 @@ export default class Benchmarks extends Component {
           ]
         },
         {
-          id: 'vdom',
-          name: 'Virtual DOM',
-          description: 'The Virtual DOM Benchmark focuses on testing the children reconciliation algorithm used in various libraries. It is used by virtual DOM library authors to help optimize their algorithms. While not a perfect gauge of overall performance, it tests a key ingredient of popular Virtual DOM libraries.',
-          link: 'https://vdom-benchmark.github.io/vdom-benchmark/',
-          data: [
-            {
-              label: 'Inferno JS',
-              bg: '#dc0030',
-              score: 1
-            },
-            {
-              label: 'React 15.4',
-              score: 4.06
-            },
-            {
-              label: 'Mithril',
-              score: 6.00
-            },
-            {
-              label: 'virtual-dom',
-              score: 3.20
-            },
-            {
-              label: 'snabbdom',
-              score: 1.94
-            }
-          ]
-        },
-        {
           id: 'uibench',
           name: 'UI Bench',
           description: 'UI Benchmark is considered a more accurate test of overall UI performance in a library. The tests were run with Full Render Time enabled and 5 Iterations. Read UI Benchmark\'s notes for caveats and stipulations before drawing further conclusions.',
