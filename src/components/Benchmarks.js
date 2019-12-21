@@ -16,7 +16,7 @@ export default class Benchmarks extends Component {
         {
           id: 'marko-color-picker-chrome',
           name: 'Color Picker (Chrome)',
-          description: 'This simple benchmark was created by Marko.js to compare client-side rendering performance of various frameworks – numbers show ops/sec, higher is better.',
+          description: 'This benchmark was created by Marko.js to compare client-side rendering performance of various frameworks – numbers show ops/sec, higher is better.',
           link: 'https://github.com/marko-js/isomorphic-ui-benchmarks',
           data: [
             {
@@ -45,7 +45,7 @@ export default class Benchmarks extends Component {
         {
           id: 'marko-color-picker-node',
           name: 'Color Picker (Server)',
-          description: 'This simple benchmark was created by Marko.js to compare server-side rendering performance of various frameworks – numbers show ops/sec, higher is better.',
+          description: 'This benchmark was created by Marko.js to compare server-side rendering performance of various frameworks – numbers show ops/sec, higher is better.',
           link: 'https://github.com/marko-js/isomorphic-ui-benchmarks',
           data: [
             {
