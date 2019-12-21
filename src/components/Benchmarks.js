@@ -15,9 +15,9 @@ export default class Benchmarks extends Component {
       list: [
         {
           id: 'frameworks',
-          name: 'JS Frameworks',
-          description: 'The JS web frameworks benchmark is a simple benchmark, comparing various typical app operations for several JavaScript frameworks. The benchmarks creates a large table with randomized entries and measures the time for various operations.',
-          link: 'https://vdom-benchmark.github.io/vdom-benchmark/',
+          name: 'JS Framework',
+          description: 'The js-framework-benchmark is a simple benchmark, comparing various typical app operations for several JavaScript frameworks. The benchmarks creates a large table with randomized entries and measures the time for various operations.',
+          link: 'https://github.com/krausest/js-framework-benchmark',
           data: [
             {
               label: 'Vanilla JS',
