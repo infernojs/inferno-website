@@ -61,7 +61,7 @@ export default class Docs extends Component {
           <ul className="nav">
             <MenuLink match={match} to={'/docs/guides/installation'}>Installation</MenuLink>
             <MenuLink match={match} to={'/docs/guides/using-cdn'}>Using CDN</MenuLink>
-            <MenuLink match={match} to={'https://jsfiddle.net/wt5vL603/'}>JS Fiddle</MenuLink>
+            <MenuLink match={match} to={'https://jsfiddle.net/rq5L9fgs/'}>JS Fiddle</MenuLink>
             <MenuLink match={match} to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
             <MenuLink match={match} to={'/docs/guides/components'}>Components</MenuLink>
             <MenuLink match={match} to={'/docs/guides/libraries'}>Community Libraries</MenuLink>
