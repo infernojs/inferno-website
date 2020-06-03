@@ -16,7 +16,6 @@ blockquote {
   padding-right: $gutter;
   width: 100%;
   max-width: 1200px;
-  filter: grayscale(100%); // BLM
   @include media-query($on-small) {
     padding-left: 0px;
     padding-right: 0px;
@@ -85,4 +84,8 @@ h3 {
   width: 100%;
   padding: 10px;
   background: #eee;
+}
+
+svg, a, li {
+  filter: grayscale(100%); // BLM
 }
