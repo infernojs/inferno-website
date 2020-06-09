@@ -115,12 +115,14 @@ module.exports = {
             cleanOnceBeforeBuildPatterns: ['build', 'public'],
             root: root
         }),
-        new Copy([
-            {context: srcDir, from: 'docs/**', to: pubDir},
-            {context: srcDir, from: 'assets/*', to: pubDir},
-            {context: srcDir, from: 'index.html', to: pubDir},
-            {context: srcDir, from: 'assets/s*/**', to: pubDir}
-        ]),
+        new Copy({
+            patterns: [
+              {context: srcDir, from: 'docs/**', to: pubDir},
+              {context: srcDir, from: 'assets/*', to: pubDir},
+              {context: srcDir, from: 'index.html', to: pubDir},
+              {context: srcDir, from: 'assets/s*/**', to: pubDir}
+           ]
+        }),
         new MiniCssExtractPlugin({
             filename: 'bundle.css',
             allChunks: true
