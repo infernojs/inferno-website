@@ -526,15 +526,13 @@ class App extends Component {
 
 #### Props
 
-| Prop            | Type   | Definition                                                                                                           |
-| --------------- | ------ | -------------------------------------------------------------------------------------------------------------------- |
-| width           | string | The width of the canvas.                                                                                             |
-| height          | string | The height of the canvas.                                                                                            |
-| options         | object | The options of the particles instance.                                                                               |
-| style           | object | The style of the canvas element.                                                                                     |
-| className       | string | The class name of the canvas wrapper.                                                                                |
-| canvasClassName | string | the class name of the canvas.                                                                                        |
-| container       | object | The instance of the [particles container](https://github.com/matteobruni/tsparticles/wiki/Particles-Container-class) |
+- width (`string`): The width of the canvas.
+- height (`string`): The height of the canvas.
+- options (`object`): The options of the particles instance.
+- style (`object`): The style of the canvas element.
+- className (`string`): The class name of the canvas wrapper.
+- canvasClassName (`string`): the class name of the canvas.
+- container (`object`): The instance of the [particles container](https://github.com/matteobruni/tsparticles/wiki/Particles-Container-class)
 
 Find your parameters configuration [here](https://particles.matteobruni.it).
 
