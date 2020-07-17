@@ -411,8 +411,6 @@ You can also specify a `className` for the container of the carousel by providin
 
 ## inferno-particles
 
-[![npm](https://img.shields.io/npm/v/inferno-particles)](https://www.npmjs.com/package/inferno-particles) [![npm](https://img.shields.io/npm/dm/inferno-particles)](https://www.npmjs.com/package/inferno-particles)
-
 Official [tsParticles](https://github.com/matteobruni/tsparticles) Inferno component
 
 ### Installation
