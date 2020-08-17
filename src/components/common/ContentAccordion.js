@@ -24,10 +24,10 @@ export default class ContentAccordion extends Component {
           ]
         },
         {
-          name: 'Differences from Preact',
+          name: 'Differences from React',
           description: [
             "Inferno has a partial synthetic event system, resulting in better performance via delegation of certain events.",
-            "Inferno is much faster than Preact in rendering, updating and removing elements from the DOM.",
+            "Inferno is much faster than React in rendering, updating and removing elements from the DOM.",
             "Inferno fully supports controlled components for `input`/`select`/`textarea` elements. This prevents lots of edgecases where the virtual DOM is not the source of truth (it should always be). Preact pushes the source of truth to the DOM itself",
             "Inferno provides lifecycle events on functional components. This is a major win for people who prefer lightweight components rather than ES2015 classes.",
           ]
