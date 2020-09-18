@@ -46,7 +46,7 @@ const fuseOptions: FuseBoxOptions = {
    output: "dist/$name.js",
    sourceMaps: { inline: false, vendor: false },
    transformers: {
-      before: [TsTransformClasscat(), TsTransformInferno()]
+      before: [TsTransformInferno(), TsTransformClasscat()]
    },
    plugins: []
 };
