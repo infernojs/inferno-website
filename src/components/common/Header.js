@@ -61,35 +61,27 @@ class Header extends Component {
     const locationURL = location.pathname;
 
     return (
-      <Inferno.Fragment>
-        <div className="banner">
-          Black Lives Matter.&nbsp;
-          <a style="color:#dc0030" target="_blank" rel="noopener noreferrer" href="https://support.eji.org/give/153413/#!/donation/checkout">
-            Support&nbsp;the&nbsp;Equal&nbsp;Justice&nbsp;Initiative.
-          </a>
-        </div>
-        <div className="menu">
-          <div className="container">
-            <div className="row">
-              <div className="menu-toggle" onClick={ this.toggleSidebar }>
-                <IconMenu/>
-              </div>
-              <MenuLink match={match} to="/" className="branding lg3 sm3">
-                <InfernoLogo/> Inferno <small>v{version}</small>
-              </MenuLink>
-              <nav className={ 'lg9 sm9 ' + (this.state.active ? 'open' : 'closed') }>
-                <MenuLink match={match} to="/">Home</MenuLink>
-                <MenuLink match={match} to="/docs/guides/installation">Quick Start</MenuLink>
-                <MenuLink match={match} to="/docs/api/inferno">API</MenuLink>
-                <MenuLink match={match} to="https://github.com/infernojs">Github</MenuLink>
-                <MenuLink match={match} to="https://github.com/infernojs/inferno/releases">Release notes</MenuLink>
-                <MenuLink match={match} to="https://opencollective.com/inferno">Open collective</MenuLink>
-                <MenuLink match={match} to="https://inferno-slack.herokuapp.com">Slack</MenuLink>
-              </nav>
+      <div className="menu">
+        <div className="container">
+          <div className="row">
+            <div className="menu-toggle" onClick={ this.toggleSidebar }>
+              <IconMenu/>
             </div>
+            <MenuLink match={match} to="/" className="branding lg3 sm3">
+              <InfernoLogo/> Inferno <small>v{version}</small>
+            </MenuLink>
+            <nav className={ 'lg9 sm9 ' + (this.state.active ? 'open' : 'closed') }>
+              <MenuLink match={match} to="/">Home</MenuLink>
+              <MenuLink match={match} to="/docs/guides/installation">Quick Start</MenuLink>
+              <MenuLink match={match} to="/docs/api/inferno">API</MenuLink>
+              <MenuLink match={match} to="https://github.com/infernojs">Github</MenuLink>
+              <MenuLink match={match} to="https://github.com/infernojs/inferno/releases">Release notes</MenuLink>
+              <MenuLink match={match} to="https://opencollective.com/inferno">Open collective</MenuLink>
+              <MenuLink match={match} to="https://inferno-slack.herokuapp.com">Slack</MenuLink>
+            </nav>
           </div>
         </div>
-      </Inferno.Fragment>
+      </div>
     );
   }
 }
