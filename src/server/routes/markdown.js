@@ -1,7 +1,7 @@
 /**
  * @file @example http://localhost:8080/api/markdown?file=/guides/event-handling
  */
-import CommonMark from 'commonmark';
+import {Parser} from 'commonmark';
 import {version} from 'inferno';
 import {createElement} from 'inferno-create-element';
 import fs from 'fs';
@@ -11,7 +11,7 @@ import router from 'koa-router';
 import xssFilters from 'xss-filters';
 
 /**
- * @todo this issue is just here because we don't know the exact path the output on the host 
+ * @todo this issue is just here because we don't know the exact path the output on the host
  *       but we can fix this later, currently it lazily checks to find which path has the files
  * @todo we could also solve this with a build script........
  */
@@ -95,7 +95,7 @@ async function parseMarkDown(file) {
         return resolve(<p>Documentation is under development.</p>);
       }
 
-      const parser = new CommonMark.Parser();
+      const parser = new Parser();
       const renderer = new InfernoRenderer();
       data = data.replace(/\[version\]/g, version);
       const ast = parser.parse(data);
