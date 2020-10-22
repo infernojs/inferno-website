@@ -9,13 +9,6 @@ If you are not able to npm for installation, you can insert Inferno into your si
 <script src="https://unpkg.com/inferno@[version]/dist/inferno.min.js"></script>
 ```
 
-### Support for ES2015 components:
-
-```html
-<script src="https://unpkg.com/inferno-component@[version]/dist/inferno-component.js"></script>
-<script src="https://unpkg.com/inferno-component@[version]/dist/inferno-component.min.js"></script>
-```
-
 ### Routing support:
 
 ```html
