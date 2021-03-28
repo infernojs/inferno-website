@@ -77,7 +77,7 @@ class Header extends Component {
               <MenuLink match={match} to="https://github.com/infernojs">Github</MenuLink>
               <MenuLink match={match} to="https://github.com/infernojs/inferno/releases">Release notes</MenuLink>
               <MenuLink match={match} to="https://opencollective.com/inferno">Open collective</MenuLink>
-              <MenuLink match={match} to="https://inferno-slack.herokuapp.com">Slack</MenuLink>
+              <MenuLink match={match} to="https://discord.gg/AW92rGbJ">Discord</MenuLink>
             </nav>
           </div>
         </div>

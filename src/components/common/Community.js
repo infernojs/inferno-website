@@ -5,7 +5,7 @@ export function Community() {
 
   const content = [
     <h3>Community</h3>,
-    <p>There is an <a rel="nofollow" href="https://infernojs.slack.com">Inferno Slack</a> group where you can ask questions and find out the latest news about Inferno development. You can join via <a rel="nofollow" href="https://inferno-slack.herokuapp.com">inferno-slack.herokuapp.com.</a></p>,
+    <p>There is an <a rel="nofollow" href="https://discord.gg/AW92rGbJ">Inferno Discord</a> where you can ask questions and find out the latest news about Inferno development. You can join via <a rel="nofollow" href="https://discord.gg/AW92rGbJ">https://discord.gg/AW92rGbJ.</a></p>,
     <h4>Contributors</h4>,
     <a href="https://github.com/infernojs/inferno/graphs/contributors"><img src={infernoOpenCollective + "/contributors.svg?width=890"} /></a>,
     <h4>Backers</h4>,
