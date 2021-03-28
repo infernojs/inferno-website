@@ -20,7 +20,6 @@ Object.assign(config, {
   },
   output: {
     publicPath: `http://localhost:${http.port + 2}/build/`,
-    libraryTarget: 'var',
     pathinfo: true
   }
 });
@@ -34,11 +33,11 @@ config.plugins = config.plugins.concat([
     'NODE_ENV': JSON.stringify('development')
   }),
   new webpack.HotModuleReplacementPlugin(),
-  new webpack.NoEmitOnErrorsPlugin(),
-  new webpack.NamedModulesPlugin(),
-  new webpack.WatchIgnorePlugin([
-    path.join(__dirname, '../../build')
-  ])
+  new webpack.WatchIgnorePlugin({
+    paths: [
+      path.join(__dirname, '../../build')
+    ]
+  })
 ]);
 
 // Run DEV server for hot-reloading

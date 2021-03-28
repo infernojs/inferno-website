@@ -2,7 +2,6 @@ const logger = require('debug');
 const { join } = require('path');
 const webpack = require('webpack');
 const config = require('./webpack.base.js');
-const SWPrecache = require('sw-precache-webpack-plugin');
 
 // Merge with base configuration
 //-------------------------------
@@ -28,30 +27,6 @@ logger('server:webpack')('Environment: Production');
 //-------------------------------
 const pubDir = join(__dirname, '..', '..', 'public');
 config.output.path = join(pubDir, 'build');
-config.plugins.push(
-  new webpack.optimize.OccurrenceOrderPlugin(),
-  new SWPrecache({
-    cacheId: 'infernojs-site',
-    staticFileGlobs: ['public/**'],
-    navigateFallback: 'public/index.html',
-    staticFileGlobsIgnorePatterns: [/\.map$/],
-    filepath: 'public/offline.js',
-    verbose: true,
-    stripPrefixMulti: {
-      'public/': '/'
-    },
-    runtimeCaching: [
-      {
-        handler: 'networkFirst',
-        urlPattern: /\/api\/markdown/, // urlPattern: /infernojs\.org\/api\/markdown/,
-      },
-      {
-        handler: 'cacheFirst',
-        urlPattern: /(cdnjs\.cloudflare\.com)|(cdn\.polyfill\.io)/,
-      }
-    ]
-  })
-);
 
 // Plugins
 //-------------------------------
