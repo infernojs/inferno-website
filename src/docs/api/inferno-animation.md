@@ -152,7 +152,7 @@ import {
 ## Migration from inferno-animation <7.5
 To stay with the legacy `inferno-animation` package switch from caret to tilde `"inferno-animation": "~7.4.0",` and everything will continue working as before. Previous major versions won't be affected.
 
-To migrate to the **much improved 7.5 version** of inferno-animation, below are some quick solutions.
+To migrate to the 7.5 version of inferno-animation there are some quick solutions.
 
 Implement your own `<Animated>` component and rename the attribute `prefix` to `animation` in places where you use it. The animations will work exactly the same.
 

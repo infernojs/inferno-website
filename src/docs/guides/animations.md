@@ -1,5 +1,5 @@
 # Animations
-Since **Inferno 7.5.0** there is native support for animations.
+Since **Inferno 7.5.0** there are two new lifecycle events that can be used for animations.
 
 Inferno has class component lifecycle events that allow you to animate components on mount and unmount:
 
