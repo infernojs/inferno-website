@@ -3,7 +3,6 @@
 There is a growing list of native Inferno libraries available. Some of them can be found in this list.
 
 - [Incompose](#incompose)
-- [inferno-animation](#inferno-animation)
 - [inferno-bootstrap](#inferno-bootstrap)
 - [inferno-popper](#inferno-popper)
 - [inferno-fluxible](#inferno-fluxible)
@@ -99,43 +98,6 @@ import { Card, CardImg, CardBody, CardLink, CardSubtitle, CardText, CardTitle, B
     <Button>Button</Button>
   </CardBody>
 </Card>
-```
-
-<a name="inferno-animation"></a>
-
-## inferno-animation
-
-Library to animate Inferno components on mount and dismount. Also supports cross-fade, where height and/or
-width animates from source size to target size.
-
-This lib allows you to animate all css-properties including width and height using css-animations.
-Timeouts are automatically calculated based on the provided CSS rules.
-
-You can animate your components by adding the animation helpers to `componentDidMount` and `componentWillUnmoun`
-or by wrapping your component in the `<Animated />` component.
-
-Currently tested on (polyfills from https://polyfill.io):
-
-- Chrome/FF/Safari (latest) on macOS 10.12 (Sierra)
-- IE10/IE11 on Windows 7
-- Edge on Windows 10
-
-Repos: [https://github.com/jhsware/inferno-animation](https://github.com/jhsware/inferno-animation)
-
-### Installation
-
-```
-$ npm install --save-prod inferno-animation
-```
-
-### Example
-
-```jsx
-import { Animated } from 'inferno-animation'
-
-<Animated key={...} prefix="PageAnimation">
-  <MyListItem />
-</Animated>
 ```
 
 <a name="inferno-popper"></a>
