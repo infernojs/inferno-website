@@ -32,6 +32,7 @@ And you use it in your code like this `<MyComponent animation="HeightAndFade">..
   padding: 0.5rem;
   border: 1px solid black;
   background-color: white;
+  overflow-y: hidden; // hide any overflow on animation axis
 }
 
 .HeightAndFade {

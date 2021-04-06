@@ -67,6 +67,7 @@ Here is an example of CSS for `<MyComponent className="MyComponent" animation="H
   padding: 0.5rem;
   border: 1px solid black;
   background-color: white;
+  overflow-y: hidden; // hide any overflow on animation axis
 }
 
 .HeightAndFade {
