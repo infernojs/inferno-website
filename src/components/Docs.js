@@ -43,10 +43,11 @@ export default class Docs extends Component {
           <h4>API</h4>
           <ul className="nav">
             <MenuLink match={match} to={'/docs/api/inferno'}>Inferno</MenuLink>
-            <MenuLink match={match} to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno-animation'}>Inferno-animation</MenuLink>
             <MenuLink match={match} to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
             <MenuLink match={match} to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
             <MenuLink match={match} to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
+            <MenuLink match={match} to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
             <MenuLink match={match} to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
             <MenuLink match={match} to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
           </ul>
@@ -86,6 +87,7 @@ export default class Docs extends Component {
             <MenuLink match={match} to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
             <MenuLink match={match} to={'/docs/guides/optimizations'}>Optimizations</MenuLink>
             <MenuLink match={match} to={'/docs/guides/benefits/list-rendering'}>Lists & keys</MenuLink>
+            <MenuLink match={match} to={'/docs/guides/animations'}>Animations</MenuLink>
           </ul>
         </li>
       </ul>

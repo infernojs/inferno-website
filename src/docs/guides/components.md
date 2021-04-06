@@ -187,6 +187,16 @@ components do. Below is a list of all the lifecycle events:
          <td></td>
       </tr>
       <tr>
+         <td><code>componentDidAppear</code><br><small>new in 7.5</small></td>
+         <td>component exists in the DOM</td>
+         <td><code>domNode</code></td>
+      </tr>
+      <tr>
+         <td><code>componentWillDisappear</code><br><small>new in 7.5</small></td>
+         <td>component is about to removed from the DOM</td>
+         <td><code>domNode, callback</code></td>
+      </tr>
+      <tr>
          <td><code>getChildContext</code></td>
          <td>before render method, return value object is combined to sub tree context</td>
          <td></td>
