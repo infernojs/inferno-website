@@ -72,7 +72,7 @@ class MyComponent extends Component {
 In both cases, if you don't specify the property `animation="[AnimationPrefix]"` it will default to `inferno-animation`.
 
 
-### Customizing custom CSS animations
+### Customizing CSS animations
 When you specify the animation property `<MyComponent animation="HeightAndFade">...</MyComponent>` the component will animate according to the following CSS-classes when appearing in the DOM:
 
 - .HeightAndFade-enter {}
@@ -130,8 +130,8 @@ Here is an example of CSS for `<MyComponent className="MyComponent" animation="H
 }
 ```
 
-### How to style your animations using CSS
-The lifecycle of an animation consists of five phases:
+### The animation lifecycle of an animation handler
+This is an explanation of how the helper methods in inferno-animation work. The lifecycle of an animation consists of five phases:
 
 1. Measure width and height
 
