@@ -65,6 +65,11 @@ Below are all the different lifecycle event names that can be applied to functio
       <td><code>domNode</code></td>
     </tr>
     <tr>
+      <td><code>onComponentDidAppear</code><br><small>new in 7.5</small></td>
+      <td>a functional component has appeared in the DOM</td>
+      <td><code>domNode, props</code></td>
+    </tr>
+    <tr>
       <td><code>onComponentShouldUpdate</code></td>
       <td>a functional component has been triggered to update</td>
       <td><code>lastProps, nextProps</code></td>
@@ -83,6 +88,11 @@ Below are all the different lifecycle event names that can be applied to functio
       <td><code>onComponentWillUnmount</code></td>
       <td>a functional component is about to be unmounted</td>
       <td></td>
+    </tr>
+    <tr>
+      <td><code>onComponentWillDisappear</code><br><small>new in 7.5</small></td>
+      <td>a functional component dom node is about to be removed</td>
+      <td><code>domNode, props, callback</code></td>
     </tr>
   </tbody>
 <table>
@@ -152,14 +162,19 @@ components do. Below is a list of all the lifecycle events:
    </thead>
    <tbody>
       <tr>
+         <td><code>componentWillMount</code></td>
+         <td>component is about to mount</td>
+         <td></td>
+      </tr>
+      <tr>
          <td><code>componentDidMount</code></td>
          <td>component has been mounted succesfully</td>
          <td></td>
       </tr>
       <tr>
-         <td><code>componentWillMount</code></td>
-         <td>component is about to mount</td>
-         <td></td>
+         <td><code>componentDidAppear</code><br><small>new in 7.5</small></td>
+         <td>component has been added to the DOM</td>
+         <td><code>domNode</code></td>
       </tr>
       <tr>
          <td><code>componentWillReceiveProps</code></td>
@@ -185,11 +200,6 @@ components do. Below is a list of all the lifecycle events:
          <td><code>componentWillUnmount</code></td>
          <td>component is about to be unmounted</td>
          <td></td>
-      </tr>
-      <tr>
-         <td><code>componentDidAppear</code><br><small>new in 7.5</small></td>
-         <td>component exists in the DOM</td>
-         <td><code>domNode</code></td>
       </tr>
       <tr>
          <td><code>componentWillDisappear</code><br><small>new in 7.5</small></td>
