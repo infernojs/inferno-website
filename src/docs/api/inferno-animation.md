@@ -10,33 +10,70 @@ npm install inferno-animation --save
 ```
 
 ## Using inferno-animation
-Since **Inferno 7.5.0** there is support for animation lifecycle events on class components:
+Since **Inferno 7.5.0** there is support for animation lifecycle events:
 
+Class components:
 - componentDidAppear(dom)
 - componentWillDisappear(dom, callback)
 
+Functional components:
+- onComponentDidAppear(dom, props)
+- onComponentWillDisappear(dom, props, callback)
+
 When you implement these, inferno will call them and pass the DOM-node of the component instance right after the component has been added or right before the component will be removed. Inferno will delay the removal of the actual DOM-node until you call the callback method allowing you to complete a removal animation.
 
-Inferno-animation exposes a base class to provide you with an easy way of animating your components.
+Inferno-animation exposes a base class to provide you with an easy way of animating your class components and helper methods to animate functional components.
 
 ### Creating an animated component
+
+#### Class Component
 With inferno-animation you get a new base class called `AnimatedComponent`. It has the two animation lifecycle events implemented for you.
 
 By extending this base class instead of `Component` your component will animate on add and remove using CSS-animations that you can easily customize.
 
 ```JSX
+import { Component } from 'inferno';
 import { AnimatedComponent } from 'inferno-animation';
 
-class MyComponent extends AnimatedComponent {
+class Animated extends AnimatedComponent {
+  render({className, children}) {
+    return <div className={className}>{children}</div>
+  }
+}
+
+class MyComponent extends Component {
   render() {
-    return <div className={this.props.className}>{this.children}</div>
+    return <Animated animation="HeightAndFade">[...]</Animated>
   }
 }
 ```
 
-The base class requires the attribute `animation="[AnimationPrefix]"` to be set in order to specify what CSS-classes to use for the animation-.
+#### Functional Component
+Two helper methods are exposed by inferno-animation. You can use them to activate animations on functional components.
 
-When you use `<MyComponent animation="HeightAndFade">...</MyComponent>` the component will animate according to the following CSS-classes when appearing in the DOM:
+```JSX
+import { Component } from 'inferno';
+import { componentDidAppear, componentWillDisappear } from 'inferno-animation';
+
+function Animated ({className, children}) {
+  return <div className={this.props.className}>{children}</div>
+}
+
+class MyComponent extends Component {
+  render() {
+    return <Animated
+      onComponentDidAppear={componentDidAppear}
+      onComponentWillDisappear={componentWillDisappear}
+      animation="HeightAndFade">[...]</Animated>
+  }
+}
+```
+
+In both cases, if you don't specify the property `animation="[AnimationPrefix]"` it will default to `inferno-animation`.
+
+
+### Customizing custom CSS animations
+When you specify the animation property `<MyComponent animation="HeightAndFade">...</MyComponent>` the component will animate according to the following CSS-classes when appearing in the DOM:
 
 - .HeightAndFade-enter {}
 - .HeightAndFade-enter-active { /* the actual transitions */ }
@@ -55,7 +92,7 @@ There are some important rules for smooth animations. Always style the animated 
 
 Border-box will allow width and height to be calculated properly. This makes it possible to animate these properties on dynamically sized components.
 
-Setting margin to zero will prevent overlapping margins, which will cause a jump when elements are removed. The wierd behaviour with overlapping margins has been implemented in browsers since the dawn of CSS and made sense for text rendering, but is a nuissance anywhere else.
+Setting margin to zero will prevent overlapping margins, which could cause a jump when elements are removed. The wierd behaviour with overlapping margins has been implemented in browsers since the dawn of CSS and made sense for text rendering, but is a nuissance anywhere else.
 
 Here is an example of CSS for `<MyComponent className="MyComponent" animation="HeightAndFade">` using SCSS. In the example, the disappear (leave) animation will be a slightly quicker reverse version of the appear (enter) animation:
 
@@ -124,7 +161,7 @@ You can implement child animations using the CSS-classes. Make sure they are qui
 If you mount an animated component that in turn contains animated components, only the outer most animation will trigger. In other words, if you mount an animated page containing a list of animated rows, only the page will animate. You can use this effect to block animations on first render by making sure your root component inherits from `AnimatedComponent` and just skipping the transitions.
 
 ### Creating a custom animated component
-If you want to implement another type of animation, such as Bootstrap 4 animations, you can implement the lifecycle events yourself. **Make sure you use the helper methods** exposed by `inferno-animation` unless you really, really know what you are doing. The helper methods will make the code more readable and contains some hard earned wisdom.
+If you want to implement another type of animation, such as Bootstrap 4 animations, you can implement the lifecycle events yourself. **Make sure you use the helper methods** exposed by `inferno-animation` unless you really, really, know what you are doing. The helper methods will make the code more readable and contains some hard earned wisdom.
 
 ```js
 import { 
@@ -168,4 +205,4 @@ class Animated extends AnimatedComponent {
 
 If you have used the methods `animateOnAdd` and `animateOnRemove` in your own class component, you can extend `AnimatedComponent` instead and rename the attribute `prefix` to `animation` when using it.
 
-If you have implemented your own functional component you will need to convert it to a class component. Animations are expensive anyway so the benefit of using a function component is very small.
+If you have implemented your own animated functional component you follow the same pattern for functional component animations using the two new helper methods `componentDidAppear` and `componentWillDisappear`.
