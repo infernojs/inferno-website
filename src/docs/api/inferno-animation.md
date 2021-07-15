@@ -15,27 +15,43 @@ Since **Inferno 7.5.0** there is support for animation lifecycle events:
 Class components:
 - componentDidAppear(dom)
 - componentWillDisappear(dom, callback)
+- componentWillMove(parentVNode, parent, dom, next, props)
 
 Functional components:
 - onComponentDidAppear(dom, props)
 - onComponentWillDisappear(dom, props, callback)
+- onComponentWillMove(parentVNode, parent, dom, next, props)
 
 When you implement these, inferno will call them and pass the DOM-node of the component instance right after the component has been added or right before the component will be removed. Inferno will delay the removal of the actual DOM-node until you call the callback method allowing you to complete a removal animation.
 
-Inferno-animation exposes a base class to provide you with an easy way of animating your class components and helper methods to animate functional components.
+Inferno-animation exposes three base classes to provide you with an easy way of animating your class components and helper methods to animate functional components.
+
+- AnimatedComponent -- animates on add/remove
+- AnimatedMoveComponent -- animates on move (within the same parent)
+- AnimatedAllComponent -- animates on add/remove and move (within the same parent)
+
+If you don't want to extend from one of the pre-wired components, look att src/AnimatedAllComponent.ts to see
+how to wire up the three animation hooks:
+
+- componentDidAppear
+- componentWillDisappear
+- componentWillMove
+
+There are a couple of examples of animations in the main repos in the `docs/animations` and `docs/animations-demo` folder
+
 
 ### Creating an animated component
 
 #### Class Component
-With inferno-animation you get a new base class called `AnimatedComponent`. It has the two animation lifecycle events implemented for you.
+With inferno-animation you get a new base class called `AnimatedAllComponent`. It has all three animation lifecycle events implemented for you.
 
 By extending this base class instead of `Component` your component will animate on add and remove using CSS-animations that you can easily customize.
 
 ```JSX
 import { Component } from 'inferno';
-import { AnimatedComponent } from 'inferno-animation';
+import { AnimatedAllComponent } from 'inferno-animation';
 
-class Animated extends AnimatedComponent {
+class Animated extends AnimatedAllComponent {
   render({className, children}) {
     return <div className={className}>{children}</div>
   }
@@ -53,7 +69,7 @@ Two helper methods are exposed by inferno-animation. You can use them to activat
 
 ```JSX
 import { Component } from 'inferno';
-import { componentDidAppear, componentWillDisappear } from 'inferno-animation';
+import { componentDidAppear, componentWillDisappear, componentWillMove } from 'inferno-animation';
 
 function Animated ({className, children}) {
   return <div className={this.props.className}>{children}</div>
@@ -64,6 +80,7 @@ class MyComponent extends Component {
     return <Animated
       onComponentDidAppear={componentDidAppear}
       onComponentWillDisappear={componentWillDisappear}
+      onComponentWillMove={componentWillMove}
       animation="HeightAndFade">[...]</Animated>
   }
 }
@@ -79,11 +96,15 @@ When you specify the animation property `<MyComponent animation="HeightAndFade">
 - .HeightAndFade-enter-active { /* the actual transitions */ }
 - .HeightAndFade-enter-end {}
 
-And the following when disappearing:
+The following when disappearing:
 
 - .HeightAndFade-leave {}
 - .HeightAndFade-leave-active { /* the actual transitions */ }
 - .HeightAndFade-leave-end {}
+
+And the following on moves:
+
+- .HeightAndFade-move-active { /* the actual transitions */ }
 
 There are some important rules for smooth animations. Always style the animated component with:
 
@@ -116,16 +137,24 @@ Here is an example of CSS for `<MyComponent className="MyComponent" animation="H
 
   &-enter-active {
     transition: all 0.5s ease-in;
+    pointer-events: none; /* (optional) prevent hover to fire transition events causing early termination */
   }
 
   &-leave-active {
     transition: all 0.2s ease-out;
+    pointer-events: none; /* (optional) prevent hover to fire transition events causing early termination */
   }
 
   &-enter-end,
   &-leave { // Animate to and from full height with full opacity
     height: auto;
     opacity: 1;
+  }
+
+  &-move-active {
+    /* Move animation transitions */
+    transition: transform 1.5s;
+    z-index: 1;
   }
 }
 ```
