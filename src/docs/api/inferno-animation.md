@@ -116,10 +116,12 @@ Here is an example of CSS for `<MyComponent className="MyComponent" animation="H
 
   &-enter-active {
     transition: all 0.5s ease-in;
+    pointer-events: none; /* (optional) prevent hover to fire transition events causing early termination */
   }
 
   &-leave-active {
     transition: all 0.2s ease-out;
+    pointer-events: none; /* (optional) prevent hover to fire transition events causing early termination */
   }
 
   &-enter-end,
