@@ -21,3 +21,5 @@ INFERNOJS_SECRET
 
 package-lock.json
 *.orig
+
+.vercel
