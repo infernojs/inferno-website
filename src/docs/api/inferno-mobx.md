@@ -1,138 +1,28 @@
 # Inferno Mobx API
 
-This package provides the bindings for MobX and Inferno.
-Exports `connect` function, a `Provider` component and some development utilities.
+This is a fork of [mobx-react](https://github.com/mobxjs/mobx-react) for [Inferno](https://github.com/infernojs/inferno).
 
+Inferno-mobx is compatible with Inferno v1+, for older versions use [mobx-inferno](https://www.npmjs.com/package/mobx-inferno).
+
+This package provides the bindings for MobX and Inferno and exports `observer` & `inject` decorators and functions, `Provider`, and some development utilities.
+
+## `Install`
 ```
 npm install mobx inferno-mobx --save
 ```
 
-## `connect(componentClass)`
+## `Usage`
+In MobX, observers react to changes in observables. Observable creation is universal to all MobX applications and is not specific to Inferno-MobX. Observers are created with either the `observer` function or observer decorator and can then be given a reference to stores either as props or through the use of `Provider` and `inject`, which allows the passing of stores to arbitrarily positioned components.
 
-Function (and decorator) that converts a functional component or a component class into a reactive component.
-See the [mobx](https://mobxjs.github.io/mobx/refguide/observer-component.html) documentation for more details.
-
-```javascript
-import { connect } from "inferno-mobx";
-
-
-// ---- ES2015 syntax ----
-
-const TodoView = connect(class TodoView extends Component {
-    render() {
-        return <div>{this.props.todo.title}</div>
-    }
-})
-
-// ---- or even simpler with decorators
-
-@connect
-class TodoView extends Component {
-    render() {
-        return <div>{this.props.todo.title}</div>
-    }
-}
-
-// ---- or just using a stateless component
-
-const TodoView = connect(props => <div>{props.todo.title}</div>)
-```
-
-## `connect(storesArray, componentClass)`
-
-An alternative version of connect with your stores automatically injected into props.
-
-```javascript
-@connect(['storeName'])
-class MyComponent extends Component {
-    render() {
-        return <div>{props.storeName.data}</div>
-    }
-}
-// ---- or just using a stateless component
-const MyComponent = connect(['storeName'], props => <div>{props.storeName.data}</div>)
-```
+See the [mobx](https://mobxjs.github.io/mobx/refguide/observer-component.html) documentation for more details. Be aware that much of the offical MobX documentation is specific to the newest versions of React, which use React Context and Hooks.
 
 ## `Provider`
 
-`Provider` is a component that can pass stores (or other stuff) using context mechanism to child components. This is useful if you have things that you don't want to pass through multiple layers of components explicitly.
+If data is required in arbitrary positions without passing through intermediate components, the root of the application is wrapped in a `Provider` component. This is conceptually similar to React's Context. The props for this component are commonly Stores but can be any observable.
 
-The easiest way to use the `Provider` is to add it before everything else. This way all your children can potentially have access to the stores.
-
-```javascript
-import { render } from 'inferno';
-import { Provider } from 'inferno-mobx';
-
-let myStore = { whatever: 'some data'};
-
-
-render(<Provider myStore={ myStore }>
-    <Router>
-        <IndexRoute component={ MyComponent } />
-    </Router>
-</Provider>, document.getElementById('root'))
-```
-
-You can add more than one store (it is also recommended to do so to separate your logic), each prop added to `Provider` defines a store.
+Any component can be wrapped in a Provider, but only its descendents will have access to the provided stores.
 
 ```javascript
-import { Component } from 'inferno';
-
-let myStore1 = 'hello';
-let myStore2 = 'world';
-
-render(<Provider myStore1={ myStore1 } myStore2={ myStore2 }>
-    <MyComponent/>
-</Provider>, document.getElementById('root'));
-```
-
-You can then access your stores using `connect`
-
-```javascript
-@connect(['myStore1', 'myStore2'])
-class MyComponent extends Component {
-    render({ myStore1, myStore2 }) {
-        return <p>{ myStore2 }</p>
-    }
-}
-```
-
-By making your stores reactive using `observable` from mobx, you can have your components automatically update when your stores' content changes.
-
-```javascript
-import { observable } from 'mobx';
-
-let myStore1 = observable({ someKey: 'someValue' });
-let myStore2 = observable(['some', 'array']);
-```
-
-For more information on how to use `mobx observables`,  visit [mobx](https://github.com/mobxjs/mobx)
-
-
-# Full Example
-
-```javascript
-// MyComponent.js
-import { Component } from 'inferno';
-import { connect } from 'inferno-mobx';
-
-@connect(['englishStore', 'frenchStore'])
-class MyComponent extends Component {
-    render({ englishStore, frenchStore }) {
-        return <div>
-            <p>{ englishStore.title }</p>
-            <p>{ frenchStore.title }</p>
-        </div>
-    }
-}
-
-export default MyComponent
-```
-
-Just make sure that you provided your stores using the `Provider`. Ex:
-
-```javascript
-// index.js
 import { render } from 'inferno';
 import { Provider } from 'inferno-mobx';
 import { observable } from 'mobx';
@@ -146,7 +36,86 @@ const frenchStore = observable({
     title: 'Bonjour tout le monde'
 });
 
-render(<Provider englishStore={ englishStore } frenchStore={ frenchStore }>
-    <MyComponent/>
-</Provider>, document.getElementById('root'));
+render(
+    <Provider englishStore={ englishStore } frenchStore={ frenchStore }>
+        <MyComponent/>
+    </Provider>, 
+    document.getElementById('root')
+);
+```
+
+## `Inject & Observer`
+Any component that needs to react to data changes must be wrapped in an `observer`. These components can then have one or more of the stores supplied by the Provider injected into them. The injected stores are then available as props within the component's scope.
+
+### `Decorator syntax`
+Inferno MobX supports [TC39 Decorator syntax](https://github.com/tc39/proposal-decorators), but it should be noted that, because of specification instability, the MobX maintainers no longer recommend using decorators and the syntax has been removed from the official MobX documentation.
+
+```javascript
+import { Component } from 'inferno';
+import { inject, observer } from 'inferno-mobx';
+```
+
+### `Class`
+
+```javascript
+class MyComponent extends Component {
+    render({ englishStore, frenchStore }) {
+        return (
+            <div>
+                <p>{ englishStore.title }</p>
+                <p>{ frenchStore.title }</p>
+            </div>
+        )
+    }
+}
+
+export default inject('englishStore', 'frenchStore')(observer(MyComponent));
+```
+### `With Decorators`
+```javascript
+@inject('englishStore', 'frenchStore') @observer
+class MyComponent extends Component {
+    render({ englishStore, frenchStore }) {
+        return (
+            <div>
+                <p>{ englishStore.title }</p>
+                <p>{ frenchStore.title }</p>
+            </div>
+        )
+    }
+}
+
+export default MyComponent;
+```
+### `Functional Components`
+```javascript
+const MyComponent = observer(({ frenchStore }) => <div>{ frenchStore.title }</div>);
+
+export default MyComponent;
+```
+
+## `TypeScript`
+
+The inject syntax requires strings that map to the names of available stores. If using TypeScript, be aware that the string-to-object mapping prevents TypeScript's static analysis from determining value and availability of the store in a component. You can solve this issue by either declaring the store as an optional prop, and then deciding how to check for undefined, or by opting to pass the store explicitly through the component tree.
+
+```typescript
+type MyProps = {
+    englishStore? : EnglishStore,
+    frenchStore? : FrenchStore,
+}
+
+class MyComponent extends Component<MyProps> {
+    render({ englishStore, frenchStore }) {
+        return (
+            <div>
+                <p>{ englishStore!.title }</p>
+                <p>{ frenchStore!.title }</p>
+            </div>
+        )
+    }
+}
+
+const FuncComponent = observer((props : MyProps) => {
+    <div>{ props.englishStore?.title }</div>)
+};
 ```
