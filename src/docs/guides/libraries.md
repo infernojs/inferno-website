@@ -327,6 +327,8 @@ function notConnectedToStoreFunc() {
 }
 ```
 
+<a name="inferno-carousel"></a>
+
 ## inferno-carousel
 
 Carousel component for InfernoJS.
@@ -370,6 +372,8 @@ You can also specify a `className` for the container of the carousel by providin
 
 - `animationSpeed` is the speed (in terms of milliseconds) of the transition animation.
 - `itemDuration` is the amount of time (in terms of milliseconds) it has to wait before transitioning to the next item.
+
+<a name="inferno-particles"></a>
 
 ## inferno-particles
 
