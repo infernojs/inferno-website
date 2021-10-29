@@ -99,6 +99,7 @@
 }
 
 .differences {
+  position: relative;
   .differences-item {
     list-style: none;
     &::before {
@@ -109,5 +110,47 @@
       position: relative;
       top: 3px;
     }
+  }
+}
+
+html {
+  --contentPaneAnimation: opacity 0.3s ease-in, transform 0.3s ease-out;
+}
+
+.content-pane {
+  padding: $unit-4 0 $unit-4 $unit-4;
+  margin: 0;
+  transform: translateZ(0);
+}
+
+.content-pane-left {
+  &-enter,
+  &-leave-end {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  &-leave-active {
+    position: absolute;
+    transition: var(--contentPaneAnimation);
+  }
+  &-enter-active {
+    transition: var(--contentPaneAnimation);
+  }
+}
+
+.content-pane-right {
+  &-enter,
+  &-leave-end {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  &-leave-active {
+    position: absolute;
+    transition: var(--contentPaneAnimation);
+  }
+  &-enter-active {
+    transition: var(--contentPaneAnimation);
   }
 }

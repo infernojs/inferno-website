@@ -1,4 +1,8 @@
 import {Component, linkEvent} from 'inferno';
+import {
+  componentDidAppear,
+  componentWillDisappear,
+} from 'inferno-animation';
 
 const setCurrent = ({ instance, index }, e) => {
   e.stopPropagation();
@@ -51,12 +55,21 @@ export default class ContentAccordion extends Component {
             </li>;
           })}
         </ul>
-        <ul>
+        <ContentPane
+          key={`content-${this.state.current}`}
+          className="content-pane"
+          animation={`content-pane-${this.state.current === 0 ? 'left' : 'right'}`}
+          onComponentDidAppear={componentDidAppear}
+          onComponentWillDisappear={componentWillDisappear}>
           {this.state.list[this.state.current].description.map((item) => {
             return <li className="differences-item">{item}</li>;
           })}
-        </ul>
+        </ContentPane>
       </div>
     );
   }
+}
+
+function ContentPane({ children, ...props }) {
+  return <ul {...props}>{children}</ul>;
 }
