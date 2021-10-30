@@ -1,5 +1,6 @@
 import {Component, createTextVNode, version} from 'inferno';
 import ContentAccordion from './common/ContentAccordion';
+import AnimateMovePromo from './demo/AnimateMovePromo';
 import Features from './home/Features';
 import IconInferno from './icons/IconInferno';
 import {Community} from './common/Community';
@@ -38,6 +39,11 @@ export default class Home extends Component {
 
         <div className="hide-xs" style={{ 'margin-bottom': '6rem' }}/>
         <div className="show-xs" style={{ 'margin-bottom': '3rem' }}/>
+
+        <section className="demo">
+          <h2>Inferno has native animation support <small>NEW in 8.0!</small></h2>
+          <AnimateMovePromo/>
+        </section>
 
         <section className="features">
           <Features/>

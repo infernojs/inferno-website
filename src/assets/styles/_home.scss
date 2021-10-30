@@ -54,16 +54,6 @@
         background: transparent;
       }
     }
-    .button.second {
-      color: #fff;
-      text-decoration: none;
-      background: #000;
-      border: 2px solid #000;
-      &:hover {
-        color: #1c1e23;
-        background-color: #fff;
-      }
-    }
   }
 }
 
@@ -95,6 +85,22 @@
   @media (max-width: $size-sm) {
     display: block;
     margin: 25px auto;
+  }
+
+  &.small {
+    font-size: 0.85rem;
+    padding: 0.5em 1.75em;
+  }
+
+  &.second {
+    color: #fff;
+    text-decoration: none;
+    background: #000;
+    border: 2px solid #000;
+    &:hover {
+      color: #1c1e23;
+      background-color: #fff;
+    }
   }
 }
 
@@ -152,5 +158,22 @@ html {
   }
   &-enter-active {
     transition: var(--contentPaneAnimation);
+  }
+}
+
+.demo {
+  margin: 4rem 0;
+
+  text-align: center;
+
+  h2 small {
+    font-size: 35%;
+    font-weight: 600;
+    margin: 0 0.5em;
+    padding: 0.5em;
+    background-color: $primary;
+    border-radius: 0.2em;
+    color: white;
+    vertical-align: middle;
   }
 }

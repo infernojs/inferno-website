@@ -1,0 +1,51 @@
+.animate-move-promo {
+  position: relative;
+
+  .button-wrapper {
+    position: absolute;
+    z-index: 9;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.4rem;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 0.5rem;
+
+    button {
+      margin: 0;
+    }
+  }
+}
+
+.animate-grid {
+  display: grid;
+  column-gap: 0.2rem;
+  row-gap: 0.2rem;
+  grid-template-columns: repeat(16, 1fr);
+  margin: $unit-4 0;
+
+  .grid-item {
+    width: 100%;
+    padding-top: 100%;
+    border-radius: 2px;
+    background-color: $primary;;
+    color: white;
+    font-size: 6px;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+}
+
+/*****************/
+/* Animate moves */
+/*****************/
+html {
+  --moveAnimation: transform 1.5s, opacity 0.5s ease-in-out;
+}
+
+.AnimateMove-move-active {
+  /* Move animation transitions */
+  transition: var(--moveAnimation)!important;
+  z-index: 1;
+  opacity: 0.6!important;
+}
