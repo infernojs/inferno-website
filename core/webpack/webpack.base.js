@@ -33,8 +33,7 @@ module.exports = {
                 {
                   'targets': {
                     'browsers': ['>0.25%', 'ie >= 11'],
-                  },
-                  'loose': true,
+                  }
                 },
               ],
             ],
