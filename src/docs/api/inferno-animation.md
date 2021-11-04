@@ -10,7 +10,7 @@ npm install inferno-animation --save
 ```
 
 ## Using inferno-animation
-Since **Inferno 7.5.0** there is support for animation lifecycle events:
+As of **Inferno 8.0.0** there is support for animation lifecycle events:
 
 Class components:
 - componentDidAppear(dom)

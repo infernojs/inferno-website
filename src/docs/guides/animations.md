@@ -1,15 +1,17 @@
 # Animations
-Since **Inferno 7.5.0** there are two new lifecycle events that can be used for animations.
+As of **Inferno 8.0.0** there are three new lifecycle events that can be used for animations.
 
 Inferno has class component lifecycle events that allow you to animate components on mount and unmount:
 
 Class components:
 - componentDidAppear(dom)
 - componentWillDisappear(dom, callback)
+- componentWillMove(parentVNode, parent, dom, next, props)
 
 Functional components:
 - onComponentDidAppear(dom, props)
 - onComponentWillDisappear(dom, props, callback)
+- onComponentWillMove(parentVNode, parent, dom, next, props)
 
 The package `inferno-animation` provides a base class and helper methods that implement these to allow you to easily convert components to animated components. See the API docs for inferno-animation.
 
