@@ -1,7 +1,7 @@
 # Inferno Animation API
 This package provides CSS-animations when components are added and removed.
 
-Requires Inferno >=7.5.0
+Requires Inferno >=8.0.0
 
 To migrate from earlier versions of inferno-animation, read the last section on this page.
 
@@ -39,6 +39,10 @@ how to wire up the three animation hooks:
 
 There are a couple of examples of animations in the main repos in the `docs/animations` and `docs/animations-demo` folder
 
+### Global animations
+Inferno also implements global animations. These allow you to animate a component between positions on two different "pages". Technincally this means they don't have the same parent element. When you mount one page imediately after unmounting the other page, inferno-animation will perform a FLIP-animation between the two positions. To match the elements you use the attribute `globalAnimationKey` which accept a string.
+
+Global animations are very simple to use, [check this example.](https://github.com/infernojs/inferno/blob/master/docs/animations-global-demo/app.js)
 
 ### Creating an animated component
 
@@ -189,6 +193,8 @@ You can implement child animations using the CSS-classes. Make sure they are qui
 ### Nested animations
 If you mount an animated component that in turn contains animated components, only the outer most animation will trigger. In other words, if you mount an animated page containing a list of animated rows, only the page will animate. You can use this effect to block animations on first render by making sure your root component inherits from `AnimatedComponent` and just skipping the transitions.
 
+If you want to animate child components you can [look att this example.](https://github.com/infernojs/inferno/tree/master/docs/animations-demo-inner)
+
 ### Creating a custom animated component
 If you want to implement another type of animation, such as Bootstrap 4 animations, you can implement the lifecycle events yourself. **Make sure you use the helper methods** exposed by `inferno-animation` unless you really, really, know what you are doing. The helper methods will make the code more readable and contains some hard earned wisdom.
 
@@ -215,10 +221,8 @@ import {
 
 **Make sure you implement a fallback timeout** in case the tranistions fail for some reason, otherwise you will be leaking DOM-nodes. Inferno won't break due to these leaking DOM-nodes, but you could end up with strange styling bugs if you rely on certain CSS-selectors.
 
-## Migration from inferno-animation <7.5
-To stay with the legacy `inferno-animation` package switch from caret to tilde `"inferno-animation": "~7.4.0",` and everything will continue working as before. Previous major versions won't be affected.
-
-To migrate to the 7.5 version of inferno-animation there are some quick solutions.
+## Migration from inferno-animation <8.0
+To migrate to the 8.0 version of inferno-animation there are some quick solutions.
 
 Implement your own `<Animated>` component and rename the attribute `prefix` to `animation` in places where you use it. The animations will work exactly the same.
 

@@ -1,7 +1,5 @@
 # Animations
-As of **Inferno 8.0.0** there are three new lifecycle events that can be used for animations.
-
-Inferno has class component lifecycle events that allow you to animate components on mount and unmount:
+As of **Inferno 8.0.0** there are three new lifecycle events that can be used for animations:
 
 Class components:
 - componentDidAppear(dom)
@@ -16,6 +14,8 @@ Functional components:
 The package `inferno-animation` provides a base class and helper methods that implement these to allow you to easily convert components to animated components. See the API docs for inferno-animation.
 
 When mounting animated components that in turn contain animated components only the outer most animation will be triggered.
+
+Inferno also supports global animations. These allow you to animate a component between positions on two different "pages". Technincally this means they don't have the same parent element. The logo on the [Inferno website](https://infernojs.org/) is a global animation.
 
 Your animated component will look something like this:
 
