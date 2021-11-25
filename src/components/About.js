@@ -2,7 +2,7 @@ import {Component} from 'inferno';
 
 export default class About extends Component {
   render() {
-    return <section className="container page row">
+    return <section className="page container row">
       <div className="inner">
         <h1>About Inferno</h1>
         <blockquote>

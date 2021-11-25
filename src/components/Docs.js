@@ -94,7 +94,7 @@ export default class Docs extends Component {
     );
 
     return (
-      <section className="columns docs row">
+      <section className="page columns docs row">
         <aside className="docs-menu">
           {
             match && match.url.includes('api/')

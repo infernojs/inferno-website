@@ -9,7 +9,7 @@ import {Link} from 'inferno-router';
 export default class Home extends Component {
   render() {
     return (
-      <div className="home container grid-lg">
+      <div className="home page container grid-lg">
         <div className="hide-sm" style={{ 'margin-bottom': '4rem' }}/>
         <div className="center">
           <div className="columns hero-banner">

@@ -83,6 +83,17 @@ h3 {
   --infernoAnimationLogo: all 0.3s ease-out;
 }
 
+
+#root > div > .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.page {
+  grid-area: 1 / 1 / 1 / 1;
+}
+
 /******************************/
 /* Animate avatar image <img> */
 /******************************/
