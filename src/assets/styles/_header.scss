@@ -47,8 +47,6 @@ $color-red-brighter: #ff2f33;
   text-decoration: none;
   font-size: 1.25rem;
   margin: 0;
-  opacity: 0;
-  visibility: hidden;
   &:hover, &:hover span {
     color: $color-red-brighter;
     text-decoration: none;
@@ -63,10 +61,6 @@ $color-red-brighter: #ff2f33;
     height: 10px;
     margin-left: 4px;
     color: #fff;
-  }
-  &.show {
-    opacity: 1;
-    visibility: visible;
   }
   .inferno-logo {
     transform: translateZ(0);
