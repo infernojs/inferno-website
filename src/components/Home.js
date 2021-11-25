@@ -5,6 +5,11 @@ import Features from './home/Features';
 import InfernoLogo from './icons/IconInferno';
 import {Community} from './common/Community';
 import {Link} from 'inferno-router';
+import {
+  componentDidAppear,
+  componentWillDisappear
+} from  'inferno-animation';
+
 
 export default class Home extends Component {
   render() {
@@ -56,7 +61,9 @@ export default class Home extends Component {
           <h3 className="text-center" style={{ color: '#b9b9b9', marginBottom: '2rem' }}>
             Inferno is different, yet familiar...
           </h3>
-          <ContentAccordion/>
+          <NoAnimOnMount>
+            <ContentAccordion/>
+          </NoAnimOnMount>
         </section>
 
         <div className="hide-xs" style={{ 'margin-bottom': '6rem' }}/>
@@ -67,3 +74,12 @@ export default class Home extends Component {
     );
   }
 }
+
+function NoAnimOnMount({ children }) {
+  return children;
+}
+// These hooks will block child animations on mount/unmount
+NoAnimOnMount.defaultHooks = {
+  onComponentDidAppear: componentDidAppear,
+  onComponentWillDisappear: componentWillDisappear
+};
