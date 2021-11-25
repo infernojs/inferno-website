@@ -77,3 +77,16 @@ h1, h2, h4, h5 {
 h3 {
   font-weight: 500;
 }
+
+/* Using CSS-vars for transitions so you can experiment easily */
+:root {
+  --infernoAnimationLogo: all 0.3s ease-out;
+}
+
+/******************************/
+/* Animate avatar image <img> */
+/******************************/
+.AnimateLogo-enter-active {
+  /* Enter animation transitions */
+  transition: var(--infernoAnimationLogo);
+}

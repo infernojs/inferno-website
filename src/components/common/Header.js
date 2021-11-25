@@ -59,6 +59,7 @@ class Header extends Component {
   render() {
     const { location, match } = this.props;
     const locationURL = location.pathname;
+    const showLogo = locationURL !== '/';
 
     return (
       <div className="menu">
@@ -68,7 +69,7 @@ class Header extends Component {
               <IconMenu/>
             </div>
             <MenuLink match={match} to="/" className="branding lg3 sm3">
-              <InfernoLogo/> Inferno <small>v{version}</small>
+              {showLogo && <InfernoLogo globalAnimationKey="main-logo" animation="AnimateLogo" />} Inferno <small>v{version}</small>
             </MenuLink>
             <nav className={ 'lg9 sm9 ' + (this.state.active ? 'open' : 'closed') }>
               <MenuLink match={match} to="/">Home</MenuLink>

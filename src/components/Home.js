@@ -2,7 +2,7 @@ import {Component, createTextVNode, version} from 'inferno';
 import ContentAccordion from './common/ContentAccordion';
 import AnimateMovePromo from './demo/AnimateMovePromo';
 import Features from './home/Features';
-import IconInferno from './icons/IconInferno';
+import InfernoLogo from './icons/IconInferno';
 import {Community} from './common/Community';
 import {Link} from 'inferno-router';
 
@@ -15,7 +15,7 @@ export default class Home extends Component {
           <div className="columns hero-banner">
             <div className="column col-4 col-sm-12 col-ml-auto">
               <div className="logo">
-                <IconInferno/>
+                <InfernoLogo globalAnimationKey="main-logo" animation="AnimateLogo" />
               </div>
             </div>
             <div className="column col-8 col-sm-12 col-mr-auto">

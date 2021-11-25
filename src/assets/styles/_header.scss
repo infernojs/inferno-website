@@ -69,6 +69,7 @@ $color-red-brighter: #ff2f33;
     visibility: visible;
   }
   .inferno-logo {
+    transform: translateZ(0);
     path {
       fill: #505050 !important;
     }

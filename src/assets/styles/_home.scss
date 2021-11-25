@@ -13,6 +13,7 @@
     display: block;
     max-width: 150px;
     margin-left: auto;
+    transform: translateZ(0);
     @media (max-width: $size-sm) {
       margin: 0 auto;
     }
