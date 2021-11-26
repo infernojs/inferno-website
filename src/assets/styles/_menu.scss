@@ -6,7 +6,7 @@ $sidebar-width: 50%;
   // Hamburger button
   .branding {
     @include media-query($on-small) {
-      width: 50%;
+      width: unset;
     }
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
