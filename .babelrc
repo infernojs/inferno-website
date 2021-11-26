@@ -5,7 +5,8 @@
       {
         "targets": {
           "browsers": [ ">0.25%", "ie >= 11"]
-        }
+        },
+        "loose": true
       }
     ]
   ],
@@ -17,7 +18,9 @@
         "defineAllArguments": true
       }
     ],
-    "@babel/plugin-proposal-class-properties",
+    ["@babel/plugin-proposal-class-properties", { "loose": true }],
+    ["@babel/plugin-proposal-private-property-in-object", { "loose": true }],
+    ["@babel/plugin-proposal-private-methods", { "loose": true }],
     "@babel/plugin-proposal-object-rest-spread",
     "@babel/plugin-transform-async-to-generator"
   ]
