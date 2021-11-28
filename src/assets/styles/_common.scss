@@ -92,6 +92,8 @@ h3 {
 
 .page {
   grid-area: 1 / 1 / 1 / 1;
+  min-width: 0;
+  
   @media (max-width: $size-lg) {
     &.container {
       max-width: calc(100vw - 30px);
