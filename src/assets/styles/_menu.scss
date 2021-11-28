@@ -5,9 +5,6 @@ $sidebar-width: 50%;
   padding: 7.5px;
   // Hamburger button
   .branding {
-    @include media-query($on-small) {
-      width: unset;
-    }
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
@@ -24,6 +21,7 @@ $sidebar-width: 50%;
     svg {
       height: 42.5px;
       margin-right: 7.5px;
+      flex-shrink: 0;
     }
     small {
       font-size: 0.65rem;
