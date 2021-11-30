@@ -44,8 +44,8 @@ render(
 ```
 
 Because performance is an important aspect of this library, we want to show you how to optimize your application even further.
-In the example below we optimize the diffing process by using JSX **$HasVNodeChildren** to predefine children shape compile time.
-Then we create text vNode using `Inferno.createTextVNode`.
+In the example below we optimize the diffing process by using JSX **$HasTextChildren** to predefine children shape compile time.
+**$HasTextChildren** can be used when the children is just text.
 
 ```jsx
 import { createTextVNode, render, Component } from 'inferno';
@@ -61,7 +61,7 @@ class MyComponent extends Component {
     return (
       <div>
         <h1>Header!</h1>
-        <span $HasVNodeChildren>{createTextVNode('Counter is at: ' + this.state.counter)}</span>
+        <span $HasTextChildren>{'Counter is at: ' + this.state.counter}</span>
       </div>
     );
   }
