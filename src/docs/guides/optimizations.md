@@ -25,6 +25,7 @@ When defining children flags children is/are:
 - `ChildFlags.UnknownChildren` needs Normalization
 - `ChildFlags.HasInvalidChildren` is invalid (null, undefined, false, true)
 - `ChildFlags.HasVNodeChildren` (JSX **$HasVNodeChildren**) is single vNode (Element/Component)
+- `ChildFlags.HasTextChildren` (JSX **$HasTextChildren**) is bare text
 - `ChildFlags.HasNonKeyedChildren` (JSX **$HasNonKeyedChildren**) is Array of vNodes non keyed (no nesting, no holes)
 - `ChildFlags.HasKeyedChildren` (JSX **$HasKeyedChildren**) is Array of vNodes keyed (no nesting, no holes)
 
