@@ -13,6 +13,7 @@
     display: block;
     max-width: 150px;
     margin-left: auto;
+    transform: translateZ(0);
     @media (max-width: $size-sm) {
       margin: 0 auto;
     }
@@ -54,16 +55,6 @@
         background: transparent;
       }
     }
-    .button.second {
-      color: #fff;
-      text-decoration: none;
-      background: #000;
-      border: 2px solid #000;
-      &:hover {
-        color: #1c1e23;
-        background-color: #fff;
-      }
-    }
   }
 }
 
@@ -96,9 +87,26 @@
     display: block;
     margin: 25px auto;
   }
+
+  &.small {
+    font-size: 0.85rem;
+    padding: 0.5em 1.75em;
+  }
+
+  &.second {
+    color: #fff;
+    text-decoration: none;
+    background: #000;
+    border: 2px solid #000;
+    &:hover {
+      color: #1c1e23;
+      background-color: #fff;
+    }
+  }
 }
 
 .differences {
+  position: relative;
   .differences-item {
     list-style: none;
     &::before {
@@ -109,5 +117,65 @@
       position: relative;
       top: 3px;
     }
+  }
+}
+
+html {
+  --contentPaneAnimation: opacity 0.3s ease-in, transform 0.3s ease-out;
+}
+
+.content-pane {
+  padding: $unit-4 0 $unit-4 $unit-4;
+  margin: 0;
+  transform: translateZ(0);
+}
+
+.content-pane-left {
+  &-enter,
+  &-leave-end {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+
+  &-leave-active {
+    position: absolute;
+    transition: var(--contentPaneAnimation);
+  }
+  &-enter-active {
+    transition: var(--contentPaneAnimation);
+  }
+}
+
+.content-pane-right {
+  &-enter,
+  &-leave-end {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+
+  &-leave-active {
+    position: absolute;
+    transition: var(--contentPaneAnimation);
+  }
+  &-enter-active {
+    transition: var(--contentPaneAnimation);
+  }
+}
+
+.demo {
+  margin: 4rem 0;
+
+  text-align: center;
+
+  h2 small {
+    font-size: 35%;
+    font-weight: 600;
+    margin: 0 0.5em;
+    padding: 0.5em;
+    background-color: $primary;
+    border-radius: 0.2em;
+    color: white;
+    vertical-align: middle;
+    white-space: nowrap;
   }
 }

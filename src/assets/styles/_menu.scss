@@ -5,15 +5,13 @@ $sidebar-width: 50%;
   padding: 7.5px;
   // Hamburger button
   .branding {
-    @include media-query($on-small) {
-      width: 50%;
-    }
     -webkit-transition: all 0.2s ease-in-out;
     -o-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     display: flex;
+    flex:  1;
     align-items: center;
-    padding-left: 15px;
+    padding-left: calc(15px + 42.5px + 7px);
     font-weight: normal;
     color: #3d464d;
     text-decoration: none;
@@ -21,15 +19,20 @@ $sidebar-width: 50%;
     margin: 0;
     opacity: 0;
     visibility: hidden;
+    max-width: unset;
+
     svg {
       height: 42.5px;
       margin-right: 7.5px;
+      margin-left: -50px;
+      flex-shrink: 0;
     }
     small {
       font-size: 0.65rem;
       height: 10px;
       margin-left: 4px;
       color: #888;
+      white-space: nowrap;
     }
     &.show {
       opacity: 1;
@@ -46,10 +49,14 @@ $sidebar-width: 50%;
     }
   }
   nav {
-    text-align: right;
-    padding-right: 0px;
+    display: flex;
+    flex: 1;
+    padding: 0px;
+    gap: 1.25em;
+    justify-content: center;
+    height: 2.5em;
+    margin: 0 auto;
     @include media-query($on-small) {
-      display: flex;
       flex-flow: column;
       margin-top: calc(#{$topnav-height + 0.31rem});
       background-color: $white;
@@ -85,11 +92,11 @@ $sidebar-width: 50%;
       color: #454a57;
       text-align: left;
       line-height: 3em;
-      margin-left: 1.25em;
       padding-bottom: 3px;
       cursor: pointer;
       text-decoration: none;
       transition: color 0.2s ease-in-out;
+      white-space: nowrap;
       @include media-query($on-small) {
         line-height: 3em;
         text-align: left;

@@ -152,7 +152,7 @@ export default class Benchmarks extends Component {
 
   render() {
     return (
-      <section className="container page row">
+      <section className="page container row">
         <div className="benchmarks">
           <ul className="options">
             {this.state.list.map((item, index) => {

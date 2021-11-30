@@ -1,5 +1,10 @@
+import {
+  componentDidAppear,
+  componentWillDisappear
+} from  'inferno-animation';
 
-export default ({ width, height }) => {
+
+export default function InfernoLogo ({ width, height }) {
     return (
         <svg
             className="inferno-logo"
@@ -12,4 +17,9 @@ export default ({ width, height }) => {
             </g>
         </svg>
     );
+}
+
+InfernoLogo.defaultHooks = {
+  onComponentDidAppear: componentDidAppear,
+  onComponentWillDisappear: componentWillDisappear
 };

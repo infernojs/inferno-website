@@ -77,3 +77,34 @@ h1, h2, h4, h5 {
 h3 {
   font-weight: 500;
 }
+
+/* Using CSS-vars for transitions so you can experiment easily */
+:root {
+  --infernoAnimationLogo: all 0.3s ease-out;
+}
+
+
+#root > div > .container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+}
+
+.page {
+  grid-area: 1 / 1 / 1 / 1;
+  min-width: 0;
+  
+  @media (max-width: $size-lg) {
+    &.container {
+      max-width: calc(100vw - 30px);
+    }
+  }
+}
+
+/******************************/
+/* Animate avatar image <img> */
+/******************************/
+.AnimateLogo-enter-active {
+  /* Enter animation transitions */
+  transition: var(--infernoAnimationLogo);
+}
