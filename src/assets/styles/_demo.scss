@@ -19,16 +19,15 @@
 
 .animate-grid {
   display: grid;
-  column-gap: 0.2rem;
-  row-gap: 0.2rem;
+  grid-gap: 0.2rem;
   grid-template-columns: repeat(16, 1fr);
-  margin: $unit-4 0;
+  margin: 0;
 
   .grid-item {
-    width: 100%;
-    padding-top: 100%;
+    width: 1vw;
+    padding-top: 25%;
     border-radius: 2px;
-    background-color: $primary;;
+    background-color: $primary;
     color: white;
     font-size: 6px;
     opacity: 1;
