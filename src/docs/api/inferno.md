@@ -429,7 +429,7 @@ options.componentComparator = function (lastVNode, nextVNode) {
 ```
 
 ### `findDOMNode` (package: `inferno-extras`)
-This feature has been moved from inferno to inferno-compat in v6. No options are needed anymore.
+This feature has been moved from `inferno` to `inferno-extras`. No options are needed anymore.
 
 Note: we recommend using a `ref` callback on a component to find its instance, rather than using `findDOMNode()`. `findDOMNode()` cannot be used on functional components.
 
