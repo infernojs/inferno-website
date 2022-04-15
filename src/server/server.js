@@ -14,11 +14,6 @@ import hooks from './routes/hooks';
 
 const app = new Koa();
 
-// Middleware
-// app.use(serverpush({
-//   manifest: path.join(__dirname, '../../push_manifest.json'),
-//   singleheader: false
-// }));
 app.use(favicon(config.http.favicon));
 app.use(compress());
 app.use(convert(bodyParser({
@@ -28,6 +23,7 @@ app.use(convert(bodyParser({
 })));
 
 app.use(catcher);
+debugger
 app.use(markdown.routes());
 app.use(hooks.routes());
 
@@ -67,7 +63,7 @@ app.use(render);
 // }
 
 /**
- * only listen in dev env 
+ * only listen in dev env
  * could also check with process.env.DEV
  */
 if (process.env.IS_NOW === undefined) {

@@ -1,7 +1,6 @@
 /**
  * Generate client-side bundle
  */
-require('isomorphic-fetch');
 require('./logger');
 
 // Compile files on PROD or launch DEV server

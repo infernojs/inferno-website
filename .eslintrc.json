@@ -1,5 +1,4 @@
 {
-  "parser": "babel-eslint",
   "extends": ["eslint:recommended", "plugin:inferno/recommended"],
   "plugins": [
 	"inferno"
@@ -11,7 +10,7 @@
   },
   "parserOptions": {
 	"sourceType": "module",
-	"ecmaVersion": 8,
+	"ecmaVersion": 10,
 	"ecmaFeatures": {
 	  "jsx": true,
 	  "experimentalObjectRestSpread": true

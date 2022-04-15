@@ -34,6 +34,7 @@ const pathsToTry = [
 
 export default router()
   .get('/release', async(ctx, next) => {
+    debugger
     const { file } = ctx.query;
 
     if (file.includes('..')) {
@@ -43,6 +44,7 @@ export default router()
     ctx.body = await parseMarkDown(file);
   })
   .get('/api/markdown', async(ctx, next) => {
+    debugger
     const { file } = ctx.query;
 
     if (file.includes('..')) {
@@ -357,7 +359,7 @@ function getPosition(node) {
 function renderNodes(block) {
   let walker = block.walker();
 
-  // Softbreaks are usually treated as newlines, but in HTML we might want explicit linebreaks
+  // Soft-breaks are usually treated as newlines, but in HTML we might want explicit linebreaks
   let softBreak = (this.softBreak === 'br' ? createElement('br') : this.softBreak);
 
   let propOptions = {

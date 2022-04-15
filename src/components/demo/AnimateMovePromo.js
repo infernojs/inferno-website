@@ -10,9 +10,11 @@ export default class AnimateMovePromo extends Component {
     for (let i = 0; i < 48; i++) {
       this.state.items.push(`item_${i}`);
     }
+
+    this.doShuffle = this.doShuffle.bind(this);
   }
 
-  doShuffle = (e) => {
+  doShuffle(e) {
     e.preventDefault();
     this.setState({
       items: shuffle(this.state.items)
@@ -34,15 +36,15 @@ export default class AnimateMovePromo extends Component {
             animation="AnimateMove"
             onComponentWillMove={componentWillMove} />)}
         </div>
-      
+
       </div>
     );
   }
 }
 
-function GridItem({children, ...props}) {
+function GridItem(props) {
   return (
-    <div className="grid-item">{children}</div>
+    <div className="grid-item">{props.children}</div>
   );
 }
 

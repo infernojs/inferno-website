@@ -1,6 +1,5 @@
 // This is the entry point for our client-side logic
 // The server-side has a similar configuration in `src/server/middleware/render.js`
-import 'isomorphic-fetch';
 import '../core/polyfills';
 import '../core/logger';
 import './assets/styles/index.scss';

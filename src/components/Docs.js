@@ -8,6 +8,8 @@ export default class Docs extends Component {
       markdown: null,
       prevURL: null
     };
+
+    this.loadDocument = this.loadDocument.bind(this);
   }
 
   componentWillReceiveProps({ match }) {
@@ -19,7 +21,7 @@ export default class Docs extends Component {
     this.loadDocument(match.params.path || 'guides/installation');
   }
 
-  loadDocument = (to, changeRoute) => {
+  loadDocument(to, changeRoute) {
     const { router } = this.context;
     const path = '/' + to.replace('/docs/', '');
 
@@ -32,7 +34,7 @@ export default class Docs extends Component {
       .then(response => {
         this.setState({ markdown: response });
       });
-  };
+  }
 
   render() {
     const { match } = this.props;

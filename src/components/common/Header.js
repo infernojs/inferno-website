@@ -28,6 +28,9 @@ class Header extends Component {
       active: false,
       activeDropdown: null,
     };
+
+    this.closeSidebar = this.closeSidebar.bind(this);
+    this.toggleSidebar = this.toggleSidebar.bind(this);
   }
 
   componentDidMount() {
@@ -40,21 +43,16 @@ class Header extends Component {
     main.removeEventListener('click', this.closeSidebar, isPassive);
   }
 
-  closeSidebar = () => {
+  closeSidebar() {
     this.setState({
       active: false,
       activeDropdown: false
     });
-  };
+  }
 
-  toggleSidebar = () => {
+  toggleSidebar() {
     this.setState({ active: !this.state.active });
-  };
-
-  openDropdown = (activeDropdown) => (e) => {
-    e.preventDefault();
-    this.setState({ activeDropdown });
-  };
+  }
 
   render() {
     const { location, match } = this.props;
