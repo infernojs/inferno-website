@@ -80,7 +80,6 @@ export default class Docs extends Component {
             {/*<MenuLink match={match} to={'/docs/guides/what-is-virtual-dom'}>What is Virtual DOM?</MenuLink>*/}
             <MenuLink match={match} to={'/docs/guides/what-is-jsx'}>What is JSX?</MenuLink>
             <MenuLink match={match} to={'/docs/guides/alternatives-to-jsx'}>Alternatives to JSX</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/devtools'}>Dev Tools</MenuLink>
             {/*<MenuLink match={match} to={'/docs/guides/state'}>State</MenuLink>*/}
             <MenuLink match={match} to={'/docs/guides/routing'}>Routing</MenuLink>
             <MenuLink match={match} to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
