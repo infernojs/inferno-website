@@ -79,4 +79,4 @@ setTimeout(() => {
 // You would of course normally do this in your render method.
 ```
 
-See the API-docs on this page and examples in the Inferno Github repos for more on how to unlock the power of animations in Inferno.
+See the [animation API-docs](https://www.infernojs.org/docs/api/inferno-animation) and [examples in the Inferno Github repos](https://github.com/infernojs/inferno/tree/master/docs) for more on how to unlock the power of animations in Inferno.
