@@ -64,3 +64,19 @@ And you use it in your code like this `<MyComponent animation="HeightAndFade">..
   }
 }
 ```
+
+Finally use the component in your code:
+
+```JSX
+// Add the component with above defined animation
+inferno.render(<MyComponent animation=“HeightAndFade”>This container is animated</MyComponent>, document.body);
+
+// Remove the component with above defined animation
+setTimeout(() => {
+  inferno.render(null, document.body);
+}, 2000);
+
+// You would of course normally do this in your render method.
+```
+
+See the API-docs on this page and examples in the Inferno Github repos for more on how to unlock the power of animations in Inferno.
