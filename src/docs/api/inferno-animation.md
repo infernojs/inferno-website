@@ -40,7 +40,7 @@ how to wire up the three animation hooks:
 There are a couple of examples of animations in the main repos in the `docs/animations` and `docs/animations-demo` folder
 
 ### Global animations
-Inferno also implements global animations. These allow you to animate a component between positions on two different "pages". Technincally this means they don't have the same parent element. When you mount one page imediately after unmounting the other page, inferno-animation will perform a FLIP-animation between the two positions. To match the elements you use the attribute `globalAnimationKey` which accept a string.
+Inferno also implements global animations. These allow you to animate a component between positions on two different "pages". Technically this means they don't have the same parent element. When you mount one page immediately after unmounting the other page, inferno-animation will perform a FLIP-animation between the two positions. To match the elements you use the attribute `globalAnimationKey` which accept a string.
 
 Global animations are very simple to use, [check this example.](https://github.com/infernojs/inferno/blob/master/docs/animations-global-demo/app.js)
 
@@ -117,7 +117,7 @@ There are some important rules for smooth animations. Always style the animated 
 
 Border-box will allow width and height to be calculated properly. This makes it possible to animate these properties on dynamically sized components.
 
-Setting margin to zero will prevent overlapping margins, which could cause a jump when elements are removed. The wierd behaviour with overlapping margins has been implemented in browsers since the dawn of CSS and made sense for text rendering, but is a nuissance anywhere else.
+Setting margin to zero will prevent overlapping margins, which could cause a jump when elements are removed. The wierd behaviour with overlapping margins has been implemented in browsers since the dawn of CSS and made sense for text rendering, but is a nuisance anywhere else.
 
 Here is an example of CSS for `<MyComponent className="MyComponent" animation="HeightAndFade">` using SCSS. In the example, the disappear (leave) animation will be a slightly quicker reverse version of the appear (enter) animation:
 
@@ -182,7 +182,7 @@ Activating the transition after the starting state is set allows the starting st
 
 4. Set the ending state (in an appear animation we also set height and width; in a disappear animation we remove height and width)
 
-The transitions from phase 3 will now control the animation between the starting and ending state. When all the transitions have completed the tranistion listener will finish with phase 5.
+The transitions from phase 3 will now control the animation between the starting and ending state. When all the transitions have completed the transition listener will finish with phase 5.
 
 5. Clean up
 
@@ -191,7 +191,7 @@ When the animation has completed, we remove the remaining CSS-classes and remove
 You can implement child animations using the CSS-classes. Make sure they are quicker than the main animation otherwise they will jump during clean up in phase 5.
 
 ### Nested animations
-If you mount an animated component that in turn contains animated components, only the outer most animation will trigger. In other words, if you mount an animated page containing a list of animated rows, only the page will animate. You can use this effect to block animations on first render by making sure your root component inherits from `AnimatedComponent` and just skipping the transitions.
+If you mount an animated component that in turn contains animated components, only the outermost animation will trigger. In other words, if you mount an animated page containing a list of animated rows, only the page will animate. You can use this effect to block animations on first render by making sure your root component inherits from `AnimatedComponent` and just skipping the transitions.
 
 If you want to animate child components you can [look att this example.](https://github.com/infernojs/inferno/tree/master/docs/animations-demo-inner)
 
@@ -215,11 +215,11 @@ import {
 } from 'inferno-animation';
 ```
 
-**Animations are done entirely outside of Inferno's control.** You can't use `this.setState()` to animate the component. All you get is the root DOM-node and then you have to do everything in your code.
+**Animations are done entirely outside of Inferno's control.** You can't use `this.setState()` to animate the component. All you get is the root DOM-node, and then you have to do everything in your code.
 
 **If you implement your own animated base class, share it across projects.** This makes it easy for you to maintain the animations when we extend the functionality of inferno-animation in the future.
 
-**Make sure you implement a fallback timeout** in case the tranistions fail for some reason, otherwise you will be leaking DOM-nodes. Inferno won't break due to these leaking DOM-nodes, but you could end up with strange styling bugs if you rely on certain CSS-selectors.
+**Make sure you implement a fallback timeout** in case the transitions fail for some reason, otherwise you will be leaking DOM-nodes. Inferno won't break due to these leaking DOM-nodes, but you could end up with strange styling bugs if you rely on certain CSS-selectors.
 
 ## Migration from inferno-animation <8.0
 To migrate to the 8.0 version of inferno-animation there are some quick solutions.
