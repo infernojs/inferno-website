@@ -34,7 +34,6 @@ const pathsToTry = [
 
 export default router()
   .get('/release', async(ctx, next) => {
-    debugger
     const { file } = ctx.query;
 
     if (file.includes('..')) {
@@ -44,7 +43,6 @@ export default router()
     ctx.body = await parseMarkDown(file);
   })
   .get('/api/markdown', async(ctx, next) => {
-    debugger
     const { file } = ctx.query;
 
     if (file.includes('..')) {

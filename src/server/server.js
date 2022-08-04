@@ -23,7 +23,7 @@ app.use(convert(bodyParser({
 })));
 
 app.use(catcher);
-debugger
+
 app.use(markdown.routes());
 app.use(hooks.routes());
 
