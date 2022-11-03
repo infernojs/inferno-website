@@ -1,6 +1,6 @@
 # Inferno Router
 
-Inferno Router is a routing library for [Inferno](https://github.com/infernojs/inferno). It is a port of [react-router 4](https://reacttraining.com/react-router/).
+Inferno Router is a routing library for [Inferno](https://github.com/infernojs/inferno). It is a port of [react-router 4](https://v5.reactrouter.com/web/guides/quick-start) which was refactored into react-router v5.
 
 ## Install
 
@@ -10,16 +10,20 @@ npm install inferno-router
 
 ## Features
 
-Same as react-router v4, except react-native support which we have tested at this point.
+Same as react-router v4, except react-native support.
 
-See official react-router [documentation](https://reacttraining.com/react-router/native/guides/philosophy)
+Added features from react-router v5:
+- NavLink supports passing function to className-attibute
+- NavLink supports passing function to style-attibute
+
+See official react-router [documentation](https://v5.reactrouter.com/web/guides/philosophy)
 
 
 ## Usage (client-side)
 
 ```js
 import { render } from 'inferno';
-import { BrowserRouter, Route, Link } from 'inferno-router';
+import { BrowserRouter, Route, Switch, Link } from 'inferno-router';
 
 const Home = () => (
   <div>
@@ -44,26 +48,22 @@ const Topics = ({ match }) => (
     <h2>Topics</h2>
     <ul>
       <li>
-        <Link to={`${match.url}/rendering`}>
-          Rendering with React
-        </Link>
+        <Link to={`${match.url}/rendering`}>Rendering with React</Link>
       </li>
       <li>
-        <Link to={`${match.url}/components`}>
-          Components
-        </Link>
+        <Link to={`${match.url}/components`}>Components</Link>
       </li>
       <li>
-        <Link to={`${match.url}/props-v-state`}>
-          Props v. State
-        </Link>
+        <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
       </li>
     </ul>
 
-    <Route path={`${match.url}/:topicId`} component={Topic}/>
-    <Route exact path={match.url} render={() => (
-      <h3>Please select a topic.</h3>
-    )}/>
+    <Route path={`${match.url}/:topicId`} component={Topic} />
+    <Route
+      exact
+      path={match.url}
+      render={() => <h3>Please select a topic.</h3>}
+    />
   </div>
 );
 
@@ -75,18 +75,19 @@ const MyWebsite = () => (
         <li><Link to="/about">About</Link></li>
         <li><Link to="/topics">Topics</Link></li>
       </ul>
-
-      <hr/>
-
-      <Route exact path="/" component={Home}/>
-      <Route path="/about" component={About}/>
-      <Route path="/topics" component={Topics}/>
+      <hr />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/topics" component={Topics} />
+      </Switch>
     </div>
   </BrowserRouter>
 );
 
 // Render HTML on the browser
-render(MyWebsite, document.getElementById('root'));
+render(<MyWebsite />, document.getElementById("app"));
+
 ```
 
 
@@ -118,21 +119,18 @@ import Html from './Html';
 
 const app = express();
 
-app.use((req, res) => {
-  const renderProps = match(routes, req.originalUrl);
-
-  if (renderProps.redirect) {
-    return res.redirect(renderProps.redirect)
-  }
-
-  const context = {};
+app.use((req, res, next) => {
+  let context = {};
   const content = renderToString(
-    <StaticRouter location={ctx.url} context={context}>
+    <StaticRouter location={req.url} context={context}>
       <Html/>
     </StaticRouter>
   );
-
+  if(context.url){
+    return res.redirect(context.url);
+  }
   res.send('<!DOCTYPE html>\n' + renderToString(content));
+  next();
 });
 ```
 
@@ -154,12 +152,12 @@ app.use(async(ctx, next) => {
       <Html/>
     </StaticRouter>
   );
-    
+
   // This will contain the URL to redirect to if <Redirect> was used
   if (context.url) {
     return ctx.redirect(context.url)
   }
-  
+
   ctx.body = '<!DOCTYPE html>\n' + content;
   await next();
 });

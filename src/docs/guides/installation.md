@@ -38,7 +38,7 @@ Note: Make sure you read more about [`inferno-compat`](https://github.com/truead
 ### Routing support:
 
 Inferno's router will provide basic routing support and is usable on both the server and client. For more information on how to use `inferno-router`, visit the project page.
-Check out the [routing guide](routing) for more information on how this works.
+Check out the [routing guide](../api/inferno-router) for more information on how this works.
 
 ```sh
 npm install --save inferno-router
