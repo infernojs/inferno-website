@@ -79,38 +79,37 @@ export default class Benchmarks extends Component {
           data: [
             {
               label: 'Vanilla JS',
-              score: 1.0
+              score: 1.02
             },
             {
-              label: 'Inferno 5.3.0',
+              label: 'Inferno 7.4.8',
               bg: '#dc0030',
-              score: 1.06
+              score: 1.10
             },
             {
-              label: 'Preact 8.2.6',
-              score: 1.29
+              label: 'Vue 3.2.37',
+              score: 1.25
             },
             {
-              label: 'Vue 2.5.16',
-              score: 1.37
-            },
-            {
-              label: 'Svelte 2.9.7',
+              label: 'Svelte 3.50.1',
               score: 1.39
             },
-
             {
-              label: 'React 16.4.1',
-              score: 1.50
+              label: 'Preact 10.7.3',
+              score: 1.44
             },
             {
-              label: 'Angular 6.1.0',
+              label: 'Angular 13.0.0',
               score: 1.50
             },
             {
               label: 'Marko.js 4.12.3',
-              score: 1.50
-            }
+              score: 1.70
+            },
+            {
+              label: 'React 17.0.2',
+              score: 1.85
+            },
           ]
         },
         {
