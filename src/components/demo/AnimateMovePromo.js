@@ -29,14 +29,13 @@ export default class AnimateMovePromo extends Component {
         <div className="button-wrapper">
           <button className="button second small" onClick={this.doShuffle}>Shuffle</button>
         </div>
-        <div className="animate-grid">
+        <div className="animate-grid" $HasKeyedChildren>
           {items.map(item => <GridItem
             key={item}
             className="animate-grid-item"
             animation="AnimateMove"
             onComponentWillMove={componentWillMove} />)}
         </div>
-
       </div>
     );
   }
@@ -44,7 +43,7 @@ export default class AnimateMovePromo extends Component {
 
 function GridItem(props) {
   return (
-    <div className="grid-item">{props.children}</div>
+    <div className="grid-item"></div>
   );
 }
 
