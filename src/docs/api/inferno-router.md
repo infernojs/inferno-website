@@ -17,14 +17,15 @@ Added features from react-router v5:
 - NavLink supports passing function to style-attibute
 
 Features added from react-router@6:
-- Async data fetching before navigation using [`loader`-attribute](https://reactrouter.com/en/main/route/loader)
+- Async data fetching before navigation using [`loader`-attribute](https://reactrouter.com/en/main/route/loader). See [demo](https://github.com/infernojs/inferno/tree/master/demo/inferno-router-demo).
 
-NOTE: While we want the basic fetch behaviour is the same as react-router@6, we are currently missing:
-- progress bar support
+NOTE: While we want the basic fetch behaviour to be the same as react-router@6, we are currently missing:
+- download progress support
 - form submission
+- redirect support
+- not exposing headers, type or status code to render method
 
 See official react-router [documentation](https://v5.reactrouter.com/web/guides/philosophy)
-
 
 ## Usage (client-side)
 
@@ -37,20 +38,6 @@ const Home = () => (
     <h2>Home</h2>
   </div>
 );
-
-// API data fetcher that is completed before navigation is completed
-// The API returns { "body": "..." }
-async aboutLoader({ params, request }) {
-  const fetchOptions = {
-    headers: {
-      Accept: 'application/json',
-    },
-    signal: request?.signal,
-  };
-
-  const res = await fetch(new URL('/api/about', BACKEND_HOST), fetchOptions);
-  return await res.json();
-}
 
 const About = (props) => {
   const data = useLoaderData(props);
@@ -105,7 +92,7 @@ const MyWebsite = () => (
       <hr />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/about" component={About} loader={aboutLoader} />
+        <Route path="/about" component={About} loader={() => fetch(new URL('/api/about', BACKEND_HOST))} />
         <Route path="/topics" component={Topics} />
       </Switch>
     </div>
