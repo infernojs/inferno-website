@@ -23,7 +23,7 @@ The following features aren't supported yet:
 - download progress support
 - form submission
 - redirect support
-- not exposing headers, type or status code to render method
+- not exposing response headers, type or status code to render method
 
 See official react-router [documentation](https://v5.reactrouter.com/web/guides/philosophy)
 
