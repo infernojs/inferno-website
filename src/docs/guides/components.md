@@ -65,7 +65,7 @@ Below are all the different lifecycle event names that can be applied to functio
       <td><code>domNode</code></td>
     </tr>
     <tr>
-      <td><code>onComponentDidAppear*</code><br><small>new in v8</small></td>
+      <td><code>onComponentDidAppear<sup>1</sup></code><br><small>new in v8</small></td>
       <td>a functional component has appeared in the DOM</td>
       <td><code>domNode, props</code></td>
     </tr>
@@ -90,19 +90,19 @@ Below are all the different lifecycle event names that can be applied to functio
       <td></td>
     </tr>
     <tr>
-      <td><code>onComponentWillDisappear*</code><br><small>new in v8</small></td>
+      <td><code>onComponentWillDisappear <sup>1</sup></code><br><small>new in v8</small></td>
       <td>a functional component dom node is about to be removed</td>
       <td><code>domNode, props, callback</code></td>
     </tr>
           <tr>
-         <td><code>componentWillMove*</code><br><small>new in v8</small></td>
+         <td><code>componentWillMove <sup>1</sup></code><br><small>new in v8</small></td>
          <td>component is about to removed from the DOM</td>
          <td><code>parentVNode, parentDOM, dom</code></td>
       </tr>
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="3">* only the outer most component receives a call to the animation hook to ensure predictable performance. If you want child component elements to animate you need to trigger them from the parent animation hook (<a href="https://github.com/infernojs/inferno/tree/master/docs/animations-demo-inner">see animations-demo-inner</a>).</td>
+      <td colspan="3">Note 1: only the outer most component receives a call to the animation hook to ensure predictable performance. If you want child component elements to animate you need to trigger them from the parent animation hook (<a href="https://github.com/infernojs/inferno/tree/master/docs/animations-demo-inner">see animations-demo-inner</a>).</td>
     </tr>
   </tfoot>
 <table>
@@ -182,7 +182,7 @@ components do. Below is a list of all the lifecycle events:
          <td></td>
       </tr>
       <tr>
-         <td><code>componentDidAppear*</code><br><small>new in v8</small></td>
+         <td><code>componentDidAppear<sup>1</sup></code><br><small>new in v8</small></td>
          <td>component has been added to the DOM</td>
          <td><code>domNode</code></td>
       </tr>
@@ -212,12 +212,12 @@ components do. Below is a list of all the lifecycle events:
          <td></td>
       </tr>
       <tr>
-         <td><code>componentWillDisappear*</code><br><small>new in v8</small></td>
+         <td><code>componentWillDisappear<sup>1</sup></code><br><small>new in v8</small></td>
          <td>component is about to removed from the DOM</td>
          <td><code>domNode, callback</code></td>
       </tr>
       <tr>
-         <td><code>componentWillMove*</code><br><small>new in v8</small></td>
+         <td><code>componentWillMove<sup>1</sup></code><br><small>new in v8</small></td>
          <td>component is about to removed from the DOM</td>
          <td><code>parentVNode, parentDOM, dom</code></td>
       </tr>
@@ -237,11 +237,11 @@ components do. Below is a list of all the lifecycle events:
          <td><code>nextProps, state</code></td>
       </tr>
    </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="3">* only the outer most component receives a call to the animation hook to ensure predictable performance. If you want child component elements to animate you need to trigger them from the parent animation hook (<a href="https://github.com/infernojs/inferno/tree/master/docs/animations-demo-inner">see animations-demo-inner</a>).</td>
-    </tr>
-  </tfoot>
+   <tfoot>
+      <tr>
+         <td colspan="3">Note 1: only the outer most component receives a call to the animation hook to ensure predictable performance. If you want child component elements to animate you need to trigger them from the parent animation hook (<a href="https://github.com/infernojs/inferno/tree/master/docs/animations-demo-inner">see animations-demo-inner</a>).</td>
+      </tr>
+   </tfoot>
 </table>
 
 The below is an example of using the `componentDidMount` lifecycle event to request AJAX data on a component:
