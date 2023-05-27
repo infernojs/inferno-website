@@ -7,20 +7,20 @@
     "builds": [
       {
         "src": "package.json",
-        "use": "@now/static-build",
+        "use": "@vercel/static-build",
         "config": {
           "maxLambdaSize": "50mb"
         }
       },
       {
         "src": "index.js",
-        "use": "@now/node",
+        "use": "@vercel/node",
         "config": {
           "maxLambdaSize": "50mb"
         }
       }
     ],
-    "routes": [ 
+    "routes": [
       {
         "src": "/manifest.json",
         "dest": "/public/assets/manifest.json",
@@ -57,7 +57,6 @@
           "Service-Worker-Allowed": "/"
         }
       },
-
       {
         "src": "/assets/(.*)",
         "dest": "/public/assets/$1",
@@ -72,7 +71,6 @@
           "cache-control": "max-age=43200, s-maxage=43200"
         }
       },
-
       {
         "src": "/public/(.*)",
         "dest": "/public/$1",
@@ -80,7 +78,6 @@
           "cache-control": "max-age=43200, s-maxage=43200"
         }
       },
-     
       {
         "src": "/(.*)",
         "dest": "/index.js",

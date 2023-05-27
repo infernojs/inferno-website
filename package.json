@@ -31,11 +31,11 @@
   },
   "dependencies": {
     "@babel/cli": "^7.21.5",
-    "@babel/core": "^7.21.8",
+    "@babel/core": "^7.22.1",
     "@babel/plugin-proposal-class-properties": "^7.18.6",
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "@babel/plugin-transform-async-to-generator": "^7.20.7",
-    "@babel/preset-env": "^7.21.5",
+    "@babel/preset-env": "^7.22.2",
     "@babel/register": "^7.21.0",
     "babel-loader": "^9.1.2",
     "babel-plugin-inferno": "^6.6.0",
@@ -43,7 +43,7 @@
     "clean-webpack-plugin": "^4.0.0",
     "commonmark": "^0.30.0",
     "copy-webpack-plugin": "^11.0.0",
-    "css-loader": "^6.7.4",
+    "css-loader": "^6.8.0",
     "css-minimizer-webpack-plugin": "^5.0.0",
     "debug": "^4.3.4",
     "eslint-plugin-inferno": "^7.32.2",
@@ -73,7 +73,7 @@
     "sass-loader": "^13.3.0",
     "style-loader": "^3.3.3",
     "supports-color": "^9.3.1",
-    "webpack": "^5.84.0",
+    "webpack": "^5.84.1",
     "xss-filters": "^1.2.7"
   },
   "devDependencies": {
