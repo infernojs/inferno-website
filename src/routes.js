@@ -7,13 +7,6 @@ import Docs from './components/Docs';
 import About from './components/About';
 import Contribute from './components/Contribute';
 
-// function ReactDemo() {
-//   return <div>
-//     <script src="http://localhost:8082/build/react.js" async="async"/>
-//     <iframe src=""/>
-//   </div>;
-// }
-
 const AppRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     <Layout {...props}>
