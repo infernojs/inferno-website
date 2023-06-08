@@ -46,7 +46,9 @@ export default router()
     const { file } = ctx.query;
 
     if (file.includes('..')) {
-      return ctx.body = <p>Cannot access this path</p>;
+      ctx.body = <p>Cannot access this path</p>;
+
+      return;
     }
 
     ctx.body = await parseMarkDown(file);

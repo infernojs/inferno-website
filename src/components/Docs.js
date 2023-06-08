@@ -23,7 +23,7 @@ export default class Docs extends Component {
 
   loadDocument(to, changeRoute) {
     const { router } = this.context;
-    const path = '/' + to.replace('/docs/', '');
+    const path = to.replace('/docs/', '');
 
     if (changeRoute) {
       return router.history.push(to);
@@ -39,69 +39,67 @@ export default class Docs extends Component {
   render() {
     const { match } = this.props;
 
-    const navigationAPI = (
-      <ul className="nav">
-        <li className="nav-item active">
-          <h4>API</h4>
-          <ul className="nav">
-            <MenuLink match={match} to={'/docs/api/inferno'}>Inferno</MenuLink>
-            <MenuLink match={match} to={'/docs/api/inferno-animation'}>Inferno-animation</MenuLink>
-            <MenuLink match={match} to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
-            <MenuLink match={match} to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
-            <MenuLink match={match} to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
-            <MenuLink match={match} to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
-            <MenuLink match={match} to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
-            <MenuLink match={match} to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
-          </ul>
-        </li>
-      </ul>
-    );
+    const showNavigationApi = match && match.url.includes('api/');
+    let menuContent;
 
-    const navigationGuides = (
-      <ul className="nav">
-        <li className="nav-item active">
-          <h4>Guides</h4>
-          <ul className="nav">
-            <MenuLink match={match} to={'/docs/guides/installation'}>Installation</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/using-cdn'}>Using CDN</MenuLink>
-            <MenuLink match={match} to={'https://jsfiddle.net/4bha7kcg/'}>JS Fiddle</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/components'}>Components</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/libraries'}>Community Libraries</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/forms'}>Forms</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/switching-to-inferno'}>Switching to Inferno</MenuLink>
-          </ul>
-        </li>
-        <li className="nav-item active">
-          <h4>Advanced</h4>
-          <ul className="nav">
-            {/*<MenuLink match={match} to={'/docs/guides/what-is-virtual-dom'}>What is Virtual DOM?</MenuLink>*/}
-            <MenuLink match={match} to={'/docs/guides/what-is-jsx'}>What is JSX?</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/alternatives-to-jsx'}>Alternatives to JSX</MenuLink>
-            {/*<MenuLink match={match} to={'/docs/guides/state'}>State</MenuLink>*/}
-            <MenuLink match={match} to={'/docs/api/inferno-router'}>Routing</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/isomorphic'}>Isomorphic</MenuLink>
-            {/*<MenuLink match={match} to={'/docs/guides/testing'}>Testing</MenuLink>*/}
-            <MenuLink match={match} to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/optimizations'}>Optimizations</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/benefits/list-rendering'}>Lists & keys</MenuLink>
-            <MenuLink match={match} to={'/docs/guides/animations'}>Animations</MenuLink>
-          </ul>
-        </li>
-      </ul>
-    );
+    if (showNavigationApi) {
+      menuContent = (
+        <ul className="nav">
+          <li className="nav-item active">
+            <h4>API</h4>
+            <ul className="nav">
+              <MenuLink match={match} to={'/docs/api/inferno'}>Inferno</MenuLink>
+              <MenuLink match={match} to={'/docs/api/inferno-animation'}>Inferno-animation</MenuLink>
+              <MenuLink match={match} to={'/docs/api/inferno-mobx'}>Inferno-mobx</MenuLink>
+              <MenuLink match={match} to={'/docs/api/inferno-redux'}>Inferno-redux</MenuLink>
+              <MenuLink match={match} to={'/docs/api/inferno-router'}>Inferno-router</MenuLink>
+              <MenuLink match={match} to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
+              <MenuLink match={match} to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
+              <MenuLink match={match} to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
+            </ul>
+          </li>
+        </ul>
+      );
+    } else {
+      menuContent = (
+        <ul className="nav">
+          <li className="nav-item active">
+            <h4>Guides</h4>
+            <ul className="nav">
+              <MenuLink match={match} to={'/docs/guides/installation'}>Installation</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/using-cdn'}>Using CDN</MenuLink>
+              <MenuLink match={match} to={'https://jsfiddle.net/4bha7kcg/'}>JS Fiddle</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/components'}>Components</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/libraries'}>Community Libraries</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/forms'}>Forms</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/switching-to-inferno'}>Switching to Inferno</MenuLink>
+            </ul>
+          </li>
+          <li className="nav-item active">
+            <h4>Advanced</h4>
+            <ul className="nav">
+              <MenuLink match={match} to={'/docs/guides/what-is-jsx'}>What is JSX?</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/alternatives-to-jsx'}>Alternatives to JSX</MenuLink>
+              <MenuLink match={match} to={'/docs/api/inferno-router'}>Routing</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/server-side-rendering'}>Server-side rendering</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/isomorphic'}>Isomorphic</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/typescript-support'}>TypeScript Support</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/optimizations'}>Optimizations</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/benefits/list-rendering'}>Lists & keys</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/animations'}>Animations</MenuLink>
+            </ul>
+          </li>
+        </ul>
+      );
+    }
 
     return (
       <section className="page columns docs row">
         <aside className="docs-menu">
-          {
-            match && match.url.includes('api/')
-            ? navigationAPI
-            : navigationGuides
-          }
+          {menuContent}
         </aside>
         <aside className="column docs-content" id="markdown-root">
           {this.state.markdown}
