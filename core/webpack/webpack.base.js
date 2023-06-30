@@ -32,7 +32,7 @@ module.exports = {
                 '@babel/env',
                 {
                   'targets': {
-                    'browsers': ['>0.25%', 'ie >= 11'],
+                    'browsers': ['>0.4%'],
                   }
                 },
               ],
@@ -45,10 +45,6 @@ module.exports = {
                   'defineAllArguments': true,
                 },
               ],
-              '@babel/plugin-proposal-class-properties',
-              '@babel/plugin-proposal-object-rest-spread',
-              '@babel/plugin-transform-async-to-generator',
-              ['module:fast-async'],
             ],
           },
         },
