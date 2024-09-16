@@ -22,14 +22,6 @@ Object.assign(config, {
     publicPath: `http://localhost:${http.port + 2}/build/`,
     pathinfo: true
   },
-  devServer: {
-    hot: true,
-    compress: true,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Expose-Headers': 'SourceMap,X-SourceMap'
-    },
-  },
   watchOptions: {
     aggregateTimeout: 300,
     poll: false
@@ -67,7 +59,13 @@ config.plugins = config.plugins.concat([
 const compiler = webpack(config);
 const port = http.port + 2;
 
-new WebpackDevServer(compiler).listen(port, 'localhost', function(err) {
+new WebpackDevServer({
+  compress: true,
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Expose-Headers': 'SourceMap,X-SourceMap'
+  },
+}, compiler).listen(port, 'localhost', function(err) {
   if (err) return logger('webpack:error', err);
 
   logger('webpack:compiler')('Running on port ' + port);
