@@ -1,6 +1,6 @@
 import logger from 'debug';
 import Koa from 'koa';
-import bodyParser from 'koa-better-body';
+import bodyParser from '@koa/bodyparser';
 import compress from 'koa-compress';
 import favicon from 'koa-favicon';
 import mount from 'koa-mount';
@@ -16,11 +16,7 @@ const app = new Koa();
 
 app.use(favicon(config.http.favicon));
 app.use(compress());
-app.use(convert(bodyParser({
-  formLimit: '200kb',
-  jsonLimit: '200kb',
-  bufferLimit: '4mb'
-})));
+app.use(convert(bodyParser()));
 
 app.use(catcher);
 
