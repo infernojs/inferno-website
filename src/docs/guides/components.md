@@ -94,11 +94,11 @@ Below are all the different lifecycle event names that can be applied to functio
       <td>a functional component dom node is about to be removed</td>
       <td><code>domNode, props, callback</code></td>
     </tr>
-          <tr>
-         <td><code>componentWillMove <sup>1</sup></code><br><small>new in v8</small></td>
-         <td>component is about to removed from the DOM</td>
-         <td><code>parentVNode, parentDOM, dom</code></td>
-      </tr>
+    <tr>
+      <td><code>onComponentWillMove <sup>1</sup></code><br><small>new in v8</small></td>
+      <td>component is about to removed from the DOM</td>
+      <td><code>parentVNode, parentDOM, dom</code></td>
+    </tr>
   </tbody>
   <tfoot>
     <tr>
