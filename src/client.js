@@ -11,9 +11,9 @@ import {App} from './components/App';
 const root = document.getElementById('root');
 const history = createBrowserHistory();
 
-history.listen((location) => {
-  window.ga('send', 'pageview', location.pathname);
-});
+// history.listen((location) => {
+//   window.ga('send', 'pageview', location.pathname);
+// });
 
 /**
  * Render our component according to our routes

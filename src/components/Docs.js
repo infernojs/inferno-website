@@ -71,10 +71,8 @@ export default class Docs extends Component {
               <MenuLink match={match} to={'https://jsfiddle.net/4bha7kcg/'}>JS Fiddle</MenuLink>
               <MenuLink match={match} to={'/docs/guides/getting-started'}>Getting Started</MenuLink>
               <MenuLink match={match} to={'/docs/guides/components'}>Components</MenuLink>
-              <MenuLink match={match} to={'/docs/guides/libraries'}>Community Libraries</MenuLink>
               <MenuLink match={match} to={'/docs/guides/event-handling'}>Event Handling</MenuLink>
               <MenuLink match={match} to={'/docs/guides/forms'}>Forms</MenuLink>
-              <MenuLink match={match} to={'/docs/guides/brunch'}>Brunch Builder</MenuLink>
               <MenuLink match={match} to={'/docs/guides/switching-to-inferno'}>Switching to Inferno</MenuLink>
             </ul>
           </li>

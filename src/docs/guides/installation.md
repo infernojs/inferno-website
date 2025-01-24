@@ -1,6 +1,10 @@
 # Installation
 
-The best way to start using Inferno is by [Create Inferno App](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
+If you're building something bigger than a small hobby project, why not kick things off with a bang?
+Start your InfernoJs adventure using the [inferno-swc-example](https://github.com/infernojs/inferno-swc-example).
+It has the latest and greatest tech to supercharge your next project!
+
+If you want one-liner and get coding in few seconds you can still use the old [Create Inferno App (legacy)](https://github.com/infernojs/create-inferno-app). You can get setup and running within a few minutes.
 Just run following command (requires npm v5.2+)
 
 ```sh
@@ -8,10 +12,6 @@ npx create-inferno-app my-app
 cd my-app
 npm start
 ```
-
-Alternatively, you can get started with Inferno using the [Inferno Boilerplate](https://github.com/infernojs/inferno-boilerplate) for a very simple setup.
-For a more advanced example demonstrating how Inferno might be used, we recommend trying
-out the [Inferno Starter Project](https://github.com/nightwolfz/inferno-starter) by [nightwolfz](https://github.com/nightwolfz/).
 
 Our recommended approach to installing and using Inferno is via NPM. Alternatively, you can insert Inferno into your site via `<script>` resources
 [directly from the CDN](using-cdn).
@@ -55,10 +55,19 @@ npm install --save inferno-server
 
 ## Installing a virtual DOM package
 
-Behind the scenes, Inferno uses a concept called virtual DOM to create views/components that make up your UI. If you want to understand more about what
-virtual DOM is, check the [virtual DOM guide](todo).
+Behind the scenes, Inferno uses a concept called virtual DOM to create views/components that make up your UI.
 
 There are many different ways you can create virtual DOM with Inferno.
+
+### TSX or JSX
+[swc-plugin-inferno](https://github.com/infernojs/swc-plugin-inferno) requires SWC compiler, it can compile both TSX and JSX formats, up to 100X faster than `ts-plugin-inferno` or `babel-plugin-inferno`.
+
+### TSX:
+[ts-plugin-inferno](https://github.com/infernojs/ts-plugin-inferno) requires Typescript compiler TSC and Node JS in order to compile TSX to JS.
+
+```sh
+npm install --save-dev ts-plugin-inferno
+```
 
 ### JSX:
 
@@ -67,6 +76,9 @@ This package requires Babel 6+ and Node JS in order to compile JSX to JS.
 ```sh
 npm install --save-dev babel-plugin-inferno
 ```
+
+It is recommended to use JSX or TSX syntax with Inferno, so you don't have to manage the lower level details of vNodes.
+However, if for some reason you can't use the above compiler tools, you can manually construct vNodes using following packages: 
 
 ### Hyperscript:
 

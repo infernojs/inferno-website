@@ -65,7 +65,7 @@ Below are all the different lifecycle event names that can be applied to functio
       <td><code>domNode</code></td>
     </tr>
     <tr>
-      <td><code>onComponentDidAppear<sup>1</sup></code><br><small>new in v8</small></td>
+      <td><code>onComponentDidAppear <sup>1</sup></code><br><small>new in v8</small></td>
       <td>a functional component has appeared in the DOM</td>
       <td><code>domNode, props</code></td>
     </tr>
@@ -182,7 +182,7 @@ components do. Below is a list of all the lifecycle events:
          <td></td>
       </tr>
       <tr>
-         <td><code>componentDidAppear<sup>1</sup></code><br><small>new in v8</small></td>
+         <td><code>componentDidAppear <sup>1</sup></code><br><small>new in v8</small></td>
          <td>component has been added to the DOM</td>
          <td><code>domNode</code></td>
       </tr>
@@ -212,12 +212,12 @@ components do. Below is a list of all the lifecycle events:
          <td></td>
       </tr>
       <tr>
-         <td><code>componentWillDisappear<sup>1</sup></code><br><small>new in v8</small></td>
+         <td><code>componentWillDisappear <sup>1</sup></code><br><small>new in v8</small></td>
          <td>component is about to removed from the DOM</td>
          <td><code>domNode, callback</code></td>
       </tr>
       <tr>
-         <td><code>componentWillMove<sup>1</sup></code><br><small>new in v8</small></td>
+         <td><code>componentWillMove <sup>1</sup></code><br><small>new in v8</small></td>
          <td>component is about to removed from the DOM</td>
          <td><code>parentVNode, parentDOM, dom</code></td>
       </tr>
