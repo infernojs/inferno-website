@@ -32,7 +32,6 @@ export default function({ hostname, config, children }) {
   </head>
   <body>
   <div id="root" $HasVNodeChildren>{children}</div>
-  <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=Promise"/>
   <script src={`${bundleURL}/build/bundle.js`} async="async"/>
   </body>
   </html>;
