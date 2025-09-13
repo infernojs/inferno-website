@@ -63,14 +63,14 @@ function findPathForFile(file) {
       const absPathToFileAttempt = path.resolve(absPath, `./${file}.md`);
 
       try {
-        console.debug(`[findPathForFile] checking ${absPathToFileAttempt}`);
+        // console.debug(`[findPathForFile] checking ${absPathToFileAttempt}`);
         if (fs.existsSync(absPathToFileAttempt)) {
           foundPath = absPath;
-          console.debug(`[findPathForFile] FOUND at ${index}`);
+          // console.debug(`[findPathForFile] FOUND at ${index}`);
           break;
         }
       } catch (readExistsException) {
-        console.error({readExistsException});
+        // console.error({readExistsException});
       }
     }
   }
@@ -89,9 +89,9 @@ async function parseMarkDown(file) {
 
     fs.readFile(absPathToFile, 'utf-8', async(err, data) => {
       if (err) {
-        console.error(err);
+        // console.error(err);
         if (process.env.DEV) {
-          console.warn(`No document found at: "/docs${file}.md"`);
+          // console.warn(`No document found at: "/docs${file}.md"`);
           return resolve(<p>No document found at: <b>/docs{file}</b></p>);
         }
         return resolve(<p>Documentation is under development.</p>);
