@@ -1,4 +1,4 @@
-import 'regenerator-runtime/runtime';
+// import 'regenerator-runtime/runtime';
 import {renderToString} from 'inferno-server';
 import {StaticRouter} from 'inferno-router';
 import config from '../config';
