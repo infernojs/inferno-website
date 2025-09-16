@@ -10,8 +10,8 @@ export function Community() {
       </a>{' '}
       where you can ask questions and find out the latest news about Inferno
       development. You can join via{' '}
-      <a rel="nofollow" href="https://discord.gg/pYFsMTYndu">
-        https://discord.gg/pYFsMTYndu.
+      <a rel="nofollow" href="https://discord.gg/SUKuhgaBpF">
+        https://discord.gg/SUKuhgaBpF.
       </a>
     </p>,
     <h4>Contributors</h4>,
