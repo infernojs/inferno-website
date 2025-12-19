@@ -6,11 +6,11 @@ import favicon from 'koa-favicon';
 import mount from 'koa-mount';
 import serve from 'koa-static';
 import convert from 'koa-convert';
-import config from './config';
-import catcher from './middleware/catcher';
-import render from './middleware/render';
-import markdown from './routes/markdown';
-import hooks from './routes/hooks';
+import config from './config.js';
+import catcher from './middleware/catcher.js';
+import render from './middleware/render.js';
+import markdown from './routes/markdown.js';
+import hooks from './routes/hooks.js';
 
 const app = new Koa();
 

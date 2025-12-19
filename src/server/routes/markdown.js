@@ -7,7 +7,7 @@ import {createElement} from 'inferno-create-element';
 import fs from 'fs';
 import path from 'path';
 import Prism from 'prismjs';
-import router from 'koa-router';
+import Router from 'koa-router';
 import xssFilters from 'xss-filters';
 
 /**
@@ -32,7 +32,9 @@ const pathsToTry = [
 .map(basePath => path.join(__dirname, basePath, publicDocsPath))
 .concat(process.env.NODE_ENV === 'development' ? [path.resolve(__dirname, devDocsPath)] : []);
 
-export default router()
+const router = new Router();
+
+export default router
   .get('/release', async(ctx, next) => {
     const { file } = ctx.query;
 

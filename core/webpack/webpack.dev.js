@@ -12,14 +12,12 @@ Object.assign(config, {
   devtool: false, // eval eval-cheap-module-source-map source-map
   entry: {
     bundle: [
-      `webpack-dev-server/client?http://localhost:${http.port + 2}`,
-      'webpack/hot/only-dev-server',
       path.join(__dirname, '../../core/polyfills.js'),
       path.join(__dirname, '../../src/client.js')
     ]
   },
   output: {
-    publicPath: `http://localhost:${http.port + 2}/build/`,
+    publicPath: '/build/',
     pathinfo: true
   },
   watchOptions: {
@@ -59,13 +57,26 @@ config.plugins = config.plugins.concat([
 const compiler = webpack(config);
 const port = http.port + 2;
 
-new WebpackDevServer({
-  compress: true,
-  headers: {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Expose-Headers': 'SourceMap,X-SourceMap'
+const devServer = new WebpackDevServer(
+  {
+    host: 'localhost',
+    port,
+    compress: true,
+    hot: true,
+    allowedHosts: 'all',
+    static: false,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Expose-Headers': 'SourceMap,X-SourceMap'
+    },
+    devMiddleware: {
+      publicPath: config.output.publicPath
+    }
   },
-}, compiler).listen(port, 'localhost', function(err) {
+  compiler
+);
+
+devServer.startCallback((err) => {
   if (err) return logger('webpack:error', err);
 
   logger('webpack:compiler')('Running on port ' + port);

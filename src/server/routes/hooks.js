@@ -2,15 +2,25 @@ import fs from 'fs';
 import path from 'path';
 import {spawn} from 'child_process';
 import crypto from 'crypto';
-import router from 'koa-router';
+import Router from 'koa-router';
 
-export default router()
+const router = new Router();
+
+export default router
   .post('/api/hooks', async(ctx, next) => {
     await new Promise((resolve) => {
-      const { fields, headers } = ctx.request;
+      const fields = ctx.request.body ?? ctx.request.fields ?? {};
       const signature = getSecret(JSON.stringify(fields));
+      const receivedSignature = ctx.get('x-hub-signature');
 
-      if (signature === headers['x-hub-signature'].substr(5)) {
+      if (!receivedSignature || !receivedSignature.startsWith('sha1=')) {
+        ctx.status = 400;
+        ctx.body = { success: false };
+        resolve();
+        return;
+      }
+
+      if (signature === receivedSignature.slice(5)) {
         console.info('Signature matched, restarting server...');
         pullAndUpdate().then(() => {
           ctx.body = {
