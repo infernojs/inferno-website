@@ -1,4 +1,5 @@
 // Navbar
+@use "./shared" as *;
 .navbar {
   align-items: stretch;
   display: flex;

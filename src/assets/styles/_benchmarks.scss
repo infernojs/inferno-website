@@ -1,3 +1,5 @@
+@use "./globals" as *;
+
 .benchmarks {
   padding: 40px;
   @media (max-width: $size-sm) {

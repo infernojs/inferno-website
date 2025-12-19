@@ -1,4 +1,5 @@
 // Tooltips
+@use "./shared" as *;
 .tooltip {
   position: relative;
   &::after {

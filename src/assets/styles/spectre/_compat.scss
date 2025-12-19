@@ -1,0 +1,15 @@
+@use "sass:color";
+@use "sass:math";
+
+@function lighten($colorValue, $amount) {
+  @return color.adjust($colorValue, $lightness: $amount);
+}
+
+@function darken($colorValue, $amount) {
+  @return color.adjust($colorValue, $lightness: -$amount);
+}
+
+@function div($numerator, $denominator) {
+  @return math.div($numerator, $denominator);
+}
+

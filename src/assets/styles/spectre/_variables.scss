@@ -1,4 +1,6 @@
 // Core variables
+@use "./compat" as *;
+
 $version: "0.4.5";
 
 $primary: #dc0030;
@@ -95,9 +97,9 @@ $control-size-lg: $unit-10 !default;
 $control-padding-x: $unit-2 !default;
 $control-padding-x-sm: $unit-2 * .75 !default;
 $control-padding-x-lg: $unit-2 * 1.5 !default;
-$control-padding-y: ($control-size - $line-height) / 2 - $border-width !default;
-$control-padding-y-sm: ($control-size-sm - $line-height) / 2 - $border-width !default;
-$control-padding-y-lg: ($control-size-lg - $line-height) / 2 - $border-width !default;
+$control-padding-y: div($control-size - $line-height, 2) - $border-width !default;
+$control-padding-y-sm: div($control-size-sm - $line-height, 2) - $border-width !default;
+$control-padding-y-lg: div($control-size-lg - $line-height, 2) - $border-width !default;
 $control-icon-size: .8rem !default;
 $control-min-width: 180px !default;
 $control-max-width: 320px !default;

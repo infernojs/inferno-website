@@ -1,4 +1,5 @@
 // Text
+@use "../spectre/shared" as *;
 // Text alignment utilities
 .text-left {
   text-align: left;

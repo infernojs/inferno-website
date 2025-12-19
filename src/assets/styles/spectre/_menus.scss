@@ -1,4 +1,5 @@
 // Menus
+@use "./shared" as *;
 .menu {
   @include shadow-variant(.05rem);
   background: $bg-color-light;

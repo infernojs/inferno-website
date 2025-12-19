@@ -1,4 +1,7 @@
-@import 'prismjs/themes/prism-tomorrow';
+@use "sass:meta";
+@use "./globals" as *;
+
+@include meta.load-css("prismjs/themes/prism-tomorrow");
 
 .docs {
   flex-wrap: nowrap;

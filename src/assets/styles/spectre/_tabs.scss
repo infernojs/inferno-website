@@ -1,4 +1,5 @@
 // Tabs
+@use "./shared" as *;
 .tab {
   align-items: center;
   border-bottom: $border-width solid $border-color;

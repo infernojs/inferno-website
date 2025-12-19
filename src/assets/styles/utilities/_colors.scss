@@ -1,4 +1,5 @@
 // Text colors
+@use "../spectre/shared" as *;
 @include text-color-variant(".text-primary", $primary-color);
 
 @include text-color-variant(".text-secondary", $secondary-color-dark);

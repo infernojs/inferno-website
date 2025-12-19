@@ -1,4 +1,5 @@
 // Navs
+@use "./shared" as *;
 .nav {
   display: flex;
   flex-direction: column;

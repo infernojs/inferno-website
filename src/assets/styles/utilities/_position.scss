@@ -1,4 +1,5 @@
 // Position
+@use "../spectre/shared" as *;
 .clearfix {
   @include clearfix();
 }

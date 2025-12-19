@@ -1,4 +1,5 @@
 // Shapes
+@use "../spectre/shared" as *;
 .rounded {
   border-radius: $border-radius;
 }

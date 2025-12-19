@@ -1,4 +1,5 @@
 // Buttons
+@use "./shared" as *;
 .btn {
   @include control-transition();
   appearance: none;

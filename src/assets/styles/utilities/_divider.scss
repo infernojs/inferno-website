@@ -1,4 +1,5 @@
 // Divider
+@use "../spectre/shared" as *;
 .divider,
 .divider-vert {
   display: block;

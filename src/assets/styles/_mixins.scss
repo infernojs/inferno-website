@@ -1,0 +1,6 @@
+@mixin media-query($device) {
+  @media (max-width: $device) {
+    @content;
+  }
+}
+
