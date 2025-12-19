@@ -16,7 +16,7 @@ export default function Footer(props, { router }) {
         <div className="columns">
           <FooterItem
             href="https://vercel.com/"
-            className="saucelabs"
+            className="vercel"
             title="Vercel is used to host InfernoJS website"
             LogoComponent={Vercel}
           />
@@ -30,7 +30,7 @@ export default function Footer(props, { router }) {
           <div className="divider-vert hide-sm" />
           <FooterItem
             href="https://www.autoexplore.ai/"
-            className="thegrid"
+            className="autoexplore"
             title="AutoExplore is committed to supporting the maintenance and development of InfernoJS"
             LogoComponent={AutoExplore}
           />
@@ -62,7 +62,7 @@ export default function Footer(props, { router }) {
 }
 
 const FooterItem = ({ href, className, LogoComponent, title }) => (
-  <div className="column col-xs-10 text-center">
+  <div className="column col-4 col-sm-12 text-center">
     <a
       target="_blank"
       rel="noopener noreferrer"

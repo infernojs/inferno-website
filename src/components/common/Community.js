@@ -35,7 +35,7 @@ export function Community() {
   ];
 
   return (
-    <section className="col-mr-auto text-center" $HasNonKeyedChildren>
+    <section className="community col-mr-auto text-center" $HasNonKeyedChildren>
       {content}
     </section>
   );

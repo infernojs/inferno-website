@@ -5,18 +5,38 @@ footer {
   margin-bottom: 1rem;
   .sponsors {
     width: 100%;
+    .columns {
+      flex-wrap: wrap;
+      row-gap: 1rem;
+    }
     a {
       display: flex;
       align-items: center;
+      justify-content: center;
+      min-width: 0;
     }
     .column {
       display: flex;
       justify-content: center;
     }
-    img, svg { fill: #545454; }
-    .digitalocean svg,
-    .saucelabs img { height: 1rem; }
-    .thegrid svg { height: 2.4rem; }
+    img,
+    svg {
+      fill: #545454;
+      max-width: 100%;
+      height: auto;
+    }
+    .vercel svg {
+      width: auto;
+      height: clamp(1rem, 3.5vw, 1.2rem);
+    }
+    .saucelabs svg {
+      width: auto;
+      height: clamp(1rem, 4.5vw, 1.4rem);
+    }
+    .autoexplore svg {
+      width: auto;
+      height: clamp(1.5rem, 6vw, 2.4rem);
+    }
   }
   .license {
     margin-top: 1rem;
