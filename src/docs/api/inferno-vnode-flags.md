@@ -39,5 +39,3 @@ npm install --save inferno-vnode-flags
 - `ChildFlags.HasNonKeyedChildren` (JSX **$HasNonKeyedChildren**) Children type is array of vNodes, diff is done based on array indexes, no nested arrays, no holes (fast)
 - `ChildFlags.HasKeyedChildren` (JSX **$HasKeyedChildren**) Children type is array of vNodes, diff is done based on "key" properties all vNodes must have a key, no nested arrays, no holes (fast)
 - `ChildFlags.HasTextChildren` (JSX **$HasTextChildren**) Children type is only string (fast)
-
-You can easily combine multiple flags, by using bitwise operators. A common use case is an element that has keyed children:
