@@ -42,7 +42,7 @@ export default class ContentAccordion extends Component {
   render() {
     return (
       <div className="differences col-9 col-md-11 col-sm-12 col-xs-12 centered">
-        <ul className="tab tab-block">
+        <ul key="tabs" className="tab tab-block">
           {this.state.list.map((item, index) => {
             return <li className={this.state.current === index ? 'tab-item active' : 'tab-item'}>
               <a onClick={linkEvent({
