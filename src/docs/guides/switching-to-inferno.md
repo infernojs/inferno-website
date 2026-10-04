@@ -14,7 +14,7 @@ As in React:
 
 - ClassName is copied to props
 - Children is copied to props (for html vNodes too)
-- String refs are supported
+- styles are converted from camelCase to hyphen-case runtime. You can turn off this feature by setting: `options.reactStyles = false;`
 - Empty props are always created for element vNodes
 - You can create Components based on string
 - `findDOMNOde` -method is available
@@ -29,14 +29,13 @@ As in React:
 
 ## How to install?
 
-Inferno-compat does not automatically install all its features. For example: If you need createElement support you should also install `inferno-create-element`.
+Use the same major version of `inferno-compat` as `inferno`. Inferno-compat does not automatically install all its features. For example: If you need createElement support you should also install `inferno-create-element`.
 
 All packages:
 ```
 npm install --save inferno
 npm install --save inferno-compat
 npm install --save inferno-clone-vnode
-npm install --save inferno-create-class
 npm install --save inferno-create-element
 ```
 
@@ -44,7 +43,6 @@ npm install --save inferno-create-element
 
 ### `react`
 
-- `React.createClass`
 - `React.createElement`
 - `React.cloneElement`
 - `React.Component`

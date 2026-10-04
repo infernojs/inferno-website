@@ -63,7 +63,7 @@ In this example nonkeyed version will patch nodes in order and lose internal sta
 
 ## JSX Compile time flags
 
-JSX Plugin will by default add childrenTypes based on the nested elements and generally does this well. However, when children are built dynamically, they are marked with unknown ChildrenType which means Inferno will look up the children type runtime.
+JSX Plugin will by default add the shape of the children to the vNode flags based on the nested elements and generally does this well. However, when children are built dynamically, they get no child bit which means Inferno will look up the children type runtime.
 You can define children type at the root node level. This is very useful when children are built dynamically and no other compile time information is available. All the special flags are prefixed with `$` -sign and written in PascalCase so are easily recognized.
 
 ```javascript
@@ -94,5 +94,13 @@ render(<MyComponent />, root)
 ```
 
 In the above example MyComponent returns div which has a special attribute `$HasKeyedChildren`. This attribute changes vNode flags to tell Inferno its children are always keyed.
-This results in better runtime performance. If the shape of children needs to be changed runtime then there is special property called `$ChildFlag={expression}`. JSX specific children values are `$HasKeyedChildren`, `$HasNonKeyedChildren` and `$HasVNodeChildren`.
-When not using JSX, children properties can be defined using [inferno-vnode-flags](/docs/api/inferno-vnode-flags). See its documentation for more information.
+This results in better runtime performance. If the shape of children needs to be changed runtime then there is special property called `$ChildFlag={expression}`, which takes a `ChildFlags` value. JSX specific children values are `$HasKeyedChildren`, `$HasNonKeyedChildren`, `$HasVNodeChildren` and `$HasTextChildren`.
+
+The JSX plugins check the flags against the children written in JSX. Since version 10 a flag that cannot match them is a build error, for example `$HasKeyedChildren` on children where one child has no key:
+
+```javascript
+// Build error: keyed children need keys
+<ul $HasKeyedChildren><li key="1"/><li/></ul>
+```
+
+When not using JSX, children properties can be defined using the child bits of `VNodeFlags` in [inferno-vnode-flags](/docs/api/inferno-vnode-flags). See its documentation for more information.

@@ -2,7 +2,7 @@
 
 Let's start with some code. As you can see, Inferno intentionally keeps the same design ideas as React regarding components: one-way data flow and separation of concerns.
 
-In these examples, JSX is used via the [Inferno JSX Babel Plugin](https://github.com/infernojs/babel-plugin-inferno) to provide a simple way to express Inferno virtual DOM. You do not need to use JSX, it's completely **optional**, you can use [hyperscript](https://github.com/infernojs/inferno/tree/master/packages/inferno-hyperscript) or [createElement](https://github.com/infernojs/inferno/tree/master/packages/inferno-create-element) (like React does).
+In these examples, JSX is used via the [Inferno JSX Babel Plugin](https://github.com/infernojs/babel-plugin-inferno) (version 10 for Inferno 10) to provide a simple way to express Inferno virtual DOM. You do not need to use JSX, it's completely **optional**, you can use [hyperscript](https://github.com/infernojs/inferno/tree/master/packages/inferno-hyperscript) or [createElement](https://github.com/infernojs/inferno/tree/master/packages/inferno-create-element) (like React does).
 Keep in mind that compile time optimizations are available only for JSX.
 
 ```jsx
@@ -48,7 +48,7 @@ In the example below we optimize the diffing process by using JSX **$HasTextChil
 **$HasTextChildren** can be used when the children is just text.
 
 ```jsx
-import { createTextVNode, render, Component } from 'inferno';
+import { render, Component } from 'inferno';
 
 class MyComponent extends Component {
   constructor(props) {

@@ -1,10 +1,10 @@
 # Components
 
-Inferno offers three different types of components to use when building a UI: functional components, ES2015 class components and ES5 class components.
+Inferno offers two different types of components to use when building a UI: functional components and ES2015 class components.
 
 ## Functional Components
 
-Functional components are pure functions that represent the "render" functions of traditional ES2015 and ES5 class components.
+Functional components are pure functions that represent the "render" functions of traditional ES2015 class components.
 
 *Using JSX:*
 ```javascript
@@ -96,8 +96,8 @@ Below are all the different lifecycle event names that can be applied to functio
     </tr>
     <tr>
       <td><code>onComponentWillMove <sup>1</sup></code><br><small>new in v8</small></td>
-      <td>component is about to removed from the DOM</td>
-      <td><code>parentVNode, parentDOM, dom</code></td>
+      <td>a keyed list update keeps this component, called before the list is patched. Requires <code>inferno-animation</code> since v10</td>
+      <td><code>parentVNode, parentDOM, dom, props</code></td>
     </tr>
   </tbody>
   <tfoot>
@@ -143,7 +143,7 @@ Static.defaultHooks = {
 ## ES2015 Class Components
 
 Inferno has ES2015 class components available inside `inferno` package.
-To use `inferno-component`, very much like React, you create a `class` and extend `Component`:
+To use them, very much like React, you create a `class` and extend `Component`:
 
 ```jsx
 import { Component, render } from 'inferno';
@@ -218,7 +218,7 @@ components do. Below is a list of all the lifecycle events:
       </tr>
       <tr>
          <td><code>componentWillMove <sup>1</sup></code><br><small>new in v8</small></td>
-         <td>component is about to removed from the DOM</td>
+         <td>a keyed list update keeps this component, called before the list is patched. Requires <code>inferno-animation</code> since v10</td>
          <td><code>parentVNode, parentDOM, dom</code></td>
       </tr>
       <tr>
@@ -275,22 +275,9 @@ class AjaxComponent extends Component {
 ```
 
 
-## ES5 Class Components
+## Compiling class components
 
-Inferno offers ES5 class components as a separate package called `inferno-create-class`.
-Note: The recommended way to create Components is Functional components, or by extending ES2015 class Components.
-This package provides auto bind mechanism same way as old `React.createClass({})` but it affects negatively performance.
+Since Inferno 10, `Component` is a native class. Compile your components to ES2015 or newer: TypeScript `target` `ES2015` or later, or Babel targets that don't need `@babel/plugin-transform-classes`.
+A component class that calls `Component` as an ES5 function, such as TypeScript's `target: "ES5"` output, throws `TypeError: Class constructor Component cannot be invoked without 'new'`.
 
-To enable this functionality you can either install via NPM or use the script from the CDN:
-
-*NPM:*
-```sh
-npm install --save inferno-create-class
-```
-*Scripts:*
-```html
-<script src="https://unpkg.com/inferno-create-class@[version]/dist/inferno-create-class.js"></script>
-<script src="https://unpkg.com/inferno-create-class@[version]/dist/inferno-create-class.min.js"></script>
-```
-
-Note: `inferno-create-class` works exactly like React's [`React.createClass()`](https://facebook.github.io/react/docs/react-api.html#createclass) API works.
+The `inferno-create-class` package, which provided ES5 class components like `React.createClass()`, is not available for Inferno 10.

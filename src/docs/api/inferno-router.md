@@ -27,6 +27,53 @@ The following features aren't supported yet:
 
 See official react-router [documentation](https://v5.reactrouter.com/web/guides/philosophy)
 
+## Navigation confirmation
+
+`<Prompt when={hasUnsavedChanges} message="Discard your changes?" />` blocks
+navigation while `when` is true. By default it uses `window.confirm`. Browsers
+can suppress that native dialog, including on iOS Safari when Back navigation
+triggers confirmation. A suppressed dialog returns `false`, so navigation
+remains blocked.
+
+Since Inferno 10, `Router`, `BrowserRouter`, `HashRouter` and `MemoryRouter`
+accept a `getUserConfirmation` prop, so `<Prompt>` can use your own in-page
+dialog. The handler receives the message and a callback; call it with `true`
+for Leave or `false` for Stay. It can respond synchronously or later, after the
+user interacts with your dialog:
+
+```jsx
+import { BrowserRouter, Prompt } from 'inferno-router';
+
+const getUserConfirmation = (message, callback) => {
+  // Your application's dialog service renders the UI and returns a close function.
+  return showLeaveDialog({
+    message,
+    onLeave: () => callback(true),
+    onStay: () => callback(false),
+  });
+};
+
+<BrowserRouter getUserConfirmation={getUserConfirmation}>
+  <Prompt when={hasUnsavedChanges} message="Discard your changes?" />
+  {/* routes */}
+</BrowserRouter>;
+```
+
+TypeScript users can type the handler with the `GetUserConfirmation` type exported from `inferno-router`.
+
+The optional returned cleanup function runs once when the decision completes or
+is invalidated. It should dismiss that specific dialog. Disabling or unmounting
+the prompt, changing its message, or replacing the handler invalidates pending
+replies. Keep the handler reference stable between renders. While a decision is
+pending, further attempts stay blocked and the first destination is retained.
+Duplicate replies are ignored.
+
+Without the prop, `Prompt` keeps using `window.confirm`. See the runnable
+[custom and native confirmation demo](https://github.com/infernojs/inferno/tree/master/docs/router_prompt).
+This API covers navigation within the app. Reloading, closing the tab, and
+leaving the document use the browser-controlled `beforeunload` mechanism,
+which a custom dialog cannot replace.
+
 ## Usage (client-side)
 
 ```js

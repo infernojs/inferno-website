@@ -1,4 +1,4 @@
-import {createTextVNode, version} from 'inferno';
+import {newTextVNode, version} from 'inferno';
 import LogoSauceLabs from '../logos/LogoSauceLabs';
 import AutoExplore from '../logos/AutoExplore';
 import Vercel from '../logos/Vercel';
@@ -46,7 +46,7 @@ export default function Footer(props, { router }) {
         </a>
         <div className="built" $HasNonKeyedChildren>
           {[
-            createTextVNode(`Website built with Inferno ${version} using `),
+            newTextVNode(`Website built with Inferno ${version} using `),
             <a
               target="_blank"
               rel="noopener noreferrer"

@@ -1,4 +1,4 @@
-import {Component, version, createTextVNode} from 'inferno';
+import {Component, version} from 'inferno';
 import {Link, withRouter} from 'inferno-router';
 import IconMenu from '../icons/IconMenu';
 import InfernoLogo from '../icons/IconInferno';

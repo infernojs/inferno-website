@@ -32,21 +32,22 @@ Make new empty directory `mkdir my-app && cd my-app`.
  3. [Express](http://expressjs.com) — fast, flexible web server `npm i -S express`
  4. [FuseBox](https://fuse-box.org/) — blazing fast bundler/module loader `npm i -D fuse-box`
  5. [TSNode](https://github.com/TypeStrong/ts-node) to run typescript files `npm i -D ts-node @types/node`
- 6. Inferno transformers for TypeScript `npm i -D ts-transform-inferno ts-transform-classcat`
+ 6. Inferno transformers for TypeScript `npm i -D ts-plugin-inferno ts-transform-classcat`. Use version 10 of `ts-plugin-inferno` with Inferno 10.
 ### Configure FuseBox
 **fuse.ts**
 ```ts
 import { FuseBox, FuseBoxOptions, Sparky } from "fuse-box";
 import path = require("path");
 import TsTransformClasscat from "ts-transform-classcat";
-import TsTransformInferno from "ts-transform-inferno";
+import transformInferno from "ts-plugin-inferno";
 let fuse: FuseBox;
 const fuseOptions: FuseBoxOptions = {
    homeDir: "./src",
    output: "dist/$name.js",
    sourceMaps: { inline: false, vendor: false },
    transformers: {
-      before: [TsTransformInferno(), TsTransformClasscat()]
+      before: [TsTransformClasscat()],
+      after: [transformInferno()]
    },
    plugins: []
 };

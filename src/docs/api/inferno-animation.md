@@ -1,9 +1,9 @@
 # Inferno Animation API
 This package provides CSS-animations when components are added and removed.
 
-Requires Inferno >=8.0.0
+Use the same major version of `inferno-animation` as `inferno`. This page describes version 10.
 
-To migrate from earlier versions of inferno-animation, read the last section on this page.
+To migrate from earlier versions of inferno-animation, read the last sections on this page.
 
 ```
 npm install inferno-animation --save
@@ -15,14 +15,17 @@ As of **Inferno 8.0.0** there is support for animation lifecycle events:
 Class components:
 - componentDidAppear(dom)
 - componentWillDisappear(dom, callback)
-- componentWillMove(parentVNode, parent, dom, next, props)
+- componentWillMove(parentVNode, parentDOM, dom)
 
 Functional components:
 - onComponentDidAppear(dom, props)
 - onComponentWillDisappear(dom, props, callback)
-- onComponentWillMove(parentVNode, parent, dom, next, props)
+- onComponentWillMove(parentVNode, parentDOM, dom, props)
 
 When you implement these, inferno will call them and pass the DOM-node of the component instance right after the component has been added or right before the component will be removed. Inferno will delay the removal of the actual DOM-node until you call the callback method allowing you to complete a removal animation.
+The hooks target the first element the component renders. A component whose root is only text or empty gets no hook.
+
+The move hooks are called for every item that a keyed update keeps, before the list's container properties or children are patched. The hook sees the existing DOM and the props from before the update. See "Keyed-list move animations" below.
 
 Inferno-animation exposes three base classes to provide you with an easy way of animating your class components and helper methods to animate functional components.
 
@@ -30,7 +33,7 @@ Inferno-animation exposes three base classes to provide you with an easy way of 
 - AnimatedMoveComponent -- animates on move (within the same parent)
 - AnimatedAllComponent -- animates on add/remove and move (within the same parent)
 
-If you don't want to extend from one of the pre-wired components, look att src/AnimatedAllComponent.ts to see
+If you don't want to extend from one of the pre-wired components, look at [src/AnimatedAllComponent.ts](https://github.com/infernojs/inferno/blob/master/packages/inferno-animation/src/AnimatedAllComponent.ts) to see
 how to wire up the three animation hooks:
 
 - componentDidAppear
@@ -40,7 +43,7 @@ how to wire up the three animation hooks:
 There are a couple of examples of animations in the main repos in the `docs/animations` and `docs/animations-demo` folder
 
 ### Global animations
-Inferno also implements global animations. These allow you to animate a component between positions on two different "pages". Technically this means they don't have the same parent element. When you mount one page immediately after unmounting the other page, inferno-animation will perform a FLIP-animation between the two positions. To match the elements you use the attribute `globalAnimationKey` which accept a string.
+Inferno also implements global animations. These allow you to animate a component between positions on two different "pages". Technically this means they don't have the same parent element. When you mount one page immediately after unmounting the other page, inferno-animation will perform a FLIP-animation between the two positions. To match the elements you use the attribute `globalAnimationKey` which accept a string. The position of a leaving element can be used for one second: an element that enters with its key later than that, for example on a page that took longer to load, appears in place.
 
 Global animations are very simple to use, [check this example.](https://github.com/infernojs/inferno/blob/master/docs/animations-global-demo/app.js)
 
@@ -76,7 +79,7 @@ import { Component } from 'inferno';
 import { componentDidAppear, componentWillDisappear, componentWillMove } from 'inferno-animation';
 
 function Animated ({className, children}) {
-  return <div className={this.props.className}>{children}</div>
+  return <div className={className}>{children}</div>
 }
 
 class MyComponent extends Component {
@@ -91,6 +94,32 @@ class MyComponent extends Component {
 ```
 
 In both cases, if you don't specify the property `animation="[AnimationPrefix]"` it will default to `inferno-animation`.
+
+The default `inferno-animation` CSS is exported from the package as `inferno-animation/index.css`:
+
+```css
+@import 'inferno-animation/index.css';
+```
+
+### Keyed-list move animations
+Importing `inferno-animation` installs the move engine. The reconciler doesn't run move animations itself, so custom `componentWillMove` and `onComponentWillMove` hooks are only called when the app has imported `inferno-animation` before rendering. `AnimatedMoveComponent`, `AnimatedAllComponent` and the exported helpers already import it.
+
+```js
+// Once, before the first render, when the app has its own move hooks
+import 'inferno-animation';
+```
+
+The engine stays dormant until a component with a move hook mounts. Apps that don't import `inferno-animation`, or import it only for enter and leave animations, don't pay for move support.
+
+- A class component has a move hook when `componentWillMove` exists by the end of its mount: in the class, or assigned in the constructor, `componentWillMount` or `componentDidMount`. A hook assigned later is not called.
+- A function component has a move hook when its hooks include `onComponentWillMove`, also when a re-render adds it. Don't mutate a hooks object in place.
+- The hooks are called for every item that a keyed update keeps, also when the keys stay in order. A hook should measure or schedule work, and never move or remove DOM nodes.
+- Move animations cover reordering, insertions, removals and replacements in keyed lists, including the items these changes push aside. Keep stable keys on list items.
+- A move interrupted by another update continues from where the item is on screen, and when leaving items are removed, the remaining items slide into the gap.
+- Offsets take 2D transforms of ancestors into account, also across shadow roots, as well as the SVG `viewBox` and the item's own `scale` and `rotate`. CSS `zoom`, perspective and rotation other than around z are not supported.
+- Items with CSS keyframe or script animations move with the `translate` property instead of `transform`.
+
+For the full description see the [inferno-animation README](https://github.com/infernojs/inferno/tree/master/packages/inferno-animation#keyed-list-layout-animations).
 
 
 ### Customizing CSS animations
@@ -199,7 +228,9 @@ If you want to animate child components you can [look att this example.](https:/
 If you want to implement another type of animation, such as Bootstrap 4 animations, you can implement the lifecycle events yourself. **Make sure you use the helper methods** exposed by `inferno-animation` unless you really, really, know what you are doing. The helper methods will make the code more readable and contains some hard earned wisdom.
 
 ```js
-import { 
+import { utils } from 'inferno-animation';
+
+const {
   addClassName, // add one or more CSS-classes, separate by space
   removeClassName, // remove one or more CSS-classes, separated by space
 
@@ -212,7 +243,7 @@ import {
   clearDimensions, // clear style attribute properties height and width
 
   setDisplay, // set the style attribute property display
-} from 'inferno-animation';
+} = utils;
 ```
 
 **Animations are done entirely outside of Inferno's control.** You can't use `this.setState()` to animate the component. All you get is the root DOM-node, and then you have to do everything in your code.
@@ -220,6 +251,19 @@ import {
 **If you implement your own animated base class, share it across projects.** This makes it easy for you to maintain the animations when we extend the functionality of inferno-animation in the future.
 
 **Make sure you implement a fallback timeout** in case the transitions fail for some reason, otherwise you will be leaking DOM-nodes. Inferno won't break due to these leaking DOM-nodes, but you could end up with strange styling bugs if you rely on certain CSS-selectors.
+
+## Migration from inferno-animation 9
+
+The public API of inferno-animation 10 is the same, but it has been rewritten and the move hooks have new semantics:
+
+- Custom `componentWillMove` and `onComponentWillMove` hooks need `import 'inferno-animation'` before the first render.
+- The move hooks are called for every item that a keyed update keeps, before anything is patched. In v9 they were called only for the items that were physically moved, after the list had already been partly changed.
+- A class component's `componentWillMove` must exist by the end of its mount. A hook assigned later is not called.
+- Appear, leave and move hooks target the first element of the component. A component whose root is only text or empty gets no hook. In v9 the hook could get a text node, which crashed the helpers.
+
+The rewrite also improves the animations: items that are pushed aside by a moved item animate too, a leave that interrupts an enter starts from where the enter got to, the app's inline styles are restored after an animation, and transitions with zero duration no longer leave items stuck.
+
+See the [Inferno 10 migration guide](https://github.com/infernojs/inferno/blob/master/documentation/v10-migration.md#move-hooks-need-inferno-animation) for details.
 
 ## Migration from inferno-animation <8.0
 To migrate to the 8.0 version of inferno-animation there are some quick solutions.

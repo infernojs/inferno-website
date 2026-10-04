@@ -1,5 +1,4 @@
-import {Component, createTextVNode} from 'inferno';
-import {ChildFlags} from 'inferno-vnode-flags';
+import {Component, newTextVNode} from 'inferno';
 
 export class LatestRelease extends Component {
   constructor(props, context) {
@@ -27,8 +26,8 @@ export class LatestRelease extends Component {
 
     return (
       <section className="news">
-        <h4 $HasVNodeChildren>{createTextVNode(release.name)}</h4>
-        <span className="release" $HasVNodeChildren>{createTextVNode(new Date(release.published_at).toLocaleString())}</span>
+        <h4 $HasVNodeChildren>{newTextVNode(release.name)}</h4>
+        <span className="release" $HasVNodeChildren>{newTextVNode(new Date(release.published_at).toLocaleString())}</span>
 
       </section>
     );

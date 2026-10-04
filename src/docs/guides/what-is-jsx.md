@@ -102,7 +102,7 @@ By default, Inferno escapes any values before rendering them. Thus it ensures th
 ---
 
 ### JSX Represents Objects
-Babel compiles JSX down to `Inferno.createVNode()` calls.
+Inferno's JSX plugins ([babel-plugin-inferno](https://github.com/infernojs/babel-plugin-inferno), [ts-plugin-inferno](https://github.com/infernojs/ts-plugin-inferno) and [swc-plugin-inferno](https://github.com/infernojs/swc-plugin-inferno)) compile JSX down to `newVNode()` calls.
 
 These two examples are identical:
 
@@ -113,8 +113,9 @@ const element = (
   </h1>
 );
 
-const element = Inferno.createVNode(
-  2,
+// flags 3 = VNodeFlags.HtmlElement (1) | VNodeFlags.HasTextChildren (2)
+const element = newVNode(
+  3,
   'h1',
   'greeting',
   'Hello, Inferno!'
@@ -122,19 +123,19 @@ const element = Inferno.createVNode(
 
 ```
 
-`Inferno.createVNode()` performs a few checks to help you write bug-free code but essentially it creates an object like this:
+The plugin knows the shape of the children at compile time, so it writes it into the flags of the vNode as one number. Inferno does not need to work it out at runtime.
+Version 10 of the plugins compiles JSX for Inferno 10, and JSX compiled by older plugin versions does not work with Inferno 10.
+
+`newVNode()` creates an object like this:
 
 ```javascript
 // Note: this structure is simplified
 const element = {
-    flags: 2,
+    flags: 3,
     type: 'h1',
     className: 'greeting',
-    children: 'Hello Inferno!',
-    props: {
-        onClick: method,
-        'data-attribute': 'Hello Inferno community!'
-    }
+    children: 'Hello, Inferno!',
+    props: null
 };
 ```
 

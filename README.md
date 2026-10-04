@@ -44,16 +44,10 @@ Deploy:
 
 ## Requirements
 
-    Node 8+
+    Node 24+ (babel-plugin-inferno 10 requires Node.js 24 or newer)
 
 ## Useful links
 
-* [Inferno](https://github.com/trueadm/inferno) - What this website is all about
+* [Inferno](https://github.com/infernojs/inferno) - What this website is all about
 * Project structure based on [Inferno-starter](https://github.com/nightwolfz/inferno-starter)
-* Typescript project setup with ts-transform-inferno can be found [here](https://github.com/deamme/ts-transform-inferno).
-
-
-## TODO
-- [ ] should not transpile the server in the same way
-- [ ] can use ts + babel...
-- [ ] precompile the markdown
+* Typescript project setup with ts-plugin-inferno can be found [here](https://github.com/infernojs/ts-plugin-inferno).

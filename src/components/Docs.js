@@ -56,6 +56,8 @@ export default class Docs extends Component {
               <MenuLink match={match} to={'/docs/api/inferno-server'}>Inferno-server</MenuLink>
               <MenuLink match={match} to={'/docs/api/inferno-test-utils'}>Inferno-test-utils</MenuLink>
               <MenuLink match={match} to={'/docs/api/inferno-vnode-flags'}>Inferno-vnode-flags</MenuLink>
+              <MenuLink match={match} to={'/docs/api/babel-plugin-inferno'}>Babel-plugin-inferno</MenuLink>
+              <MenuLink match={match} to={'/docs/api/swc-plugin-inferno'}>Swc-plugin-inferno</MenuLink>
             </ul>
           </li>
         </ul>
@@ -67,6 +69,7 @@ export default class Docs extends Component {
             <h4>Guides</h4>
             <ul className="nav">
               <MenuLink match={match} to={'/docs/guides/installation'}>Installation</MenuLink>
+              <MenuLink match={match} to={'/docs/guides/upgrading-to-v10'}>Upgrading to v10</MenuLink>
               <MenuLink match={match} to={'/docs/guides/using-cdn'}>Using CDN</MenuLink>
               <MenuLink match={match} to={'https://jsfiddle.net/4bha7kcg/'}>JS Fiddle</MenuLink>
               <MenuLink match={match} to={'/docs/guides/getting-started'}>Getting Started</MenuLink>

@@ -1,4 +1,4 @@
-import {Component, createTextVNode, version} from 'inferno';
+import {Component, newTextVNode, version} from 'inferno';
 import ContentAccordion from './common/ContentAccordion';
 import AnimateMovePromo from './demo/AnimateMovePromo';
 import Features from './home/Features';
@@ -22,7 +22,7 @@ export default class Home extends Component {
               <div className="logo-text">
                 <h1>
                   Inferno
-                  <small $HasVNodeChildren>{createTextVNode(`v${version}`)}</small>
+                  <small $HasVNodeChildren>{newTextVNode(`v${version}`)}</small>
                 </h1>
                 <h2>Inferno is an insanely fast, React-like library for building high-performance user interfaces on both the client and server.</h2>
                 <div className="buttons">

@@ -4,14 +4,16 @@ As of **Inferno 8.0.0** there are three new lifecycle events that can be used fo
 Class components:
 - componentDidAppear(dom)
 - componentWillDisappear(dom, callback)
-- componentWillMove(parentVNode, parent, dom, next, props)
+- componentWillMove(parentVNode, parentDOM, dom)
 
 Functional components:
 - onComponentDidAppear(dom, props)
 - onComponentWillDisappear(dom, props, callback)
-- onComponentWillMove(parentVNode, parent, dom, next, props)
+- onComponentWillMove(parentVNode, parentDOM, dom, props)
 
 The package `inferno-animation` provides a base class and helper methods that implement these to allow you to easily convert components to animated components. See the API docs for inferno-animation.
+
+Since Inferno 10, move animations are run by `inferno-animation` instead of Inferno core. Custom `componentWillMove` and `onComponentWillMove` hooks are only called when the app has imported `inferno-animation` before the first render. The exported animated components and helpers already import it.
 
 When mounting animated components that in turn contain animated components only the outer most animation will be triggered.
 
@@ -24,7 +26,7 @@ import { AnimatedComponent } from 'inferno-animation';
 
 class MyComponent extends AnimatedComponent {
   render() {
-    return <div className={this.props.className}>{this.children}</div>
+    return <div className={this.props.className}>{this.props.children}</div>
   }
 }
 ```
@@ -69,7 +71,7 @@ Finally use the component in your code:
 
 ```JSX
 // Add the component with above defined animation
-inferno.render(<MyComponent animation=“HeightAndFade”>This container is animated</MyComponent>, document.body);
+inferno.render(<MyComponent animation="HeightAndFade">This container is animated</MyComponent>, document.body);
 
 // Remove the component with above defined animation
 setTimeout(() => {

@@ -72,6 +72,8 @@ class MyComponent extends Component {
 
 This is the base class for Inferno Components when they're defined using ES6 classes.
 
+Since Inferno 10, `Component` is a native class in every bundle. Compile your own components to ES2015 or newer. A component class that calls `Component` as an ES5 function, such as TypeScript's `target: "ES5"` output, throws `TypeError: Class constructor Component cannot be invoked without 'new'`.
+
 **Functional component:**
 
 ```javascript
@@ -95,37 +97,36 @@ Static.defaultHooks = {
 
 Functional components are first-class functions where their first argument is the `props` passed through from their parent.
 
-### `createVNode` (package: `inferno`)
+### `newVNode` (package: `inferno`)
+
 ```js
-Inferno.createVNode(
-  flags,
-  type,
-  [className],
-  [...children],
-  [childFlags],
-  [props],
-  [key],
-  [ref]
-)
+import { newVNode } from 'inferno';
+
+newVNode(flags, type, [className], [children], [props], [key], [ref]);
 ```
 
-createVNode is used to create html element's virtual node object. Typically `createElement()` (package: `inferno-create-element`), `h()` (package: `inferno-hyperscript`) or JSX are used to create
-`VNode`s for Inferno, but under the hood they all use `createVNode()`. Below is an example of `createVNode` usage:
+newVNode is used to create html element's virtual node object. Typically `createElement()` (package: `inferno-create-element`), `h()` (package: `inferno-hyperscript`) or JSX are used to create
+`VNode`s for Inferno, but under the hood they all use `newVNode()`. Below is an example of `newVNode` usage:
 
 ```javascript
-import { VNodeFlags, ChildFlags } from 'inferno-vnode-flags';
-import { createVNode, createTextVNode, render } from 'inferno';
+import { VNodeFlags } from 'inferno-vnode-flags';
+import { newVNode, newTextVNode, render } from 'inferno';
 
-const vNode = createVNode(VNodeFlags.HtmlElement, 'div', 'example', createTextVNode('Hello world!'), ChildFlags.HasVNodeChildren);
+const vNode = newVNode(
+  VNodeFlags.HtmlElement | VNodeFlags.HasVNodeChildren,
+  'div',
+  'example',
+  newTextVNode('Hello world!'),
+);
 
 // <div class="example">Hello world!</div>
 
 render(vNode, container);
 ```
 
-`createVNode` arguments explained:
+`newVNode` arguments explained:
 
-`flags`: (number) is a value from [`VNodeFlags`](https://github.com/infernojs/inferno/tree/master/packages/inferno-vnode-flags), this is a numerical value that tells Inferno what the VNode describes on the page.
+`flags`: (number) is a value from [`VNodeFlags`](/docs/api/inferno-vnode-flags), this is a numerical value that tells Inferno what the VNode describes on the page. It also tells the shape of the children with one of the child bits: `VNodeFlags.HasInvalidChildren`, `HasVNodeChildren`, `HasNonKeyedChildren`, `HasKeyedChildren` or `HasTextChildren`. Then the normalization process is skipped. Flags without a child bit mean the shape of the children is unknown, and the children are normalized.
 
 `type`: (string) is tagName for element for example 'div'
 
@@ -133,44 +134,50 @@ render(vNode, container);
 
 `children`: (vNode[]|vNode) is one or array of vNodes to be added as children for this vNode
 
-`childFlags`: (number) is a value from [`ChildFlags`](https://github.com/infernojs/inferno/tree/master/packages/inferno-vnode-flags), this tells inferno shape of the children so normalization process can be skipped.
-
-`props`: (Object) is object containing all other properties. fe: `{onClick: method, 'data-attribute': 'Hello Community!}`
+`props`: (Object) is object containing all other properties. fe: `{onClick: method, 'data-attribute': 'Hello Community!'}`
 
 `key`: (string|number) unique key within this vNodes siblings to identify it during keyed algorithm.
 
 `ref`: (function) callback which is called when DOM node is added/removed from DOM.
 
 
-### `createComponentVNode` (package: 'inferno')
+### `newComponentVNode` (package: 'inferno')
+
 ```js
-Inferno.createComponentVNode(
-  flags,
-  type,
-  [props],
-  [key],
-  [ref]
-)
+import { newComponentVNode } from 'inferno';
+
+newComponentVNode(flags, type, [props], [key], [ref]);
 ```
 
-createComponentVNode is used for creating vNode for Class/Functional Component.
+newComponentVNode is used for creating vNode for Class/Functional Component.
 
 Example:
 ```javascript
-import { VNodeFlags, ChildFlags } from 'inferno-vnode-flags';
-import { createVNode, createTextVNode, createComponentVNode, render } from 'inferno';
+import { VNodeFlags } from 'inferno-vnode-flags';
+import { newVNode, newTextVNode, newComponentVNode, render } from 'inferno';
 
 function MyComponent(props, context) {
-  return createVNode(VNodeFlags.HtmlElement, 'div', 'example', createTextVNode(props.greeting), ChildFlags.HasVNodeChildren);
+  return newVNode(
+    VNodeFlags.HtmlElement | VNodeFlags.HasVNodeChildren,
+    'div',
+    'example',
+    newTextVNode(props.greeting),
+  );
 }
 
-const vNode = createComponentVNode(VNodeFlags.ComponentFunction, MyComponent, {
-  greeting: 'Hello Community!'
-}, null, {
-  onComponentDidMount() {
-    console.log("example of did mount hook!")
-  }
-})
+const vNode = newComponentVNode(
+  VNodeFlags.ComponentFunction | VNodeFlags.HasInvalidChildren,
+  MyComponent,
+  {
+    greeting: 'Hello Community!',
+  },
+  null,
+  {
+    onComponentDidMount() {
+      console.log('example of did mount hook!');
+    },
+  },
+);
 
 // <div class="example">Hello Community!</div>
 
@@ -178,9 +185,9 @@ render(vNode, container);
 ```
 
 
-`createComponentVNode` arguments explained:
+`newComponentVNode` arguments explained:
 
-`flags`: (number) is a value from [`VNodeFlags`](https://github.com/infernojs/inferno/tree/master/packages/inferno-vnode-flags), this is a numerical value that tells Inferno what the VNode describes on the page.
+`flags`: (number) is a value from [`VNodeFlags`](/docs/api/inferno-vnode-flags), this is a numerical value that tells Inferno what the VNode describes on the page. `VNodeFlags.ComponentUnknown` lets Inferno find out whether `type` is a class, a function or a forwardRef. `VNodeFlags.ComponentClass` and `VNodeFlags.ComponentFunction` must be combined with `VNodeFlags.HasInvalidChildren`, because a component vNode has no children of its own.
 
 `type`: (Function/Class) is the class or function prototype for Component
 
@@ -192,25 +199,52 @@ render(vNode, container);
 
 
 
-### `createTextVNode` (package: 'inferno')
+### `newTextVNode` (package: 'inferno')
 
-createTextVNode is used for creating vNode for text nodes.
+newTextVNode is used for creating vNode for text nodes.
 
-`createTextVNode` arguments explained:
-text: (string) is a value for text node to be created.
+`newTextVNode` arguments explained:
+text: (string) is a value for text node to be created. `null`, `undefined` and booleans become an empty string.
 key: (string|number) unique key within this vNodes siblings to identify it during keyed algorithm.
 
 ```js
-Inferno.createTextVNode(
-  text,
-  key
-)
+import { newTextVNode } from 'inferno';
+
+newTextVNode(text, key);
 ```
 
 
-### `cloneVNode` (package: `inferno`)
+### Deprecated `createVNode`, `createComponentVNode`, `createTextVNode` and `createFragment` (package: 'inferno')
+
+These factories still work for code that creates vNodes by hand, but they are deprecated since Inferno 10. The v10 JSX plugins call the new factories; they call `createVNode` and `createFragment` only for a `$ChildFlag` that is known at runtime. The deprecated factories take a separate `childFlags` value, turn it into its child bit and call the new factories:
+
+<table>
+  <thead>
+    <tr><th>Deprecated</th><th>Replacement</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>createVNode(flags, type, className, children, ChildFlags.HasTextChildren, ...)</code></td><td><code>newVNode(flags | VNodeFlags.HasTextChildren, type, className, children, ...)</code></td></tr>
+    <tr><td><code>createComponentVNode(flags, type, props, key, ref)</code></td><td><code>newComponentVNode(flags | VNodeFlags.HasInvalidChildren, type, props, key, ref)</code></td></tr>
+    <tr><td><code>createTextVNode(text, key)</code></td><td><code>newTextVNode(text, key)</code></td></tr>
+    <tr><td><code>createFragment(children, ChildFlags.HasKeyedChildren, key)</code></td><td><code>newFragment(VNodeFlags.Fragment | VNodeFlags.HasKeyedChildren, children, key)</code></td></tr>
+  </tbody>
+</table>
+
+Each `ChildFlags` value has a `VNodeFlags` child bit of the same name, for example `ChildFlags.HasTextChildren` becomes `VNodeFlags.HasTextChildren`. `ChildFlags.UnknownChildren` becomes no child bit.
+
+`createVNode` and `createFragment` treat an omitted `childFlags` as `ChildFlags.HasInvalidChildren`, so they ignore the children. Flags without a child bit make `newVNode` and `newFragment` normalize the children instead.
+
+`vNode.childFlags` has been removed in Inferno 10. Test the child bits of `vNode.flags` instead, for example `(vNode.flags & VNodeFlags.HasKeyedChildren) !== 0`, or use `getChildFlags(vNode)` (package: `inferno`) to get the `ChildFlags` value for passing it on to a deprecated factory.
+
+
+### `cloneVNode` (package: `inferno-clone-vnode`)
+
+This package has same API as `React.cloneElement`
+
 ```javascript
-Inferno.cloneVNode(
+import { cloneVNode } from 'inferno-clone-vnode';
+
+cloneVNode(
   vNode,
   [props],
   [...children]
@@ -227,24 +261,26 @@ Clone and return a new Inferno `VNode` using a `VNode` as the starting point. Th
 An example of using `cloneVNode`:
 
 ```javascript
-import { cloneVNode, createVNode, render } from 'inferno';
+import { newVNode, render } from 'inferno';
+import { cloneVNode } from 'inferno-clone-vnode';
 import { VNodeFlags } from 'inferno-vnode-flags';
 
-const vNode = createVNode(VNodeFlags.HtmlElement, 'div', 'example', 'Hello world!');
-const newVNode = cloneVNode(vNode, { id: 'new' }); // we are adding an id prop to the VNode
+const vNode = newVNode(VNodeFlags.HtmlElement | VNodeFlags.HasTextChildren, 'div', 'example', 'Hello world!');
+const clone = cloneVNode(vNode, { id: 'new' }); // we are adding an id prop to the VNode
 
-render(newVNode, container);
+render(clone, container);
 ```
 
 If you're using JSX:
 
 ```jsx
-import { render, cloneVNode } from 'inferno';
+import { render } from 'inferno';
+import { cloneVNode } from 'inferno-clone-vnode';
 
 const vNode = <div className="example">Hello world</div>;
-const newVNode = cloneVNode(vNode, { id: 'new' }); // we are adding an id prop to the VNode
+const clone = cloneVNode(vNode, { id: 'new' }); // we are adding an id prop to the VNode
 
-render(newVNode, container);
+render(clone, container);
 ```
 
 ### `createPortal` (package: 'inferno')
@@ -324,15 +360,15 @@ render(<Foobar />, container);
 ```
 
 
-### `createFragment` (package: `inferno`)
+### `newFragment` (package: `inferno`)
 
-createFragment is the native way to createFragment vNode. `createFragment(children: any, childFlags: ChildFlags, key?: string | number | null)`
+newFragment is the native way to create a Fragment vNode. `newFragment(flags: VNodeFlags, children: any, key?: string | number | null)`
 
-`createFragment` arguments explained:
+`newFragment` arguments explained:
+
+`flags`: (number) is `VNodeFlags.Fragment` combined with one of the child bits of [`VNodeFlags`](/docs/api/inferno-vnode-flags), this tells inferno shape of the children so normalization process can be skipped. Without a child bit the children are normalized.
 
 `children`: (Array) Content of fragment vNode, typically array of VNodes
-
-`childFlags`: (number) is a value from [`ChildFlags`](https://github.com/infernojs/inferno/tree/master/packages/inferno-vnode-flags), this tells inferno shape of the children so normalization process can be skipped.
 
 `key`: (string|number) unique key within this vNodes siblings to identify it during keyed algorithm.
 
@@ -346,15 +382,15 @@ Alternative ways to create fragment vNode are:
 
 In the below example both fragments are identical except they have different key
 ```jsx
-import { Fragment, render, createFragment } from 'inferno';
-import { ChildFlags } from 'inferno-vnode-flags';
+import { Fragment, render, newFragment } from 'inferno';
+import { VNodeFlags } from 'inferno-vnode-flags';
 
-function Foobar() {
+function Foobar() {
     return (
       <div $HasKeyedChildren>
-        {createFragment(
+        {newFragment(
+            VNodeFlags.Fragment | VNodeFlags.HasNonKeyedChildren,
             [<div>Ok</div>, <span>1</span>],
-            ChildFlags.HasNonKeyedChildren,
             'key1'
         )}
         <Fragment key="key2">

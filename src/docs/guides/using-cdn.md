@@ -2,6 +2,9 @@
 
 If you are not able to npm for installation, you can insert Inferno into your site via `<script>` resources directly from the CDN.
 
+Since Inferno 10, the UMD bundles use modern syntax, such as `const`, arrow functions, spread and classes. They are compiled for Chrome 107, Edge 107, Firefox 84 (KaiOS 3) and Safari 16.
+To run Inferno in an older browser, compile it again with your own build.
+
 ## Core packages:
 
 ```html
