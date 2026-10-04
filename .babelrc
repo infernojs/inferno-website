@@ -5,7 +5,8 @@
       {
         "targets": {
           "browsers": [ ">0.4%" ]
-        }
+        },
+        "modules": "commonjs"
       }
     ]
   ],
